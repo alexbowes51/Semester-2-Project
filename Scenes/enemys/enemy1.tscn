@@ -1,11 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://618x4cs781ri"]
+[gd_scene load_steps=3 format=3 uid="uid://618x4cs781ri"]
+
+[ext_resource type="Texture2D" uid="uid://drt87hu1128q" path="res://Art/Enemies/Foot Soldeir.png" id="1_o6kx5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhuhu"]
-size = Vector2(1, 2)
+size = Vector2(1.375, 1.5)
 
 [node name="Area2D" type="Area2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_dhuhu")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.00334821, 0.00334821)
+texture = ExtResource("1_o6kx5")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
+scale = Vector2(149.334, 149.333)
+shape = SubResource("RectangleShape2D_dhuhu")
