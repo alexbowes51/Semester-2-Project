@@ -1,17 +1,26 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwmhxdnbbb5cd"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_5acm0"]
-[ext_resource type="Texture2D" uid="uid://dbjf424rm2cyj" path="res://icon.svg" id="1_u2fgw"]
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_5acm0"]
+[ext_resource type="Texture2D" uid="uid://dbjf424rm2cyj" path="res://Art/Default/icon.svg" id="1_u2fgw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clkjh"]
-size = Vector2(118, 118)
+size = Vector2(36, 40)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_5acm0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 100, 1, 1)
+position = Vector2(1, 0)
+scale = Vector2(0.273438, 0.304688)
 texture = ExtResource("1_u2fgw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_clkjh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 32500
+limit_bottom = 19600
