@@ -11,6 +11,6 @@ size = Vector2(1.375, 1.5)
 scale = Vector2(0.00334821, 0.00334821)
 texture = ExtResource("1_o6kx5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
-scale = Vector2(149.334, 149.333)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.500002, 0.499998)
 shape = SubResource("RectangleShape2D_dhuhu")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjkf1blilc330"
-path="res://.godot/imported/Bottles.png-185cb135a62104101f0981f232d98a93.ctex"
+uid="uid://beselk7rk7ec6"
+path="res://.godot/imported/Rubber.png-1101815567e1c3d0294385d09e9fd41e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Bottles.png"
-dest_files=["res://.godot/imported/Bottles.png-185cb135a62104101f0981f232d98a93.ctex"]
+source_file="res://Art/Items/Rubber.png"
+dest_files=["res://.godot/imported/Rubber.png-1101815567e1c3d0294385d09e9fd41e.ctex"]
 
 [params]
 
