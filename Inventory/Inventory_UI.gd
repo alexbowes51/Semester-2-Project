@@ -30,4 +30,6 @@ func _process(delta):
 			close()
 		else:
 			open()
+			
+
 	

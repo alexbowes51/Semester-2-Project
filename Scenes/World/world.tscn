@@ -78,8 +78,7 @@ tile_set = SubResource("TileSet_pq43n")
 metadata/_edit_group_ = true
 
 [node name="Map" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0.0627451)
+modulate = Color(1, 1, 1, 0)
 position = Vector2(17826, 9768)
 scale = Vector2(20.6157, 25.2519)
 texture = ExtResource("2_jqr7b")
