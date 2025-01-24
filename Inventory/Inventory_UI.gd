@@ -5,14 +5,15 @@ extends Control
 
 var is_open = false
 
-func update_slots():
-	for i in range(min(Inventory.items.size(), slots.size())):
-		slots[i].update(Inventory.items[i])
-
 func _ready():
 	update_slots()
 	close()
-	
+
+func update_slots():
+	for i in range(min(inv.items.size(), slots.size())):
+		slots[i].update(inv.items[i])
+			
+
 func open():
 	visible = true
 	is_open = true

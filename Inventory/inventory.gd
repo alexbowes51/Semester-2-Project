@@ -1,5 +1,5 @@
 extends Resource
 
-class_name Inventory 
+class_name Inventory
 
-@export var items: Array[Inventory_Item]
+@export var items: Array[Inventory_Item] = []

@@ -1,9 +1,9 @@
 extends Panel
 
 
-@onready var item_visual: Sprite2D = $item_display
+@onready var item_visual: Sprite2D = $CenterContainer/Panel/item_display
 
-func update(items : Inventory):
+func update(items : Inventory_Item):
 	if !items:
 		item_visual.visible = false
 	else:
