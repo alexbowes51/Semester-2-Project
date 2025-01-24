@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://dj5o80gxakvda"]
+[gd_scene load_steps=8 format=4 uid="uid://dj5o80gxakvda"]
 
 [ext_resource type="Texture2D" uid="uid://b8isb1oyhj5c7" path="res://Art/Tile_map/tilemap.png" id="1_np1dv"]
 [ext_resource type="Texture2D" uid="uid://cfg4lethlenqx" path="res://map.png" id="2_jqr7b"]
 [ext_resource type="PackedScene" uid="uid://dwmhxdnbbb5cd" path="res://Scenes/player/player.tscn" id="3_2ajww"]
+[ext_resource type="PackedScene" uid="uid://dh0vvoscc6m0b" path="res://Scenes/Item/Bottle/bottle_collectable.tscn" id="4_0j6fg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fyh05"]
 
@@ -83,6 +84,12 @@ position = Vector2(17826, 9768)
 scale = Vector2(20.6157, 25.2519)
 texture = ExtResource("2_jqr7b")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_2ajww")]
+[node name="Bottle_collectable" parent="." instance=ExtResource("4_0j6fg")]
+position = Vector2(2477, 2159)
+
+[node name="Bottle_collectable2" parent="." instance=ExtResource("4_0j6fg")]
+position = Vector2(2640, 2166)
+
+[node name="Player" parent="." instance=ExtResource("3_2ajww")]
 position = Vector2(2847, 1353)
 scale = Vector2(1, 0.993484)
