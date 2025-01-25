@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://k6fwy3h1d6yf"]
+
+[ext_resource type="Script" path="res://Scenes/MiniMap/mini_map.gd" id="1_qlhr2"]
+
+[node name="MiniMap" type="CanvasLayer"]
+script = ExtResource("1_qlhr2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_right = -34.0
+offset_bottom = 6.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -212.0
+offset_right = 38.0
+offset_bottom = 150.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/MarginContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
+[node name="MiniMap_Camera" type="Camera2D" parent="Control/MarginContainer/SubViewportContainer/SubViewport"]
+light_mask = 0
+visibility_layer = 1048575
+zoom = Vector2(0.01, 0.01)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="PlayerMarker" type="ColorRect" parent="Control/MarginContainer/SubViewportContainer/SubViewport"]
+z_index = 15
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(69.729, 24.865, 0, 1)

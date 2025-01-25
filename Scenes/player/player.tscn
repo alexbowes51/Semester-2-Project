@@ -8,7 +8,7 @@
 script/source = "extends CharacterBody2D
 
 
-const SPEED = 400.0
+const SPEED = 4000.0
 const JUMP_VELOCITY = -400.0
 
 @export var inv : Inventory
@@ -19,6 +19,8 @@ func _physics_process(delta: float) -> void:
 	var directionLR := Input.get_axis(\"ui_left\", \"ui_right\")
 	var directionUD := Input.get_axis(\"ui_up\", \"ui_down\")
 	$Sprite2D.look_at(get_global_mouse_position())
+	$CollisionShape2D.look_at(get_global_mouse_position())
+	 
 	
 	
 	if directionLR:
@@ -45,29 +47,38 @@ func collect(item):
 	
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_clkjh"]
-size = Vector2(36, 40)
+[sub_resource type="CircleShape2D" id="CircleShape2D_mlxic"]
+radius = 44.0114
 
 [node name="Player" type="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(-2, 27)
 script = SubResource("GDScript_pbkry")
 inv = ExtResource("1_4owyj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 100, 1, 1)
-position = Vector2(1, 0)
+texture_filter = 1
+position = Vector2(2, -27)
 rotation = -1.5708
 scale = Vector2(0.273438, 0.304688)
 texture = ExtResource("2_c3i32")
+offset = Vector2(-36.2536, 4.32838)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
-shape = SubResource("RectangleShape2D_clkjh")
+position = Vector2(4, -25)
+shape = SubResource("CircleShape2D_mlxic")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(2, -28)
 limit_left = 0
 limit_top = 0
 limit_right = 32500
 limit_bottom = 19600
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
 
 [node name="Inventory_UI" parent="." instance=ExtResource("3_jvthm")]
 anchors_preset = 8
@@ -75,10 +86,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -178.0
-offset_top = -335.0
-offset_right = -178.0
-offset_bottom = -335.0
+offset_left = -181.0
+offset_top = -323.0
+offset_right = -181.0
+offset_bottom = -323.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.8217, 1.55831)
