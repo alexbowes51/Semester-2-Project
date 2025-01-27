@@ -59,19 +59,22 @@ inv = ExtResource("1_4owyj")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 100, 1, 1)
 texture_filter = 1
-position = Vector2(2, -27)
+position = Vector2(2.61779, -27)
 rotation = -1.5708
-scale = Vector2(0.273438, 0.304688)
+scale = Vector2(0.153438, 0.1875)
 texture = ExtResource("2_c3i32")
 offset = Vector2(-36.2536, 4.32838)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, -25)
+scale = Vector2(0.64, 0.56)
 shape = SubResource("CircleShape2D_mlxic")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 modulate = Color(1, 0, 0, 1)
+texture_filter = 1
 position = Vector2(2, -28)
+zoom = Vector2(0.75, 0.75)
 limit_left = 0
 limit_top = 0
 limit_right = 32500
