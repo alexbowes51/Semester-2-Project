@@ -10,6 +10,7 @@ func insert(item : Inventory_Item):
 	var itemslots = slots.filter(func(slot): return slot.item == item)
 	if !itemslots.is_empty(): ##if existing item 
 		itemslots[0].amount += 1
+		
 	else:	##if new item
 		var emptyslots = slots.filter(func(slot): return slot.item == null)
 		if !emptyslots.is_empty():

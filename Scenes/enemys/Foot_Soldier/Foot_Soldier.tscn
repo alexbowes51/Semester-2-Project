@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://618x4cs781ri"]
+[gd_scene load_steps=36 format=3 uid="uid://618x4cs781ri"]
 
 [ext_resource type="Texture2D" uid="uid://y6o40vd6fehj" path="res://Art/Enemies/Foot Soldier/Attack/Foot Soldier Attack-Sheet.png" id="1_6hrp6"]
 [ext_resource type="Script" path="res://Scenes/enemys/Foot_Soldier/Foot_Soldier.gd" id="1_otqes"]
@@ -214,11 +214,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yohbb"]
+radius = 129.248
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnpgr"]
 radius = 1012.11
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yohbb"]
-radius = 129.248
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5mq4"]
+radius = 189.623
 
 [node name="Foot Soldier" type="CharacterBody2D"]
 scale = Vector2(0.18, 0.18)
@@ -227,7 +230,13 @@ script = ExtResource("1_otqes")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_a3ilm")
-animation = &"Foot_E_idle"
+animation = &"Foot_E_Attack"
+frame_progress = 0.551758
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_yohbb")
+debug_color = Color(0.931, 0, 0.654, 0.114)
 
 [node name="Dectector" type="Area2D" parent="."]
 position = Vector2(5.55556, 0)
@@ -238,9 +247,15 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_wnpgr")
 debug_color = Color(0.750807, 0.458662, 0, 0.124)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_yohbb")
-debug_color = Color(0.931, 0, 0.654, 0.114)
+[node name="Foot_HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foot_HitBox"]
+shape = SubResource("CircleShape2D_m5mq4")
+debug_color = Color(0, 0.470763, 0.461285, 0.205)
 
 [connection signal="body_entered" from="Dectector" to="." method="_on_dectector_body_entered"]
 [connection signal="body_exited" from="Dectector" to="." method="_on_dectector_body_exited"]
+[connection signal="body_entered" from="Foot_HitBox" to="." method="_on_foot_hit_box_body_entered"]
+[connection signal="body_exited" from="Foot_HitBox" to="." method="_on_foot_hit_box_body_exited"]
