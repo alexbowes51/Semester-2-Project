@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Item/Bottle/bottle_collectable.gd" id="1_bbumj"]
 [ext_resource type="Resource" uid="uid://cvbmcoh2gajc6" path="res://Scenes/Item/Bottle/Bottle.tres" id="2_sy8j3"]
-[ext_resource type="Texture2D" uid="uid://bjkf1blilc330" path="res://Art/Items/Bottles.png" id="3_kp26u"]
+[ext_resource type="Texture2D" uid="uid://c8baevlp1m26k" path="res://Art/Items/Bottles.png" id="3_kp26u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5pa5b"]
 radius = 54.037

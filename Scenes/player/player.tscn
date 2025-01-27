@@ -1,51 +1,342 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=43 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Resource" uid="uid://57ap7oxacyuy" path="res://Inventory/player_Inventory.tres" id="1_4owyj"]
-[ext_resource type="Texture2D" uid="uid://ctrkgpq2e4n2n" path="res://Art/Player/Player Charachter.png" id="2_c3i32"]
+[ext_resource type="Texture2D" uid="uid://dw4t3tbcow8qq" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
 [ext_resource type="PackedScene" uid="uid://cv24ug4cywu32" path="res://Inventory/inventory_ui.tscn" id="3_jvthm"]
+[ext_resource type="Texture2D" uid="uid://dwvvykkm0efg0" path="res://Art/Player/No Weapons/Player Character No Weapons/Death No Gore/Player Charachter death no gore-Sheet.png" id="4_3c6km"]
+[ext_resource type="Texture2D" uid="uid://kppxu5udltos" path="res://Art/UI/Hearts/Heart.png" id="4_n7t0m"]
+[ext_resource type="Texture2D" uid="uid://myot25jbrsyy" path="res://Art/Player/No Weapons/Player Character No Weapons/Walk/Player Walk-Sheet.png" id="6_agh1c"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
 script/source = "extends CharacterBody2D
 
 
-const SPEED = 4000.0
+const SPEED = 400.0
 const JUMP_VELOCITY = -400.0
 
+var heart_list : Array[TextureRect]
+var currentHealth: int = 3
+var MaxHealth: int 
+
 @export var inv : Inventory
+
+func _ready():
+	var heart_container = $HealtBar/HealthContainer
+	var MaxHealth = 5
+	
+	
+	for heart in heart_container.get_children():
+		heart_list.append(heart)
+	print(heart_list)
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	update_hearts()
 	var directionLR := Input.get_axis(\"ui_left\", \"ui_right\")
 	var directionUD := Input.get_axis(\"ui_up\", \"ui_down\")
-	$Sprite2D.look_at(get_global_mouse_position())
-	$CollisionShape2D.look_at(get_global_mouse_position())
+	$AnimatedSprite2D.look_at(get_global_mouse_position())
+	$HitBox.look_at(get_global_mouse_position())
 	 
-	
-	
 	if directionLR:
 		velocity.x = directionLR * SPEED
+		$AnimatedSprite2D.play(\"Player_Walk\")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		$AnimatedSprite2D.play(\"Player_Idle\")
 	
 	if directionUD:
 		velocity.y = directionUD * SPEED
+		$AnimatedSprite2D.play(\"Player_Walk\")
 	else:
 		velocity.y = move_toward(velocity.y,0,SPEED)
+		$AnimatedSprite2D.play(\"Player_Idle\")
 		
-
 	move_and_slide()
-	
+
 func player():
 	pass
-	
+
 func collect(item):
 	inv.insert(item)
 	
-	
-	 
-	
+##func _on_hurt_box_area_entered(area):
+	##if area.name = \"HitBox\":
+		##currentHealth -= 1
+		##print_debug(currentHealth)
+
+func take_damage():
+	if currentHealth > 0:
+		currentHealth -= 1
+		update_hearts()
+
+ 
+func update_hearts():
+	for i in range(heart_list.size()):
+		heart_list[i].visible = i < currentHealth 
+
+func Heal_damage():
+	if currentHealth < MaxHealth:
+		currentHealth += 1
+
+
+func upgrade_player():
+	pass
 "
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udw8k"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(0, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbavq"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(448, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr4ln"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(896, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wdw5"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(1344, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoabi"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(1792, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obex1"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(2240, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a8uu"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(2688, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndhxq"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(3136, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_810ma"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(3584, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmq7p"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(4032, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntlk4"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(4480, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wfgk"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtghl"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm5pp"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m47ly"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(1344, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cmjx"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(1792, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkgxw"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(2240, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uloyf"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(2688, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1711"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(3136, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tunnj"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(3584, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bin4d"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(4032, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fka1p"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(4480, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3ke4"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cry06"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_836iu"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbmye"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iruf"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(1344, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlvhv"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(1792, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5167b"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(2240, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y55p"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(2688, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cktvs"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(3136, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns41q"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(3584, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obgis"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(4032, 0, 448, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y3ys1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udw8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbavq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr4ln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wdw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoabi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obex1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a8uu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndhxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_810ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmq7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntlk4")
+}],
+"loop": true,
+"name": &"Player_Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wfgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtghl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm5pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m47ly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cmjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkgxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uloyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1711")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tunnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bin4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fka1p")
+}],
+"loop": true,
+"name": &"Player_Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3ke4")
+}],
+"loop": true,
+"name": &"Player_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cry06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_836iu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbmye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iruf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlvhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5167b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2y55p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cktvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ns41q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obgis")
+}],
+"loop": true,
+"name": &"Player_Walk",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mlxic"]
 radius = 44.0114
@@ -53,28 +344,72 @@ radius = 44.0114
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 position = Vector2(-2, 27)
+collision_layer = 3
 script = SubResource("GDScript_pbkry")
 inv = ExtResource("1_4owyj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 100, 1, 1)
-texture_filter = 1
-position = Vector2(2.61779, -27)
-rotation = -1.5708
-scale = Vector2(0.153438, 0.1875)
-texture = ExtResource("2_c3i32")
-offset = Vector2(-36.2536, 4.32838)
+[node name="HealtBar" type="CanvasLayer" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HealthContainer" type="HBoxContainer" parent="HealtBar"]
+z_index = 4
+offset_left = 49.0
+offset_top = 29.0
+offset_right = 565.0
+offset_bottom = 69.0
+scale = Vector2(0.683876, 0.78584)
+
+[node name="heart" type="TextureRect" parent="HealtBar/HealthContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="HealtBar/HealthContainer/heart"]
+texture = ExtResource("4_n7t0m")
+
+[node name="heart2" type="TextureRect" parent="HealtBar/HealthContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="HealtBar/HealthContainer/heart2"]
+texture = ExtResource("4_n7t0m")
+
+[node name="heart3" type="TextureRect" parent="HealtBar/HealthContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="HealtBar/HealthContainer/heart3"]
+texture = ExtResource("4_n7t0m")
+
+[node name="heart4" type="TextureRect" parent="HealtBar/HealthContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="HealtBar/HealthContainer/heart4"]
+texture = ExtResource("4_n7t0m")
+
+[node name="heart5" type="TextureRect" parent="HealtBar/HealthContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="HealtBar/HealthContainer/heart5"]
+texture = ExtResource("4_n7t0m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -25)
+rotation = -1.5708
+scale = Vector2(0.18, 0.18)
+sprite_frames = SubResource("SpriteFrames_y3ys1")
+animation = &"Player_Dash"
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(4, -25)
 scale = Vector2(0.64, 0.56)
 shape = SubResource("CircleShape2D_mlxic")
+debug_color = Color(1, 1, 1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 texture_filter = 1
 position = Vector2(2, -28)
-zoom = Vector2(0.75, 0.75)
 limit_left = 0
 limit_top = 0
 limit_right = 32500
