@@ -7,6 +7,7 @@ var player = null
 
 var attacking = false
 var attacked = false
+var damage = true
 
 func _physics_process(delta):
 	deal_damage()
@@ -59,7 +60,15 @@ func _on_attack_cooldown_timeout() -> void:
 	
 func deal_damage():
 	if attacked && WorldManager.player_current_attack == true:
-		health = health - 20
-		if health < 0:
-			self.queue_free()
+		if damage == true:
+			health = health - 20
+			$damage_cooldown.start()
+			print("enemy health" + str(health))
+			damage = false
+			if health < 0:
+				self.queue_free()
 	
+
+
+func _on_damage_cooldown_timeout() -> void:
+	damage = true

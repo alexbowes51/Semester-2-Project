@@ -647,6 +647,7 @@ shape = SubResource("CircleShape2D_j0ksn")
 wait_time = 2.0
 
 [node name="Attack_Cooldown" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="body_entered" from="Player_HitBox" to="." method="_on_player_hit_box_body_entered"]
 [connection signal="body_exited" from="Player_HitBox" to="." method="_on_player_hit_box_body_exited"]

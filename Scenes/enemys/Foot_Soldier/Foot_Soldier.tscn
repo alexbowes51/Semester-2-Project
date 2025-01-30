@@ -255,8 +255,11 @@ debug_color = Color(0, 0.470763, 0.461285, 0.205)
 
 [node name="Attack_cooldown_False" type="Timer" parent="."]
 
+[node name="damage_cooldown" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Dectector" to="." method="_on_dectector_body_entered"]
 [connection signal="body_exited" from="Dectector" to="." method="_on_dectector_body_exited"]
 [connection signal="body_entered" from="Foot_HitBox" to="." method="_on_foot_hit_box_body_entered"]
 [connection signal="body_exited" from="Foot_HitBox" to="." method="_on_foot_hit_box_body_exited"]
 [connection signal="timeout" from="Attack_cooldown_False" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="damage_cooldown" to="." method="_on_damage_cooldown_timeout"]
