@@ -1,6 +1,7 @@
-[gd_scene load_steps=44 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=56 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Resource" uid="uid://57ap7oxacyuy" path="res://Inventory/player_Inventory.tres" id="1_4owyj"]
+[ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://dw4t3tbcow8qq" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
 [ext_resource type="PackedScene" uid="uid://cv24ug4cywu32" path="res://Inventory/inventory_ui.tscn" id="3_jvthm"]
 [ext_resource type="Texture2D" uid="uid://dwvvykkm0efg0" path="res://Art/Player/No Weapons/Player Character No Weapons/Death No Gore/Player Charachter death no gore-Sheet.png" id="4_3c6km"]
@@ -19,10 +20,13 @@ var heart_list : Array[TextureRect]
 var currentHealth: int = 5
 var MaxHealth: int 
 var player_alive = true
+var death = false
 
 ##attacking varibales
 var enemy_in_range = false
 var attack_damage_cool_down = true
+
+var attack = false
 
 @export var inv : Inventory
 
@@ -38,36 +42,94 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	update_hearts()
-	enemy_attack()
 	
-	if currentHealth < 0:
-		player_dead()
-		
-	 
-	if currentHealth > 0:	
-		var directionLR := Input.get_axis(\"ui_left\", \"ui_right\")
-		var directionUD := Input.get_axis(\"ui_up\", \"ui_down\")
-		$AnimatedSprite2D.look_at(get_global_mouse_position())
-		$CollisionShape2D.look_at(get_global_mouse_position())
-		
-		if directionLR:
-			velocity.x = directionLR * SPEED
-			$AnimatedSprite2D.play(\"Player_Walk\")
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			$AnimatedSprite2D.play(\"Player_Idle\")
-	
-		if directionUD:
-			velocity.y = directionUD * SPEED
-			$AnimatedSprite2D.play(\"Player_Walk\")
-		else:
-			velocity.y = move_toward(velocity.y,0,SPEED)
-			$AnimatedSprite2D.play(\"Player_Idle\")
-		
+	if currentHealth > 0:
+		update_hearts()
+		enemy_attack()
+		get_input()
 		move_and_slide()
 	else:
 		player_dead()
+		
+	 
+func get_input():
+	var input_direction = Input.get_vector(\"left\",\"right\",\"up\",\"down\")
+	
+	if Input.is_action_pressed(\"left\"):
+		rotation = deg_to_rad(-270)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"right\"):
+		rotation = deg_to_rad(-90)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"up\"):
+		rotation = deg_to_rad(-180)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"down\"):
+		rotation = deg_to_rad(-360)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"left\") && Input.is_action_pressed(\"up\"):
+		rotation = deg_to_rad(-225)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"right\") && Input.is_action_pressed(\"up\"):
+		rotation = deg_to_rad(-135)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"left\") && Input.is_action_pressed(\"down\"):
+		rotation = deg_to_rad(-315)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"right\") && Input.is_action_pressed(\"down\"):
+		rotation = deg_to_rad(-405)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+		
+
+	velocity = input_direction * SPEED
+
 
 func collect(item):
 	inv.insert(item)
@@ -92,7 +154,10 @@ func upgrade_player():
 func player_dead():
 	currentHealth = 0
 	player_alive = false
-	$AnimatedSprite2D.play(\"Player_Death\")
+	if death:
+		$AnimatedSprite2D.play(\"Player_Death\")
+	
+	
 
 func _on_player_hit_box_body_entered(body):
 	if body.has_method(\"Foot_Soldier\"):
@@ -106,17 +171,53 @@ func _on_player_hit_box_body_exited(body):
 func enemy_attack():
 	if enemy_in_range and attack_damage_cool_down == true:
 		take_damage()
+		
+		if player_alive:
+			$AnimatedSprite2D.play(\"Player_Hurt\")
+			
 		attack_damage_cool_down = false
 		$Damage_cooldown.start()
 		
 
+func _on_damage_cooldown_timeout():
+	$Damage_cooldown.stop()
+	attack_damage_cool_down = true
+	
+	
+
+func _on_attack_cooldown_timeout():
+	$Attack_Cooldown.stop()
+	WorldManager.player_current_attack = false
+	attack = false
+
 ##idenifior mehod
 func player():
 	pass
-
-func _on_damage_cooldown_timeout():
-	attack_damage_cool_down = true
 "
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uuud"]
+atlas = ExtResource("3_0i4q8")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr8jk"]
+atlas = ExtResource("3_0i4q8")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qcmq"]
+atlas = ExtResource("3_0i4q8")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfmtt"]
+atlas = ExtResource("3_0i4q8")
+region = Rect2(1344, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8hy6"]
+atlas = ExtResource("3_0i4q8")
+region = Rect2(1792, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf061"]
+atlas = ExtResource("3_0i4q8")
+region = Rect2(2240, 0, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udw8k"]
 atlas = ExtResource("3_jrwhl")
@@ -162,6 +263,10 @@ region = Rect2(4032, 0, 448, 700)
 atlas = ExtResource("3_jrwhl")
 region = Rect2(4480, 0, 448, 700)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_va61d"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(4480, 0, 448, 448)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1wfgk"]
 atlas = ExtResource("4_3c6km")
 region = Rect2(0, 0, 448, 448)
@@ -205,6 +310,22 @@ region = Rect2(4032, 0, 448, 448)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fka1p"]
 atlas = ExtResource("4_3c6km")
 region = Rect2(4480, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlk0f"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(2240, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h8pc"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(2688, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oaxl"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(3136, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxuft"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(3584, 0, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3ke4"]
 atlas = ExtResource("6_agh1c")
@@ -254,6 +375,29 @@ region = Rect2(4032, 0, 448, 448)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8uuud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr8jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qcmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfmtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8hy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf061")
+}],
+"loop": false,
+"name": &"Player_Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_udw8k")
 }, {
 "duration": 1.0,
@@ -286,8 +430,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ntlk4")
 }],
-"loop": true,
+"loop": false,
 "name": &"Player_Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va61d")
+}],
+"loop": false,
+"name": &"Player_Dead",
 "speed": 5.0
 }, {
 "frames": [{
@@ -324,15 +476,32 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fka1p")
 }],
-"loop": true,
+"loop": false,
 "name": &"Player_Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlk0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h8pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oaxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxuft")
+}],
+"loop": false,
+"name": &"Player_Hurt",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o3ke4")
 }],
-"loop": true,
+"loop": false,
 "name": &"Player_Idle",
 "speed": 5.0
 }, {
@@ -367,7 +536,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_obgis")
 }],
-"loop": true,
+"loop": false,
 "name": &"Player_Walk",
 "speed": 5.0
 }]
@@ -380,7 +549,6 @@ radius = 32.0
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
-position = Vector2(-2, 27)
 collision_layer = 3
 script = SubResource("GDScript_pbkry")
 inv = ExtResource("1_4owyj")
@@ -431,14 +599,15 @@ layout_mode = 2
 texture = ExtResource("4_n7t0m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(4, -25)
-rotation = -1.5708
+position = Vector2(-2.98023e-08, 5.96046e-08)
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_y3ys1")
-animation = &"Player_Idle"
+animation = &"Player_Attack"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, -25)
+position = Vector2(0, 5.96046e-08)
 scale = Vector2(0.64, 0.56)
 shape = SubResource("CircleShape2D_mlxic")
 debug_color = Color(1, 1, 1, 0)
@@ -446,7 +615,6 @@ debug_color = Color(1, 1, 1, 0)
 [node name="Camera2D" type="Camera2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 texture_filter = 1
-position = Vector2(2, -28)
 limit_left = 0
 limit_top = 0
 limit_right = 32500
@@ -473,12 +641,14 @@ localize_numeral_system = false
 [node name="Player_HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_HitBox"]
-position = Vector2(4, -26)
 shape = SubResource("CircleShape2D_j0ksn")
 
 [node name="Damage_cooldown" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 2.0
+
+[node name="Attack_Cooldown" type="Timer" parent="."]
 
 [connection signal="body_entered" from="Player_HitBox" to="." method="_on_player_hit_box_body_entered"]
 [connection signal="body_exited" from="Player_HitBox" to="." method="_on_player_hit_box_body_exited"]
 [connection signal="timeout" from="Damage_cooldown" to="." method="_on_damage_cooldown_timeout"]
+[connection signal="timeout" from="Attack_Cooldown" to="." method="_on_attack_cooldown_timeout"]

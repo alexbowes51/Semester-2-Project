@@ -6,14 +6,18 @@ var chasing_player = false
 var player = null
 
 var attacking = false
+var attacked = false
 
 func _physics_process(delta):
-	if chasing_player:
+	deal_damage()
+	
+	if chasing_player && !attacking:
 		position += (player.position - position) / speed * delta
 		look_at(player.position)
 		$AnimatedSprite2D.play("Foot_E_Walk")
-	else:
+	if !chasing_player:
 		$AnimatedSprite2D.play("Foot_E_idle")
+	
 			
 
 func _on_dectector_body_entered(body):
@@ -31,11 +35,31 @@ func Foot_Soldier():
 
 
 func _on_foot_hit_box_body_entered(body):
-	player = body
-	attacking = true
-	$AnimatedSprite2D.play("Foot_E_Attack")
+	if body.has_method("player"):
+		body = player
+		attacking = true
+		attacked = true 
+		if attacking:
+			$AnimatedSprite2D.play("Foot_E_Attack")
+			$Attack_cooldown_False.start()
+		
+	
+
 
 
 func _on_foot_hit_box_body_exited(body):
-	player = body
+	if body.has_method("player"):
+		body = player
+		attacking = false
+
+
+func _on_attack_cooldown_timeout() -> void:
 	attacking = false
+	attacked = false
+	
+func deal_damage():
+	if attacked && WorldManager.player_current_attack == true:
+		health = health - 20
+		if health < 0:
+			self.queue_free()
+	
