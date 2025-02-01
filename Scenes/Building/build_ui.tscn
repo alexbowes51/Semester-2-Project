@@ -1,0 +1,190 @@
+[gd_scene load_steps=14 format=3 uid="uid://dqed0ghaw8nlo"]
+
+[ext_resource type="Script" path="res://Scenes/Building/build_ui.gd" id="1_lod6p"]
+[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_rh6lt"]
+[ext_resource type="Texture2D" uid="uid://o0ffakvw437d" path="res://Art/Inventory/pixil-frame-0 (8).png" id="2_5j8i7"]
+[ext_resource type="Texture2D" uid="uid://dp63hh76pk4i4" path="res://Art/Tile_map/house 2.png" id="3_st342"]
+[ext_resource type="Texture2D" uid="uid://voopny428cn1" path="res://Art/Tile_map/Wall (L).png" id="4_caskh"]
+[ext_resource type="Texture2D" uid="uid://bn3pobjdjgrdn" path="res://Art/Tile_map/farm.png" id="5_4xk3d"]
+[ext_resource type="Texture2D" uid="uid://bu1tkqw0t5sk5" path="res://Art/Tile_map/Wall (TL).png" id="6_4of3v"]
+[ext_resource type="Texture2D" uid="uid://djg4lde2xap64" path="res://Art/Tile_map/Wall (S).png" id="7_pib5k"]
+[ext_resource type="Texture2D" uid="uid://dk05cu0hm6m03" path="res://Art/Tile_map/Wall (TR)png.png" id="8_ql8d6"]
+[ext_resource type="Texture2D" uid="uid://tifpouwmam18" path="res://Art/Tile_map/Wall (R).png" id="9_k6yyb"]
+[ext_resource type="Texture2D" uid="uid://dx6ouplk21rrj" path="res://Art/Tile_map/Wall (BL).png" id="10_f87ku"]
+[ext_resource type="Texture2D" uid="uid://isgufkjfcu8d" path="res://Art/Tile_map/Wall (BR).png" id="11_ovqno"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_p8g6o"]
+allow_unpress = true
+
+[node name="Build_Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lod6p")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 187.0
+texture = ExtResource("1_rh6lt")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 60.0
+offset_top = 19.0
+offset_right = 1596.0
+offset_bottom = 70.0
+scale = Vector2(0.724098, 2.88866)
+columns = 10
+
+[node name="TextureButton" type="TextureButton" parent="NinePatchRect/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_p8g6o")
+texture_normal = ExtResource("2_5j8i7")
+texture_pressed = ExtResource("1_rh6lt")
+texture_hover = ExtResource("1_rh6lt")
+texture_disabled = ExtResource("2_5j8i7")
+stretch_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton"]
+position = Vector2(73.1945, 24.2327)
+scale = Vector2(1.1696, 0.262829)
+texture = ExtResource("3_st342")
+
+[node name="TextureButton2" type="TextureButton" parent="NinePatchRect/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_p8g6o")
+texture_normal = ExtResource("2_5j8i7")
+texture_pressed = ExtResource("1_rh6lt")
+texture_hover = ExtResource("1_rh6lt")
+texture_disabled = ExtResource("2_5j8i7")
+stretch_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton2"]
+position = Vector2(73.1945, 24.2327)
+scale = Vector2(1.1696, 0.262829)
+texture = ExtResource("5_4xk3d")
+
+[node name="TextureButton3" type="TextureButton" parent="NinePatchRect/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_p8g6o")
+texture_normal = ExtResource("2_5j8i7")
+texture_pressed = ExtResource("1_rh6lt")
+texture_hover = ExtResource("1_rh6lt")
+texture_disabled = ExtResource("2_5j8i7")
+stretch_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton3"]
+position = Vector2(73.1945, 24.2327)
+scale = Vector2(1.1696, 0.262829)
+texture = ExtResource("6_4of3v")
+
+[node name="TextureButton4" type="TextureButton" parent="NinePatchRect/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_p8g6o")
+texture_normal = ExtResource("2_5j8i7")
+texture_pressed = ExtResource("1_rh6lt")
+texture_hover = ExtResource("1_rh6lt")
+texture_disabled = ExtResource("2_5j8i7")
+stretch_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton4"]
+position = Vector2(73.1945, 24.2327)
+scale = Vector2(1.1696, 0.262829)
+texture = ExtResource("7_pib5k")
+
+[node name="TextureButton5" type="TextureButton" parent="NinePatchRect/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_p8g6o")
+texture_normal = ExtResource("2_5j8i7")
+texture_pressed = ExtResource("1_rh6lt")
+texture_hover = ExtResource("1_rh6lt")
+texture_disabled = ExtResource("2_5j8i7")
+stretch_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton5"]
+position = Vector2(73.1945, 24.2327)
+scale = Vector2(1.1696, 0.262829)
+texture = ExtResource("8_ql8d6")
+
+[node name="TextureButton6" type="TextureButton" parent="NinePatchRect/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_p8g6o")
+texture_normal = ExtResource("2_5j8i7")
+texture_pressed = ExtResource("1_rh6lt")
+texture_hover = ExtResource("1_rh6lt")
+texture_disabled = ExtResource("2_5j8i7")
+stretch_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton6"]
+position = Vector2(73.1945, 24.2327)
+scale = Vector2(1.1696, 0.262829)
+texture = ExtResource("4_caskh")
+
+[node name="TextureButton7" type="TextureButton" parent="NinePatchRect/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_p8g6o")
+texture_normal = ExtResource("2_5j8i7")
+texture_pressed = ExtResource("1_rh6lt")
+texture_hover = ExtResource("1_rh6lt")
+texture_disabled = ExtResource("2_5j8i7")
+stretch_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton7"]
+position = Vector2(73.1945, 24.2327)
+scale = Vector2(1.1696, 0.262829)
+texture = ExtResource("9_k6yyb")
+
+[node name="TextureButton8" type="TextureButton" parent="NinePatchRect/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_p8g6o")
+texture_normal = ExtResource("2_5j8i7")
+texture_pressed = ExtResource("1_rh6lt")
+texture_hover = ExtResource("1_rh6lt")
+texture_disabled = ExtResource("2_5j8i7")
+stretch_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton8"]
+position = Vector2(73.1945, 24.2327)
+scale = Vector2(1.1696, 0.262829)
+texture = ExtResource("10_f87ku")
+
+[node name="TextureButton9" type="TextureButton" parent="NinePatchRect/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_p8g6o")
+texture_normal = ExtResource("2_5j8i7")
+texture_pressed = ExtResource("1_rh6lt")
+texture_hover = ExtResource("1_rh6lt")
+texture_disabled = ExtResource("2_5j8i7")
+stretch_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton9"]
+position = Vector2(73.1945, 24.2327)
+scale = Vector2(1.1696, 0.262829)
+texture = ExtResource("11_ovqno")

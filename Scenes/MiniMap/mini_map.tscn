@@ -17,23 +17,20 @@ grow_horizontal = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -35.333
-offset_left = -0.0019989
-offset_top = -1.0
-offset_right = 38.0
-offset_bottom = 149.0
+layout_mode = 0
+offset_left = -99.0
+offset_right = 101.0
+offset_bottom = 200.0
+scale = Vector2(0.682839, 1.02428)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Control/MarginContainer"]
 texture_filter = 1
 layout_mode = 2
-stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Control/MarginContainer/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(200, 200)
 render_target_update_mode = 4
 
 [node name="MiniMap_Camera" type="Camera2D" parent="Control/MarginContainer/SubViewportContainer/SubViewport"]

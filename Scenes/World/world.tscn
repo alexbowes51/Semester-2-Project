@@ -103,15 +103,6 @@ position = Vector2(17800, 9756)
 scale = Vector2(20.6157, 25.2519)
 texture = ExtResource("2_jqr7b")
 
-[node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(2165, 1392)
-scale = Vector2(1, 0.993484)
-
-[node name="MiniMap" parent="." instance=ExtResource("5_jtj8c")]
-
-[node name="ParallaxBackground" parent="." instance=ExtResource("6_mkpcw")]
-layer = 3
-
 [node name="Foot Soldier" parent="." instance=ExtResource("7_qslnd")]
 position = Vector2(1611, 1506)
 
@@ -163,3 +154,11 @@ position = Vector2(1728, 1284)
 
 [node name="Foot Soldier6" parent="." instance=ExtResource("7_qslnd")]
 position = Vector2(1659, 1402)
+
+[node name="MiniMap" parent="." instance=ExtResource("5_jtj8c")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("6_mkpcw")]
+layer = 3
+
+[node name="Player" parent="." instance=ExtResource("3_2ajww")]
+position = Vector2(600, 354)

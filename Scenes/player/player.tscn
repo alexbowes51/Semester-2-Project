@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=57 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Resource" uid="uid://57ap7oxacyuy" path="res://Inventory/player_Inventory.tres" id="1_4owyj"]
 [ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dwvvykkm0efg0" path="res://Art/Player/No Weapons/Player Character No Weapons/Death No Gore/Player Charachter death no gore-Sheet.png" id="4_3c6km"]
 [ext_resource type="Texture2D" uid="uid://kppxu5udltos" path="res://Art/UI/Hearts/Heart.png" id="4_n7t0m"]
 [ext_resource type="Texture2D" uid="uid://myot25jbrsyy" path="res://Art/Player/No Weapons/Player Character No Weapons/Walk/Player Walk-Sheet.png" id="6_agh1c"]
+[ext_resource type="PackedScene" uid="uid://dqed0ghaw8nlo" path="res://Scenes/Building/build_ui.tscn" id="7_olynr"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
 script/source = "extends CharacterBody2D
@@ -31,7 +32,7 @@ var attack = false
 @export var inv : Inventory
 
 func _ready():
-	var heart_container = $HealtBar/HealthContainer
+	var heart_container = $Camera2D/UI/HealthBar
 	var MaxHealth = 5
 	
 	
@@ -553,51 +554,6 @@ collision_layer = 3
 script = SubResource("GDScript_pbkry")
 inv = ExtResource("1_4owyj")
 
-[node name="HealtBar" type="CanvasLayer" parent="."]
-
-[node name="HealthContainer" type="HBoxContainer" parent="HealtBar"]
-z_index = 4
-offset_left = 49.0
-offset_top = 29.0
-offset_right = 565.0
-offset_bottom = 69.0
-scale = Vector2(0.683876, 0.78584)
-
-[node name="heart" type="TextureRect" parent="HealtBar/HealthContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-
-[node name="heart" type="Sprite2D" parent="HealtBar/HealthContainer/heart"]
-texture = ExtResource("4_n7t0m")
-
-[node name="heart2" type="TextureRect" parent="HealtBar/HealthContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-
-[node name="heart" type="Sprite2D" parent="HealtBar/HealthContainer/heart2"]
-texture = ExtResource("4_n7t0m")
-
-[node name="heart3" type="TextureRect" parent="HealtBar/HealthContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-
-[node name="heart" type="Sprite2D" parent="HealtBar/HealthContainer/heart3"]
-texture = ExtResource("4_n7t0m")
-
-[node name="heart4" type="TextureRect" parent="HealtBar/HealthContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-
-[node name="heart" type="Sprite2D" parent="HealtBar/HealthContainer/heart4"]
-texture = ExtResource("4_n7t0m")
-
-[node name="heart5" type="TextureRect" parent="HealtBar/HealthContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-
-[node name="heart" type="Sprite2D" parent="HealtBar/HealthContainer/heart5"]
-texture = ExtResource("4_n7t0m")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.98023e-08, 5.96046e-08)
 scale = Vector2(0.18, 0.18)
@@ -612,32 +568,6 @@ scale = Vector2(0.64, 0.56)
 shape = SubResource("CircleShape2D_mlxic")
 debug_color = Color(1, 1, 1, 0)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-texture_filter = 1
-limit_left = 0
-limit_top = 0
-limit_right = 32500
-limit_bottom = 19600
-limit_smoothed = true
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
-
-[node name="Inventory_UI" parent="." instance=ExtResource("3_jvthm")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -181.0
-offset_top = -323.0
-offset_right = -181.0
-offset_bottom = -323.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.8217, 1.55831)
-localize_numeral_system = false
-
 [node name="Player_HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_HitBox"]
@@ -647,7 +577,87 @@ shape = SubResource("CircleShape2D_j0ksn")
 wait_time = 2.0
 
 [node name="Attack_Cooldown" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+texture_filter = 1
+limit_left = 0
+limit_top = 0
+limit_right = 32500
+limit_bottom = 19600
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="UI" type="CanvasLayer" parent="Camera2D"]
+process_mode = 3
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+layer = 4
+
+[node name="HealthBar" type="HBoxContainer" parent="Camera2D/UI"]
+z_index = 4
+offset_left = 49.0
+offset_top = 29.0
+offset_right = 565.0
+offset_bottom = 69.0
+scale = Vector2(0.683876, 0.78584)
+
+[node name="heart" type="TextureRect" parent="Camera2D/UI/HealthBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="Camera2D/UI/HealthBar/heart"]
+texture = ExtResource("4_n7t0m")
+
+[node name="heart2" type="TextureRect" parent="Camera2D/UI/HealthBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="Camera2D/UI/HealthBar/heart2"]
+texture = ExtResource("4_n7t0m")
+
+[node name="heart3" type="TextureRect" parent="Camera2D/UI/HealthBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="Camera2D/UI/HealthBar/heart3"]
+texture = ExtResource("4_n7t0m")
+
+[node name="heart4" type="TextureRect" parent="Camera2D/UI/HealthBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="Camera2D/UI/HealthBar/heart4"]
+texture = ExtResource("4_n7t0m")
+
+[node name="heart5" type="TextureRect" parent="Camera2D/UI/HealthBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="Camera2D/UI/HealthBar/heart5"]
+texture = ExtResource("4_n7t0m")
+
+[node name="Build_Ui" parent="Camera2D/UI" instance=ExtResource("7_olynr")]
+offset_left = 3.0
+offset_top = 462.0
+offset_right = 3.0
+offset_bottom = 462.0
+
+[node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -572.0
+offset_top = -252.0
+offset_right = -572.0
+offset_bottom = -252.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.87813, 2.25086)
+localize_numeral_system = false
 
 [connection signal="body_entered" from="Player_HitBox" to="." method="_on_player_hit_box_body_entered"]
 [connection signal="body_exited" from="Player_HitBox" to="." method="_on_player_hit_box_body_exited"]
