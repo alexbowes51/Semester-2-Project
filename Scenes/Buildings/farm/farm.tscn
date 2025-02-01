@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckt7hoo2lc248"]
+
+[ext_resource type="Texture2D" uid="uid://bn3pobjdjgrdn" path="res://Art/Tile_map/farm.png" id="1_loy46"]
+[ext_resource type="Script" path="res://Scenes/Buildings/farm/farm.gd" id="2_ritut"]
+
+[node name="farm" type="Sprite2D"]
+process_mode = 3
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+z_index = 1
+texture_filter = 1
+texture = ExtResource("1_loy46")
+centered = false
+script = ExtResource("2_ritut")

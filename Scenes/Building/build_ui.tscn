@@ -17,6 +17,7 @@
 allow_unpress = true
 
 [node name="Build_Ui" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,7 +46,7 @@ offset_bottom = 70.0
 scale = Vector2(0.724098, 2.88866)
 columns = 10
 
-[node name="TextureButton" type="TextureButton" parent="NinePatchRect/GridContainer"]
+[node name="house" type="TextureButton" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 toggle_mode = true
@@ -56,12 +57,14 @@ texture_hover = ExtResource("1_rh6lt")
 texture_disabled = ExtResource("2_5j8i7")
 stretch_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton"]
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/house"]
+texture_filter = 1
 position = Vector2(73.1945, 24.2327)
 scale = Vector2(1.1696, 0.262829)
 texture = ExtResource("3_st342")
 
-[node name="TextureButton2" type="TextureButton" parent="NinePatchRect/GridContainer"]
+[node name="farm" type="TextureButton" parent="NinePatchRect/GridContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 toggle_mode = true
@@ -72,12 +75,12 @@ texture_hover = ExtResource("1_rh6lt")
 texture_disabled = ExtResource("2_5j8i7")
 stretch_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton2"]
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/farm"]
 position = Vector2(73.1945, 24.2327)
 scale = Vector2(1.1696, 0.262829)
 texture = ExtResource("5_4xk3d")
 
-[node name="TextureButton3" type="TextureButton" parent="NinePatchRect/GridContainer"]
+[node name="wall (TL)" type="TextureButton" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 toggle_mode = true
@@ -88,12 +91,12 @@ texture_hover = ExtResource("1_rh6lt")
 texture_disabled = ExtResource("2_5j8i7")
 stretch_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton3"]
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/wall (TL)"]
 position = Vector2(73.1945, 24.2327)
 scale = Vector2(1.1696, 0.262829)
 texture = ExtResource("6_4of3v")
 
-[node name="TextureButton4" type="TextureButton" parent="NinePatchRect/GridContainer"]
+[node name="wall (S)" type="TextureButton" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 toggle_mode = true
@@ -104,12 +107,12 @@ texture_hover = ExtResource("1_rh6lt")
 texture_disabled = ExtResource("2_5j8i7")
 stretch_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton4"]
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/wall (S)"]
 position = Vector2(73.1945, 24.2327)
 scale = Vector2(1.1696, 0.262829)
 texture = ExtResource("7_pib5k")
 
-[node name="TextureButton5" type="TextureButton" parent="NinePatchRect/GridContainer"]
+[node name="wall (TR)" type="TextureButton" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 toggle_mode = true
@@ -120,12 +123,12 @@ texture_hover = ExtResource("1_rh6lt")
 texture_disabled = ExtResource("2_5j8i7")
 stretch_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton5"]
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/wall (TR)"]
 position = Vector2(73.1945, 24.2327)
 scale = Vector2(1.1696, 0.262829)
 texture = ExtResource("8_ql8d6")
 
-[node name="TextureButton6" type="TextureButton" parent="NinePatchRect/GridContainer"]
+[node name="wall (L)" type="TextureButton" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 toggle_mode = true
@@ -136,12 +139,12 @@ texture_hover = ExtResource("1_rh6lt")
 texture_disabled = ExtResource("2_5j8i7")
 stretch_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton6"]
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/wall (L)"]
 position = Vector2(73.1945, 24.2327)
 scale = Vector2(1.1696, 0.262829)
 texture = ExtResource("4_caskh")
 
-[node name="TextureButton7" type="TextureButton" parent="NinePatchRect/GridContainer"]
+[node name="wall (R)" type="TextureButton" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 toggle_mode = true
@@ -152,12 +155,12 @@ texture_hover = ExtResource("1_rh6lt")
 texture_disabled = ExtResource("2_5j8i7")
 stretch_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton7"]
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/wall (R)"]
 position = Vector2(73.1945, 24.2327)
 scale = Vector2(1.1696, 0.262829)
 texture = ExtResource("9_k6yyb")
 
-[node name="TextureButton8" type="TextureButton" parent="NinePatchRect/GridContainer"]
+[node name="wall (BR)" type="TextureButton" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 toggle_mode = true
@@ -168,12 +171,12 @@ texture_hover = ExtResource("1_rh6lt")
 texture_disabled = ExtResource("2_5j8i7")
 stretch_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton8"]
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/wall (BR)"]
 position = Vector2(73.1945, 24.2327)
 scale = Vector2(1.1696, 0.262829)
 texture = ExtResource("10_f87ku")
 
-[node name="TextureButton9" type="TextureButton" parent="NinePatchRect/GridContainer"]
+[node name="wall (BL)" type="TextureButton" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 toggle_mode = true
@@ -184,7 +187,7 @@ texture_hover = ExtResource("1_rh6lt")
 texture_disabled = ExtResource("2_5j8i7")
 stretch_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/TextureButton9"]
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/wall (BL)"]
 position = Vector2(73.1945, 24.2327)
 scale = Vector2(1.1696, 0.262829)
 texture = ExtResource("11_ovqno")

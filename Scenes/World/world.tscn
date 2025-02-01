@@ -74,13 +74,10 @@ physics_layer_0/physics_material = SubResource("PhysicsMaterial_fyh05")
 sources/0 = SubResource("TileSetAtlasSource_44de4")
 
 [node name="world" type="Node2D"]
-position = Vector2(1, -12)
 script = ExtResource("1_tvuku")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
-position = Vector2(-1, 12)
-scale = Vector2(1.00694, 1.33303)
 tile_set = SubResource("TileSet_pq43n")
 format = 2
 layer_0/name = "GroundL"
@@ -98,9 +95,10 @@ tile_map_data = PackedByteArray("AADBAIQAAAAAAAEAAADCAIMAAAAAAAEAAADDAIMAAAAAAAE
 tile_set = SubResource("TileSet_pq43n")
 
 [node name="Map" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(17800, 9756)
-scale = Vector2(20.6157, 25.2519)
+scale = Vector2(0.816, 1)
 texture = ExtResource("2_jqr7b")
 
 [node name="Foot Soldier" parent="." instance=ExtResource("7_qslnd")]
@@ -131,7 +129,6 @@ position = Vector2(2839, 2423)
 position = Vector2(2773, 2344)
 
 [node name="Rubber_Collectable3" parent="." instance=ExtResource("9_4vxpm")]
-visible = false
 position = Vector2(2881, 2360)
 
 [node name="Rubber_Collectable4" parent="." instance=ExtResource("9_4vxpm")]
@@ -161,4 +158,4 @@ position = Vector2(1659, 1402)
 layer = 3
 
 [node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(600, 354)
+position = Vector2(636, 360)

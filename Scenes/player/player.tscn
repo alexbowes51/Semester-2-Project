@@ -549,6 +549,7 @@ radius = 44.0114
 radius = 32.0
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 2
 texture_filter = 1
 collision_layer = 3
 script = SubResource("GDScript_pbkry")
