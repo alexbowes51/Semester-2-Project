@@ -12,8 +12,10 @@ var building
 
 var player_current_attack = false
 var Build_mode = false
+
+
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
 	tilemap = $TileMap
 	
 	if player and mini_map:
@@ -21,15 +23,21 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(delta):
 	
-	if building == "house":
+	if building == "house" && Input.is_action_pressed("build"):
 		var built_house = house_scene.instantiate()
 		add_child(built_house)
-		building == ""
+		WorldManager.building = "_"
+		return
+	
+		
 	
 	if building == "farm":
 		var built_farm = farm_scene.instantiate()
 		add_child(built_farm)
-		building == ""
+		WorldManager.building = "_"
+		return
+		
+		
 	

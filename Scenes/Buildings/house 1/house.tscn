@@ -19,6 +19,10 @@ script = ExtResource("2_oqb4t")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+process_mode = 3
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+z_index = 1
 position = Vector2(50, 57)
 rotation = -3.14159
 scale = Vector2(2.12489, 1.18697)

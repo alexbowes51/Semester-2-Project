@@ -545,8 +545,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mlxic"]
 radius = 44.0114
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j0ksn"]
-radius = 32.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdfm3"]
+height = 70.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
@@ -572,21 +572,23 @@ debug_color = Color(1, 1, 1, 0)
 [node name="Player_HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_HitBox"]
-shape = SubResource("CircleShape2D_j0ksn")
+position = Vector2(0, 23)
+shape = SubResource("CapsuleShape2D_rdfm3")
 
 [node name="Damage_cooldown" type="Timer" parent="."]
-wait_time = 2.0
+process_callback = 0
+wait_time = 5.0
 
 [node name="Attack_Cooldown" type="Timer" parent="."]
-wait_time = 0.2
+process_callback = 0
+wait_time = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 1
-limit_left = 0
-limit_top = 0
+limit_left = 100
+limit_top = 100
 limit_right = 32500
 limit_bottom = 19600
-limit_smoothed = true
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
@@ -602,7 +604,6 @@ offset_left = 49.0
 offset_top = 29.0
 offset_right = 565.0
 offset_bottom = 69.0
-scale = Vector2(0.683876, 0.78584)
 
 [node name="heart" type="TextureRect" parent="Camera2D/UI/HealthBar"]
 custom_minimum_size = Vector2(100, 0)
@@ -640,24 +641,16 @@ layout_mode = 2
 texture = ExtResource("4_n7t0m")
 
 [node name="Build_Ui" parent="Camera2D/UI" instance=ExtResource("7_olynr")]
-offset_left = 3.0
-offset_top = 462.0
-offset_right = 3.0
-offset_bottom = 462.0
+offset_left = 373.0
+offset_top = 860.0
+offset_right = 373.0
+offset_bottom = 860.0
 
 [node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -572.0
-offset_top = -252.0
-offset_right = -572.0
-offset_bottom = -252.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.87813, 2.25086)
+offset_top = 161.0
+offset_right = 0.0
+offset_bottom = 161.0
+scale = Vector2(3.17409, 3.5395)
 localize_numeral_system = false
 
 [connection signal="body_entered" from="Player_HitBox" to="." method="_on_player_hit_box_body_entered"]

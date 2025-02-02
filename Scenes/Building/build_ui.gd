@@ -15,6 +15,7 @@ func open():
 
 func close():
 	
+	WorldManager.Build_mode = false
 	visible = false
 	is_open = false
 	
