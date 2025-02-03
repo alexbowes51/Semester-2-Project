@@ -37,6 +37,7 @@ render_target_update_mode = 4
 [node name="MiniMap_Camera" type="Camera2D" parent="Control/MarginContainer/SubViewportContainer/SubViewport"]
 light_mask = 0
 visibility_layer = 1048575
+z_index = 1
 zoom = Vector2(0.2, 0.2)
 process_callback = 0
 limit_left = 100

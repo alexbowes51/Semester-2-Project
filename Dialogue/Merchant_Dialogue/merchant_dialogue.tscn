@@ -81,10 +81,19 @@ texture_pressed = ExtResource("1_kmt40")
 texture_disabled = ExtResource("3_mvy4q")
 stretch_mode = 0
 
-[node name="Follow text" type="Label" parent="NinePatchRect/TextureButton"]
+[node name="Follow Text" type="Label" parent="NinePatchRect/TextureButton"]
 layout_mode = 0
 offset_left = 16.2413
 offset_top = 14.2102
 offset_right = 95.2413
 offset_bottom = 37.2102
-text = "Follow me"
+text = "Follow me 
+"
+
+[node name="unFollow Text" type="Label" parent="NinePatchRect/TextureButton"]
+offset_left = 6.49654
+offset_top = 14.2102
+offset_right = 106.497
+offset_bottom = 37.2102
+text = "unFollow me 
+"

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 1.25
+const speed = 2.25
 
 var current_state = IDLE
 

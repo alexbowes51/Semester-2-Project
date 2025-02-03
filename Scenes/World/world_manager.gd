@@ -9,7 +9,7 @@ var house_scene = preload("res://Scenes/Buildings/house 1/house.tscn")
 
 #tilemap variables
 var tilemap : TileMap
-var building
+var building = "None"
 
 #player world varibales
 var player_current_attack = false
@@ -33,7 +33,7 @@ func _process(delta):
 		if building == "house" && Input.is_action_pressed("build"):
 			var built_house = house_scene.instantiate()
 			add_child(built_house)
-			WorldManager.building = "_"
+			building = "None"
 			return
 	
 		
@@ -41,7 +41,7 @@ func _process(delta):
 		if building == "farm" && Input.is_action_pressed("build"):
 			var built_farm = farm_scene.instantiate()
 			add_child(built_farm)
-			WorldManager.building = "_"
+			building = "None"
 			return
 		
 		
