@@ -268,6 +268,7 @@ frame = 3
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
 shape = SubResource("CircleShape2D_yohbb")
 debug_color = Color(0.931, 0, 0.654, 0.114)
 
@@ -277,6 +278,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dectector"]
+z_index = 1
 shape = SubResource("CircleShape2D_wnpgr")
 debug_color = Color(0.750807, 0.458662, 0, 0.124)
 
@@ -285,6 +287,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Foot_HitBox"]
+z_index = 1
 shape = SubResource("CircleShape2D_m5mq4")
 debug_color = Color(0, 0.470763, 0.461285, 0.205)
 

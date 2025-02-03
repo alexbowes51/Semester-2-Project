@@ -11,6 +11,20 @@ var dia_active = false
 
 func _ready():
 	$NinePatchRect.visible = false
+	$NinePatchRect/TextureButton.visible = false
+
+
+func _process(delta):
+	if $NinePatchRect/TextureButton.button_pressed && !WorldManager.Merchant_follow_player:
+		print("follow me punk")
+		WorldManager.Merchant_follow_player = true 
+	else:
+		WorldManager.Merchant_follow_player = false
+		
+	if !WorldManager.Merchant_follow_player:
+		$"NinePatchRect/TextureButton/Follow text".text = "Follow me"
+	else:
+		$"NinePatchRect/TextureButton/Follow text".text = "unFollow me"
 	
 	
 func start():
@@ -36,9 +50,16 @@ func _input(event):
 	
 func next_script():
 	current_dialogue_id += 1
+	
+	if current_dialogue_id == 3:
+		$NinePatchRect/TextureButton.visible = true
+		$"NinePatchRect/TextureButton".visible = true
+	
 	if current_dialogue_id >= len(dialogue):
 		dia_active = false
 		$NinePatchRect.visible = false
+		$"NinePatchRect/TextureButton".visible = false
+		current_dialogue_id = -1 
 		emit_signal("end_dialogue")
 		return
 	

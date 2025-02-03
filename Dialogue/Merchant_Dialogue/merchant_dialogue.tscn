@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3fek1gdhc7aw"]
+[gd_scene load_steps=5 format=3 uid="uid://b3fek1gdhc7aw"]
 
 [ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_kmt40"]
 [ext_resource type="Script" path="res://Dialogue/Merchant_Dialogue/merchant_dialogue.gd" id="1_svyaw"]
+[ext_resource type="Texture2D" uid="uid://o0ffakvw437d" path="res://Art/Inventory/pixil-frame-0 (8).png" id="3_mvy4q"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_i8j3n"]
+allow_unpress = true
 
 [node name="Merchant_Dialogue" type="Control"]
+process_mode = 3
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+z_index = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -11,11 +19,15 @@ offset_bottom = 40.0
 script = ExtResource("1_svyaw")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+process_mode = 3
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+z_index = 2
 texture_filter = 1
 layout_mode = 0
 offset_right = 108.0
 offset_bottom = 40.0
-scale = Vector2(1, 1.311)
+scale = Vector2(1.11567, 1.30714)
 texture = ExtResource("1_kmt40")
 patch_margin_left = 3
 patch_margin_top = 3
@@ -47,10 +59,32 @@ layout_mode = 0
 offset_left = 3.0
 offset_top = 10.6789
 offset_right = 253.0
-offset_bottom = 50.6789
+offset_bottom = 33.6789
 scale = Vector2(0.409783, 0.357219)
 text = "chatting...."
 fit_content = true
 scroll_following = true
 autowrap_mode = 2
 tab_size = 1
+
+[node name="TextureButton" type="TextureButton" parent="NinePatchRect"]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 110.0
+offset_bottom = 90.0
+scale = Vector2(0.551879, 0.146138)
+toggle_mode = true
+action_mode = 0
+button_group = SubResource("ButtonGroup_i8j3n")
+texture_normal = ExtResource("3_mvy4q")
+texture_pressed = ExtResource("1_kmt40")
+texture_disabled = ExtResource("3_mvy4q")
+stretch_mode = 0
+
+[node name="Follow text" type="Label" parent="NinePatchRect/TextureButton"]
+layout_mode = 0
+offset_left = 16.2413
+offset_top = 14.2102
+offset_right = 95.2413
+offset_bottom = 37.2102
+text = "Follow me"

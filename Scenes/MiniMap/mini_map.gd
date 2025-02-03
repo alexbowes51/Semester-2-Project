@@ -9,10 +9,9 @@ var player_node : Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for tilemap in owner.get_node("TileMap").get_children():
+	for tilemap in owner.get_node("TileMaps").get_children():
 		var mini_tilemap = tilemap.duplicate()
 		setup_mini(mini_tilemap)
-		
 		var used_rect : Rect2i = tilemap.get_used_rect()
 		
 		
