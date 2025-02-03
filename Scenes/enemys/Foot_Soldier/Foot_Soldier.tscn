@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://618x4cs781ri"]
+[gd_scene load_steps=40 format=3 uid="uid://618x4cs781ri"]
 
 [ext_resource type="Texture2D" uid="uid://y6o40vd6fehj" path="res://Art/Enemies/Foot Soldier/Attack/Foot Soldier Attack-Sheet.png" id="1_6hrp6"]
 [ext_resource type="Script" path="res://Scenes/enemys/Foot_Soldier/Foot_Soldier.gd" id="1_otqes"]
@@ -73,6 +73,22 @@ region = Rect2(3136, 0, 448, 448)
 [sub_resource type="AtlasTexture" id="AtlasTexture_lludl"]
 atlas = ExtResource("2_wd804")
 region = Rect2(3584, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwydg"]
+atlas = ExtResource("2_wd804")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h2m4"]
+atlas = ExtResource("2_wd804")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaiyq"]
+atlas = ExtResource("2_wd804")
+region = Rect2(1344, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6pxq"]
+atlas = ExtResource("2_wd804")
+region = Rect2(1792, 0, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e36v6"]
 atlas = ExtResource("3_6b0jd")
@@ -175,6 +191,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wwydg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h2m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uaiyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6pxq")
+}],
+"loop": false,
+"name": &"Foot_E_Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_e36v6")
 }, {
 "duration": 1.0,
@@ -215,13 +248,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yohbb"]
-radius = 129.248
+radius = 77.9759
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnpgr"]
 radius = 1012.11
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m5mq4"]
-radius = 189.623
+radius = 138.889
 
 [node name="Foot Soldier" type="CharacterBody2D"]
 scale = Vector2(0.18, 0.18)
@@ -230,7 +263,9 @@ script = ExtResource("1_otqes")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_a3ilm")
-animation = &"Foot_E_idle"
+animation = &"Foot_E_Hurt"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yohbb")

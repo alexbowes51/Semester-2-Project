@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3fek1gdhc7aw"]
+
+[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_kmt40"]
+[ext_resource type="Script" path="res://Dialogue/Merchant_Dialogue/merchant_dialogue.gd" id="1_svyaw"]
+
+[node name="Merchant_Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_svyaw")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 108.0
+offset_bottom = 40.0
+scale = Vector2(1, 1.311)
+texture = ExtResource("1_kmt40")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+metadata/_edit_group_ = true
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 81.0
+offset_bottom = 42.0
+scale = Vector2(0.4, 0.4)
+text = "Name:"
+autowrap_mode = 0
+tab_size = 1
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+process_mode = 3
+physics_interpolation_mode = 1
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+clip_contents = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 10.6789
+offset_right = 253.0
+offset_bottom = 50.6789
+scale = Vector2(0.409783, 0.357219)
+text = "chatting...."
+fit_content = true
+scroll_following = true
+autowrap_mode = 2
+tab_size = 1

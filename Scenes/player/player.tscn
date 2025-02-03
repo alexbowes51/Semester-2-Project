@@ -192,7 +192,7 @@ func _on_attack_cooldown_timeout():
 	attack = false
 
 ##idenifior mehod
-func player():
+func Player():
 	pass
 "
 
@@ -543,10 +543,11 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mlxic"]
-radius = 44.0114
+radius = 29.6875
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdfm3"]
-height = 70.0
+radius = 21.0
+height = 100.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
@@ -572,7 +573,7 @@ debug_color = Color(1, 1, 1, 0)
 [node name="Player_HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_HitBox"]
-position = Vector2(0, 23)
+position = Vector2(-1, 26)
 shape = SubResource("CapsuleShape2D_rdfm3")
 
 [node name="Damage_cooldown" type="Timer" parent="."]

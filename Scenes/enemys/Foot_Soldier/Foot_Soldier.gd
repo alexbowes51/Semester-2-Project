@@ -23,6 +23,7 @@ func _physics_process(delta):
 
 func _on_dectector_body_entered(body):
 	player = body
+	
 	chasing_player = true
 	
 
@@ -64,6 +65,7 @@ func deal_damage():
 			health = health - 20
 			$damage_cooldown.start()
 			print("enemy health" + str(health))
+			$AnimatedSprite2D.play("Foot_E_Hurt")
 			damage = false
 			if health < 0:
 				self.queue_free()
