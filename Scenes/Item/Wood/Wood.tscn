@@ -7,7 +7,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_13mc0"]
 radius = 23.1948
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="Wood_Collectiable" type="StaticBody2D"]
+z_index = 1
 script = ExtResource("1_t56yu")
 item = ExtResource("2_pjwcv")
 

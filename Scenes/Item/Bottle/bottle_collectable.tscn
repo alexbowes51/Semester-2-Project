@@ -8,6 +8,7 @@
 radius = 54.037
 
 [node name="Bottle_collectable" type="StaticBody2D"]
+z_index = 1
 script = ExtResource("1_bbumj")
 item = ExtResource("2_sm7wn")
 

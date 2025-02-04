@@ -8,6 +8,7 @@
 radius = 22.8035
 
 [node name="Rubber_collectable" type="StaticBody2D"]
+z_index = 1
 script = ExtResource("1_1y8k5")
 item = ExtResource("2_8cm50")
 

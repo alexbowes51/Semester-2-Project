@@ -12,7 +12,7 @@ var damage = true
 func _physics_process(delta):
 	deal_damage()
 	
-	if chasing_player && !attacking:
+	if chasing_player && !attacking && player != null:
 		position += (player.position - position) / speed * delta
 		look_at(player.position)
 		$AnimatedSprite2D.play("Foot_E_Walk")
@@ -23,7 +23,6 @@ func _physics_process(delta):
 
 func _on_dectector_body_entered(body):
 	player = body
-	
 	chasing_player = true
 	
 
@@ -34,25 +33,39 @@ func _on_dectector_body_exited(body):
 
 func Foot_Soldier():
 	pass
-
-
-func _on_foot_hit_box_body_entered(body):
-	if body.has_method("player"):
-		body = player
-		attacking = true
-		attacked = true 
-		if attacking:
-			$AnimatedSprite2D.play("Foot_E_Attack")
-			$Attack_cooldown_False.start()
-		
+	
 	
 
+func _on_damage_cooldown_timeout() -> void:
+	damage = true
 
 
-func _on_foot_hit_box_body_exited(body):
-	if body.has_method("player"):
-		body = player
+func _on_foot_hit_area_body_entered(body: Node2D) -> void:
+	if body.has_method("Player"):
+		player = body 
+		attacked = true
+		damage = true
+		
+
+
+func _on_foot_hit_area_body_exited(body: Node2D) -> void:
+	if body.has_method("Player"):
+		player = null
+		attacked = false
+		damage = false
+
+
+func _on_foot_attack_area_body_entered(body: Node2D) -> void:
+	if body.has_method("Player"):
+		player = body 
+		attacking = true
+
+
+func _on_foot_attack_area_body_exited(body: Node2D) -> void:
+	if body.has_method("Player"):
+		player = null
 		attacking = false
+
 
 
 func _on_attack_cooldown_timeout() -> void:
@@ -60,17 +73,14 @@ func _on_attack_cooldown_timeout() -> void:
 	attacked = false
 	
 func deal_damage():
-	if attacked && WorldManager.player_current_attack == true:
-		if damage == true:
+	if attacked && WorldManager.player_current_attack:
+		if damage:
 			health = health - 20
 			$damage_cooldown.start()
 			print("enemy health" + str(health))
 			$AnimatedSprite2D.play("Foot_E_Hurt")
-			damage = false
-			if health < 0:
+			if health <= 0:
+				player = null
 				self.queue_free()
+			damage = false
 	
-
-
-func _on_damage_cooldown_timeout() -> void:
-	damage = true

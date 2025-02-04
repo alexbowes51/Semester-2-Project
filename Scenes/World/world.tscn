@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dj5o80gxakvda"]
+[gd_scene load_steps=11 format=4 uid="uid://dj5o80gxakvda"]
 
 [ext_resource type="Script" path="res://Scenes/World/world_manager.gd" id="1_tvuku"]
 [ext_resource type="TileSet" uid="uid://dljbx2e4l7110" path="res://Scenes/World/World_TileMap.tres" id="2_07qw7"]
@@ -10,9 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bjq3gvbk6ho5o" path="res://Scenes/Item/Rubber/rubber_collectable.tscn" id="9_4vxpm"]
 [ext_resource type="PackedScene" uid="uid://cidva77gd3bbc" path="res://Scenes/Npc/Merchant/Merchant.tscn" id="10_d0n30"]
 [ext_resource type="PackedScene" uid="uid://beo65e3c745g8" path="res://Scenes/Item/Wood/Wood.tscn" id="10_n0oak"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jh6m"]
-size = Vector2(2299, 2299)
 
 [node name="world" type="Node2D"]
 position = Vector2(100, 100)
@@ -35,82 +32,76 @@ tile_map_data = PackedByteArray("AAAAAAAAAAACAAEAAAABAAAAAAACAAEAAAACAAAAAAACAAE
 tile_set = ExtResource("2_07qw7")
 y_sort_origin = 2
 
-[node name="Foot Soldier" parent="." instance=ExtResource("7_qslnd")]
-position = Vector2(1611, 1506)
+[node name="Collectiables" type="Node2D" parent="."]
 
-[node name="Foot Soldier2" parent="." instance=ExtResource("7_qslnd")]
-position = Vector2(1539, 1324)
-
-[node name="Foot Soldier3" parent="." instance=ExtResource("7_qslnd")]
-position = Vector2(1470, 1442)
-
-[node name="Bottle_collectable" parent="." instance=ExtResource("8_11bxk")]
+[node name="Bottle_collectable" parent="Collectiables" instance=ExtResource("8_11bxk")]
 position = Vector2(2934, 2502)
 
-[node name="Bottle_collectable2" parent="." instance=ExtResource("8_11bxk")]
+[node name="Bottle_collectable2" parent="Collectiables" instance=ExtResource("8_11bxk")]
 position = Vector2(3024, 2368)
 
-[node name="Bottle_collectable3" parent="." instance=ExtResource("8_11bxk")]
+[node name="Bottle_collectable3" parent="Collectiables" instance=ExtResource("8_11bxk")]
 position = Vector2(3058, 2446)
 
-[node name="Bottle_collectable4" parent="." instance=ExtResource("8_11bxk")]
+[node name="Bottle_collectable4" parent="Collectiables" instance=ExtResource("8_11bxk")]
 position = Vector2(3122, 2525)
 
-[node name="Rubber_Collectable" parent="." instance=ExtResource("9_4vxpm")]
+[node name="Rubber_Collectable" parent="Collectiables" instance=ExtResource("9_4vxpm")]
 position = Vector2(2839, 2423)
 
-[node name="Rubber_Collectable2" parent="." instance=ExtResource("9_4vxpm")]
+[node name="Rubber_Collectable2" parent="Collectiables" instance=ExtResource("9_4vxpm")]
 position = Vector2(2773, 2344)
 
-[node name="Rubber_Collectable3" parent="." instance=ExtResource("9_4vxpm")]
+[node name="Rubber_Collectable3" parent="Collectiables" instance=ExtResource("9_4vxpm")]
 position = Vector2(2881, 2360)
 
-[node name="Rubber_Collectable4" parent="." instance=ExtResource("9_4vxpm")]
+[node name="Rubber_Collectable4" parent="Collectiables" instance=ExtResource("9_4vxpm")]
 position = Vector2(2791, 2486)
 
-[node name="StaticBody2D" parent="." instance=ExtResource("10_n0oak")]
-position = Vector2(2673, 2356)
+[node name="Wood_Collectiable" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(2650, 2455)
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("10_n0oak")]
-position = Vector2(2556, 2357)
+[node name="Wood_Collectiable2" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(2650, 2525)
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("10_n0oak")]
-position = Vector2(2568, 2482)
+[node name="Wood_Collectiable3" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(2564, 2498)
 
-[node name="Foot Soldier4" parent="." instance=ExtResource("7_qslnd")]
+[node name="Enemys" type="Node2D" parent="."]
+
+[node name="Foot Soldier" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(1611, 1506)
+
+[node name="Foot Soldier2" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(1539, 1324)
+
+[node name="Foot Soldier3" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(1470, 1442)
+
+[node name="Foot Soldier4" parent="Enemys" instance=ExtResource("7_qslnd")]
 position = Vector2(1800, 1466)
 
-[node name="Foot Soldier5" parent="." instance=ExtResource("7_qslnd")]
+[node name="Foot Soldier5" parent="Enemys" instance=ExtResource("7_qslnd")]
 position = Vector2(1728, 1284)
 
-[node name="Foot Soldier6" parent="." instance=ExtResource("7_qslnd")]
+[node name="Foot Soldier6" parent="Enemys" instance=ExtResource("7_qslnd")]
 position = Vector2(1659, 1402)
+
+[node name="Player_Placed Buildings" type="Node2D" parent="."]
+
+[node name="NPC" type="Node2D" parent="."]
+
+[node name="Merchant_NPC" parent="NPC" instance=ExtResource("10_d0n30")]
+process_mode = 3
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+position = Vector2(1276, 3230)
+
+[node name="Player" parent="." instance=ExtResource("3_2ajww")]
+position = Vector2(1166, 2835)
 
 [node name="MiniMap" parent="." instance=ExtResource("5_jtj8c")]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("6_mkpcw")]
 layer = 3
 visible = false
-
-[node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(1166, 2835)
-
-[node name="Build area" type="Area2D" parent="."]
-z_index = 1
-position = Vector2(1853, 3846)
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Build area"]
-z_index = 1
-position = Vector2(-3.5, 2.5)
-shape = SubResource("RectangleShape2D_7jh6m")
-
-[node name="Merchant_NPC" parent="." instance=ExtResource("10_d0n30")]
-process_mode = 3
-physics_interpolation_mode = 1
-auto_translate_mode = 1
-position = Vector2(1276, 3230)
-
-[connection signal="body_entered" from="Build area" to="." method="_on_build_area_body_entered"]
-[connection signal="body_exited" from="Build area" to="." method="_on_build_area_body_exited"]

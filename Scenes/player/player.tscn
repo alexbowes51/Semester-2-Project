@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=58 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Resource" uid="uid://57ap7oxacyuy" path="res://Inventory/player_Inventory.tres" id="1_4owyj"]
 [ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
@@ -24,7 +24,9 @@ var player_alive = true
 var death = false
 
 ##attacking varibales
-var enemy_in_range = false
+var Player_is_in_attacking_range = false
+var enemy_is_in_attacking_range = false
+
 var attack_damage_cool_down = true
 
 var attack = false
@@ -55,6 +57,12 @@ func _physics_process(delta: float) -> void:
 	 
 func get_input():
 	var input_direction = Input.get_vector(\"left\",\"right\",\"up\",\"down\")
+	
+	if Input.is_action_pressed(\"attack\"):
+				WorldManager.player_current_attack = true
+				attack = true
+				$AnimatedSprite2D.play(\"Player_Attack\")
+				$Attack_Cooldown.start()
 	
 	if Input.is_action_pressed(\"left\"):
 		rotation = deg_to_rad(-270)
@@ -122,13 +130,7 @@ func get_input():
 	if Input.is_action_pressed(\"right\") && Input.is_action_pressed(\"down\"):
 		rotation = deg_to_rad(-405)
 		$AnimatedSprite2D.play(\"Player_Walk\")
-		if Input.is_action_pressed(\"attack\"):
-			WorldManager.player_current_attack = true
-			attack = true
-			$AnimatedSprite2D.play(\"Player_Attack\")
-			$Attack_Cooldown.start()
-		
-
+	
 	velocity = input_direction * SPEED
 
 
@@ -159,18 +161,33 @@ func player_dead():
 		$AnimatedSprite2D.play(\"Player_Death\")
 	
 	
+	
+func _on_attack_hit_box_body_entered(body):
+	if body.has_method(\"Foot_Soldier\"):
+			enemy_is_in_attacking_range = true
+			
+
+
+func _on_attack_hit_box_body_exited(body):
+	if body.has_method(\"Foot_Soldier\"):
+			enemy_is_in_attacking_range = false
+
+	
+
 
 func _on_player_hit_box_body_entered(body):
 	if body.has_method(\"Foot_Soldier\"):
-		enemy_in_range = true
+		Player_is_in_attacking_range = true
 		
 
 func _on_player_hit_box_body_exited(body):
 	if body.has_method(\"Foot_Soldier\"):
-		enemy_in_range = false
+		Player_is_in_attacking_range = false
+		
+		
 		
 func enemy_attack():
-	if enemy_in_range and attack_damage_cool_down == true:
+	if Player_is_in_attacking_range and attack_damage_cool_down == true:
 		take_damage()
 		
 		if player_alive:
@@ -181,13 +198,11 @@ func enemy_attack():
 		
 
 func _on_damage_cooldown_timeout():
-	$Damage_cooldown.stop()
 	attack_damage_cool_down = true
 	
 	
 
 func _on_attack_cooldown_timeout():
-	$Attack_Cooldown.stop()
 	WorldManager.player_current_attack = false
 	attack = false
 
@@ -546,8 +561,11 @@ animations = [{
 radius = 29.6875
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdfm3"]
-radius = 21.0
-height = 100.0
+radius = 20.0
+height = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_refgx"]
+radius = 33.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -573,19 +591,26 @@ debug_color = Color(1, 1, 1, 0)
 [node name="Player_HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_HitBox"]
-position = Vector2(-1, 26)
+z_index = 1
 shape = SubResource("CapsuleShape2D_rdfm3")
+debug_color = Color(0.984314, 0, 0.34902, 0.513726)
+
+[node name="Attack_HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_HitBox"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_refgx")
+debug_color = Color(0.681852, 0.502586, 0.0146951, 0.42)
 
 [node name="Damage_cooldown" type="Timer" parent="."]
-process_callback = 0
 wait_time = 5.0
 
 [node name="Attack_Cooldown" type="Timer" parent="."]
-process_callback = 0
 wait_time = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 1
+zoom = Vector2(1.5, 1.5)
 limit_left = 100
 limit_top = 100
 limit_right = 32500
@@ -601,10 +626,11 @@ layer = 4
 
 [node name="HealthBar" type="HBoxContainer" parent="Camera2D/UI"]
 z_index = 4
-offset_left = 49.0
-offset_top = 29.0
-offset_right = 565.0
-offset_bottom = 69.0
+offset_left = 46.0
+offset_top = 32.0
+offset_right = 562.0
+offset_bottom = 72.0
+scale = Vector2(0.519999, 0.480001)
 
 [node name="heart" type="TextureRect" parent="Camera2D/UI/HealthBar"]
 custom_minimum_size = Vector2(100, 0)
@@ -642,19 +668,23 @@ layout_mode = 2
 texture = ExtResource("4_n7t0m")
 
 [node name="Build_Ui" parent="Camera2D/UI" instance=ExtResource("7_olynr")]
-offset_left = 373.0
-offset_top = 860.0
-offset_right = 373.0
-offset_bottom = 860.0
+offset_left = 109.0
+offset_top = 712.0
+offset_right = 109.0
+offset_bottom = 712.0
+scale = Vector2(0.795853, 0.898798)
 
 [node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
-offset_top = 161.0
-offset_right = 0.0
-offset_bottom = 161.0
-scale = Vector2(3.17409, 3.5395)
+offset_left = 869.0
+offset_top = 261.0
+offset_right = 869.0
+offset_bottom = 261.0
+scale = Vector2(1.59725, 1.49505)
 localize_numeral_system = false
 
 [connection signal="body_entered" from="Player_HitBox" to="." method="_on_player_hit_box_body_entered"]
 [connection signal="body_exited" from="Player_HitBox" to="." method="_on_player_hit_box_body_exited"]
+[connection signal="body_entered" from="Attack_HitBox" to="." method="_on_attack_hit_box_body_entered"]
+[connection signal="body_exited" from="Attack_HitBox" to="." method="_on_attack_hit_box_body_exited"]
 [connection signal="timeout" from="Damage_cooldown" to="." method="_on_damage_cooldown_timeout"]
 [connection signal="timeout" from="Attack_Cooldown" to="." method="_on_attack_cooldown_timeout"]
