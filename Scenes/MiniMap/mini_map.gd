@@ -14,7 +14,6 @@ func _ready():
 		setup_mini(mini_tilemap)
 		var used_rect : Rect2i = tilemap.get_used_rect()
 		
-		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

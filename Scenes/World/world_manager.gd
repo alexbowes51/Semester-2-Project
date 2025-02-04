@@ -14,7 +14,7 @@ var building = "None"
 #player world varibales
 var player_current_attack = false
 var Build_mode = false
-var Build_mode_avaible
+var Build_mode_avaible 
 
 #npc follow 
 var Merchant_follow_player = false

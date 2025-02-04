@@ -21,5 +21,6 @@ func _process(delta):
 		place = true
 	
 
-		
-		
+	
+	if !WorldManager.Build_mode && !place && !WorldManager.building != "house":
+		self.queue_free()

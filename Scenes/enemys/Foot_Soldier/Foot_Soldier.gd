@@ -59,6 +59,7 @@ func _on_foot_attack_area_body_entered(body: Node2D) -> void:
 	if body.has_method("Player"):
 		player = body 
 		attacking = true
+		$AnimatedSprite2D.play("Foot_E_Attack")
 
 
 func _on_foot_attack_area_body_exited(body: Node2D) -> void:

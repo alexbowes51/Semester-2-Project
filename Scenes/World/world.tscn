@@ -87,8 +87,6 @@ position = Vector2(1728, 1284)
 [node name="Foot Soldier6" parent="Enemys" instance=ExtResource("7_qslnd")]
 position = Vector2(1659, 1402)
 
-[node name="Player_Placed Buildings" type="Node2D" parent="."]
-
 [node name="NPC" type="Node2D" parent="."]
 
 [node name="Merchant_NPC" parent="NPC" instance=ExtResource("10_d0n30")]
@@ -105,3 +103,5 @@ position = Vector2(1166, 2835)
 [node name="ParallaxBackground" parent="." instance=ExtResource("6_mkpcw")]
 layer = 3
 visible = false
+
+[node name="Player_Placed Buildings" type="Node2D" parent="."]
