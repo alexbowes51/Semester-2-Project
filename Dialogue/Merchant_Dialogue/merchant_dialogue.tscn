@@ -17,6 +17,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_svyaw")
+M_D_file = "res://Dialogue/Merchant_Dialogue/merchant_dialogue1.json"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 process_mode = 3
@@ -91,6 +92,7 @@ text = "Follow me
 "
 
 [node name="unFollow Text" type="Label" parent="NinePatchRect/TextureButton"]
+layout_mode = 0
 offset_left = 6.49654
 offset_top = 14.2102
 offset_right = 106.497

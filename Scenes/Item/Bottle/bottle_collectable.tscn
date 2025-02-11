@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dh0vvoscc6m0b"]
 
 [ext_resource type="Script" path="res://Scenes/Item/Bottle/bottle_collectable.gd" id="1_bbumj"]
-[ext_resource type="Resource" uid="uid://dht03vjqgv12j" path="res://Inventory/items/Bottles.tres" id="2_sm7wn"]
+[ext_resource type="Resource" uid="uid://dht03vjqgv12j" path="res://Scenes/Item/Bottle/Bottles.tres" id="2_sm7wn"]
 [ext_resource type="Texture2D" uid="uid://c8baevlp1m26k" path="res://Art/Items/Bottles.png" id="3_kp26u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5pa5b"]

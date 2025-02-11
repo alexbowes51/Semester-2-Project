@@ -36,7 +36,6 @@ func _process(delta):
 			building = "None"
 			return
 	
-		
 	
 		if building == "farm" && Input.is_action_pressed("build"):
 			var built_farm = farm_scene.instantiate()

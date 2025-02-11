@@ -1,9 +1,9 @@
 [gd_scene load_steps=58 format=3 uid="uid://dwmhxdnbbb5cd"]
 
-[ext_resource type="Resource" uid="uid://57ap7oxacyuy" path="res://Inventory/player_Inventory.tres" id="1_4owyj"]
+[ext_resource type="Resource" uid="uid://57ap7oxacyuy" path="res://Scenes/Inventory/player_Inventory.tres" id="1_4owyj"]
 [ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://dw4t3tbcow8qq" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
-[ext_resource type="PackedScene" uid="uid://cv24ug4cywu32" path="res://Inventory/inventory_ui.tscn" id="3_jvthm"]
+[ext_resource type="PackedScene" uid="uid://cv24ug4cywu32" path="res://Scenes/Inventory/inventory_ui.tscn" id="3_jvthm"]
 [ext_resource type="Texture2D" uid="uid://dwvvykkm0efg0" path="res://Art/Player/No Weapons/Player Character No Weapons/Death No Gore/Player Charachter death no gore-Sheet.png" id="4_3c6km"]
 [ext_resource type="Texture2D" uid="uid://kppxu5udltos" path="res://Art/UI/Hearts/Heart.png" id="4_n7t0m"]
 [ext_resource type="Texture2D" uid="uid://myot25jbrsyy" path="res://Art/Player/No Weapons/Player Character No Weapons/Walk/Player Walk-Sheet.png" id="6_agh1c"]
@@ -159,21 +159,15 @@ func player_dead():
 	player_alive = false
 	if death:
 		$AnimatedSprite2D.play(\"Player_Death\")
-	
-	
-	
+
 func _on_attack_hit_box_body_entered(body):
 	if body.has_method(\"Foot_Soldier\"):
 			enemy_is_in_attacking_range = true
 			
 
-
 func _on_attack_hit_box_body_exited(body):
 	if body.has_method(\"Foot_Soldier\"):
 			enemy_is_in_attacking_range = false
-
-	
-
 
 func _on_player_hit_box_body_entered(body):
 	if body.has_method(\"Foot_Soldier\"):
@@ -184,8 +178,7 @@ func _on_player_hit_box_body_exited(body):
 	if body.has_method(\"Foot_Soldier\"):
 		Player_is_in_attacking_range = false
 		
-		
-		
+
 func enemy_attack():
 	if Player_is_in_attacking_range and attack_damage_cool_down == true:
 		take_damage()

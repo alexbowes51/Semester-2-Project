@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjq3gvbk6ho5o"]
 
 [ext_resource type="Script" path="res://Scenes/Item/Rubber/rubber_collectable.gd" id="1_1y8k5"]
-[ext_resource type="Resource" uid="uid://bvg885cvceqlc" path="res://Inventory/items/Rubber.tres" id="2_8cm50"]
+[ext_resource type="Resource" uid="uid://bvg885cvceqlc" path="res://Scenes/Item/Rubber/Rubber.tres" id="2_8cm50"]
 [ext_resource type="Texture2D" uid="uid://bvbrprqlxwjhy" path="res://Art/Items/Rubber.png" id="2_81r5b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iv5cl"]

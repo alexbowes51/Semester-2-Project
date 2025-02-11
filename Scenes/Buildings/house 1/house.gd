@@ -12,15 +12,15 @@ func _process(delta):
 	if WorldManager.Build_mode && !place:
 		position = get_global_mouse_position()
 		
-	
 		var grid_size = 100
 		position = Vector2(round(position.x / grid_size) * grid_size,round(position.y / grid_size) * grid_size)
 	
 	if Input.is_action_just_pressed("build"):
 		var place_position = position
 		place = true
-	
+		if !place && WorldManager.building != "house" && !WorldManager.Build_mode:
+			self.queue_free()
 
 	
-	if !WorldManager.Build_mode && !place && !WorldManager.building != "house":
+	if !WorldManager.Build_mode && !place && WorldManager.building != "house":
 		self.queue_free()

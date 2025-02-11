@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dp63hh76pk4i4" path="res://Art/Tile_map/house 2.png" id="1_md0qi"]
 [ext_resource type="Script" path="res://Scenes/Buildings/house 1/house.gd" id="2_oqb4t"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_idh8q"]
-size = Vector2(33.8841, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5ydp"]
+size = Vector2(82, 31.25)
 
 [node name="house" type="Sprite2D"]
 process_mode = 3
@@ -12,6 +12,7 @@ physics_interpolation_mode = 1
 auto_translate_mode = 1
 z_index = 1
 texture_filter = 1
+position = Vector2(-100000, -100000)
 texture = ExtResource("1_md0qi")
 centered = false
 script = ExtResource("2_oqb4t")
@@ -19,11 +20,9 @@ script = ExtResource("2_oqb4t")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-process_mode = 3
 physics_interpolation_mode = 1
 auto_translate_mode = 1
-z_index = 1
-position = Vector2(50, 57)
-rotation = -3.14159
-scale = Vector2(2.12489, 1.18697)
-shape = SubResource("RectangleShape2D_idh8q")
+position = Vector2(50, 53.625)
+shape = SubResource("RectangleShape2D_o5ydp")
+
+[connection signal="ready" from="Area2D/CollisionShape2D" to="." method="_on_collision_shape_2d_ready"]

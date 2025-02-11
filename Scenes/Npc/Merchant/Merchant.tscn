@@ -202,7 +202,8 @@ radius = 85.2115
 script = ExtResource("1_8mkry")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1)
+z_index = 1
+position = Vector2(-9.53674e-07, 2)
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_cer8m")
 animation = &"Mechant_Iteract"
@@ -211,6 +212,7 @@ frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_omd7v")
+debug_color = Color(1, 1, 1, 0.42)
 
 [node name="Interact_Area" type="Area2D" parent="."]
 
@@ -221,10 +223,10 @@ shape = SubResource("CircleShape2D_1noru")
 autostart = true
 
 [node name="Merchant_Dialogue" parent="." instance=ExtResource("5_j20uh")]
-offset_left = -244.0
-offset_top = -287.0
-offset_right = -204.0
-offset_bottom = -247.0
+offset_left = -272.0
+offset_top = -402.0
+offset_right = -232.0
+offset_bottom = -362.0
 scale = Vector2(4.84749, 4.52)
 
 [connection signal="body_entered" from="Interact_Area" to="." method="_on_area_2d_body_entered"]

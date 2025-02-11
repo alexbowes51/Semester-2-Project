@@ -28,7 +28,7 @@ func _ready():
 	start_pos = position
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta):
 	
 	if WorldManager.Merchant_follow_player == true:
 		is_following_player = true

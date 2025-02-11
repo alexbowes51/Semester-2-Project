@@ -96,12 +96,10 @@ auto_translate_mode = 1
 position = Vector2(1276, 3230)
 
 [node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(1166, 2835)
+position = Vector2(1856, 2598)
 
 [node name="MiniMap" parent="." instance=ExtResource("5_jtj8c")]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("6_mkpcw")]
 layer = 3
 visible = false
-
-[node name="Player_Placed Buildings" type="Node2D" parent="."]

@@ -248,7 +248,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yohbb"]
-radius = 77.7778
+radius = 97.0236
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnpgr"]
 radius = 1012.11
@@ -265,6 +265,7 @@ scale = Vector2(0.18, 0.18)
 script = ExtResource("1_otqes")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
 rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_a3ilm")
 animation = &"Foot_E_Hurt"
@@ -296,7 +297,6 @@ shape = SubResource("CircleShape2D_m5mq4")
 debug_color = Color(0.751291, 0.118527, 0, 0.205)
 
 [node name="Foot_Hit_Area" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Foot_Hit_Area"]
 shape = SubResource("CircleShape2D_udkv7")
@@ -311,8 +311,8 @@ wait_time = 0.1
 
 [connection signal="body_entered" from="Dectector" to="." method="_on_dectector_body_entered"]
 [connection signal="body_exited" from="Dectector" to="." method="_on_dectector_body_exited"]
-[connection signal="body_entered" from="Foot_Attack_Area" to="." method="_on_foot_attack_area_body_entered"]
 [connection signal="body_entered" from="Foot_Attack_Area" to="." method="_on_foot_hit_box_body_entered"]
+[connection signal="body_entered" from="Foot_Attack_Area" to="." method="_on_foot_attack_area_body_entered"]
 [connection signal="body_exited" from="Foot_Attack_Area" to="." method="_on_foot_hit_box_body_exited"]
 [connection signal="body_exited" from="Foot_Attack_Area" to="." method="_on_foot_attack_area_body_exited"]
 [connection signal="body_entered" from="Foot_Hit_Area" to="." method="_on_foot_hit_area_body_entered"]
