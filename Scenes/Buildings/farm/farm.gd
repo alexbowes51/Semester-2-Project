@@ -19,7 +19,8 @@ func _process(delta):
 		var place_position = position
 		place = true
 	
-	if !WorldManager.Build_mode && !place && WorldManager.building != "farm":
-		self.queue_free()
+	if place != true && WorldManager.Build_mode != true:
+		self.queue_free()	
 	
-	
+	if place != true && WorldManager.building != "farm":
+		self.queue_free()	

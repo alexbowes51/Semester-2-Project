@@ -30,18 +30,19 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-		if building == "house" && Input.is_action_pressed("build"):
+		if building == "house" && Build_mode == true && Input.is_action_pressed("build"):
 			var built_house = house_scene.instantiate()
 			add_child(built_house)
 			building = "None"
-			return
+		
 	
 	
-		if building == "farm" && Input.is_action_pressed("build"):
+		if building == "farm" && Build_mode == true && Input.is_action_pressed("build"):
 			var built_farm = farm_scene.instantiate()
 			add_child(built_farm)
 			building = "None"
-			return
+			
+		
 		
 		
 	

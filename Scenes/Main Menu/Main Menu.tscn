@@ -1,0 +1,159 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1rexdmus4r2e"]
+
+[ext_resource type="Texture2D" uid="uid://c633u2xbdta2w" path="res://Scenes/Main Menu/Screenshot 2025-02-19 155832.png" id="1_2li5b"]
+[ext_resource type="FontFile" uid="uid://bb6ixiqy2802s" path="res://Scenes/Main Menu/Celtica-BookOblique.ttf" id="1_ibtg2"]
+[ext_resource type="Script" path="res://Scenes/Main Menu/main_menu.gd" id="1_l0kpg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ienpl"]
+bg_color = Color(0.706148, 0.586501, 0.253634, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_llymo"]
+texture = ExtResource("1_2li5b")
+modulate_color = Color(0.473976, 0.473976, 0.473976, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_whsep"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4tgkg"]
+bg_color = Color(0.369232, 0.201631, 2.88785e-07, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_size = 6
+shadow_offset = Vector2(6, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3sx4"]
+bg_color = Color(0.166964, 0.079273, 3.00817e-08, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_size = 6
+shadow_offset = Vector2(6, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7igwr"]
+bg_color = Color(0.9886, 0.576305, 1.15514e-06, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_size = 6
+shadow_offset = Vector2(6, 6)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l0kpg")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -454.0
+offset_top = 138.0
+offset_right = 516.0
+offset_bottom = 221.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 0
+theme_override_fonts/font = ExtResource("1_ibtg2")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_ienpl")
+text = "Wexford's Witty Viking Adventure"
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_llymo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -107.0
+offset_right = 24.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.16676, 1.83953)
+theme_override_constants/separation = 25
+
+[node name="Start Game" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_ibtg2")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_whsep")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4tgkg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d3sx4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7igwr")
+text = "Start Game"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_ibtg2")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_whsep")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4tgkg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d3sx4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7igwr")
+text = "Options"
+
+[node name="Leave" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_ibtg2")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_whsep")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4tgkg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d3sx4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7igwr")
+text = "Leave Game"
+
+[connection signal="pressed" from="VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Leave" to="." method="_on_leave_pressed"]
