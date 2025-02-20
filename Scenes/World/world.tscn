@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dj5o80gxakvda"]
+[gd_scene load_steps=12 format=4 uid="uid://dj5o80gxakvda"]
 
 [ext_resource type="Script" path="res://Scenes/World/world_manager.gd" id="1_tvuku"]
 [ext_resource type="TileSet" uid="uid://dljbx2e4l7110" path="res://Scenes/World/World_TileMap.tres" id="2_07qw7"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bjq3gvbk6ho5o" path="res://Scenes/Item/Rubber/rubber_collectable.tscn" id="9_4vxpm"]
 [ext_resource type="PackedScene" uid="uid://cidva77gd3bbc" path="res://Scenes/Npc/Merchant/Merchant.tscn" id="10_d0n30"]
 [ext_resource type="PackedScene" uid="uid://beo65e3c745g8" path="res://Scenes/Item/Wood/Wood.tscn" id="10_n0oak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnma6"]
 
 [node name="world" type="Node2D"]
 position = Vector2(100, 100)
@@ -96,9 +98,17 @@ auto_translate_mode = 1
 position = Vector2(1276, 3230)
 
 [node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(1856, 2598)
+position = Vector2(1856, 2599)
 
 [node name="MiniMap" parent="." instance=ExtResource("5_jtj8c")]
+layer = 3
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("6_mkpcw")]
 layer = 3
+
+[node name="BuildArea" type="Area2D" parent="."]
+position = Vector2(1850, 3847)
+scale = Vector2(105, 105)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildArea"]
+shape = SubResource("RectangleShape2D_rnma6")

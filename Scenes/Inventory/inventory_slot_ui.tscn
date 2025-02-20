@@ -7,6 +7,7 @@
 custom_minimum_size = Vector2(16, 16)
 offset_right = 18.0
 offset_bottom = 18.0
+mouse_filter = 2
 script = ExtResource("1_btglw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,9 +16,11 @@ texture = ExtResource("1_j8fhu")
 centered = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+z_index = 5
 layout_mode = 0
 offset_right = 18.0
 offset_bottom = 18.0
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="CenterContainer"]
 layout_mode = 2

@@ -612,7 +612,6 @@ position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
 [node name="UI" type="CanvasLayer" parent="Camera2D"]
-process_mode = 3
 physics_interpolation_mode = 1
 auto_translate_mode = 1
 layer = 4
@@ -624,6 +623,7 @@ offset_top = 32.0
 offset_right = 562.0
 offset_bottom = 72.0
 scale = Vector2(0.519999, 0.480001)
+mouse_filter = 2
 
 [node name="heart" type="TextureRect" parent="Camera2D/UI/HealthBar"]
 custom_minimum_size = Vector2(100, 0)

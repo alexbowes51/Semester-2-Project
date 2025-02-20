@@ -23,7 +23,6 @@ WorldManager="*res://Scenes/World/world_manager.gd"
 
 window/size/viewport_width=1200
 window/size/viewport_height=900
-window/size/mode=2
 window/stretch/mode="viewport"
 
 [input]

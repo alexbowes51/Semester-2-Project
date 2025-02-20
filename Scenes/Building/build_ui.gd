@@ -32,11 +32,12 @@ func _process(delta):
 
 		if $NinePatchRect/GridContainer/house.button_pressed:
 			WorldManager.building = "house"
-			print("building = " + str(WorldManager.building))
+			##print("building = " + str(WorldManager.building))
+			
 
 		if $NinePatchRect/GridContainer/farm.button_pressed:
 			WorldManager.building = "farm"
-			print("building = " + str(WorldManager.building))
+			##print("building = " + str(WorldManager.building))
 
 		if $"NinePatchRect/GridContainer/wall (TL)".button_pressed:
 			WorldManager.building = "Wall_TL"

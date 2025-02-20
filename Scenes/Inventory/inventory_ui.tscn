@@ -11,9 +11,11 @@ anchors_preset = 0
 offset_right = 199.0
 offset_bottom = 169.0
 scale = Vector2(2.02863, 1.96165)
+mouse_filter = 2
 script = ExtResource("1_78xnh")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+z_index = 4
 layout_mode = 0
 offset_right = 197.0
 offset_bottom = 170.0
