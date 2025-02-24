@@ -7,7 +7,6 @@ var is_open = false
 
 func _ready():
 	inv.update
-	
 	close()
 
 
@@ -18,12 +17,11 @@ func open():
 	
 
 func close():
-	
 	WorldManager.Build_mode = false
 	visible = false
 	is_open = false
-	
-	
+
+
 	
 func _process(delta):
 	

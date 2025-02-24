@@ -30,6 +30,8 @@ var Wp1_B = Vector2(16950,3670)
 
 var Wp2_A = Vector2(2850,470)
 var Wp2_B = Vector2(4750,15370)
+var Amount_MIN_1
+var Amount_MIN_2
 
 
 #npc follow 

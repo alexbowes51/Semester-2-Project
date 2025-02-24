@@ -1,6 +1,5 @@
-[gd_scene load_steps=58 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=57 format=3 uid="uid://dwmhxdnbbb5cd"]
 
-[ext_resource type="Resource" uid="uid://57ap7oxacyuy" path="res://Scenes/Inventory/player_Inventory.tres" id="1_4owyj"]
 [ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://dw4t3tbcow8qq" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
 [ext_resource type="PackedScene" uid="uid://cv24ug4cywu32" path="res://Scenes/Inventory/inventory_ui.tscn" id="3_jvthm"]
@@ -30,8 +29,9 @@ var enemy_is_in_attacking_range = false
 var attack_damage_cool_down = true
 
 var attack = false
+var amount_remove
 
-@export var inv : Inventory
+@onready var inv : Inventory = preload(\"res://Scenes/Inventory/player_Inventory.tres\")
 
 func _ready():
 	var heart_container = $Camera2D/UI/HealthBar
@@ -83,6 +83,7 @@ func get_input():
 				attack = true
 				$AnimatedSprite2D.play(\"Player_Attack\")
 				$Attack_Cooldown.start()
+				
 	
 	if Input.is_action_pressed(\"left\"):
 		rotation = deg_to_rad(-270)
@@ -157,6 +158,9 @@ func get_input():
 func collect(item):
 	inv.insert(item)
 	print(str(item.name))
+	
+func remove_wood(item):
+	inv.Remove_Items(item.name == \"Bottle\",1)
 
 func take_damage():
 	if currentHealth > 0:
@@ -585,7 +589,6 @@ z_index = 1
 texture_filter = 1
 collision_layer = 3
 script = SubResource("GDScript_pbkry")
-inv = ExtResource("1_4owyj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.98023e-08, 5.96046e-08)
