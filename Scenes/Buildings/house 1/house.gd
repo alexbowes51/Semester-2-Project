@@ -23,16 +23,15 @@ func _process(delta):
 			var place_position = position
 			place = true
 	
-			if place != true && WorldManager.Build_mode != true:
+			if place != true && WorldManager.Build_mode == false:
 				self.queue_free()	
 	
-			if place != true && WorldManager.building != "farm":
+			if place != true && WorldManager.building != "house":
 				self.queue_free()
 		
-			if place && !placed_in_zone:
+			if place == true && placed_in_zone != true:
 				self.queue_free()
-	
-
+			
 
 func house():
 	pass
@@ -43,8 +42,10 @@ func house():
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "BuildArea":
 			placed_in_zone = true
+			print("true")
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.name == "BuildArea":
 			placed_in_zone = false
+			print("false")

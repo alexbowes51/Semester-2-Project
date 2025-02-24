@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://caj6plpuqsmrv"]
+
+[ext_resource type="Texture2D" uid="uid://6n2ajy86u1a1" path="res://Art/Tile_map/WayPoint2(A).png" id="1_7jirc"]
+[ext_resource type="Script" path="res://Scenes/WayPoints/WayPoint2/way_point_2.gd" id="1_rv2hi"]
+[ext_resource type="Texture2D" uid="uid://yb2djh6r0j5" path="res://Art/Tile_map/WayPoint2(D).png" id="2_cvirk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w1wo0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7jirc")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cvirk")
+}],
+"loop": true,
+"name": &"de_active",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ug62r"]
+radius = 71.2531
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_rv2hi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w1wo0")
+animation = &"de_active"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-37, -29, -27, -32, -13, -33, 24, -33, 37, -32, 45, -29, 43, -26, 35, -15, 31, -10, 20, -4, 21, 4, 23, 12, 25, 19, 34, 29, 32, 31, 27, 33, 21, 34, 9, 35, -11, 35, -19, 34, -24, 32, -29, 30, -26, 25, -23, 21, -20, 16, -19, 12, -18, 7, -17, 1, -16, -3, -19, -6, -24, -9, -27, -13, -30, -18)
+
+[node name="interact" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interact"]
+shape = SubResource("CircleShape2D_ug62r")
+
+[connection signal="body_entered" from="interact" to="." method="_on_interact_body_entered"]
+[connection signal="body_exited" from="interact" to="." method="_on_interact_body_exited"]

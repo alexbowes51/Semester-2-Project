@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var place = false
 var in_zone 
-var placed_in_zone 
+var placed_in_zone = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,9 +29,11 @@ func _process(delta):
 			if place != true && WorldManager.building != "farm":
 				self.queue_free()
 		
-			if place && !placed_in_zone:
+			if place == true && placed_in_zone != true:
 				self.queue_free()
-	
+		
+			
+			
 
 
 func farm():
@@ -42,8 +44,9 @@ func farm():
 func _on_area_2d_area_entered(area: Area2D) -> void:
 		if area.name == "BuildArea":
 			placed_in_zone = true
-
+			print("true")
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.name == "BuildArea":
 			placed_in_zone = false
+			print("false")

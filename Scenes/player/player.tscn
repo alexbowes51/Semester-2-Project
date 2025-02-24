@@ -54,6 +54,26 @@ func _physics_process(delta: float) -> void:
 	else:
 		player_dead()
 		
+	
+	if WorldManager.tp_Wp1_A == \"A\" && WorldManager.Wp1_tp == true:
+		position = WorldManager.Wp1_B
+		WorldManager.Wp1_tp = false
+	
+		
+	if WorldManager.tp_Wp1_A == \"B\" && WorldManager.Wp1_tp == true:
+		position = WorldManager.Wp1_A
+		WorldManager.Wp1_tp = false
+	
+	
+	if WorldManager.tp_Wp2_A == \"A\" && WorldManager.Wp2_tp == true:
+		position = WorldManager.Wp2_B
+		WorldManager.Wp2_tp = false
+		
+		
+	if WorldManager.tp_Wp2_A == \"B\" && WorldManager.Wp2_tp == true:
+		position = WorldManager.Wp2_A
+		WorldManager.Wp2_tp = false
+		
 	 
 func get_input():
 	var input_direction = Input.get_vector(\"left\",\"right\",\"up\",\"down\")
@@ -136,7 +156,7 @@ func get_input():
 
 func collect(item):
 	inv.insert(item)
-	
+	print(str(item.name))
 
 func take_damage():
 	if currentHealth > 0:

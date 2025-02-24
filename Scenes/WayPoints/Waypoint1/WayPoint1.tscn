@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://bt8u5ca3evu4h"]
+
+[ext_resource type="Script" path="res://Scenes/WayPoints/Waypoint1/WayPoint1.gd" id="1_cvnug"]
+[ext_resource type="Texture2D" uid="uid://cqup48v8mqxiw" path="res://Art/Tile_map/Waypoint1(A).png" id="2_rl7uk"]
+[ext_resource type="Texture2D" uid="uid://d2xd03fvduvji" path="res://Art/Tile_map/WayPoint1(D).png" id="3_j3kd4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_07p62"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rl7uk")
+}],
+"loop": true,
+"name": &"Active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_j3kd4")
+}],
+"loop": true,
+"name": &"Not_Active",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yo11o"]
+radius = 84.006
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rncyh"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_cvnug")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_07p62")
+animation = &"Not_Active"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(3, -40, -9, -24, -16, -10, -19, -2, -21, 8, -26, 17, -29, 15, -34, 15, -39, 19, -42, 24, -40, 26, -29, 29, -18, 32, -5, 33, 12, 33, 24, 31, 39, 27, 46, 23, 41, 19, 35, 19, 30, 16, 26, 7, 24, -3, 22, -15, 19, -26, 14, -35, 10, -40)
+
+[node name="Interact" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
+shape = SubResource("CircleShape2D_yo11o")
+
+[node name="SpawnArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2(-1, 49)
+shape = SubResource("CircleShape2D_rncyh")
+debug_color = Color(0.983776, 0, 0.349868, 0.42)
+
+[connection signal="body_entered" from="Interact" to="." method="_on_interact_body_entered"]
+[connection signal="body_exited" from="Interact" to="." method="_on_interact_body_exited"]
+[connection signal="body_entered" from="SpawnArea" to="." method="_on_spawn_area_body_entered"]
+[connection signal="body_exited" from="SpawnArea" to="." method="_on_spawn_area_body_exited"]

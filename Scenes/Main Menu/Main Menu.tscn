@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1rexdmus4r2e"]
+[gd_scene load_steps=11 format=3 uid="uid://c1rexdmus4r2e"]
 
 [ext_resource type="Texture2D" uid="uid://c633u2xbdta2w" path="res://Scenes/Main Menu/Screenshot 2025-02-19 155832.png" id="1_2li5b"]
 [ext_resource type="FontFile" uid="uid://bb6ixiqy2802s" path="res://Scenes/Main Menu/Celtica-BookOblique.ttf" id="1_ibtg2"]
 [ext_resource type="Script" path="res://Scenes/Main Menu/main_menu.gd" id="1_l0kpg"]
+[ext_resource type="PackedScene" uid="uid://wx75h45b586c" path="res://Audio/bg_audio.tscn" id="4_bjn4e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ienpl"]
 bg_color = Color(0.706148, 0.586501, 0.253634, 1)
@@ -153,6 +154,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_4tgkg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d3sx4")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7igwr")
 text = "Leave Game"
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("4_bjn4e")]
 
 [connection signal="pressed" from="VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
