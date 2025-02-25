@@ -158,7 +158,8 @@ func get_input():
 func collect(item):
 	inv.insert(item)
 	print(str(item.name))
-	#func remove_wood(item):
+	
+func remove_wood(item):
 	#inv.Remove_Items(item.name == \"Bottle\",1)
 
 func take_damage():

@@ -32,8 +32,9 @@ func _process(delta):
 			if place == true && placed_in_zone != true:
 				self.queue_free()
 		
-			
-			
+			if place != true && placed_in_zone == true && WorldManager.Build_mode != true:
+				self.queue_free()
+
 
 
 func farm():

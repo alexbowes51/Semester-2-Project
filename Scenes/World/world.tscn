@@ -117,7 +117,7 @@ position = Vector2(2850, 450)
 position = Vector2(4750, 15350)
 
 [node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(4566, 4549)
+position = Vector2(2345, 4261)
 
 [node name="MiniMap" parent="." instance=ExtResource("5_jtj8c")]
 layer = 3

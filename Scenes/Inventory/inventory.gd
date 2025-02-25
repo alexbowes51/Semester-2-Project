@@ -21,11 +21,16 @@ func insert(item : Inventory_Item):
 			emptyslots[0].amount = 1
 	update.emit()
 
-func Remove_Items(item : Inventory_Item, amount1 : int):
-	var Bottleslots = slots.filter(func(slot): return slot.item == item.name == "Bottle")
+func Remove_Items(item : Inventory_Item):
+	var bottle_slot = slots.filter(func(slot):return slot.item.name == "Bottle")
+	if !bottle_slot.is_empty():
+		bottle_slot[0].item.name = item.name
+		bottle_slot[0].amount -= 1
+		
+	#var rubber_slot = slots.filter()
+	update.emit()
 	
-	if !Bottleslots.is_empty():
-		Bottleslots.amount -= 1
+	
 		
 	update.emit()
 
