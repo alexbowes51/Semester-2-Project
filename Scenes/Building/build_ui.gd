@@ -1,12 +1,8 @@
 extends Control
 
 var is_open = false
-@onready var inv : Inventory = preload("res://Scenes/Inventory/player_Inventory.tres")
-
-
 
 func _ready():
-	inv.update
 	close()
 
 
@@ -35,8 +31,6 @@ func _process(delta):
 		if $NinePatchRect/GridContainer/house.button_pressed:
 			WorldManager.building = "house"
 			##print("building = " + str(WorldManager.building))
-			
-			
 			
 
 		if $NinePatchRect/GridContainer/farm.button_pressed:

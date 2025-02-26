@@ -8,15 +8,11 @@
 allow_unpress = true
 
 [node name="Merchant_Dialogue" type="Control"]
-process_mode = 3
-physics_interpolation_mode = 1
-auto_translate_mode = 1
 z_index = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 2
 script = ExtResource("1_svyaw")
 M_D_file = "res://Dialogue/Merchant_Dialogue/merchant_dialogue1.json"
 
@@ -24,7 +20,7 @@ M_D_file = "res://Dialogue/Merchant_Dialogue/merchant_dialogue1.json"
 process_mode = 3
 physics_interpolation_mode = 1
 auto_translate_mode = 1
-z_index = 2
+z_index = 3
 texture_filter = 1
 layout_mode = 0
 offset_right = 108.0
@@ -70,6 +66,7 @@ autowrap_mode = 2
 tab_size = 1
 
 [node name="TextureButton" type="TextureButton" parent="NinePatchRect"]
+z_index = 3
 layout_mode = 0
 offset_top = 40.0
 offset_right = 110.0

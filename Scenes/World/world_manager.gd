@@ -1,11 +1,8 @@
 extends Node2D
 
-@onready var player: CharacterBody2D = $Player
-@onready var mini_map: CanvasLayer = $MiniMap
-@onready var build_area: Area2D = $"Build-Area"
-@onready var way_point_1_a_: CharacterBody2D = $"WayPoint1(A)"
-@onready var way_point_1_b_: CharacterBody2D = $"WayPoint1(B)"
 
+var player 
+var minimap 
 
 #preloading the house / farm 
 var farm_scene = preload("res://Scenes/Buildings/farm/farm.tscn")
@@ -42,8 +39,11 @@ var Merchant_follow_player = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	minimap = $MiniMap
+	player = $Player
+	
 	if player:
-		mini_map.player_node = player
+		minimap.player_node = player
 		
 
 
@@ -51,21 +51,22 @@ func _ready():
 func _process(delta):
 		var mouse_pos = get_global_mouse_position()
 		
-		
-		
-		
-		if Build_mode == true && Input.is_action_pressed("build"):
 			
-			if building == "house":
-				var built_house = house_scene.instantiate()
-				add_child(built_house)
-				building = "none"
-		
-			if building == "farm":
-				var built_farm = farm_scene.instantiate()
-				add_child(built_farm)
-				building = "none"
-		
+		if Build_mode == true && Input.is_action_just_pressed("build"):
+			build()
+
 			
+
+
+func build():
+	if building == "house":
+		var built_house = house_scene.instantiate()
+		add_child(built_house)
+		building = "none"
+				
 		
+	if building == "farm":
+		var built_farm = farm_scene.instantiate()
+		add_child(built_farm)
+		building = "none"
 	

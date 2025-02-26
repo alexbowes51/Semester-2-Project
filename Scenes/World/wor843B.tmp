@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://dj5o80gxakvda"]
+[gd_scene load_steps=16 format=4 uid="uid://dj5o80gxakvda"]
 
 [ext_resource type="Script" path="res://Scenes/World/world_manager.gd" id="1_tvuku"]
 [ext_resource type="TileSet" uid="uid://dljbx2e4l7110" path="res://Scenes/World/World_TileMap.tres" id="2_07qw7"]
-[ext_resource type="Script" path="res://Scenes/World/build_area.gd" id="2_dvjqd"]
 [ext_resource type="PackedScene" uid="uid://dwmhxdnbbb5cd" path="res://Scenes/player/player.tscn" id="3_2ajww"]
 [ext_resource type="PackedScene" uid="uid://k6fwy3h1d6yf" path="res://Scenes/MiniMap/mini_map.tscn" id="5_jtj8c"]
 [ext_resource type="PackedScene" uid="uid://1dbdepmt6rvh" path="res://Scenes/Fog/fog.tscn" id="6_mkpcw"]
@@ -21,15 +20,6 @@
 [node name="world" type="Node2D"]
 position = Vector2(100, 100)
 script = ExtResource("1_tvuku")
-
-[node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(2069, 2515)
-
-[node name="MiniMap" parent="." instance=ExtResource("5_jtj8c")]
-layer = 10
-
-[node name="ParallaxBackground" parent="." instance=ExtResource("6_mkpcw")]
-layer = 10
 
 [node name="TileMaps" type="Node2D" parent="."]
 
@@ -84,18 +74,6 @@ position = Vector2(2650, 2525)
 [node name="Wood_Collectiable3" parent="Collectiables" instance=ExtResource("10_n0oak")]
 position = Vector2(2564, 2498)
 
-[node name="Wood_Collectiable4" parent="Collectiables" instance=ExtResource("10_n0oak")]
-position = Vector2(2596, 2569)
-
-[node name="Wood_Collectiable5" parent="Collectiables" instance=ExtResource("10_n0oak")]
-position = Vector2(2571, 2436)
-
-[node name="Wood_Collectiable6" parent="Collectiables" instance=ExtResource("10_n0oak")]
-position = Vector2(2530, 2560)
-
-[node name="Wood_Collectiable7" parent="Collectiables" instance=ExtResource("10_n0oak")]
-position = Vector2(2661, 2585)
-
 [node name="Enemys" type="Node2D" parent="."]
 
 [node name="Foot Soldier" parent="Enemys" instance=ExtResource("7_qslnd")]
@@ -122,8 +100,7 @@ position = Vector2(1659, 1402)
 process_mode = 3
 physics_interpolation_mode = 1
 auto_translate_mode = 1
-z_index = 1
-position = Vector2(1866, 2543)
+position = Vector2(1276, 3230)
 
 [node name="WayPoints" type="Node2D" parent="."]
 
@@ -139,31 +116,23 @@ position = Vector2(2850, 450)
 [node name="WayPoint2(B)" parent="WayPoints" instance=ExtResource("13_q1lxv")]
 position = Vector2(4750, 15350)
 
-[node name="Audio" type="Node2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("3_2ajww")]
+position = Vector2(4566, 4549)
 
-[node name="AudioStreamPlayer" parent="Audio" instance=ExtResource("14_ows2f")]
-volume_db = -0.5
+[node name="MiniMap" parent="." instance=ExtResource("5_jtj8c")]
+layer = 3
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("6_mkpcw")]
+layer = 3
 
 [node name="BuildArea" type="Area2D" parent="."]
 position = Vector2(1850, 3847)
 scale = Vector2(105, 105)
-script = ExtResource("2_dvjqd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuildArea"]
 shape = SubResource("RectangleShape2D_rnma6")
 
-[node name="ColorRect" type="ColorRect" parent="BuildArea"]
-modulate = Color(0.327251, 0.843711, 3.85046e-07, 0.682353)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -9.85714
-offset_right = 30.0
-offset_bottom = 30.1429
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-mouse_filter = 2
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" parent="Audio" instance=ExtResource("14_ows2f")]
+volume_db = -0.5
