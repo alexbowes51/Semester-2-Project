@@ -223,6 +223,7 @@ shape = SubResource("CircleShape2D_1noru")
 autostart = true
 
 [node name="Merchant_Dialogue" parent="." instance=ExtResource("5_j20uh")]
+z_index = 5
 offset_left = -272.0
 offset_top = -402.0
 offset_right = -232.0

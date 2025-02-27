@@ -17,7 +17,7 @@
 allow_unpress = true
 
 [node name="Build_Ui" type="Control"]
-z_index = 4
+z_index = 5
 texture_filter = 1
 layout_mode = 3
 anchor_right = 0.962
@@ -25,13 +25,13 @@ anchor_bottom = 0.21
 offset_right = 0.599854
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 script = ExtResource("1_lod6p")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 187.0
+mouse_filter = 0
 texture = ExtResource("1_rh6lt")
 patch_margin_left = 1
 patch_margin_top = 1
@@ -39,6 +39,7 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+z_index = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = 60.0
@@ -46,6 +47,7 @@ offset_top = 19.0
 offset_right = 1596.0
 offset_bottom = 70.0
 scale = Vector2(0.724098, 2.88866)
+mouse_filter = 0
 columns = 10
 
 [node name="house" type="TextureButton" parent="NinePatchRect/GridContainer"]

@@ -14,20 +14,20 @@ noise = SubResource("FastNoiseLite_2dcye")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ia0yq"]
 shader = ExtResource("1_ku6m4")
-shader_parameter/density = 0.104
+shader_parameter/density = 0.214
 shader_parameter/speed = Vector2(0.02, 0.01)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_dvg7r")
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
-layer = 2
+layer = 1
 scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-z_index = 2
+z_index = 1
 motion_scale = Vector2(3, 3)
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxLayer"]
-z_index = 2
+z_index = 4
 material = SubResource("ShaderMaterial_ia0yq")
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,3 +41,4 @@ scale = Vector2(3.50005, 2.00719)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 20.0
+mouse_filter = 2

@@ -23,13 +23,12 @@ position = Vector2(100, 100)
 script = ExtResource("1_tvuku")
 
 [node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(2069, 2515)
+position = Vector2(1357, 1762)
 
 [node name="MiniMap" parent="." instance=ExtResource("5_jtj8c")]
-layer = 10
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("6_mkpcw")]
-layer = 10
+layer = 2
 
 [node name="TileMaps" type="Node2D" parent="."]
 

@@ -129,60 +129,60 @@ region = Rect2(3584, 0, 448, 448)
 [sub_resource type="SpriteFrames" id="SpriteFrames_a3ilm"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_dxymc")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_s736p")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_h4gna")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_21wif")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_vyl5j")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_3av2g")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_lbrh3")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_cvvm6")
 }],
 "loop": false,
 "name": &"Foot_E_Attack",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_2kwnf")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_3x7kw")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_4hb63")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_6h4pf")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_mu8sl")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_2ky28")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_uwn0r")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_pcgpv")
 }, {
-"duration": 1.0,
+"duration": 0.7,
 "texture": SubResource("AtlasTexture_lludl")
 }],
 "loop": false,
@@ -248,16 +248,16 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yohbb"]
-radius = 97.0236
+radius = 61.1111
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnpgr"]
 radius = 1012.11
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_m5mq4"]
-radius = 155.556
+[sub_resource type="CircleShape2D" id="CircleShape2D_04qe4"]
+radius = 211.111
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_udkv7"]
-radius = 244.697
+radius = 261.17
 
 [node name="Foot Soldier" type="CharacterBody2D"]
 z_index = 1
@@ -266,21 +266,17 @@ script = ExtResource("1_otqes")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 2
-rotation = -1.5708
 sprite_frames = SubResource("SpriteFrames_a3ilm")
 animation = &"Foot_E_Hurt"
-frame = 3
-frame_progress = 1.0
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 z_index = 1
+position = Vector2(22.2222, -11.1111)
 shape = SubResource("CircleShape2D_yohbb")
 debug_color = Color(0.931, 0, 0.654, 0.114)
 
 [node name="Dectector" type="Area2D" parent="."]
-position = Vector2(5.55556, 0)
-collision_layer = 2
-collision_mask = 2
+position = Vector2(22.2222, -11.1111)
 
 [node name="Search_Area" type="CollisionShape2D" parent="Dectector"]
 z_index = 1
@@ -288,17 +284,20 @@ shape = SubResource("CircleShape2D_wnpgr")
 debug_color = Color(0.750807, 0.458662, 0, 0.124)
 
 [node name="Foot_Attack_Area" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Foot_Attack_Area"]
 z_index = 1
-shape = SubResource("CircleShape2D_m5mq4")
+position = Vector2(22.2222, -11.1111)
+
+[node name="Foot_Attack_Area" type="CollisionShape2D" parent="Foot_Attack_Area"]
+z_index = 1
+position = Vector2(4.76837e-07, 0)
+shape = SubResource("CircleShape2D_04qe4")
 debug_color = Color(0.751291, 0.118527, 0, 0.205)
 
 [node name="Foot_Hit_Area" type="Area2D" parent="."]
+position = Vector2(22.2222, -11.1111)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Foot_Hit_Area"]
+[node name="Foot_Hit_Area" type="CollisionShape2D" parent="Foot_Hit_Area"]
+position = Vector2(-4.76837e-07, 0)
 shape = SubResource("CircleShape2D_udkv7")
 debug_color = Color(0.718269, 0.480954, 0, 0.42)
 
@@ -315,6 +314,8 @@ wait_time = 0.1
 [connection signal="body_entered" from="Foot_Attack_Area" to="." method="_on_foot_hit_box_body_entered"]
 [connection signal="body_exited" from="Foot_Attack_Area" to="." method="_on_foot_attack_area_body_exited"]
 [connection signal="body_exited" from="Foot_Attack_Area" to="." method="_on_foot_hit_box_body_exited"]
+[connection signal="area_shape_entered" from="Foot_Hit_Area" to="." method="_on_foot_hit_area_area_shape_entered"]
+[connection signal="area_shape_exited" from="Foot_Hit_Area" to="." method="_on_foot_hit_area_area_shape_exited"]
 [connection signal="body_entered" from="Foot_Hit_Area" to="." method="_on_foot_hit_area_body_entered"]
 [connection signal="body_exited" from="Foot_Hit_Area" to="." method="_on_foot_hit_area_body_exited"]
 [connection signal="timeout" from="Attack_cooldown_False" to="." method="_on_attack_cooldown_timeout"]

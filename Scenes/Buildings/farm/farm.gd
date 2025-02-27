@@ -21,16 +21,22 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+		if WorldManager.Build_mode != true && !place:
+			self.queue_free()
+		
+		if WorldManager.building != "farm" && !place:
+			self.queue_free()
+			
+
+func _input(event):
 	if WorldManager.Build_mode && !place:
 		move_position_mouse()
 	
-		if Input.is_action_just_released("build") && can_build:
+		if Input.is_action_just_pressed("build") && can_build:
+			
 			can_build = false
 			if !place && inv.Has_Items(WOOD_BUNDLE,2) && inv.Has_Items(BOTTLES,2):
 				build()
-				return
-				
-				
 
 func farm():
 	pass
@@ -40,7 +46,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "BuildArea":
 			placed_in_zone = true
 			print("true")
-			
+
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
@@ -57,7 +63,7 @@ func build():
 	place_position = position
 	place = true
 	
-	if !place || !WorldManager.Build_mode:
+	if !place || !WorldManager.Build_mode && placed_in_zone || !placed_in_zone:
 		print("Queue free: Not placed or Build mode off")
 		self.queue_free()
 		return

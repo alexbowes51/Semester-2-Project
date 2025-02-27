@@ -33,6 +33,7 @@ var amount_remove
 
 @onready var inv : Inventory = preload(\"res://Scenes/Inventory/player_Inventory.tres\")
 
+
 func _ready():
 	var heart_container = $Camera2D/UI/HealthBar
 	var MaxHealth = 5
@@ -45,36 +46,21 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	print(str(WorldManager.player_current_attack))
 	
 	if currentHealth > 0:
 		update_hearts()
 		enemy_attack()
 		get_input()
 		move_and_slide()
+		teleporting()
 	else:
 		player_dead()
 		
-	
-	if WorldManager.tp_Wp1_A == \"A\" && WorldManager.Wp1_tp == true:
-		position = WorldManager.Wp1_B
-		WorldManager.Wp1_tp = false
-	
-		
-	if WorldManager.tp_Wp1_A == \"B\" && WorldManager.Wp1_tp == true:
-		position = WorldManager.Wp1_A
-		WorldManager.Wp1_tp = false
-	
-	
-	if WorldManager.tp_Wp2_A == \"A\" && WorldManager.Wp2_tp == true:
-		position = WorldManager.Wp2_B
-		WorldManager.Wp2_tp = false
-		
-		
-	if WorldManager.tp_Wp2_A == \"B\" && WorldManager.Wp2_tp == true:
-		position = WorldManager.Wp2_A
-		WorldManager.Wp2_tp = false
-		
-	 
+
+
+
+
 func get_input():
 	var input_direction = Input.get_vector(\"left\",\"right\",\"up\",\"down\")
 	
@@ -224,6 +210,39 @@ func _on_attack_cooldown_timeout():
 ##idenifior mehod
 func Player():
 	pass
+
+
+func _on_player_hit_box_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.name == \"Foot_Attack_Area\":
+		Player_is_in_attacking_range = true
+		enemy_attack()
+		
+
+
+func _on_player_hit_box_area_exited(area: Area2D) -> void:
+	if area.name == \"Foot_Attack_Area\":
+		Player_is_in_attacking_range = false
+		
+
+func teleporting():
+		if WorldManager.tp_Wp1_A == \"A\" && WorldManager.Wp1_tp == true:
+			position = WorldManager.Wp1_B
+			WorldManager.Wp1_tp = false
+	
+		
+		if WorldManager.tp_Wp1_A == \"B\" && WorldManager.Wp1_tp == true:
+			position = WorldManager.Wp1_A
+			WorldManager.Wp1_tp = false
+	
+	
+		if WorldManager.tp_Wp2_A == \"A\" && WorldManager.Wp2_tp == true:
+			position = WorldManager.Wp2_B
+			WorldManager.Wp2_tp = false
+		
+		
+		if WorldManager.tp_Wp2_A == \"B\" && WorldManager.Wp2_tp == true:
+			position = WorldManager.Wp2_A
+			WorldManager.Wp2_tp = false
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8uuud"]
@@ -405,22 +424,22 @@ region = Rect2(4032, 0, 448, 448)
 [sub_resource type="SpriteFrames" id="SpriteFrames_y3ys1"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_8uuud")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_pr8jk")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_7qcmq")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_bfmtt")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_c8hy6")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_tf061")
 }],
 "loop": false,
@@ -537,34 +556,34 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_cry06")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_836iu")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_hbmye")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_6iruf")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_hlvhv")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_5167b")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_2y55p")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_cktvs")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_ns41q")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_obgis")
 }],
 "loop": false,
@@ -580,21 +599,19 @@ radius = 20.0
 height = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_refgx"]
-radius = 33.0
+radius = 37.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 texture_filter = 1
-collision_layer = 3
 script = SubResource("GDScript_pbkry")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(-2.98023e-08, 5.96046e-08)
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_y3ys1")
-animation = &"Player_Attack"
-frame = 5
-frame_progress = 1.0
+animation = &"Player_Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.96046e-08)
@@ -603,15 +620,18 @@ shape = SubResource("CircleShape2D_mlxic")
 debug_color = Color(1, 1, 1, 0)
 
 [node name="Player_HitBox" type="Area2D" parent="."]
+z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_HitBox"]
 z_index = 1
 shape = SubResource("CapsuleShape2D_rdfm3")
 debug_color = Color(0.984314, 0, 0.34902, 0.513726)
 
-[node name="Attack_HitBox" type="Area2D" parent="."]
+[node name="Player_Attack_HitBox" type="Area2D" parent="."]
+z_index = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_HitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Attack_HitBox"]
+z_index = 1
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_refgx")
 debug_color = Color(0.681852, 0.502586, 0.0146951, 0.42)
@@ -635,7 +655,7 @@ rotation_smoothing_enabled = true
 [node name="UI" type="CanvasLayer" parent="Camera2D"]
 physics_interpolation_mode = 1
 auto_translate_mode = 1
-layer = 4
+layer = 0
 
 [node name="HealthBar" type="HBoxContainer" parent="Camera2D/UI"]
 z_index = 4
@@ -644,7 +664,6 @@ offset_top = 32.0
 offset_right = 562.0
 offset_bottom = 72.0
 scale = Vector2(0.519999, 0.480001)
-mouse_filter = 2
 
 [node name="heart" type="TextureRect" parent="Camera2D/UI/HealthBar"]
 custom_minimum_size = Vector2(100, 0)
@@ -689,6 +708,7 @@ offset_bottom = 712.0
 scale = Vector2(0.795853, 0.898798)
 
 [node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
+z_index = 5
 offset_left = 869.0
 offset_top = 261.0
 offset_right = 869.0
@@ -696,9 +716,11 @@ offset_bottom = 261.0
 scale = Vector2(1.59725, 1.49505)
 localize_numeral_system = false
 
+[connection signal="area_exited" from="Player_HitBox" to="." method="_on_player_hit_box_area_exited"]
+[connection signal="area_shape_entered" from="Player_HitBox" to="." method="_on_player_hit_box_area_shape_entered"]
 [connection signal="body_entered" from="Player_HitBox" to="." method="_on_player_hit_box_body_entered"]
 [connection signal="body_exited" from="Player_HitBox" to="." method="_on_player_hit_box_body_exited"]
-[connection signal="body_entered" from="Attack_HitBox" to="." method="_on_attack_hit_box_body_entered"]
-[connection signal="body_exited" from="Attack_HitBox" to="." method="_on_attack_hit_box_body_exited"]
+[connection signal="body_entered" from="Player_Attack_HitBox" to="." method="_on_attack_hit_box_body_entered"]
+[connection signal="body_exited" from="Player_Attack_HitBox" to="." method="_on_attack_hit_box_body_exited"]
 [connection signal="timeout" from="Damage_cooldown" to="." method="_on_damage_cooldown_timeout"]
 [connection signal="timeout" from="Attack_Cooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -21,8 +21,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-				
+		if WorldManager.Build_mode != true && !place:
+			self.queue_free()
+			
+		if WorldManager.building != "house" && !place:
+			self.queue_free()
 
 func _input(event):
 	if WorldManager.Build_mode && !place:
@@ -33,7 +36,6 @@ func _input(event):
 			can_build = false
 			if !place && inv.Has_Items(WOOD_BUNDLE,2) && inv.Has_Items(BOTTLES,2):
 				build()
-				return
 
 func house():
 	pass
