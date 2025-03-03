@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://cock7nvcnmq6e"]
+[gd_scene load_steps=36 format=3 uid="uid://cock7nvcnmq6e"]
 
 [ext_resource type="Script" path="res://Scenes/enemys/Cross_Bow_Soldier/cross_bow_soldier.gd" id="1_iog6a"]
 [ext_resource type="Texture2D" uid="uid://dqai7qlvxeu2c" path="res://Art/Enemies/Crossbowman/Attack/CrossBowMan Attack-Sheet.png" id="2_2hoqh"]
+[ext_resource type="PackedScene" uid="uid://ew71k15wafgy" path="res://Scenes/enemys/Ammo/arrow.tscn" id="2_42b2p"]
 [ext_resource type="Texture2D" uid="uid://ggdwvjgtyubh" path="res://Art/Enemies/Crossbowman/Death (No Gore)/CrossBowMan Death No Gore-Sheet.png" id="3_xg74o"]
 [ext_resource type="Texture2D" uid="uid://by4q7vqa6pyxh" path="res://Art/Enemies/Crossbowman/CrossBowMan.png" id="4_gudm3"]
 [ext_resource type="Texture2D" uid="uid://dtt5imggmueji" path="res://Art/Enemies/Crossbowman/Walk/CrossBowman Walk-Sheet.png" id="5_epnt2"]
@@ -221,9 +222,18 @@ radius = 121.696
 radius = 1316.92
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 1
+scale = Vector2(0.18, 0.18)
 script = ExtResource("1_iog6a")
+ammo = ExtResource("2_42b2p")
+
+[node name="Spawn_arrow" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(-88.8889, 122.222)
+scale = Vector2(1, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_mmjok")
 animation = &"idle"
 
@@ -237,3 +247,12 @@ debug_color = Color(0.969041, 0, 0.463952, 0.42)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_24c5g")
 debug_color = Color(0.591294, 0.547286, 0, 0.42)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Fire_Timer" type="Timer" parent="."]
+wait_time = 1.2
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Fire_Timer" to="." method="_on_fire_timer_timeout"]

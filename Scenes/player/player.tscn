@@ -29,7 +29,7 @@ var enemy_is_in_attacking_range = false
 var attack_damage_cool_down = true
 
 var attack = false
-var amount_remove
+
 
 @onready var inv : Inventory = preload(\"res://Scenes/Inventory/player_Inventory.tres\")
 
@@ -37,7 +37,7 @@ var amount_remove
 func _ready():
 	var heart_container = $Camera2D/UI/HealthBar
 	var MaxHealth = 5
-	
+
 	
 	for heart in heart_container.get_children():
 		heart_list.append(heart)
@@ -729,7 +729,7 @@ scale = Vector2(1.59725, 1.49505)
 localize_numeral_system = false
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 2.0
+energy = 3.0
 texture = SubResource("GradientTexture2D_02i48")
 
 [connection signal="area_exited" from="Player_HitBox" to="." method="_on_player_hit_box_area_exited"]
