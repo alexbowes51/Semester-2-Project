@@ -20,7 +20,7 @@ func _process(delta):
 		WorldManager.Merchant_follow_player = true 
 		$"NinePatchRect/TextureButton/Follow Text".visible = false
 		$"NinePatchRect/TextureButton/unFollow Text".visible = true
-	else:
+	elif $NinePatchRect/TextureButton.button_pressed && WorldManager.Merchant_follow_player:
 		WorldManager.Merchant_follow_player = false
 		$"NinePatchRect/TextureButton/Follow Text".visible = true
 		$"NinePatchRect/TextureButton/unFollow Text".visible = false

@@ -1,6 +1,7 @@
 extends Node2D
 
 
+
 var player 
 var minimap 
 
@@ -8,6 +9,12 @@ var minimap
 var farm_scene = preload("res://Scenes/Buildings/farm/farm.tscn")
 var house_scene = preload("res://Scenes/Buildings/house 1/house.tscn")
 
+
+@onready var day_night_cycle: Day_Night_Manager = $"DAY+NIGHT CYCLE"
+@onready var time_label: Label = $MiniMap/Time_Label
+
+
+@export var enable_cycle: bool = true
 
 #tilemap variables
 var building = "None"
@@ -44,8 +51,21 @@ func _ready():
 	
 	if player:
 		minimap.player_node = player
-		
+	
+	if enable_cycle:
+		_setup_cycle()
+	else:
+		Day_Night_Manager.visible = false
+		Day_Night_Manager.process_mode = Node.PROCESS_MODE_DISABLED
 
+
+func _setup_cycle() -> void:
+	if day_night_cycle:
+		day_night_cycle.time_change.connect(change_time)
+	
+func change_time(hour: float, time_string: String) -> void:
+	if time_label:
+		time_label.text = time_string
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

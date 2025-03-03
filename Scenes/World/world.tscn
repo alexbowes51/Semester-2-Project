@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://dj5o80gxakvda"]
+[gd_scene load_steps=18 format=4 uid="uid://dj5o80gxakvda"]
 
 [ext_resource type="Script" path="res://Scenes/World/world_manager.gd" id="1_tvuku"]
 [ext_resource type="TileSet" uid="uid://dljbx2e4l7110" path="res://Scenes/World/World_TileMap.tres" id="2_07qw7"]
 [ext_resource type="Script" path="res://Scenes/World/build_area.gd" id="2_dvjqd"]
 [ext_resource type="PackedScene" uid="uid://dwmhxdnbbb5cd" path="res://Scenes/player/player.tscn" id="3_2ajww"]
 [ext_resource type="PackedScene" uid="uid://k6fwy3h1d6yf" path="res://Scenes/MiniMap/mini_map.tscn" id="5_jtj8c"]
+[ext_resource type="PackedScene" uid="uid://bntq5pscl63ve" path="res://Scenes/World/day+night/day+night_cycle.tscn" id="6_e4wto"]
 [ext_resource type="PackedScene" uid="uid://1dbdepmt6rvh" path="res://Scenes/Fog/fog.tscn" id="6_mkpcw"]
 [ext_resource type="PackedScene" uid="uid://618x4cs781ri" path="res://Scenes/enemys/Foot_Soldier/Foot_Soldier.tscn" id="7_qslnd"]
 [ext_resource type="PackedScene" uid="uid://dh0vvoscc6m0b" path="res://Scenes/Item/Bottle/bottle_collectable.tscn" id="8_11bxk"]
@@ -22,10 +23,21 @@
 position = Vector2(100, 100)
 script = ExtResource("1_tvuku")
 
+[node name="DAY+NIGHT CYCLE" parent="." instance=ExtResource("6_e4wto")]
+
 [node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(1357, 1762)
+z_index = 2
+position = Vector2(448, 426)
 
 [node name="MiniMap" parent="." instance=ExtResource("5_jtj8c")]
+layer = 1
+
+[node name="Time_Label" type="Label" parent="MiniMap"]
+z_index = 1
+offset_left = 1082.0
+offset_top = 228.0
+offset_right = 1182.0
+offset_bottom = 268.0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("6_mkpcw")]
 layer = 2

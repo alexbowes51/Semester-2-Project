@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=59 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://dw4t3tbcow8qq" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -601,6 +601,18 @@ height = 40.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_refgx"]
 radius = 37.0
 
+[sub_resource type="Gradient" id="Gradient_5f0ot"]
+offsets = PackedFloat32Array(0.00591716, 1)
+colors = PackedColorArray(1, 0.6, 0.2, 1, 1, 0.6, 0.2, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_02i48"]
+gradient = SubResource("Gradient_5f0ot")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.1)
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 texture_filter = 1
@@ -715,6 +727,10 @@ offset_right = 869.0
 offset_bottom = 261.0
 scale = Vector2(1.59725, 1.49505)
 localize_numeral_system = false
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.0
+texture = SubResource("GradientTexture2D_02i48")
 
 [connection signal="area_exited" from="Player_HitBox" to="." method="_on_player_hit_box_area_exited"]
 [connection signal="area_shape_entered" from="Player_HitBox" to="." method="_on_player_hit_box_area_shape_entered"]
