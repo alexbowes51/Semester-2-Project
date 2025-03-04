@@ -11,30 +11,25 @@ radius = 2.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = 1
-position = Vector2(1, 2)
 script = ExtResource("1_sou5a")
 
-[node name="arrow_hit_bow_enemy" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 z_index = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="arrow_hit_bow_enemy"]
-position = Vector2(0, 16)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_i27ak")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(1, 18)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_2pvfo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(0, 29)
+position = Vector2(-1, 12)
 shape = SubResource("CircleShape2D_otcl3")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(1, 25)
 
-[connection signal="area_shape_entered" from="arrow_hit_bow_enemy" to="." method="_on_arrow_hit_bow_enemy_area_shape_entered"]
-[connection signal="body_entered" from="arrow_hit_bow_enemy" to="arrow_hit_bow_enemy" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

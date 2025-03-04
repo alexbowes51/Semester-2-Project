@@ -216,21 +216,16 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3j8c"]
-radius = 121.696
+radius = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_24c5g"]
 radius = 1316.92
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Cross_Bow_Soldier" type="CharacterBody2D"]
 z_index = 1
 scale = Vector2(0.18, 0.18)
 script = ExtResource("1_iog6a")
 ammo = ExtResource("2_42b2p")
-
-[node name="Spawn_arrow" type="Node2D" parent="."]
-z_index = 1
-position = Vector2(-88.8889, 122.222)
-scale = Vector2(1, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var spawn_arrow: Node2D = $Spawn_arrow
+
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var fire_timer: Timer = $Fire_Timer
@@ -21,7 +21,8 @@ func aim():
 	if player != null:
 		ray_cast_2d.target_position = to_global(player.position)
 		look_at(player.get_global_position())
-		spawn_arrow.position = (player.global_position - position).normalized()
+		global_rotation_degrees += -90
+		
 	
 	
 
@@ -39,6 +40,7 @@ func Cross_Bow_Soldier():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("Player"):
 		player = body
+		
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("Player"):
@@ -51,11 +53,14 @@ func _on_fire_timer_timeout() -> void:
 	
 	
 func shoot():
-	if player != null && spawn_arrow != null :
+	if player != null:
 		var bullet = ammo.instantiate()
 		get_parent().get_parent().add_child(bullet)
-		bullet.position = spawn_arrow.global_position
-		bullet.direction = (player.global_position - position).normalized()
+		bullet.position = position
+		var shooting_dir = (player.global_position - global_position).normalized()
+		bullet.set_direction(shooting_dir)
+		bullet.global_rotation -= 140
+	
 
 	
 	
