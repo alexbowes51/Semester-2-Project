@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/World/day+night/day+night_cycle.gd" id="1_envw0"]
 
 [node name="DAY+NIGHT CYCLE" type="Node2D"]
+z_index = 1
 script = ExtResource("1_envw0")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+z_index = 1

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://83dimkt458gc"]
+
+[sub_resource type="Curve" id="Curve_bk20t"]
+_data = [Vector2(0.0110497, 0.986051), 0.0, 0.0, 0, 0, Vector2(1, 0.00268245), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8reiu"]
+colors = PackedColorArray(0.392157, 1, 0.627451, 1, 1.63645e-06, 0.808187, 1.54018e-06, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_sphere_radius = 6.2
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_bk20t")
+color_ramp = SubResource("Gradient_8reiu")
+hue_variation_min = 1.0
+hue_variation_max = 1.0

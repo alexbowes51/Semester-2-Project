@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjq3gvbk6ho5o"]
+[gd_scene load_steps=6 format=3 uid="uid://bjq3gvbk6ho5o"]
 
 [ext_resource type="Script" path="res://Scenes/Item/Rubber/rubber_collectable.gd" id="1_1y8k5"]
 [ext_resource type="Resource" uid="uid://bvg885cvceqlc" path="res://Scenes/Item/Rubber/Rubber.tres" id="2_8cm50"]
 [ext_resource type="Texture2D" uid="uid://bvbrprqlxwjhy" path="res://Art/Items/Rubber.png" id="2_81r5b"]
+[ext_resource type="PackedScene" uid="uid://83dimkt458gc" path="res://VFX/collection_expolsion/collision_explosion.tscn" id="4_2faqh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iv5cl"]
 radius = 22.8035
@@ -19,5 +20,7 @@ texture = ExtResource("2_81r5b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable_area"]
 shape = SubResource("CircleShape2D_iv5cl")
+
+[node name="CollisionExplosion" parent="." instance=ExtResource("4_2faqh")]
 
 [connection signal="body_entered" from="Interactable_area" to="." method="_on_interactable_area_body_entered"]

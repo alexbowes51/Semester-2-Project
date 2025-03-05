@@ -6,4 +6,3 @@
 stream = ExtResource("1_5gbdr")
 volume_db = -10.0
 pitch_scale = 0.5
-autoplay = true

@@ -1,10 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://cidva77gd3bbc"]
+[gd_scene load_steps=32 format=3 uid="uid://cidva77gd3bbc"]
 
 [ext_resource type="Script" path="res://Scenes/Npc/Merchant/Merchant.gd" id="1_8mkry"]
 [ext_resource type="Texture2D" uid="uid://cs4jpvs4s2flw" path="res://Art/NPC/Merchant/Interact/Merchant Interact-Sheet.png" id="2_g3xt0"]
 [ext_resource type="Texture2D" uid="uid://dagws484per3p" path="res://Art/NPC/Merchant/Movement/Merchant Movement-Sheet.png" id="3_raaum"]
 [ext_resource type="Texture2D" uid="uid://cgkovm7pepx6m" path="res://Art/NPC/Merchant/Idle/Merchant Idle.png" id="4_d5tpu"]
-[ext_resource type="PackedScene" uid="uid://b3fek1gdhc7aw" path="res://Dialogue/Merchant_Dialogue/merchant_dialogue.tscn" id="5_j20uh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6q6v1"]
 atlas = ExtResource("2_g3xt0")
@@ -199,6 +198,7 @@ radius = 24.0416
 radius = 85.2115
 
 [node name="Merchant_NPC" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_8mkry")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -211,26 +211,20 @@ frame = 13
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
 shape = SubResource("CircleShape2D_omd7v")
 debug_color = Color(1, 1, 1, 0.42)
 
 [node name="Interact_Area" type="Area2D" parent="."]
+z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interact_Area"]
+z_index = 1
 shape = SubResource("CircleShape2D_1noru")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="Merchant_Dialogue" parent="." instance=ExtResource("5_j20uh")]
-z_index = 5
-offset_left = -272.0
-offset_top = -402.0
-offset_right = -232.0
-offset_bottom = -362.0
-scale = Vector2(4.84749, 4.52)
-
 [connection signal="body_entered" from="Interact_Area" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Interact_Area" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="end_dialogue" from="Merchant_Dialogue" to="." method="_on_merchant_dialogue_end_dialogue"]

@@ -2,9 +2,11 @@ extends CharacterBody2D
 
 var active = false
 var in_interact_zone = false
+@onready var control: Control = $Control
 
 func _ready():
-	pass
+	if control:
+		control.visible = false
 
 func _set_active():
 	pass
@@ -25,6 +27,9 @@ func _process(delta):
 func _on_interact_body_entered(body):
 	if body.has_method("Player"):
 		in_interact_zone = true
+		$AnimatedSprite2D.play("Active")
+		if control:
+			control.visible = true
 
 
 func _on_interact_body_exited(body):
@@ -32,6 +37,8 @@ func _on_interact_body_exited(body):
 		in_interact_zone = false
 		active = false 
 		$AnimatedSprite2D.play("Not_Active")
+		if control:
+			control.visible = false
 
 
 

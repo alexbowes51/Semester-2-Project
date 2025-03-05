@@ -1,0 +1,758 @@
+[gd_scene load_steps=60 format=3 uid="uid://dwmhxdnbbb5cd"]
+
+[ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
+[ext_resource type="Texture2D" uid="uid://dw4t3tbcow8qq" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
+[ext_resource type="PackedScene" uid="uid://cv24ug4cywu32" path="res://Scenes/Inventory/inventory_ui.tscn" id="3_jvthm"]
+[ext_resource type="Texture2D" uid="uid://dwvvykkm0efg0" path="res://Art/Player/No Weapons/Player Character No Weapons/Death No Gore/Player Charachter death no gore-Sheet.png" id="4_3c6km"]
+[ext_resource type="Texture2D" uid="uid://kppxu5udltos" path="res://Art/UI/Hearts/Heart.png" id="4_n7t0m"]
+[ext_resource type="Texture2D" uid="uid://myot25jbrsyy" path="res://Art/Player/No Weapons/Player Character No Weapons/Walk/Player Walk-Sheet.png" id="6_agh1c"]
+[ext_resource type="PackedScene" uid="uid://dqed0ghaw8nlo" path="res://Scenes/Building/build_ui.tscn" id="7_olynr"]
+[ext_resource type="PackedScene" uid="uid://b3fek1gdhc7aw" path="res://Dialogue/Merchant_Dialogue/merchant_dialogue.tscn" id="8_dy8ic"]
+
+[sub_resource type="GDScript" id="GDScript_pbkry"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 400.0
+const JUMP_VELOCITY = -400.0
+
+##health varibales
+var heart_list : Array[TextureRect]
+var currentHealth: int = 5
+var MaxHealth: int 
+var player_alive = true
+var death = false
+
+##attacking varibales
+var Player_is_in_attacking_range = false
+var enemy_is_in_attacking_range = false
+
+var attack_damage_cool_down = true
+
+var attack = false
+
+
+@onready var inv : Inventory = preload(\"res://Scenes/Inventory/player_Inventory.tres\")
+@onready var merchant_dialogue: Control = $Merchant_Dialogue
+
+
+func _ready():
+	var heart_container = $Camera2D/UI/HealthBar
+	var MaxHealth = 5
+
+	
+	for heart in heart_container.get_children():
+		heart_list.append(heart)
+	print(heart_list)
+
+func _physics_process(delta: float) -> void:
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	print(str(WorldManager.player_current_attack))
+	
+	if currentHealth > 0:
+		update_hearts()
+		enemy_attack()
+		get_input()
+		move_and_slide()
+		teleporting()
+	else:
+		player_dead()
+		
+
+
+
+
+func get_input():
+	
+#	if WorldManager.player_talking_Merchant == true && merchant_dialogue:
+		
+		
+	
+	var input_direction = Input.get_vector(\"left\",\"right\",\"up\",\"down\")
+	
+	if Input.is_action_pressed(\"attack\"):
+				WorldManager.player_current_attack = true
+				attack = true
+				$AnimatedSprite2D.play(\"Player_Attack\")
+				$Attack_Cooldown.start()
+				
+	
+	if Input.is_action_pressed(\"left\"):
+		rotation = deg_to_rad(-270)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"right\"):
+		rotation = deg_to_rad(-90)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"up\"):
+		rotation = deg_to_rad(-180)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"down\"):
+		rotation = deg_to_rad(-360)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"left\") && Input.is_action_pressed(\"up\"):
+		rotation = deg_to_rad(-225)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"right\") && Input.is_action_pressed(\"up\"):
+		rotation = deg_to_rad(-135)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"left\") && Input.is_action_pressed(\"down\"):
+		rotation = deg_to_rad(-315)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+		if Input.is_action_pressed(\"attack\"):
+			WorldManager.player_current_attack = true
+			attack = true
+			$AnimatedSprite2D.play(\"Player_Attack\")
+			$Attack_Cooldown.start()
+	
+	if Input.is_action_pressed(\"right\") && Input.is_action_pressed(\"down\"):
+		rotation = deg_to_rad(-405)
+		$AnimatedSprite2D.play(\"Player_Walk\")
+	
+	velocity = input_direction * SPEED
+
+
+func collect(item):
+	inv.insert(item)
+	print(str(item.name))
+	
+
+func take_damage():
+	if currentHealth > 0:
+		currentHealth -= 1
+		update_hearts()
+
+func update_hearts():
+	for i in range(heart_list.size()):
+		heart_list[i].visible = i < currentHealth 
+
+func Heal_damage():
+	if currentHealth < MaxHealth:
+		currentHealth += 1
+
+func upgrade_player():
+	pass
+
+func player_dead():
+	currentHealth = 0
+	player_alive = false
+	if death:
+		$AnimatedSprite2D.play(\"Player_Death\")
+
+func _on_attack_hit_box_body_entered(body):
+	if body.has_method(\"Foot_Soldier\"):
+			enemy_is_in_attacking_range = true
+			
+
+func _on_attack_hit_box_body_exited(body):
+	if body.has_method(\"Foot_Soldier\") && body.has_method(\"enemy_arrow\"):
+			enemy_is_in_attacking_range = false
+
+func _on_player_hit_box_body_entered(body):
+	if body.has_method(\"Foot_Soldier\") && body.has_method(\"enemy_arrow\"):
+		Player_is_in_attacking_range = true
+		
+
+func _on_player_hit_box_body_exited(body):
+	if body.has_method(\"Foot_Soldier\"):
+		Player_is_in_attacking_range = false
+		
+
+func enemy_attack():
+	if Player_is_in_attacking_range and attack_damage_cool_down == true:
+		take_damage()
+		
+		if player_alive:
+			$AnimatedSprite2D.play(\"Player_Hurt\")
+			
+		attack_damage_cool_down = false
+		$Damage_cooldown.start()
+		
+
+func _on_damage_cooldown_timeout():
+	attack_damage_cool_down = true
+	
+	
+
+func _on_attack_cooldown_timeout():
+	WorldManager.player_current_attack = false
+	attack = false
+
+##idenifior mehod
+func Player():
+	pass
+
+
+func _on_player_hit_box_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.name == \"Foot_Attack_Area\":
+		Player_is_in_attacking_range = true
+		enemy_attack()
+	if area.name == \"arrow_hit_bow_enemy\":
+		Player_is_in_attacking_range = true
+		enemy_attack()
+
+
+func _on_player_hit_box_area_exited(area: Area2D) -> void:
+	if area.name == \"Foot_Attack_Area\":
+		Player_is_in_attacking_range = false
+		
+
+func teleporting():
+		if WorldManager.tp_Wp1_A == \"A\" && WorldManager.Wp1_tp == true:
+			position = WorldManager.Wp1_B
+			WorldManager.Wp1_tp = false
+	
+		
+		if WorldManager.tp_Wp1_A == \"B\" && WorldManager.Wp1_tp == true:
+			position = WorldManager.Wp1_A
+			WorldManager.Wp1_tp = false
+	
+	
+		if WorldManager.tp_Wp2_A == \"A\" && WorldManager.Wp2_tp == true:
+			position = WorldManager.Wp2_B
+			WorldManager.Wp2_tp = false
+		
+		
+		if WorldManager.tp_Wp2_A == \"B\" && WorldManager.Wp2_tp == true:
+			position = WorldManager.Wp2_A
+			WorldManager.Wp2_tp = false
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uuud"]
+atlas = ExtResource("3_0i4q8")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr8jk"]
+atlas = ExtResource("3_0i4q8")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qcmq"]
+atlas = ExtResource("3_0i4q8")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfmtt"]
+atlas = ExtResource("3_0i4q8")
+region = Rect2(1344, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8hy6"]
+atlas = ExtResource("3_0i4q8")
+region = Rect2(1792, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf061"]
+atlas = ExtResource("3_0i4q8")
+region = Rect2(2240, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udw8k"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(0, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbavq"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(448, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr4ln"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(896, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wdw5"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(1344, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoabi"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(1792, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obex1"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(2240, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a8uu"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(2688, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndhxq"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(3136, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_810ma"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(3584, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmq7p"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(4032, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntlk4"]
+atlas = ExtResource("3_jrwhl")
+region = Rect2(4480, 0, 448, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va61d"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(4480, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wfgk"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtghl"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm5pp"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m47ly"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(1344, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cmjx"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(1792, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkgxw"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(2240, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uloyf"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(2688, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1711"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(3136, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tunnj"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(3584, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bin4d"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(4032, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fka1p"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(4480, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlk0f"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(2240, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h8pc"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(2688, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oaxl"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(3136, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxuft"]
+atlas = ExtResource("4_3c6km")
+region = Rect2(3584, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3ke4"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cry06"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_836iu"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbmye"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iruf"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(1344, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlvhv"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(1792, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5167b"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(2240, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y55p"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(2688, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cktvs"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(3136, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns41q"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(3584, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obgis"]
+atlas = ExtResource("6_agh1c")
+region = Rect2(4032, 0, 448, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y3ys1"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_8uuud")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_pr8jk")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_7qcmq")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_bfmtt")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_c8hy6")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_tf061")
+}],
+"loop": false,
+"name": &"Player_Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udw8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbavq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr4ln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wdw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoabi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obex1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a8uu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndhxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_810ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmq7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntlk4")
+}],
+"loop": false,
+"name": &"Player_Dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va61d")
+}],
+"loop": false,
+"name": &"Player_Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wfgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtghl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm5pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m47ly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cmjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkgxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uloyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1711")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tunnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bin4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fka1p")
+}],
+"loop": false,
+"name": &"Player_Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlk0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h8pc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oaxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxuft")
+}],
+"loop": false,
+"name": &"Player_Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3ke4")
+}],
+"loop": false,
+"name": &"Player_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_cry06")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_836iu")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_hbmye")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_6iruf")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_hlvhv")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_5167b")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_2y55p")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_cktvs")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_ns41q")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_obgis")
+}],
+"loop": false,
+"name": &"Player_Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mlxic"]
+radius = 29.6875
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdfm3"]
+radius = 20.0
+height = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_refgx"]
+radius = 37.0
+
+[sub_resource type="Gradient" id="Gradient_5f0ot"]
+offsets = PackedFloat32Array(0.00591716, 1)
+colors = PackedColorArray(1, 0.6, 0.2, 1, 1, 0.6, 0.2, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_02i48"]
+gradient = SubResource("Gradient_5f0ot")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.1)
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+texture_filter = 1
+script = SubResource("GDScript_pbkry")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-2.98023e-08, 5.96046e-08)
+scale = Vector2(0.18, 0.18)
+sprite_frames = SubResource("SpriteFrames_y3ys1")
+animation = &"Player_Walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.96046e-08)
+scale = Vector2(0.64, 0.56)
+shape = SubResource("CircleShape2D_mlxic")
+debug_color = Color(1, 1, 1, 0)
+
+[node name="Player_HitBox" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_HitBox"]
+z_index = 1
+shape = SubResource("CapsuleShape2D_rdfm3")
+debug_color = Color(0.984314, 0, 0.34902, 0.513726)
+
+[node name="Player_Attack_HitBox" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Attack_HitBox"]
+z_index = 1
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_refgx")
+debug_color = Color(0.681852, 0.502586, 0.0146951, 0.42)
+
+[node name="Damage_cooldown" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Attack_Cooldown" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+texture_filter = 1
+zoom = Vector2(1.5, 1.5)
+limit_left = 100
+limit_top = 100
+limit_right = 32500
+limit_bottom = 19600
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="UI" type="CanvasLayer" parent="Camera2D"]
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+layer = 0
+
+[node name="HealthBar" type="HBoxContainer" parent="Camera2D/UI"]
+z_index = 4
+offset_left = 46.0
+offset_top = 32.0
+offset_right = 562.0
+offset_bottom = 72.0
+scale = Vector2(0.519999, 0.480001)
+
+[node name="heart" type="TextureRect" parent="Camera2D/UI/HealthBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="Camera2D/UI/HealthBar/heart"]
+texture = ExtResource("4_n7t0m")
+
+[node name="heart2" type="TextureRect" parent="Camera2D/UI/HealthBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="Camera2D/UI/HealthBar/heart2"]
+texture = ExtResource("4_n7t0m")
+
+[node name="heart3" type="TextureRect" parent="Camera2D/UI/HealthBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="Camera2D/UI/HealthBar/heart3"]
+texture = ExtResource("4_n7t0m")
+
+[node name="heart4" type="TextureRect" parent="Camera2D/UI/HealthBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="Camera2D/UI/HealthBar/heart4"]
+texture = ExtResource("4_n7t0m")
+
+[node name="heart5" type="TextureRect" parent="Camera2D/UI/HealthBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="Camera2D/UI/HealthBar/heart5"]
+texture = ExtResource("4_n7t0m")
+
+[node name="Build_Ui" parent="Camera2D/UI" instance=ExtResource("7_olynr")]
+offset_left = 109.0
+offset_top = 712.0
+offset_right = 109.0
+offset_bottom = 712.0
+scale = Vector2(0.795853, 0.898798)
+
+[node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
+z_index = 5
+offset_left = 869.0
+offset_top = 261.0
+offset_right = 869.0
+offset_bottom = 261.0
+scale = Vector2(1.59725, 1.49505)
+localize_numeral_system = false
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 3.0
+texture = SubResource("GradientTexture2D_02i48")
+
+[node name="Merchant_Dialogue" parent="." instance=ExtResource("8_dy8ic")]
+offset_left = 406.0
+offset_top = 497.0
+offset_right = 446.0
+offset_bottom = 537.0
+scale = Vector2(2.92, 2.44)
+
+[connection signal="area_exited" from="Player_HitBox" to="." method="_on_player_hit_box_area_exited"]
+[connection signal="area_shape_entered" from="Player_HitBox" to="." method="_on_player_hit_box_area_shape_entered"]
+[connection signal="body_entered" from="Player_HitBox" to="." method="_on_player_hit_box_body_entered"]
+[connection signal="body_exited" from="Player_HitBox" to="." method="_on_player_hit_box_body_exited"]
+[connection signal="body_entered" from="Player_Attack_HitBox" to="." method="_on_attack_hit_box_body_entered"]
+[connection signal="body_exited" from="Player_Attack_HitBox" to="." method="_on_attack_hit_box_body_exited"]
+[connection signal="timeout" from="Damage_cooldown" to="." method="_on_damage_cooldown_timeout"]
+[connection signal="timeout" from="Attack_Cooldown" to="." method="_on_attack_cooldown_timeout"]

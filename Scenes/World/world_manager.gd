@@ -23,6 +23,7 @@ var building = "None"
 var player_current_attack = false
 var Build_mode = false
 
+#teleport variables
 var tp_Wp1_A = "A"
 var tp_Wp2_A = "A"
 
@@ -34,17 +35,15 @@ var Wp1_B = Vector2(16950,3670)
 
 var Wp2_A = Vector2(2850,470)
 var Wp2_B = Vector2(4750,15370)
-var Amount_MIN_1
-var Amount_MIN_2
 
-
-#npc follow 
+#npc varibales 
 var Merchant_follow_player = false
+var player_talking_Merchant = false
+var merchant_dia_end = false
 
-#building/crafting material
 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	minimap = $MiniMap
 	player = $Player

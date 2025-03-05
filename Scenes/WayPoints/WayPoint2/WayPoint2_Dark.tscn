@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4giqpf6ir3tc"]
+[gd_scene load_steps=8 format=3 uid="uid://c4giqpf6ir3tc"]
 
 [ext_resource type="Texture2D" uid="uid://d2d44oicoml0v" path="res://Art/Tile_map/WayPoint2(DA).png" id="1_0846b"]
 [ext_resource type="Script" path="res://Scenes/WayPoints/WayPoint2/way_point_2.gd" id="1_rpwjv"]
 [ext_resource type="Texture2D" uid="uid://du42gh4vfydvq" path="res://Art/Tile_map/WayPoint2(DD).png" id="2_bul0b"]
+[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="4_tvw8c"]
+[ext_resource type="Texture2D" uid="uid://der7v037nls2s" path="res://Art/UI/E.png" id="6_2rk3p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2st81"]
 animations = [{
@@ -42,6 +44,37 @@ polygon = PackedVector2Array(-37, -29, -27, -32, -13, -33, 24, -33, 37, -32, 45,
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interact"]
 shape = SubResource("CircleShape2D_ug62r")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 0
+offset_left = -54.0
+offset_top = -95.0
+offset_right = 44.0
+offset_bottom = -55.0
+scale = Vector2(1.12, 1)
+texture = ExtResource("4_tvw8c")
+
+[node name="Label" type="Label" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -28.0
+offset_top = -89.0
+offset_right = 40.0
+offset_bottom = -66.0
+theme_override_colors/font_color = Color(0.631682, 0.408503, 9.62615e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Interact"
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+z_index = 1
+position = Vector2(-39, -76)
+texture = ExtResource("6_2rk3p")
 
 [connection signal="body_entered" from="interact" to="." method="_on_interact_body_entered"]
 [connection signal="body_exited" from="interact" to="." method="_on_interact_body_exited"]

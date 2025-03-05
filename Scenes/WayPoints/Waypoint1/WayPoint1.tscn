@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt8u5ca3evu4h"]
+[gd_scene load_steps=9 format=3 uid="uid://bt8u5ca3evu4h"]
 
 [ext_resource type="Script" path="res://Scenes/WayPoints/Waypoint1/WayPoint1.gd" id="1_cvnug"]
 [ext_resource type="Texture2D" uid="uid://cqup48v8mqxiw" path="res://Art/Tile_map/Waypoint1(A).png" id="2_rl7uk"]
 [ext_resource type="Texture2D" uid="uid://d2xd03fvduvji" path="res://Art/Tile_map/WayPoint1(D).png" id="3_j3kd4"]
+[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="4_bfuvn"]
+[ext_resource type="Texture2D" uid="uid://der7v037nls2s" path="res://Art/UI/E.png" id="5_pk6t6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_07p62"]
 animations = [{
@@ -51,6 +53,37 @@ shape = SubResource("CircleShape2D_yo11o")
 position = Vector2(-1, 49)
 shape = SubResource("CircleShape2D_rncyh")
 debug_color = Color(0.983776, 0, 0.349868, 0.42)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 0
+offset_left = -54.0
+offset_top = -95.0
+offset_right = 44.0
+offset_bottom = -55.0
+scale = Vector2(1.12, 1)
+texture = ExtResource("4_bfuvn")
+
+[node name="Label" type="Label" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -29.0
+offset_top = -89.0
+offset_right = 39.0
+offset_bottom = -66.0
+theme_override_colors/font_color = Color(0.631682, 0.408503, 9.62615e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Interact"
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+z_index = 1
+position = Vector2(-39, -76)
+texture = ExtResource("5_pk6t6")
 
 [connection signal="body_entered" from="Interact" to="." method="_on_interact_body_entered"]
 [connection signal="body_exited" from="Interact" to="." method="_on_interact_body_exited"]

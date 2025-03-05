@@ -27,7 +27,7 @@ script = ExtResource("1_tvuku")
 [node name="DAY+NIGHT CYCLE" parent="." instance=ExtResource("6_e4wto")]
 
 [node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(448, 426)
+position = Vector2(1911, 2352)
 
 [node name="MiniMap" parent="." instance=ExtResource("5_jtj8c")]
 layer = 1
@@ -131,12 +131,12 @@ position = Vector2(1659, 1402)
 position = Vector2(928, 250)
 
 [node name="NPC" type="Node2D" parent="."]
+z_index = 1
 
 [node name="Merchant_NPC" parent="NPC" instance=ExtResource("10_d0n30")]
 process_mode = 3
 physics_interpolation_mode = 1
 auto_translate_mode = 1
-z_index = 1
 position = Vector2(1866, 2543)
 
 [node name="WayPoints" type="Node2D" parent="."]
@@ -154,6 +154,7 @@ position = Vector2(2850, 450)
 position = Vector2(4750, 15350)
 
 [node name="Audio" type="Node2D" parent="."]
+visible = false
 
 [node name="AudioStreamPlayer" parent="Audio" instance=ExtResource("14_ows2f")]
 volume_db = -0.5

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=65 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://dw4t3tbcow8qq" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -7,6 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://kppxu5udltos" path="res://Art/UI/Hearts/Heart.png" id="4_n7t0m"]
 [ext_resource type="Texture2D" uid="uid://myot25jbrsyy" path="res://Art/Player/No Weapons/Player Character No Weapons/Walk/Player Walk-Sheet.png" id="6_agh1c"]
 [ext_resource type="PackedScene" uid="uid://dqed0ghaw8nlo" path="res://Scenes/Building/build_ui.tscn" id="7_olynr"]
+[ext_resource type="PackedScene" uid="uid://b3fek1gdhc7aw" path="res://Dialogue/Merchant_Dialogue/merchant_dialogue.tscn" id="8_dy8ic"]
+[ext_resource type="Texture2D" uid="uid://bv4lk3didxw5a" path="res://Art/Items/Wood.png" id="9_gefow"]
+[ext_resource type="AudioStream" uid="uid://bra0hcnd5fcov" path="res://Audio/minecraft-drop-block-sound-effect.L.wav" id="9_mjni5"]
+[ext_resource type="Texture2D" uid="uid://c8baevlp1m26k" path="res://Art/Items/Bottles.png" id="10_khoqc"]
+[ext_resource type="AudioStream" uid="uid://dlldfwfiywgww" path="res://Audio/minecraft-grass-walking-sound-effect.mp3" id="10_yodoo"]
+[ext_resource type="Texture2D" uid="uid://bvbrprqlxwjhy" path="res://Art/Items/Rubber.png" id="11_hnjnx"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
 script/source = "extends CharacterBody2D
@@ -27,16 +33,26 @@ var Player_is_in_attacking_range = false
 var enemy_is_in_attacking_range = false
 
 var attack_damage_cool_down = true
-
 var attack = false
 
 
 @onready var inv : Inventory = preload(\"res://Scenes/Inventory/player_Inventory.tres\")
+@onready var merchant_dialogue: Control = $Camera2D/UI/Merchant_Dialogue
+@onready var audio_stream_player: AudioStreamPlayer = $Pick_Up
+@onready var walking: AudioStreamPlayer = $walking
+@onready var wood_coll: Label = $Camera2D/UI/Wood_Coll
+@onready var bottles_coll_2: Label = $Camera2D/UI/Bottles_Coll2
+@onready var rubber_coll_3: Label = $Camera2D/UI/Rubber_Coll3
+
+
 
 
 func _ready():
 	var heart_container = $Camera2D/UI/HealthBar
 	var MaxHealth = 5
+	wood_coll.visible = false
+	bottles_coll_2.visible = false
+	rubber_coll_3.visible = false
 
 	
 	for heart in heart_container.get_children():
@@ -47,6 +63,9 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	print(str(WorldManager.player_current_attack))
+	if WorldManager.player_talking_Merchant == true:
+		merchant_dialogue.start()
+		
 	
 	if currentHealth > 0:
 		update_hearts()
@@ -63,6 +82,12 @@ func _physics_process(delta: float) -> void:
 
 func get_input():
 	var input_direction = Input.get_vector(\"left\",\"right\",\"up\",\"down\")
+	
+	if Input.is_action_just_pressed(\"left\") || Input.is_action_just_pressed(\"right\") || Input.is_action_just_pressed(\"up\") || Input.is_action_just_pressed(\"down\"):
+		walking.play()
+
+		
+	
 	
 	if Input.is_action_pressed(\"attack\"):
 				WorldManager.player_current_attack = true
@@ -141,9 +166,29 @@ func get_input():
 	velocity = input_direction * SPEED
 
 
-func collect(item):
+func collect(item):	
+	audio_stream_player.play()
 	inv.insert(item)
 	print(str(item.name))
+	
+	if item.name == \"wood\":
+		wood_coll.visible = true
+		wood_coll.text = \"+\" + str(1)
+		await get_tree().create_timer(.5).timeout
+		wood_coll.visible = false
+		
+	if item.name == \"Rubber\":
+		rubber_coll_3.visible = true
+		rubber_coll_3.text = \"+\" + str(1)
+		await get_tree().create_timer(.5).timeout
+		rubber_coll_3.visible = false
+		
+	if item.name == \"Bottle\":
+		bottles_coll_2.visible = true
+		bottles_coll_2.text = \"+\" + str(1)
+		await get_tree().create_timer(.5).timeout
+		bottles_coll_2.visible = false
+
 	
 
 func take_damage():
@@ -174,7 +219,7 @@ func _on_attack_hit_box_body_entered(body):
 			
 
 func _on_attack_hit_box_body_exited(body):
-	if body.has_method(\"Foot_Soldier\"):
+	if body.has_method(\"Foot_Soldier\") && body.has_method(\"enemy_arrow\"):
 			enemy_is_in_attacking_range = false
 
 func _on_player_hit_box_body_entered(body):
@@ -669,7 +714,7 @@ rotation_smoothing_enabled = true
 [node name="UI" type="CanvasLayer" parent="Camera2D"]
 physics_interpolation_mode = 1
 auto_translate_mode = 1
-layer = 0
+layer = 15
 
 [node name="HealthBar" type="HBoxContainer" parent="Camera2D/UI"]
 z_index = 4
@@ -730,9 +775,56 @@ offset_bottom = 261.0
 scale = Vector2(1.59725, 1.49505)
 localize_numeral_system = false
 
+[node name="Merchant_Dialogue" parent="Camera2D/UI" instance=ExtResource("8_dy8ic")]
+offset_left = 143.0
+offset_top = 503.0
+offset_right = 183.0
+offset_bottom = 543.0
+scale = Vector2(5.83539, 3.78871)
+
+[node name="Wood_Coll" type="Label" parent="Camera2D/UI"]
+offset_left = 51.0
+offset_top = 280.0
+offset_right = 91.0
+offset_bottom = 303.0
+text = "0"
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/Wood_Coll"]
+position = Vector2(-27, 12)
+texture = ExtResource("9_gefow")
+
+[node name="Bottles_Coll2" type="Label" parent="Camera2D/UI"]
+offset_left = 51.0
+offset_top = 328.0
+offset_right = 91.0
+offset_bottom = 351.0
+text = "0"
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/Bottles_Coll2"]
+position = Vector2(-27, 12)
+texture = ExtResource("10_khoqc")
+
+[node name="Rubber_Coll3" type="Label" parent="Camera2D/UI"]
+offset_left = 51.0
+offset_top = 237.0
+offset_right = 91.0
+offset_bottom = 260.0
+text = "0"
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/Rubber_Coll3"]
+position = Vector2(-27, 12)
+texture = ExtResource("11_hnjnx")
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 3.0
 texture = SubResource("GradientTexture2D_02i48")
+
+[node name="Pick_Up" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_mjni5")
+
+[node name="walking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_yodoo")
+volume_db = 10.0
 
 [connection signal="area_exited" from="Player_HitBox" to="." method="_on_player_hit_box_area_exited"]
 [connection signal="area_shape_entered" from="Player_HitBox" to="." method="_on_player_hit_box_area_shape_entered"]

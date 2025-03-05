@@ -22,6 +22,7 @@ enum {
 	RETURN_START
 }
 
+signal start_dia
 
 func _ready():
 	randomize()
@@ -67,7 +68,7 @@ func _physics_process(delta):
 			MOVE:
 				move(delta)
 			FOLLOW:
-				position += (player.position - position) * speed * delta
+				position += (player.global_position - global_position) * speed * delta
 				
 				
 	
@@ -75,7 +76,7 @@ func _physics_process(delta):
 	if player_in_interact_range:
 		if Input.is_action_just_pressed("chat"):
 			print("chatting with player")
-			$Merchant_Dialogue.start()
+			WorldManager.player_talking_Merchant = true
 			is_roaming = false
 			is_chatting = true
 			$AnimatedSprite2D.play("Mechant_Iteract")
@@ -99,6 +100,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("Player"):
 		player_in_interact_range = false
+		WorldManager.player_talking_Merchant = false
+		is_chatting = false
+		is_roaming = true
 		
 
 func _on_timer_timeout() -> void:
@@ -109,3 +113,8 @@ func _on_timer_timeout() -> void:
 func _on_merchant_dialogue_end_dialogue() -> void:
 	is_chatting = false
 	is_roaming = true
+
+
+func _on_follow_body_entered(body: Node2D) -> void:
+	if body.has_method("Player"):
+		player = body

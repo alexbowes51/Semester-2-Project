@@ -1,6 +1,10 @@
 extends Control
 
 var is_open = false
+@onready var wood_label: Label = $NinePatchRect/Wood/Wood_Label
+@onready var bottles_label: Label = $NinePatchRect/Bottles/Bottles_Label
+@onready var rubber_label: Label = $NinePatchRect/Rubber/Rubber_Label
+
 
 func _ready():
 	close()
@@ -27,40 +31,20 @@ func _process(delta):
 				open()
 			else:
 				close()
-
+		
 		if $NinePatchRect/GridContainer/house.button_pressed:
 			WorldManager.building = "house"
 			##print("building = " + str(WorldManager.building))
+			if wood_label && bottles_label:
+				wood_label.text = str(2)
+				bottles_label.text = str(2)
+			
+			
 			
 
 		if $NinePatchRect/GridContainer/farm.button_pressed:
 			WorldManager.building = "farm"
 			##print("building = " + str(WorldManager.building))
-
-		if $"NinePatchRect/GridContainer/wall (TL)".button_pressed:
-			WorldManager.building = "Wall_TL"
-			print("building = " + str(WorldManager.building))
-
-		if $"NinePatchRect/GridContainer/wall (S)".button_pressed:
-			WorldManager.building = "Wall_S"
-			print("building = " + str(WorldManager.building))
-
-		if $"NinePatchRect/GridContainer/wall (TR)".button_pressed:
-			WorldManager.building = "Wall_TR"
-			print("building = " + str(WorldManager.building))
-
-		if $"NinePatchRect/GridContainer/wall (L)".button_pressed:
-			WorldManager.building = "Wall_L"
-			print("building = " + str(WorldManager.building))
-
-		if $"NinePatchRect/GridContainer/wall (R)".button_pressed:
-			WorldManager.building = "Wall_R"
-			print("building = " + str(WorldManager.building))
-
-		if $"NinePatchRect/GridContainer/wall (BR)".button_pressed:
-			WorldManager.building = "Wall_BR"
-			print("building = " + str(WorldManager.building))
-
-		if $"NinePatchRect/GridContainer/wall (BL)".button_pressed:
-			WorldManager.building = "Wall_BL"
-			print("building = " + str(WorldManager.building))
+			if wood_label && bottles_label:
+				wood_label.text = str(2)
+				bottles_label.text = str(2)

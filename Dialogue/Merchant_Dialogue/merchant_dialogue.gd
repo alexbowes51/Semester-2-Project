@@ -3,7 +3,7 @@ extends Control
 @export_file("*.json") var M_D_file
 
 signal end_dialogue
-
+signal start_dia_r
 
 var dialogue = []
 var current_dialogue_id = 0
@@ -14,6 +14,7 @@ func _ready():
 	$NinePatchRect/TextureButton.visible = false
 	$"NinePatchRect/TextureButton/unFollow Text".visible  = false
 
+
 func _process(delta):
 	if $NinePatchRect/TextureButton.button_pressed && !WorldManager.Merchant_follow_player:
 		print("follow me punk")
@@ -22,8 +23,8 @@ func _process(delta):
 		$"NinePatchRect/TextureButton/unFollow Text".visible = true
 	elif $NinePatchRect/TextureButton.button_pressed && WorldManager.Merchant_follow_player:
 		WorldManager.Merchant_follow_player = false
-		$"NinePatchRect/TextureButton/Follow Text".visible = true
-		$"NinePatchRect/TextureButton/unFollow Text".visible = false
+		$"NinePatchRect/TextureButton/Follow Text".visible = false
+		$"NinePatchRect/TextureButton/unFollow Text".visible = true
 
 
 func start():
@@ -40,13 +41,15 @@ func load_dialogue():
 	var content = JSON.parse_string(file.get_as_text())
 	return content
 	
+
 func _input(event):
 	if !dia_active:
 		return
 		
 	if event.is_action_pressed("ui_accept"):
 		next_script()
-	
+
+
 func next_script():
 	current_dialogue_id += 1
 	
@@ -59,6 +62,7 @@ func next_script():
 		$NinePatchRect.visible = false
 		$"NinePatchRect/TextureButton".visible = false
 		current_dialogue_id = -1 
+		WorldManager.player_talking_Merchant = false
 		emit_signal("end_dialogue")
 		return
 	
