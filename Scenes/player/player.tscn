@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=66 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://dw4t3tbcow8qq" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c8baevlp1m26k" path="res://Art/Items/Bottles.png" id="10_khoqc"]
 [ext_resource type="AudioStream" uid="uid://dlldfwfiywgww" path="res://Audio/minecraft-grass-walking-sound-effect.mp3" id="10_yodoo"]
 [ext_resource type="Texture2D" uid="uid://bvbrprqlxwjhy" path="res://Art/Items/Rubber.png" id="11_hnjnx"]
+[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="12_cohmc"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
 script/source = "extends CharacterBody2D
@@ -40,9 +41,13 @@ var attack = false
 @onready var merchant_dialogue: Control = $Camera2D/UI/Merchant_Dialogue
 @onready var audio_stream_player: AudioStreamPlayer = $Pick_Up
 @onready var walking: AudioStreamPlayer = $walking
-@onready var wood_coll: Label = $Camera2D/UI/Wood_Coll
-@onready var bottles_coll_2: Label = $Camera2D/UI/Bottles_Coll2
-@onready var rubber_coll_3: Label = $Camera2D/UI/Rubber_Coll3
+@onready var wood_coll: Label = $Camera2D/UI/PickUpNotifaction/Wood_Coll
+@onready var bottles_coll_2: Label = $Camera2D/UI/PickUpNotifaction/Bottles_Coll2
+@onready var rubber_coll_3: Label = $Camera2D/UI/PickUpNotifaction/Rubber_Coll3
+@onready var sprite_2d: Sprite2D = $Camera2D/UI/PickUpNotifaction/Sprite2D
+@onready var build_av: Label = $Camera2D/UI/build_notifcation/Build_av
+
+
 
 
 
@@ -53,6 +58,8 @@ func _ready():
 	wood_coll.visible = false
 	bottles_coll_2.visible = false
 	rubber_coll_3.visible = false
+	sprite_2d.visible = false
+	build_av.visible = false
 
 	
 	for heart in heart_container.get_children():
@@ -66,6 +73,10 @@ func _physics_process(delta: float) -> void:
 	if WorldManager.player_talking_Merchant == true:
 		merchant_dialogue.start()
 		
+	if WorldManager.player_in_build_zone == true:
+		build_av.visible = true 
+	else:
+		build_av.visible = false 
 	
 	if currentHealth > 0:
 		update_hearts()
@@ -171,23 +182,30 @@ func collect(item):
 	inv.insert(item)
 	print(str(item.name))
 	
+	
 	if item.name == \"wood\":
+		sprite_2d.visible = true
 		wood_coll.visible = true
 		wood_coll.text = \"+\" + str(1)
 		await get_tree().create_timer(.5).timeout
 		wood_coll.visible = false
 		
 	if item.name == \"Rubber\":
+		sprite_2d.visible = true
 		rubber_coll_3.visible = true
 		rubber_coll_3.text = \"+\" + str(1)
 		await get_tree().create_timer(.5).timeout
 		rubber_coll_3.visible = false
 		
 	if item.name == \"Bottle\":
+		sprite_2d.visible = true
 		bottles_coll_2.visible = true
 		bottles_coll_2.text = \"+\" + str(1)
 		await get_tree().create_timer(.5).timeout
 		bottles_coll_2.visible = false
+		sprite_2d.visible = false
+		
+	sprite_2d.visible = false
 
 	
 
@@ -264,7 +282,7 @@ func _on_player_hit_box_area_shape_entered(area_rid: RID, area: Area2D, area_sha
 	if area.name == \"arrow_hit_bow_enemy\":
 		Player_is_in_attacking_range = true
 		enemy_attack()
-
+	
 
 func _on_player_hit_box_area_exited(area: Area2D) -> void:
 	if area.name == \"Foot_Attack_Area\":
@@ -680,6 +698,8 @@ debug_color = Color(1, 1, 1, 0)
 
 [node name="Player_HitBox" type="Area2D" parent="."]
 z_index = 1
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_HitBox"]
 z_index = 1
@@ -782,38 +802,77 @@ offset_right = 183.0
 offset_bottom = 543.0
 scale = Vector2(5.83539, 3.78871)
 
-[node name="Wood_Coll" type="Label" parent="Camera2D/UI"]
+[node name="PickUpNotifaction" type="Control" parent="Camera2D/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Wood_Coll" type="Label" parent="Camera2D/UI/PickUpNotifaction"]
+z_index = 1
+layout_mode = 0
 offset_left = 51.0
 offset_top = 280.0
 offset_right = 91.0
 offset_bottom = 303.0
+theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "0"
 
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/Wood_Coll"]
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/PickUpNotifaction/Wood_Coll"]
 position = Vector2(-27, 12)
 texture = ExtResource("9_gefow")
 
-[node name="Bottles_Coll2" type="Label" parent="Camera2D/UI"]
+[node name="Bottles_Coll2" type="Label" parent="Camera2D/UI/PickUpNotifaction"]
+z_index = 1
+layout_mode = 0
 offset_left = 51.0
 offset_top = 328.0
 offset_right = 91.0
 offset_bottom = 351.0
+theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "0"
 
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/Bottles_Coll2"]
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/PickUpNotifaction/Bottles_Coll2"]
 position = Vector2(-27, 12)
 texture = ExtResource("10_khoqc")
 
-[node name="Rubber_Coll3" type="Label" parent="Camera2D/UI"]
+[node name="Rubber_Coll3" type="Label" parent="Camera2D/UI/PickUpNotifaction"]
+z_index = 1
+layout_mode = 0
 offset_left = 51.0
 offset_top = 237.0
 offset_right = 91.0
 offset_bottom = 260.0
+theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "0"
 
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/Rubber_Coll3"]
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/PickUpNotifaction/Rubber_Coll3"]
 position = Vector2(-27, 12)
 texture = ExtResource("11_hnjnx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/PickUpNotifaction"]
+position = Vector2(52, 294)
+scale = Vector2(2, 3)
+texture = ExtResource("12_cohmc")
+
+[node name="build_notifcation" type="Control" parent="Camera2D/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Build_av" type="Label" parent="Camera2D/UI/build_notifcation"]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 78.0
+offset_right = 604.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(1, 0.921316, 0.367822, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Build Mode Avaible"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 3.0

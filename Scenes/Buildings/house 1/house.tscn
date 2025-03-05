@@ -27,7 +27,6 @@ shape = SubResource("CircleShape2D_0fy4a")
 [node name="house_interaction_zone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="house_interaction_zone"]
-z_index = 2
 position = Vector2(51, 49)
 shape = SubResource("CircleShape2D_kcqml")
 debug_color = Color(0.973448, 0, 0.433917, 0.42)

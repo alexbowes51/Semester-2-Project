@@ -18,6 +18,7 @@ var house_scene = preload("res://Scenes/Buildings/house 1/house.tscn")
 
 #tilemap variables
 var building = "None"
+var player_in_build_zone = false
 
 #player world varibales
 var player_current_attack = false
@@ -89,3 +90,16 @@ func build():
 		add_child(built_farm)
 		building = "none"
 	
+
+
+
+
+
+func _on_build_zone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if area && area.name == "Player_HitBox":
+		WorldManager.player_in_build_zone = true
+
+
+func _on_build_zone_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if area && area.name == "Player_HitBox":
+		WorldManager.player_in_build_zone = false

@@ -1,9 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://cidva77gd3bbc"]
+[gd_scene load_steps=34 format=3 uid="uid://cidva77gd3bbc"]
 
 [ext_resource type="Script" path="res://Scenes/Npc/Merchant/Merchant.gd" id="1_8mkry"]
 [ext_resource type="Texture2D" uid="uid://cs4jpvs4s2flw" path="res://Art/NPC/Merchant/Interact/Merchant Interact-Sheet.png" id="2_g3xt0"]
 [ext_resource type="Texture2D" uid="uid://dagws484per3p" path="res://Art/NPC/Merchant/Movement/Merchant Movement-Sheet.png" id="3_raaum"]
 [ext_resource type="Texture2D" uid="uid://cgkovm7pepx6m" path="res://Art/NPC/Merchant/Idle/Merchant Idle.png" id="4_d5tpu"]
+[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="5_05p64"]
+[ext_resource type="Texture2D" uid="uid://der7v037nls2s" path="res://Art/UI/E.png" id="6_56dhj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6q6v1"]
 atlas = ExtResource("2_g3xt0")
@@ -224,6 +226,39 @@ shape = SubResource("CircleShape2D_1noru")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -27.0
+offset_top = 1.0
+offset_right = 13.0
+offset_bottom = 41.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 0
+offset_left = -54.0
+offset_top = -95.0
+offset_right = 96.0
+offset_bottom = -55.0
+scale = Vector2(1.12, 1)
+texture = ExtResource("5_05p64")
+
+[node name="Label" type="Label" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -29.0
+offset_top = -89.0
+offset_right = 39.0
+offset_bottom = -66.0
+theme_override_colors/font_color = Color(0.631682, 0.408503, 9.62615e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Talk to Merchant"
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+z_index = 1
+position = Vector2(-39, -76)
+texture = ExtResource("6_56dhj")
 
 [connection signal="body_entered" from="Interact_Area" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Interact_Area" to="." method="_on_area_2d_body_exited"]

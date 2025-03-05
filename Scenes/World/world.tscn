@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dj5o80gxakvda"]
+[gd_scene load_steps=20 format=4 uid="uid://dj5o80gxakvda"]
 
 [ext_resource type="Script" path="res://Scenes/World/world_manager.gd" id="1_tvuku"]
 [ext_resource type="TileSet" uid="uid://dljbx2e4l7110" path="res://Scenes/World/World_TileMap.tres" id="2_07qw7"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://c4giqpf6ir3tc" path="res://Scenes/WayPoints/WayPoint2/WayPoint2_Dark.tscn" id="13_q1lxv"]
 [ext_resource type="PackedScene" uid="uid://wx75h45b586c" path="res://Audio/bg_audio.tscn" id="14_ows2f"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1q2a"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rnma6"]
 
 [node name="world" type="Node2D"]
@@ -28,6 +30,8 @@ script = ExtResource("1_tvuku")
 
 [node name="Player" parent="." instance=ExtResource("3_2ajww")]
 position = Vector2(1911, 2352)
+collision_layer = 9
+collision_mask = 9
 
 [node name="MiniMap" parent="." instance=ExtResource("5_jtj8c")]
 layer = 1
@@ -159,6 +163,16 @@ visible = false
 [node name="AudioStreamPlayer" parent="Audio" instance=ExtResource("14_ows2f")]
 volume_db = -0.5
 
+[node name="BuildZone" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(1850, 3848)
+scale = Vector2(145, 145)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildZone"]
+shape = SubResource("RectangleShape2D_q1q2a")
+
 [node name="BuildArea" type="Area2D" parent="."]
 position = Vector2(1850, 3847)
 scale = Vector2(105, 105)
@@ -182,3 +196,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
+
+[connection signal="area_shape_entered" from="BuildZone" to="." method="_on_build_zone_area_shape_entered"]
+[connection signal="area_shape_exited" from="BuildZone" to="." method="_on_build_zone_area_shape_exited"]

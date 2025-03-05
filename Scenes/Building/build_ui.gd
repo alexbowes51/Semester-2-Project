@@ -25,7 +25,10 @@ func close():
 	
 func _process(delta):
 	
-		if Input.is_action_just_pressed("build_mode"):
+		if is_open && WorldManager.player_in_build_zone == false:
+			close()
+	
+		if Input.is_action_just_pressed("build_mode") && WorldManager.player_in_build_zone == true:
 			
 			if !is_open:
 				open()

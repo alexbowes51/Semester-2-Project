@@ -9,6 +9,10 @@ var attacking = false
 var attacked = false
 var damage = true
 
+
+var bottle = preload("res://Scenes/Item/Bottle/bottle_collectable.tscn")
+var rubber = preload("res://Scenes/Item/Rubber/rubber_collectable.tscn")
+
 func _physics_process(delta):
 	
 	deal_damage()
@@ -63,7 +67,15 @@ func deal_damage():
 				health = 0
 				player = null
 				$AnimatedSprite2D.play("Foot_E_Death")
-			damage = false
+				
+				var new_rubber = rubber.instantiate()
+				get_parent().add_child(new_rubber) # Add to the world instead of enemy
+				new_rubber.global_position = Vector2(global_position.x - 40,global_position.y) 
+				
+				var new_bottle = bottle.instantiate()
+				get_parent().add_child(new_bottle) # Add to the world instead of enemy
+				new_bottle.global_position = Vector2(global_position.x + 40,global_position.y) 
+				damage = false
 
 func _on_foot_hit_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 		if area && area.name == "Player_Attack_HitBox":

@@ -3,6 +3,8 @@ extends CharacterBody2D
 const speed = 2.25
 
 var current_state = IDLE
+@onready var control: Control = $Control
+
 
 var is_roaming = true
 var is_chatting = false
@@ -27,9 +29,12 @@ signal start_dia
 func _ready():
 	randomize()
 	start_pos = position
+	control.visible = false
 
 
 func _physics_process(delta):
+	if WorldManager.player_talking_Merchant == true:
+		control.visible = false
 	
 	if WorldManager.Merchant_follow_player == true:
 		is_following_player = true
@@ -95,6 +100,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("Player"):
 		player = body
 		player_in_interact_range = true
+		control.visible = true
 		
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -103,6 +109,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		WorldManager.player_talking_Merchant = false
 		is_chatting = false
 		is_roaming = true
+		control.visible = false
 		
 
 func _on_timer_timeout() -> void:

@@ -9,11 +9,9 @@ size = Vector2(82, 67)
 [sub_resource type="CircleShape2D" id="CircleShape2D_hlya5"]
 
 [node name="CharacterBody2D2" type="CharacterBody2D"]
-z_index = 1
 script = ExtResource("2_ritut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = 1
 position = Vector2(48, 51)
 shape = SubResource("RectangleShape2D_wbait")
 
@@ -25,7 +23,6 @@ centered = false
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-z_index = 1
 position = Vector2(48, 51)
 shape = SubResource("CircleShape2D_hlya5")
 debug_color = Color(0.968324, 0, 0.468598, 0.42)
