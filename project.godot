@@ -18,6 +18,7 @@ config/icon="res://Art/Default/icon.svg"
 [autoload]
 
 WorldManager="*res://Scenes/World/world_manager.gd"
+BgAudio="*res://Audio/bg_audio.tscn"
 
 [display]
 

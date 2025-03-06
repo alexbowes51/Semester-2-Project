@@ -20,7 +20,7 @@ func _ready():
 func _process(delta):
 	if player_node:
 		mini_map_camera.global_position = lerp(mini_map_camera.global_position, player_node.global_position,0.2)
-	player_marker.global_position = player_node.global_position
+		player_marker.global_position = player_node.global_position
 	
 func setup_mini(mini_tilemap : TileMapLayer) -> void:
 	sub_viewport.add_child(mini_tilemap)

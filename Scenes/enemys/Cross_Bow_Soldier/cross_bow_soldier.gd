@@ -6,6 +6,10 @@ extends CharacterBody2D
 @onready var fire_timer: Timer = $Fire_Timer
 @export var ammo : PackedScene
 
+@export var nav : NavigationAgent2D
+@export var speed = 50
+var target_node = null
+
 var player = null 
 
 const SPEED = 300.0
@@ -15,12 +19,15 @@ enum States{
 	IDLE,
 	SHOOTING,
 	AIMING,
-	
+	FLEEING,
 }
 
 func _physics_process(delta: float) -> void:
 	aim()
 	check_collision()
+	
+	#nav.path_desired_distance = 4
+	#nav.target_desired_distance = 4
 	
 	
 func aim():
@@ -29,7 +36,18 @@ func aim():
 		look_at(player.get_global_position())
 		global_rotation_degrees += -90
 		
+	if nav && nav.is_navigation_finished():
+		return
 	
+	#var axis = to_local(nav.get_next_path_position()).normalized()
+	#velocity = axis * speed
+	#move_and_slide()
+
+
+func recalc_path():
+	if target_node:
+		nav.target_position = target_node.global_position
+
 	
 
 func check_collision():
@@ -71,3 +89,21 @@ func shoot():
 	
 	
 	
+
+
+func _on_danger_close_body_entered(body: Node2D) -> void:
+	pass
+		
+		
+
+
+func _on_danger_close_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_thinking_thime_timeout() -> void:
+	recalc_path()
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	pass # Replace with function body.

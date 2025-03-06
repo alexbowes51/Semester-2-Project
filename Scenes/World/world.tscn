@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dj5o80gxakvda"]
+[gd_scene load_steps=22 format=4 uid="uid://dj5o80gxakvda"]
 
 [ext_resource type="Script" path="res://Scenes/World/world_manager.gd" id="1_tvuku"]
 [ext_resource type="TileSet" uid="uid://dljbx2e4l7110" path="res://Scenes/World/World_TileMap.tres" id="2_07qw7"]
@@ -16,11 +16,47 @@
 [ext_resource type="PackedScene" uid="uid://cock7nvcnmq6e" path="res://Scenes/enemys/Cross_Bow_Soldier/Cross_Bow_Soldier.tscn" id="11_r25up"]
 [ext_resource type="PackedScene" uid="uid://caj6plpuqsmrv" path="res://Scenes/WayPoints/WayPoint2/WayPoint2.tscn" id="12_fchno"]
 [ext_resource type="PackedScene" uid="uid://c4giqpf6ir3tc" path="res://Scenes/WayPoints/WayPoint2/WayPoint2_Dark.tscn" id="13_q1lxv"]
-[ext_resource type="PackedScene" uid="uid://wx75h45b586c" path="res://Audio/bg_audio.tscn" id="14_ows2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1q2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rnma6"]
+
+[sub_resource type="Animation" id="Animation_52fy8"]
+resource_name = "fade_in"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6, 6.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pspny"]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d10g8"]
+_data = {
+"RESET": SubResource("Animation_pspny"),
+"fade_in": SubResource("Animation_52fy8")
+}
 
 [node name="world" type="Node2D"]
 position = Vector2(100, 100)
@@ -29,7 +65,7 @@ script = ExtResource("1_tvuku")
 [node name="DAY+NIGHT CYCLE" parent="." instance=ExtResource("6_e4wto")]
 
 [node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(1911, 2352)
+position = Vector2(2168, 3639)
 collision_layer = 9
 collision_mask = 9
 
@@ -141,7 +177,7 @@ z_index = 1
 process_mode = 3
 physics_interpolation_mode = 1
 auto_translate_mode = 1
-position = Vector2(1866, 2543)
+position = Vector2(1721, 3803)
 
 [node name="WayPoints" type="Node2D" parent="."]
 
@@ -158,10 +194,6 @@ position = Vector2(2850, 450)
 position = Vector2(4750, 15350)
 
 [node name="Audio" type="Node2D" parent="."]
-visible = false
-
-[node name="AudioStreamPlayer" parent="Audio" instance=ExtResource("14_ows2f")]
-volume_db = -0.5
 
 [node name="BuildZone" type="Area2D" parent="."]
 z_index = 1
@@ -196,6 +228,24 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
+
+[node name="Transitions" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transitions"]
+libraries = {
+"": SubResource("AnimationLibrary_d10g8")
+}
+
+[node name="ColorRect" type="ColorRect" parent="Transitions"]
+z_index = 8
+texture_filter = 1
+offset_left = 1243.0
+offset_top = 3017.0
+offset_right = 1283.0
+offset_bottom = 3057.0
+scale = Vector2(51.5197, 35.6696)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="area_shape_entered" from="BuildZone" to="." method="_on_build_zone_area_shape_entered"]
 [connection signal="area_shape_exited" from="BuildZone" to="." method="_on_build_zone_area_shape_exited"]

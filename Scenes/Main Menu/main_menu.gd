@@ -1,9 +1,12 @@
 extends Control
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$AnimationPlayer.play("fade_in")
+	await get_tree().create_timer(6).timeout
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -13,14 +16,23 @@ func _process(delta: float) -> void:
 
 func _on_start_game_pressed() -> void:
 	print("Start Pressed")
+	audio_stream_player.play()
+	$AnimationPlayer.play("fade_out")
+	await get_tree().create_timer(3).timeout
 	get_tree().change_scene_to_file("res://Scenes/World/world.tscn")
 
 
 func _on_options_pressed() -> void:
 	print("options Pressed")
+	audio_stream_player.play()
+	$AnimationPlayer.play("fade_out")
+	await get_tree().create_timer(3).timeout
 	pass # Replace with function body.
 
 
 func _on_leave_pressed() -> void:
 	print("quit Pressed")
+	audio_stream_player.play()
+	$AnimationPlayer.play("fade_out")
+	await get_tree().create_timer(3).timeout
 	get_tree().quit()

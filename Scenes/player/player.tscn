@@ -49,9 +49,6 @@ var attack = false
 
 
 
-
-
-
 func _ready():
 	var heart_container = $Camera2D/UI/HealthBar
 	var MaxHealth = 5
@@ -96,6 +93,8 @@ func get_input():
 	
 	if Input.is_action_just_pressed(\"left\") || Input.is_action_just_pressed(\"right\") || Input.is_action_just_pressed(\"up\") || Input.is_action_just_pressed(\"down\"):
 		walking.play()
+
+		
 
 		
 	
@@ -668,12 +667,12 @@ radius = 37.0
 
 [sub_resource type="Gradient" id="Gradient_5f0ot"]
 offsets = PackedFloat32Array(0.00591716, 1)
-colors = PackedColorArray(1, 0.6, 0.2, 1, 1, 0.6, 0.2, 0)
+colors = PackedColorArray(1, 1, 0.2, 1, 1, 0.552941, 0.2, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_02i48"]
 gradient = SubResource("Gradient_5f0ot")
-width = 100
-height = 100
+width = 200
+height = 200
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.9, 0.1)

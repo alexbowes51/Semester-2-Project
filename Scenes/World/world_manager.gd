@@ -12,6 +12,7 @@ var house_scene = preload("res://Scenes/Buildings/house 1/house.tscn")
 
 @onready var day_night_cycle: Day_Night_Manager = $"DAY+NIGHT CYCLE"
 @onready var time_label: Label = $MiniMap/Time_Label
+@onready var animation_player: AnimationPlayer = $Transitions/AnimationPlayer
 
 
 @export var enable_cycle: bool = true
@@ -46,6 +47,10 @@ var merchant_dia_end = false
 
 
 func _ready():
+	if animation_player:
+		animation_player.play("fade_in")
+		await get_tree().create_timer(6).timeout
+		
 	minimap = $MiniMap
 	player = $Player
 	

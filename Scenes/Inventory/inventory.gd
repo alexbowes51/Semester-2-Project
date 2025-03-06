@@ -3,9 +3,6 @@ extends Resource
 class_name Inventory
 
 signal update
-
-var Item_Name = "_"
-
 @export var slots: Array[Inventory_Slot] = []
 
 
