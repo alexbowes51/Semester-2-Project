@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dj5o80gxakvda"]
+[gd_scene load_steps=23 format=4 uid="uid://dj5o80gxakvda"]
 
 [ext_resource type="Script" path="res://Scenes/World/world_manager.gd" id="1_tvuku"]
 [ext_resource type="TileSet" uid="uid://dljbx2e4l7110" path="res://Scenes/World/World_TileMap.tres" id="2_07qw7"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://beo65e3c745g8" path="res://Scenes/Item/Wood/Wood.tscn" id="10_n0oak"]
 [ext_resource type="PackedScene" uid="uid://bt8u5ca3evu4h" path="res://Scenes/WayPoints/Waypoint1/WayPoint1.tscn" id="11_58lkg"]
 [ext_resource type="PackedScene" uid="uid://cock7nvcnmq6e" path="res://Scenes/enemys/Cross_Bow_Soldier/Cross_Bow_Soldier.tscn" id="11_r25up"]
+[ext_resource type="PackedScene" uid="uid://cpwnwshj0ilgc" path="res://Scenes/enemys/Giant/Giant_Enemy.tscn" id="12_1lmu4"]
 [ext_resource type="PackedScene" uid="uid://caj6plpuqsmrv" path="res://Scenes/WayPoints/WayPoint2/WayPoint2.tscn" id="12_fchno"]
 [ext_resource type="PackedScene" uid="uid://c4giqpf6ir3tc" path="res://Scenes/WayPoints/WayPoint2/WayPoint2_Dark.tscn" id="13_q1lxv"]
 
@@ -65,7 +66,7 @@ script = ExtResource("1_tvuku")
 [node name="DAY+NIGHT CYCLE" parent="." instance=ExtResource("6_e4wto")]
 
 [node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(2168, 3639)
+position = Vector2(2423, 2659)
 collision_layer = 9
 collision_mask = 9
 
@@ -168,7 +169,10 @@ position = Vector2(1728, 1284)
 position = Vector2(1659, 1402)
 
 [node name="CharacterBody2D" parent="Enemys" instance=ExtResource("11_r25up")]
-position = Vector2(928, 250)
+position = Vector2(3194, 1394)
+
+[node name="CharacterBody2D2" parent="Enemys" instance=ExtResource("12_1lmu4")]
+position = Vector2(2420, 1365)
 
 [node name="NPC" type="Node2D" parent="."]
 z_index = 1

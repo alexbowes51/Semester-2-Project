@@ -48,7 +48,6 @@ var attack = false
 @onready var build_av: Label = $Camera2D/UI/build_notifcation/Build_av
 
 
-
 func _ready():
 	var heart_container = $Camera2D/UI/HealthBar
 	var MaxHealth = 5
@@ -85,20 +84,12 @@ func _physics_process(delta: float) -> void:
 		player_dead()
 		
 
-
-
-
 func get_input():
 	var input_direction = Input.get_vector(\"left\",\"right\",\"up\",\"down\")
 	
 	if Input.is_action_just_pressed(\"left\") || Input.is_action_just_pressed(\"right\") || Input.is_action_just_pressed(\"up\") || Input.is_action_just_pressed(\"down\"):
 		walking.play()
 
-		
-
-		
-	
-	
 	if Input.is_action_pressed(\"attack\"):
 				WorldManager.player_current_attack = true
 				attack = true
@@ -181,7 +172,6 @@ func collect(item):
 	inv.insert(item)
 	print(str(item.name))
 	
-	
 	if item.name == \"wood\":
 		sprite_2d.visible = true
 		wood_coll.visible = true
@@ -206,8 +196,6 @@ func collect(item):
 		
 	sprite_2d.visible = false
 
-	
-
 func take_damage():
 	if currentHealth > 0:
 		currentHealth -= 1
@@ -230,46 +218,22 @@ func player_dead():
 	if death:
 		$AnimatedSprite2D.play(\"Player_Death\")
 
-func _on_attack_hit_box_body_entered(body):
-	if body.has_method(\"Foot_Soldier\"):
-			enemy_is_in_attacking_range = true
-			
-
-func _on_attack_hit_box_body_exited(body):
-	if body.has_method(\"Foot_Soldier\") && body.has_method(\"enemy_arrow\"):
-			enemy_is_in_attacking_range = false
-
-func _on_player_hit_box_body_entered(body):
-	if body.has_method(\"Foot_Soldier\") && body.has_method(\"enemy_arrow\"):
-		Player_is_in_attacking_range = true
-		
-
-func _on_player_hit_box_body_exited(body):
-	if body.has_method(\"Foot_Soldier\"):
-		Player_is_in_attacking_range = false
-		
-
 func enemy_attack():
 	if Player_is_in_attacking_range and attack_damage_cool_down == true:
 		take_damage()
-		
 		if player_alive:
 			$AnimatedSprite2D.play(\"Player_Hurt\")
-			
 		attack_damage_cool_down = false
 		$Damage_cooldown.start()
 		
 
 func _on_damage_cooldown_timeout():
 	attack_damage_cool_down = true
-	
-	
 
 func _on_attack_cooldown_timeout():
 	WorldManager.player_current_attack = false
 	attack = false
 
-##idenifior mehod
 func Player():
 	pass
 
@@ -281,11 +245,20 @@ func _on_player_hit_box_area_shape_entered(area_rid: RID, area: Area2D, area_sha
 	if area.name == \"arrow_hit_bow_enemy\":
 		Player_is_in_attacking_range = true
 		enemy_attack()
+	if area.name == \"g_h_area\":
+		Player_is_in_attacking_range = true
+		enemy_attack()
+	
 	
 
 func _on_player_hit_box_area_exited(area: Area2D) -> void:
 	if area.name == \"Foot_Attack_Area\":
 		Player_is_in_attacking_range = false
+	if area.name == \"arrow_hit_bow_enemy\":
+		Player_is_in_attacking_range = false
+	if area.name == \"g_h_area\":
+		Player_is_in_attacking_range = false
+		
 		
 
 func teleporting():
@@ -659,11 +632,11 @@ animations = [{
 radius = 29.6875
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdfm3"]
-radius = 20.0
-height = 40.0
+radius = 22.0
+height = 46.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_refgx"]
-radius = 37.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayp1y"]
+size = Vector2(37, 38)
 
 [sub_resource type="Gradient" id="Gradient_5f0ot"]
 offsets = PackedFloat32Array(0.00591716, 1)
@@ -707,11 +680,13 @@ debug_color = Color(0.984314, 0, 0.34902, 0.513726)
 
 [node name="Player_Attack_HitBox" type="Area2D" parent="."]
 z_index = 1
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Attack_HitBox"]
 z_index = 1
-position = Vector2(1, 0)
-shape = SubResource("CircleShape2D_refgx")
+position = Vector2(-0.5, 34)
+shape = SubResource("RectangleShape2D_ayp1y")
 debug_color = Color(0.681852, 0.502586, 0.0146951, 0.42)
 
 [node name="Damage_cooldown" type="Timer" parent="."]
@@ -722,7 +697,7 @@ wait_time = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 1
-zoom = Vector2(1.5, 1.5)
+scale = Vector2(0.75, 0.75)
 limit_left = 100
 limit_top = 100
 limit_right = 32500
@@ -734,6 +709,8 @@ rotation_smoothing_enabled = true
 physics_interpolation_mode = 1
 auto_translate_mode = 1
 layer = 15
+scale = Vector2(0.97, 0.72)
+transform = Transform2D(0.97, 0, 0, 0.72, 0, 0)
 
 [node name="HealthBar" type="HBoxContainer" parent="Camera2D/UI"]
 z_index = 4
@@ -860,8 +837,10 @@ texture = ExtResource("12_cohmc")
 [node name="build_notifcation" type="Control" parent="Camera2D/UI"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 79.3814
+offset_top = 1.42857
+offset_right = 119.381
+offset_bottom = 41.4286
 
 [node name="Build_av" type="Label" parent="Camera2D/UI/build_notifcation"]
 layout_mode = 0
@@ -884,6 +863,7 @@ stream = ExtResource("9_mjni5")
 stream = ExtResource("10_yodoo")
 volume_db = 10.0
 
+[connection signal="area_entered" from="Player_HitBox" to="." method="_on_player_hit_box_area_entered"]
 [connection signal="area_exited" from="Player_HitBox" to="." method="_on_player_hit_box_area_exited"]
 [connection signal="area_shape_entered" from="Player_HitBox" to="." method="_on_player_hit_box_area_shape_entered"]
 [connection signal="body_entered" from="Player_HitBox" to="." method="_on_player_hit_box_body_entered"]

@@ -78,7 +78,7 @@ func deal_damage():
 				damage = false
 
 func _on_foot_hit_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-		if area && area.name == "Player_Attack_HitBox":
+		if area && area.name == "Player_Attack_HitBox" && WorldManager.player_current_attack:
 			attacked = true
 			damage = true
 

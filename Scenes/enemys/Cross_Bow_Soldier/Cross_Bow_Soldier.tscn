@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cock7nvcnmq6e"]
+[gd_scene load_steps=35 format=3 uid="uid://cock7nvcnmq6e"]
 
 [ext_resource type="Script" path="res://Scenes/enemys/Cross_Bow_Soldier/cross_bow_soldier.gd" id="1_iog6a"]
 [ext_resource type="Texture2D" uid="uid://dqai7qlvxeu2c" path="res://Art/Enemies/Crossbowman/Attack/CrossBowMan Attack-Sheet.png" id="2_2hoqh"]
@@ -22,22 +22,6 @@ region = Rect2(896, 0, 448, 700)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ol8ei"]
 atlas = ExtResource("2_2hoqh")
 region = Rect2(1344, 0, 448, 700)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgw17"]
-atlas = ExtResource("2_2hoqh")
-region = Rect2(2240, 0, 448, 700)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_si0yc"]
-atlas = ExtResource("2_2hoqh")
-region = Rect2(1792, 0, 448, 700)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8xio7"]
-atlas = ExtResource("2_2hoqh")
-region = Rect2(2688, 0, 448, 700)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cst0u"]
-atlas = ExtResource("2_2hoqh")
-region = Rect2(3136, 0, 448, 700)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obhdi"]
 atlas = ExtResource("3_xg74o")
@@ -114,31 +98,19 @@ region = Rect2(3584, 0, 448, 448)
 [sub_resource type="SpriteFrames" id="SpriteFrames_mmjok"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_ukxcs")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_3eu5l")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_r1w14")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_ol8ei")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vgw17")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_si0yc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8xio7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cst0u")
 }],
-"loop": true,
+"loop": false,
 "name": &"attacking",
 "speed": 5.0
 }, {
@@ -170,7 +142,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uou4g")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -178,7 +150,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_gudm3")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -210,7 +182,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gqbru")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk",
 "speed": 5.0
 }]
@@ -219,13 +191,16 @@ animations = [{
 radius = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_24c5g"]
-radius = 1158.45
+radius = 882.882
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vopl7"]
-radius = 563.951
+radius = 574.353
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6jd8"]
 radius = 3116.69
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovjlw"]
+radius = 122.726
 
 [node name="Cross_Bow_Soldier" type="CharacterBody2D"]
 z_index = 1
@@ -235,49 +210,76 @@ script = ExtResource("1_iog6a")
 ammo = ExtResource("2_42b2p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 1
+z_index = 2
+position = Vector2(101.778, 216.667)
 sprite_frames = SubResource("SpriteFrames_mmjok")
-animation = &"idle"
+animation = &"death"
+offset = Vector2(-100, -327.778)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-3.77778, -111.111)
 shape = SubResource("CircleShape2D_a3j8c")
 debug_color = Color(0.969041, 0, 0.463952, 0.42)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Shooting_Flee" type="Node2D" parent="."]
+position = Vector2(-3.77778, -111.111)
+scale = Vector2(1, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="Area2D" type="Area2D" parent="Shooting_Flee"]
+z_index = 1
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shooting_Flee/Area2D"]
+z_index = 1
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_24c5g")
 debug_color = Color(0.591294, 0.547286, 0, 0.42)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="danger_close" type="Area2D" parent="Shooting_Flee"]
+z_index = 1
+scale = Vector2(1, 1)
 
-[node name="Fire_Timer" type="Timer" parent="."]
-wait_time = 1.2
-
-[node name="danger_close" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="danger_close"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shooting_Flee/danger_close"]
+z_index = 1
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_vopl7")
 
-[node name="chase" type="Area2D" parent="."]
+[node name="chase" type="Area2D" parent="Shooting_Flee"]
+z_index = 1
+scale = Vector2(1, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chase"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shooting_Flee/chase"]
+z_index = 1
 shape = SubResource("CircleShape2D_p6jd8")
 
 [node name="NAV" type="Node2D" parent="."]
+position = Vector2(-3.77778, -111.111)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="NAV"]
-debug_enabled = true
+[node name="RayCast2D" type="RayCast2D" parent="NAV"]
+z_index = 1
+scale = Vector2(1, 1)
+collision_mask = 15
 
-[node name="thinking_thime" type="Timer" parent="NAV"]
-wait_time = 0.1
+[node name="Fire_Timer" type="Timer" parent="NAV"]
+wait_time = 1.2
 
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="Fire_Timer" to="." method="_on_fire_timer_timeout"]
-[connection signal="body_entered" from="danger_close" to="." method="_on_danger_close_body_entered"]
-[connection signal="body_exited" from="danger_close" to="." method="_on_danger_close_body_exited"]
-[connection signal="timeout" from="NAV/thinking_thime" to="." method="_on_thinking_thime_timeout"]
+[node name="cross_e_hit" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(-3.77778, -111.111)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cross_e_hit"]
+z_index = 1
+shape = SubResource("CircleShape2D_ovjlw")
+debug_color = Color(0.941893, 9.2411e-06, 0.60857, 0.42)
+
+[connection signal="area_exited" from="Shooting_Flee/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Shooting_Flee/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Shooting_Flee/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Shooting_Flee/danger_close" to="." method="_on_danger_close_body_entered"]
+[connection signal="body_exited" from="Shooting_Flee/danger_close" to="." method="_on_danger_close_body_exited"]
+[connection signal="body_entered" from="Shooting_Flee/chase" to="." method="_on_chase_body_entered"]
+[connection signal="body_exited" from="Shooting_Flee/chase" to="." method="_on_chase_body_exited"]
+[connection signal="timeout" from="NAV/Fire_Timer" to="." method="_on_fire_timer_timeout"]
+[connection signal="area_entered" from="cross_e_hit" to="." method="_on_cross_e_hit_area_entered"]
+[connection signal="area_exited" from="cross_e_hit" to="." method="_on_cross_e_hit_area_exited"]

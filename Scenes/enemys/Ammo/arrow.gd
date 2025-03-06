@@ -12,7 +12,8 @@ func _physics_process(delta):
 func set_direction(new_dir:Vector2):
 	direction = new_dir
 	velocity = direction * speed 
-	rotation = direction.angle()
+	look_at(new_dir)
+	global_rotation_degrees += -90
 	
 	
 

@@ -11,29 +11,27 @@ radius = 2.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = 1
-position = Vector2(1, 2)
 script = ExtResource("1_sou5a")
 
 [node name="arrow_hit_bow_enemy" type="Area2D" parent="."]
 z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="arrow_hit_bow_enemy"]
-position = Vector2(0, 16)
+position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_i27ak")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(1, 18)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_2pvfo")
+offset = Vector2(4, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(0, 29)
 shape = SubResource("CircleShape2D_otcl3")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(1, 25)
+position = Vector2(0, -1)
 
 [connection signal="area_shape_entered" from="arrow_hit_bow_enemy" to="." method="_on_arrow_hit_bow_enemy_area_shape_entered"]
 [connection signal="body_entered" from="arrow_hit_bow_enemy" to="arrow_hit_bow_enemy" method="_on_body_entered"]
