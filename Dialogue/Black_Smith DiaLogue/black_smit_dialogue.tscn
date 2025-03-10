@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv3fjtxyo1edw"]
+
+[ext_resource type="Script" path="res://Dialogue/Black_Smith DiaLogue/black_smit_dialogue.gd" id="1_af6t5"]
+[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="2_beapg"]
+[ext_resource type="FontFile" uid="uid://bb6ixiqy2802s" path="res://Celtica-BookOblique.ttf" id="3_vj64c"]
+[ext_resource type="Texture2D" uid="uid://o0ffakvw437d" path="res://Art/Inventory/pixil-frame-0 (8).png" id="4_enfit"]
+[ext_resource type="Texture2D" uid="uid://cams5l5yqhb4c" path="res://Art/Portraits for convo and animation/Portraits for convo and animation/Blacksmith/Blacksmith Portrait.png" id="5_itghs"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_143m7"]
+allow_unpress = true
+
+[node name="Black_Smit_Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_af6t5")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+process_mode = 3
+physics_interpolation_mode = 1
+auto_translate_mode = 1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+offset_right = 108.0
+offset_bottom = 40.0
+scale = Vector2(1.11567, 1.30714)
+mouse_filter = 0
+texture = ExtResource("2_beapg")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+metadata/_edit_group_ = true
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 2.68897
+offset_top = 1.53006
+offset_right = 122.689
+offset_bottom = 26.5301
+scale = Vector2(0.4, 0.4)
+theme_override_colors/table_odd_row_bg = Color(0.9243, 1.2514e-06, 0.482138, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_vj64c")
+text = "Name:"
+autowrap_mode = 0
+tab_size = 1
+text_direction = 1
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+process_mode = 3
+physics_interpolation_mode = 1
+texture_filter = 1
+clip_contents = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 11.0
+offset_right = 186.0
+offset_bottom = 57.0
+scale = Vector2(0.409783, 0.357219)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_vj64c")
+theme_override_fonts/mono_font = ExtResource("3_vj64c")
+text = "chatting...."
+fit_content = true
+scroll_following = true
+autowrap_mode = 2
+tab_size = 1
+
+[node name="TextureButton" type="TextureButton" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 3.58529
+offset_top = 29.8361
+offset_right = 113.585
+offset_bottom = 79.8361
+scale = Vector2(0.551879, 0.146138)
+toggle_mode = true
+action_mode = 0
+button_group = SubResource("ButtonGroup_143m7")
+texture_normal = ExtResource("4_enfit")
+texture_pressed = ExtResource("2_beapg")
+texture_disabled = ExtResource("4_enfit")
+stretch_mode = 0
+
+[node name="Follow Text" type="Label" parent="NinePatchRect/TextureButton"]
+layout_mode = 0
+offset_left = 16.2413
+offset_top = 14.2102
+offset_right = 95.2413
+offset_bottom = 37.2102
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Follow me 
+"
+
+[node name="unFollow Text" type="Label" parent="NinePatchRect/TextureButton"]
+visible = false
+layout_mode = 0
+offset_left = 6.49654
+offset_top = 14.2102
+offset_right = 106.497
+offset_bottom = 37.2102
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "unFollow me 
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect"]
+z_index = 1
+position = Vector2(86.9433, 18.3607)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("5_itghs")
+
+[node name="Sprite2D2" type="Sprite2D" parent="NinePatchRect"]
+modulate = Color(0.499446, 0.488466, 0.035647, 1)
+position = Vector2(86.9433, 19.8908)
+scale = Vector2(0.615656, 0.491752)
+texture = ExtResource("2_beapg")

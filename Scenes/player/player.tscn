@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=67 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://dw4t3tbcow8qq" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://dlldfwfiywgww" path="res://Audio/minecraft-grass-walking-sound-effect.mp3" id="10_yodoo"]
 [ext_resource type="Texture2D" uid="uid://bvbrprqlxwjhy" path="res://Art/Items/Rubber.png" id="11_hnjnx"]
 [ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="12_cohmc"]
+[ext_resource type="PackedScene" uid="uid://bv3fjtxyo1edw" path="res://Dialogue/Black_Smith DiaLogue/black_smit_dialogue.tscn" id="13_eylsh"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
 script/source = "extends CharacterBody2D
@@ -39,6 +40,7 @@ var attack = false
 
 @onready var inv : Inventory = preload(\"res://Scenes/Inventory/player_Inventory.tres\")
 @onready var merchant_dialogue: Control = $Camera2D/UI/Merchant_Dialogue
+@onready var black_smit_dialogue: Control = $Camera2D/UI/Black_Smit_Dialogue
 @onready var audio_stream_player: AudioStreamPlayer = $Pick_Up
 @onready var walking: AudioStreamPlayer = $walking
 @onready var wood_coll: Label = $Camera2D/UI/PickUpNotifaction/Wood_Coll
@@ -66,26 +68,32 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	print(str(WorldManager.player_current_attack))
+	
 	if WorldManager.player_talking_Merchant == true:
 		merchant_dialogue.start()
+		
+	if WorldManager.player_talking_Black_Smith == true:
+		black_smit_dialogue.start()
 		
 	if WorldManager.player_in_build_zone == true:
 		build_av.visible = true 
 	else:
 		build_av.visible = false 
-	
-	if currentHealth > 0:
-		update_hearts()
-		enemy_attack()
-		get_input()
-		move_and_slide()
-		teleporting()
-	else:
-		player_dead()
+		
+	if WorldManager.player_talking_Merchant == false && WorldManager.player_talking_Black_Smith == false:
+		if currentHealth > 0:
+			update_hearts()
+			enemy_attack()
+			get_input()
+			move_and_slide()
+			teleporting()
+		else:
+			player_dead()
 		
 
 func get_input():
 	var input_direction = Input.get_vector(\"left\",\"right\",\"up\",\"down\")
+		
 	
 	if Input.is_action_just_pressed(\"left\") || Input.is_action_just_pressed(\"right\") || Input.is_action_just_pressed(\"up\") || Input.is_action_just_pressed(\"down\"):
 		walking.play()
@@ -178,6 +186,7 @@ func collect(item):
 		wood_coll.text = \"+\" + str(1)
 		await get_tree().create_timer(.5).timeout
 		wood_coll.visible = false
+		sprite_2d.visible = false
 		
 	if item.name == \"Rubber\":
 		sprite_2d.visible = true
@@ -185,6 +194,7 @@ func collect(item):
 		rubber_coll_3.text = \"+\" + str(1)
 		await get_tree().create_timer(.5).timeout
 		rubber_coll_3.visible = false
+		sprite_2d.visible = false
 		
 	if item.name == \"Bottle\":
 		sprite_2d.visible = true
@@ -194,7 +204,6 @@ func collect(item):
 		bottles_coll_2.visible = false
 		sprite_2d.visible = false
 		
-	sprite_2d.visible = false
 
 func take_damage():
 	if currentHealth > 0:
@@ -258,7 +267,6 @@ func _on_player_hit_box_area_exited(area: Area2D) -> void:
 		Player_is_in_attacking_range = false
 	if area.name == \"g_h_area\":
 		Player_is_in_attacking_range = false
-		
 		
 
 func teleporting():
@@ -660,7 +668,7 @@ z_index = 1
 position = Vector2(-2.98023e-08, 5.96046e-08)
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_y3ys1")
-animation = &"Player_Walk"
+animation = &"Player_Hurt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.96046e-08)
@@ -771,12 +779,20 @@ offset_bottom = 261.0
 scale = Vector2(1.59725, 1.49505)
 localize_numeral_system = false
 
+[node name="Black_Smit_Dialogue" parent="Camera2D/UI" instance=ExtResource("13_eylsh")]
+offset_left = 147.722
+offset_top = 455.333
+offset_right = 152.722
+offset_bottom = 455.333
+scale = Vector2(6, 5)
+
 [node name="Merchant_Dialogue" parent="Camera2D/UI" instance=ExtResource("8_dy8ic")]
-offset_left = 143.0
-offset_top = 503.0
-offset_right = 183.0
-offset_bottom = 543.0
-scale = Vector2(5.83539, 3.78871)
+z_index = 1
+offset_left = 143.299
+offset_top = 454.167
+offset_right = 183.299
+offset_bottom = 494.167
+scale = Vector2(6, 5)
 
 [node name="PickUpNotifaction" type="Control" parent="Camera2D/UI"]
 layout_mode = 3

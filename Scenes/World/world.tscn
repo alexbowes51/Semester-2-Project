@@ -22,6 +22,21 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rnma6"]
 
+[sub_resource type="Animation" id="Animation_pspny"]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_52fy8"]
 resource_name = "fade_in"
 length = 6.0
@@ -38,21 +53,6 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_pspny"]
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d10g8"]
 _data = {
 "RESET": SubResource("Animation_pspny"),
@@ -66,7 +66,7 @@ script = ExtResource("1_tvuku")
 [node name="DAY+NIGHT CYCLE" parent="." instance=ExtResource("6_e4wto")]
 
 [node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(2423, 2659)
+position = Vector2(2496, 2626)
 collision_layer = 9
 collision_mask = 9
 
@@ -241,13 +241,14 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="Transitions"]
+visible = false
 z_index = 8
 texture_filter = 1
-offset_left = 1243.0
-offset_top = 3017.0
-offset_right = 1283.0
-offset_bottom = 3057.0
-scale = Vector2(51.5197, 35.6696)
+offset_left = -688.0
+offset_top = -65.0
+offset_right = -648.0
+offset_bottom = -25.0
+scale = Vector2(186.703, 135.025)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 

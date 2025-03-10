@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://c1rexdmus4r2e"]
 
-[ext_resource type="Texture2D" uid="uid://c633u2xbdta2w" path="res://Scenes/Main Menu/Screenshot 2025-02-19 155832.png" id="1_2li5b"]
-[ext_resource type="FontFile" uid="uid://bb6ixiqy2802s" path="res://Scenes/Main Menu/Celtica-BookOblique.ttf" id="1_ibtg2"]
+[ext_resource type="Texture2D" uid="uid://c633u2xbdta2w" path="res://Screenshot 2025-02-19 155832.png" id="1_2li5b"]
+[ext_resource type="FontFile" uid="uid://bb6ixiqy2802s" path="res://Celtica-BookOblique.ttf" id="1_ibtg2"]
 [ext_resource type="Script" path="res://Scenes/Main Menu/main_menu.gd" id="1_l0kpg"]
 [ext_resource type="AudioStream" uid="uid://bra0hcnd5fcov" path="res://Audio/minecraft-drop-block-sound-effect.L.wav" id="5_co0ae"]
 
@@ -65,22 +65,6 @@ corner_radius_bottom_left = 6
 shadow_size = 6
 shadow_offset = Vector2(6, 6)
 
-[sub_resource type="Animation" id="Animation_pnjwt"]
-resource_name = "fade_in"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_spe13"]
 resource_name = "Fade_out"
 length = 3.0
@@ -112,6 +96,22 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_pnjwt"]
+resource_name = "fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4gybo"]
 _data = {
 "Fade_out": SubResource("Animation_spe13"),
@@ -133,10 +133,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -198.0
-offset_top = 165.0
-offset_right = 291.0
-offset_bottom = 251.0
+offset_left = -203.0
+offset_top = 76.0
+offset_right = 286.0
+offset_bottom = 162.0
 grow_horizontal = 2
 scale = Vector2(1, 1.11502)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -217,8 +217,10 @@ libraries = {
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -21.0
+offset_top = -115.0
+offset_right = 19.0
+offset_bottom = -75.0
 scale = Vector2(30.0109, 22.4)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)

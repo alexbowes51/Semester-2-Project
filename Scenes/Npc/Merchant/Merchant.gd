@@ -80,7 +80,6 @@ func _physics_process(delta):
 	
 	if player_in_interact_range:
 		if Input.is_action_just_pressed("chat"):
-			print("chatting with player")
 			WorldManager.player_talking_Merchant = true
 			is_roaming = false
 			is_chatting = true
@@ -106,7 +105,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("Player"):
 		player_in_interact_range = false
-		WorldManager.player_talking_Merchant = false
 		is_chatting = false
 		is_roaming = true
 		control.visible = false

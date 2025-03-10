@@ -43,10 +43,15 @@ func _process(delta):
 				bottles_label.text = str(2)
 			
 			
-			
-
 		if $NinePatchRect/GridContainer/farm.button_pressed:
 			WorldManager.building = "farm"
+			##print("building = " + str(WorldManager.building))
+			if wood_label && bottles_label:
+				wood_label.text = str(2)
+				bottles_label.text = str(2)
+
+		if $NinePatchRect/GridContainer/black_smith.button_pressed:
+			WorldManager.building = "black_smith"
 			##print("building = " + str(WorldManager.building))
 			if wood_label && bottles_label:
 				wood_label.text = str(2)

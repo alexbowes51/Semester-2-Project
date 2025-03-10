@@ -9,6 +9,7 @@ var dialogue = []
 var current_dialogue_id = 0
 var dia_active = false
 
+
 func _ready():
 	$NinePatchRect.visible = false
 	$NinePatchRect/TextureButton.visible = false
@@ -25,7 +26,8 @@ func _process(delta):
 		WorldManager.Merchant_follow_player = false
 		$"NinePatchRect/TextureButton/Follow Text".visible = false
 		$"NinePatchRect/TextureButton/unFollow Text".visible = true
-
+	
+			
 
 func start():
 	if dia_active:
@@ -35,7 +37,8 @@ func start():
 	dialogue = load_dialogue()
 	current_dialogue_id = -1 
 	next_script()
-	
+
+
 func load_dialogue():
 	var file = FileAccess.open("res://Dialogue/Merchant_Dialogue/merchant_dialogue1.json", FileAccess.READ)
 	var content = JSON.parse_string(file.get_as_text())
@@ -53,7 +56,7 @@ func _input(event):
 func next_script():
 	current_dialogue_id += 1
 	
-	if current_dialogue_id == 3:
+	if current_dialogue_id == 2:
 		$NinePatchRect/TextureButton.visible = true
 		$"NinePatchRect/TextureButton".visible = true
 	
@@ -68,3 +71,6 @@ func next_script():
 	
 	$NinePatchRect/Name.text = dialogue[current_dialogue_id]['name']
 	$NinePatchRect/Text.text = dialogue[current_dialogue_id]['text']
+
+func reset():
+	current_dialogue_id = -1 

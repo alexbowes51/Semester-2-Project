@@ -224,11 +224,9 @@ debug_color = Color(0.969041, 0, 0.463952, 0.42)
 
 [node name="Shooting_Flee" type="Node2D" parent="."]
 position = Vector2(-3.77778, -111.111)
-scale = Vector2(1, 1)
 
 [node name="Area2D" type="Area2D" parent="Shooting_Flee"]
 z_index = 1
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shooting_Flee/Area2D"]
 z_index = 1
@@ -238,7 +236,6 @@ debug_color = Color(0.591294, 0.547286, 0, 0.42)
 
 [node name="danger_close" type="Area2D" parent="Shooting_Flee"]
 z_index = 1
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shooting_Flee/danger_close"]
 z_index = 1
@@ -247,7 +244,6 @@ shape = SubResource("CircleShape2D_vopl7")
 
 [node name="chase" type="Area2D" parent="Shooting_Flee"]
 z_index = 1
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shooting_Flee/chase"]
 z_index = 1
@@ -258,7 +254,6 @@ position = Vector2(-3.77778, -111.111)
 
 [node name="RayCast2D" type="RayCast2D" parent="NAV"]
 z_index = 1
-scale = Vector2(1, 1)
 collision_mask = 15
 
 [node name="Fire_Timer" type="Timer" parent="NAV"]

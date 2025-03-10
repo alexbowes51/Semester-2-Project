@@ -1,0 +1,210 @@
+[gd_scene load_steps=27 format=3 uid="uid://b5bu3gqcgje6d"]
+
+[ext_resource type="Script" path="res://Scenes/Npc/Black_Smith/black_smith.gd" id="1_0xxdb"]
+[ext_resource type="Texture2D" uid="uid://x6lk0dkgemy7" path="res://Art/NPC/Blacksmith/Idle/BlackSmith Idle.png" id="2_mp50d"]
+[ext_resource type="Texture2D" uid="uid://yqudkstrjkri" path="res://Art/NPC/Blacksmith/Interact/BlackSmith Interact -Sheet.png" id="3_hc3nm"]
+[ext_resource type="Texture2D" uid="uid://dywlft63av43k" path="res://Art/NPC/Blacksmith/Walk/BlackSmith  Walk-Sheet.png" id="4_yyodm"]
+[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="5_e0spx"]
+[ext_resource type="Texture2D" uid="uid://der7v037nls2s" path="res://Art/UI/E.png" id="6_2id88"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtxwd"]
+atlas = ExtResource("2_mp50d")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytklt"]
+atlas = ExtResource("3_hc3nm")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42auo"]
+atlas = ExtResource("3_hc3nm")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jtyb"]
+atlas = ExtResource("3_hc3nm")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4imqr"]
+atlas = ExtResource("3_hc3nm")
+region = Rect2(1344, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wsfd"]
+atlas = ExtResource("3_hc3nm")
+region = Rect2(1792, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we2ue"]
+atlas = ExtResource("3_hc3nm")
+region = Rect2(2240, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qikfi"]
+atlas = ExtResource("3_hc3nm")
+region = Rect2(2688, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h774n"]
+atlas = ExtResource("4_yyodm")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lomcr"]
+atlas = ExtResource("4_yyodm")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f687"]
+atlas = ExtResource("4_yyodm")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8q50"]
+atlas = ExtResource("4_yyodm")
+region = Rect2(1344, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2o2u"]
+atlas = ExtResource("4_yyodm")
+region = Rect2(1792, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w53m3"]
+atlas = ExtResource("4_yyodm")
+region = Rect2(2240, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoxp3"]
+atlas = ExtResource("4_yyodm")
+region = Rect2(2688, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp7ul"]
+atlas = ExtResource("4_yyodm")
+region = Rect2(3136, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f5sh"]
+atlas = ExtResource("4_yyodm")
+region = Rect2(3584, 0, 448, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h08a2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtxwd")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytklt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42auo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jtyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4imqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wsfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we2ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qikfi")
+}],
+"loop": true,
+"name": &"Iteract",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h774n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lomcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f687")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8q50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2o2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w53m3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoxp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp7ul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f5sh")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3hr8b"]
+radius = 90.2552
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dss74"]
+radius = 406.923
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(0.18, 0.18)
+script = ExtResource("1_0xxdb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_h08a2")
+animation = &"Iteract"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource("CircleShape2D_3hr8b")
+
+[node name="Iteract" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Iteract"]
+z_index = 1
+shape = SubResource("CircleShape2D_dss74")
+
+[node name="Control" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -122.222
+offset_top = 72.2222
+offset_right = -82.2222
+offset_bottom = 112.222
+scale = Vector2(3.88889, 3.66667)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 0
+offset_left = -54.0
+offset_top = -95.0
+offset_right = 96.0
+offset_bottom = -55.0
+scale = Vector2(1.23429, 1)
+texture = ExtResource("5_e0spx")
+
+[node name="Label" type="Label" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -28.5715
+offset_top = -87.8788
+offset_right = 118.429
+offset_bottom = -64.8788
+scale = Vector2(1.02256, 0.975707)
+theme_override_colors/font_color = Color(0.631682, 0.408503, 9.62615e-08, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Talk to Black Smith"
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+z_index = 1
+position = Vector2(-39, -76)
+texture = ExtResource("6_2id88")
+
+[connection signal="body_entered" from="Iteract" to="." method="_on_iteract_body_entered"]
+[connection signal="body_exited" from="Iteract" to="." method="_on_iteract_body_exited"]

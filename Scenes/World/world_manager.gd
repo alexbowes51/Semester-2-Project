@@ -9,6 +9,9 @@ var minimap
 var farm_scene = preload("res://Scenes/Buildings/farm/farm.tscn")
 var house_scene = preload("res://Scenes/Buildings/house 1/house.tscn")
 
+var black_smith = preload("res://Scenes/Buildings/Black_smiths/blacksmith.tscn")
+
+var black_smith_built = false
 
 @onready var day_night_cycle: Day_Night_Manager = $"DAY+NIGHT CYCLE"
 @onready var time_label: Label = $MiniMap/Time_Label
@@ -41,9 +44,9 @@ var Wp2_B = Vector2(4750,15370)
 #npc varibales 
 var Merchant_follow_player = false
 var player_talking_Merchant = false
-var merchant_dia_end = false
 
-
+var Black_smith_follow_player = false
+var player_talking_Black_Smith = false
 
 
 func _ready():
@@ -93,6 +96,11 @@ func build():
 	if building == "farm":
 		var built_farm = farm_scene.instantiate()
 		add_child(built_farm)
+		building = "none"
+		
+	if building == "black_smith" && black_smith_built == false:
+		var built_black = black_smith.instantiate()
+		add_child(built_black)
 		building = "none"
 	
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ew71k15wafgy"]
 
 [ext_resource type="Script" path="res://Scenes/enemys/Ammo/arrow.gd" id="1_sou5a"]
-[ext_resource type="Texture2D" uid="uid://n5wtobfkcdmn" path="res://Art/Items/Arrow/Arrow.png" id="2_2pvfo"]
+[ext_resource type="Texture2D" uid="uid://dr7jagq1m1gfa" path="res://Art/Items/Items/Arrow/Arrow.png" id="2_mvqrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i27ak"]
 size = Vector2(13, 39)
@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_i27ak")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_2pvfo")
+texture = ExtResource("2_mvqrn")
 offset = Vector2(4, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

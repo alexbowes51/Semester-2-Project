@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqed0ghaw8nlo"]
+[gd_scene load_steps=11 format=3 uid="uid://dqed0ghaw8nlo"]
 
 [ext_resource type="Script" path="res://Scenes/Building/build_ui.gd" id="1_lod6p"]
 [ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_rh6lt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c8baevlp1m26k" path="res://Art/Items/Bottles.png" id="4_qvvi1"]
 [ext_resource type="Texture2D" uid="uid://bn3pobjdjgrdn" path="res://Art/Tile_map/farm.png" id="5_4xk3d"]
 [ext_resource type="Texture2D" uid="uid://bvbrprqlxwjhy" path="res://Art/Items/Rubber.png" id="5_nskj3"]
+[ext_resource type="Texture2D" uid="uid://bgdjnarmxljyq" path="res://Art/Tile_map/BlackSmith_WS.png" id="9_t3bgu"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_p8g6o"]
 allow_unpress = true
@@ -127,7 +128,7 @@ position = Vector2(73.1945, 24.2327)
 scale = Vector2(1.1696, 0.262829)
 texture = ExtResource("5_4xk3d")
 
-[node name="farm2" type="TextureButton" parent="NinePatchRect/GridContainer"]
+[node name="black_smith" type="TextureButton" parent="NinePatchRect/GridContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -139,10 +140,11 @@ texture_hover = ExtResource("1_rh6lt")
 texture_disabled = ExtResource("2_5j8i7")
 stretch_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/farm2"]
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/black_smith"]
+texture_filter = 1
 position = Vector2(73.1945, 24.2327)
 scale = Vector2(1.1696, 0.262829)
-texture = ExtResource("5_4xk3d")
+texture = ExtResource("9_t3bgu")
 
 [node name="farm3" type="TextureButton" parent="NinePatchRect/GridContainer"]
 texture_filter = 1

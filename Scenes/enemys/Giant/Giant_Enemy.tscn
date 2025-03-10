@@ -283,6 +283,7 @@ position = Vector2(-9, 198)
 scale = Vector2(15, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="g_h_area"]
+z_index = 1
 position = Vector2(0.6, 3.41429)
 shape = SubResource("RectangleShape2D_hwb82")
 

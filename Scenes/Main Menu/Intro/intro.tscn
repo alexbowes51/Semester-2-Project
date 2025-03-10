@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqt0gpckeybrl"]
+
+[ext_resource type="Script" path="res://Scenes/Main Menu/Intro/intro.gd" id="1_rew04"]
+[ext_resource type="Texture2D" uid="uid://bbsnrf1juvy8p" path="res://Art/PixelForge Studios (1).jpg" id="2_u74o4"]
+
+[sub_resource type="Animation" id="Animation_tfkk7"]
+resource_name = "Fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sa7t0"]
+resource_name = "Fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lpcg8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mq1xm"]
+_data = {
+"Fade_in": SubResource("Animation_tfkk7"),
+"Fade_out": SubResource("Animation_sa7t0"),
+"RESET": SubResource("Animation_lpcg8")
+}
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_rew04")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.598958, 0.6)
+texture = ExtResource("2_u74o4")
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -353.0
+offset_top = -159.0
+offset_right = 1569.0
+offset_bottom = 922.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mq1xm")
+}
