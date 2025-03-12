@@ -13,6 +13,7 @@ var dia_active = false
 func _ready():
 	$NinePatchRect.visible = false
 	$NinePatchRect/TextureButton.visible = false
+	$NinePatchRect/TextureButton2.visible = false
 
 
 
@@ -27,7 +28,11 @@ func _process(delta):
 		$"NinePatchRect/TextureButton/Follow Text".visible = true
 		$"NinePatchRect/TextureButton/unFollow Text".visible = false
 	
-			
+	if $NinePatchRect/TextureButton2.button_pressed:
+		WorldManager.Bs_shop = true
+		
+	
+
 
 func start():
 	if dia_active:
@@ -58,12 +63,13 @@ func next_script():
 	
 	if current_dialogue_id == 2:
 		$NinePatchRect/TextureButton.visible = true
-		$"NinePatchRect/TextureButton".visible = true
-	
+		$NinePatchRect/TextureButton2.visible = true
+		
 	if current_dialogue_id >= len(dialogue):
 		dia_active = false
 		$NinePatchRect.visible = false
 		$"NinePatchRect/TextureButton".visible = false
+		$NinePatchRect/TextureButton2.visible = false
 		current_dialogue_id = -1 
 		WorldManager.player_talking_Black_Smith = false
 		emit_signal("end_dialogue")

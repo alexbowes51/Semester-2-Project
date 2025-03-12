@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Inventory_Item" load_steps=3 format=3 uid="uid://dx781d6g2b8t7"]
+
+[ext_resource type="Script" path="res://Scenes/Item/Inventory_Item.gd" id="1_ubnxb"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_4rl1u"]
+resource_local_to_scene = true
+
+[resource]
+script = ExtResource("1_ubnxb")
+name = "damage_buff"
+texture = SubResource("ImageTexture_4rl1u")

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var control: Control = $Control
+@onready var black_smith_crafting: Control = $Black_Smith_Crafting
 
 var current_state = IDLE
 var is_roaming = true
@@ -25,6 +26,7 @@ enum {
 func _ready():
 	start_pos = position
 	control.visible = false
+	black_smith_crafting.visible = false
 	
 func _physics_process(delta):
 	if WorldManager.player_talking_Black_Smith == true:
@@ -96,6 +98,8 @@ func _on_iteract_body_exited(body: Node2D) -> void:
 		is_chatting = false
 		is_roaming = true
 		control.visible = false
+		black_smith_crafting.visible = false
+		WorldManager.Bs_shop = false
 
 func choose(array):
 	array.shuffle()

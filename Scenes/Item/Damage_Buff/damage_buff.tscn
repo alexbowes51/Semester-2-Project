@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://nhxy0undgenp"]
+
+[ext_resource type="Texture2D" uid="uid://ddehcv5msk8n6" path="res://Art/Items/Items/Merchant Sales/Attack Skull (Increases Damage)/Attack Skull.png" id="1_ikfts"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ikfts")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

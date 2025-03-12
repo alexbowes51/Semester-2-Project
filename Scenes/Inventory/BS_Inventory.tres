@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=15 format=3 uid="uid://bbt06aiorn0xj"]
+
+[ext_resource type="Script" path="res://Scenes/Inventory/inventory.gd" id="1_jch3d"]
+[ext_resource type="Script" path="res://Scenes/Inventory/Inventory_Slot.gd" id="2_ifq1r"]
+[ext_resource type="Resource" uid="uid://c7vkuqdtwr7us" path="res://Scenes/Item/Health_potions/health_p.tres" id="3_qwmxe"]
+[ext_resource type="Resource" uid="uid://c1d2r5oegupfu" path="res://Scenes/Item/Sword/sword.tres" id="4_lt05x"]
+[ext_resource type="Resource" uid="uid://dx781d6g2b8t7" path="res://Scenes/Item/Damage_Buff/damage_buff.tres" id="5_dp3gt"]
+
+[sub_resource type="Resource" id="Resource_pj0mw"]
+script = ExtResource("2_ifq1r")
+item = ExtResource("3_qwmxe")
+amount = 64
+
+[sub_resource type="Resource" id="Resource_qs62i"]
+script = ExtResource("2_ifq1r")
+item = ExtResource("4_lt05x")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_aso1t"]
+script = ExtResource("2_ifq1r")
+item = ExtResource("5_dp3gt")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_3rlbj"]
+script = ExtResource("2_ifq1r")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_aav0v"]
+script = ExtResource("2_ifq1r")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_ojb7i"]
+script = ExtResource("2_ifq1r")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_qbptf"]
+script = ExtResource("2_ifq1r")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_x62w5"]
+script = ExtResource("2_ifq1r")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_3t8fw"]
+script = ExtResource("2_ifq1r")
+amount = 0
+
+[resource]
+script = ExtResource("1_jch3d")
+slots = Array[ExtResource("2_ifq1r")]([SubResource("Resource_pj0mw"), SubResource("Resource_qs62i"), SubResource("Resource_aso1t"), SubResource("Resource_3rlbj"), SubResource("Resource_aav0v"), SubResource("Resource_ojb7i"), SubResource("Resource_qbptf"), SubResource("Resource_x62w5"), SubResource("Resource_3t8fw")])

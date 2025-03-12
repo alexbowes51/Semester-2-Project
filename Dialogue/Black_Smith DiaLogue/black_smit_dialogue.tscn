@@ -75,11 +75,11 @@ tab_size = 1
 
 [node name="TextureButton" type="TextureButton" parent="NinePatchRect"]
 layout_mode = 0
-offset_left = 3.58529
+offset_left = 2.68897
 offset_top = 29.8361
-offset_right = 113.585
+offset_right = 112.689
 offset_bottom = 79.8361
-scale = Vector2(0.551879, 0.146138)
+scale = Vector2(0.19335, 0.146138)
 toggle_mode = true
 action_mode = 0
 button_group = SubResource("ButtonGroup_143m7")
@@ -109,14 +109,38 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "unFollow me 
 "
 
+[node name="TextureButton2" type="TextureButton" parent="NinePatchRect"]
+offset_left = 27.786
+offset_top = 29.8361
+offset_right = 177.786
+offset_bottom = 79.8361
+scale = Vector2(0.229203, 0.146138)
+toggle_mode = true
+action_mode = 0
+button_group = SubResource("ButtonGroup_143m7")
+texture_normal = ExtResource("4_enfit")
+texture_pressed = ExtResource("2_beapg")
+texture_disabled = ExtResource("4_enfit")
+stretch_mode = 0
+
+[node name="Follow Text" type="Label" parent="NinePatchRect/TextureButton2"]
+layout_mode = 0
+offset_left = 16.2413
+offset_top = 14.2102
+offset_right = 95.2413
+offset_bottom = 37.2102
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Craft/Upgrade
+"
+
 [node name="Sprite2D" type="Sprite2D" parent="NinePatchRect"]
 z_index = 1
-position = Vector2(86.9433, 18.3607)
+position = Vector2(86.2009, 13.575)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("5_itghs")
 
 [node name="Sprite2D2" type="Sprite2D" parent="NinePatchRect"]
 modulate = Color(0.499446, 0.488466, 0.035647, 1)
-position = Vector2(86.9433, 19.8908)
+position = Vector2(86.2009, 15.1051)
 scale = Vector2(0.615656, 0.491752)
 texture = ExtResource("2_beapg")

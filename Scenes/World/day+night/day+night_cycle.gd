@@ -12,7 +12,7 @@ signal time_change(hour: float, time_string: String)
 
 @export_group("Color Settings")
 @export var day_color: Color = Color(1.0, 1.0, 1.0, 1.0)
-@export var night_color: Color = Color(0.4, 0.4, 0.4, 0.4)
+@export var night_color: Color = Color(0.6, 0.6, 0.8, 0.6)
 @export var sunrise_color: Color = Color(0.84, 0.58, 0.28, 1.0)
 @export var sunset_color: Color = Color(0.86, 0.7, 0.7, 1.0)
 
