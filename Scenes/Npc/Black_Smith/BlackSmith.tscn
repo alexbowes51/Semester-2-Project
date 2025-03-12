@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b5bu3gqcgje6d"]
+[gd_scene load_steps=27 format=3 uid="uid://b5bu3gqcgje6d"]
 
 [ext_resource type="Script" path="res://Scenes/Npc/Black_Smith/black_smith.gd" id="1_0xxdb"]
 [ext_resource type="Texture2D" uid="uid://x6lk0dkgemy7" path="res://Art/NPC/Blacksmith/Idle/BlackSmith Idle.png" id="2_mp50d"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dywlft63av43k" path="res://Art/NPC/Blacksmith/Walk/BlackSmith  Walk-Sheet.png" id="4_yyodm"]
 [ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="5_e0spx"]
 [ext_resource type="Texture2D" uid="uid://der7v037nls2s" path="res://Art/UI/E.png" id="6_2id88"]
-[ext_resource type="PackedScene" uid="uid://lyvill1i58ul" path="res://Scenes/Npc/Black_Smith/black_smith_crafting.tscn" id="7_2sy04"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xtxwd"]
 atlas = ExtResource("2_mp50d")
@@ -206,13 +205,6 @@ text = "Talk to Black Smith"
 z_index = 1
 position = Vector2(-39, -76)
 texture = ExtResource("6_2id88")
-
-[node name="Black_Smith_Crafting" parent="." instance=ExtResource("7_2sy04")]
-offset_left = -2177.78
-offset_top = -1777.78
-offset_right = -2177.78
-offset_bottom = -1777.78
-scale = Vector2(9.44444, 8.55556)
 
 [connection signal="body_entered" from="Iteract" to="." method="_on_iteract_body_entered"]
 [connection signal="body_exited" from="Iteract" to="." method="_on_iteract_body_exited"]

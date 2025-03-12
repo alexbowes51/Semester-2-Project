@@ -33,10 +33,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.5
-offset_top = -49.0
-offset_right = 25.5
-offset_bottom = 17.0
+offset_left = -49.6986
+offset_top = -43.1985
+offset_right = 23.3014
+offset_bottom = 22.8015
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -69,3 +69,13 @@ layout_mode = 2
 
 [node name="9" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qw55u")]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 16.7601
+offset_right = 151.76
+offset_bottom = 23.0
+scale = Vector2(1.24212, 1.12638)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Players Inventory"

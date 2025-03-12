@@ -28,9 +28,8 @@ func _process(delta):
 		$"NinePatchRect/TextureButton/Follow Text".visible = true
 		$"NinePatchRect/TextureButton/unFollow Text".visible = false
 	
-	if $NinePatchRect/TextureButton2.button_pressed:
+	if $NinePatchRect/TextureButton2.button_pressed && WorldManager.Bs_shop == false:
 		WorldManager.Bs_shop = true
-		
 	
 
 
@@ -72,6 +71,7 @@ func next_script():
 		$NinePatchRect/TextureButton2.visible = false
 		current_dialogue_id = -1 
 		WorldManager.player_talking_Black_Smith = false
+		WorldManager.Bs_shop = false
 		emit_signal("end_dialogue")
 		return
 	

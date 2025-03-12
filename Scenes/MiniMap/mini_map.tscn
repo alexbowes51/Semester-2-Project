@@ -21,10 +21,10 @@ mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_left = -201.0
-offset_top = 2.0
-offset_right = -151.0
-offset_bottom = 52.0
+offset_left = -189.0
+offset_top = -5.0
+offset_right = -139.0
+offset_bottom = 45.0
 scale = Vector2(4.75, 4.33)
 mouse_filter = 2
 texture = ExtResource("2_8r5j1")
@@ -32,10 +32,10 @@ texture = ExtResource("2_8r5j1")
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -194.0
-offset_top = 8.0
-offset_right = 6.0
-offset_bottom = 208.0
+offset_left = -182.0
+offset_top = 1.0
+offset_right = 18.0
+offset_bottom = 201.0
 scale = Vector2(1.12284, 1.02428)
 mouse_filter = 2
 

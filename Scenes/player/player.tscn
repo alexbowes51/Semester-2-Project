@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=68 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://dw4t3tbcow8qq" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bvbrprqlxwjhy" path="res://Art/Items/Rubber.png" id="11_hnjnx"]
 [ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="12_cohmc"]
 [ext_resource type="PackedScene" uid="uid://bv3fjtxyo1edw" path="res://Dialogue/Black_Smith DiaLogue/black_smit_dialogue.tscn" id="13_eylsh"]
+[ext_resource type="PackedScene" uid="uid://lyvill1i58ul" path="res://Scenes/Npc/Black_Smith/black_smith_crafting.tscn" id="14_bmap2"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
 script/source = "extends CharacterBody2D
@@ -764,34 +765,34 @@ layout_mode = 2
 texture = ExtResource("4_n7t0m")
 
 [node name="Build_Ui" parent="Camera2D/UI" instance=ExtResource("7_olynr")]
-offset_left = 109.0
-offset_top = 712.0
-offset_right = 109.0
-offset_bottom = 712.0
+offset_left = 109.278
+offset_top = 729.167
+offset_right = 109.278
+offset_bottom = 729.167
 scale = Vector2(0.795853, 0.898798)
 
 [node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
 z_index = 5
-offset_left = 869.0
-offset_top = 261.0
-offset_right = 869.0
-offset_bottom = 261.0
-scale = Vector2(1.59725, 1.49505)
+offset_left = 871.134
+offset_top = 261.111
+offset_right = 871.134
+offset_bottom = 261.111
+scale = Vector2(1.59725, 2.0506)
 localize_numeral_system = false
 
 [node name="Black_Smit_Dialogue" parent="Camera2D/UI" instance=ExtResource("13_eylsh")]
-offset_left = 147.722
-offset_top = 455.333
-offset_right = 152.722
-offset_bottom = 455.333
+offset_left = 189.691
+offset_top = 472.222
+offset_right = 194.691
+offset_bottom = 472.222
 scale = Vector2(6, 5)
 
 [node name="Merchant_Dialogue" parent="Camera2D/UI" instance=ExtResource("8_dy8ic")]
 z_index = 1
-offset_left = 143.299
-offset_top = 454.167
-offset_right = 183.299
-offset_bottom = 494.167
+offset_left = 189.691
+offset_top = 475.0
+offset_right = 229.691
+offset_bottom = 515.0
 scale = Vector2(6, 5)
 
 [node name="PickUpNotifaction" type="Control" parent="Camera2D/UI"]
@@ -867,6 +868,13 @@ offset_bottom = 101.0
 theme_override_colors/font_color = Color(1, 0.921316, 0.367822, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Build Mode Avaible"
+
+[node name="Black_Smith_Crafting" parent="Camera2D/UI" instance=ExtResource("14_bmap2")]
+z_index = 2
+offset_left = 351.546
+offset_top = 256.944
+offset_right = 351.546
+offset_bottom = 256.944
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 3.0

@@ -28,12 +28,16 @@ func _process(delta):
 		if is_open && WorldManager.player_in_build_zone == false:
 			close()
 	
-		if Input.is_action_just_pressed("build_mode") && WorldManager.player_in_build_zone == true:
-			
-			if !is_open:
-				open()
-			else:
+		if Input.is_action_just_pressed("build_mode") && WorldManager.player_in_build_zone == true && WorldManager.player_talking_Black_Smith == false && WorldManager.player_talking_Merchant == false:
+			if is_open:
 				close()
+			else:
+				open()
+		
+		if WorldManager.Build_mode == true && WorldManager.player_talking_Merchant == true or WorldManager.player_talking_Black_Smith == true:
+			close()
+		
+
 		
 		if $NinePatchRect/GridContainer/house.button_pressed:
 			WorldManager.building = "house"

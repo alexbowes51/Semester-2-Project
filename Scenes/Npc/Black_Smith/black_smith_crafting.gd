@@ -32,7 +32,7 @@ func close():
 func _process(delta):
 	if WorldManager.Bs_shop == true:
 		open()
-	else:
+	elif WorldManager.Bs_shop == false:
 		close()
 		
 			
