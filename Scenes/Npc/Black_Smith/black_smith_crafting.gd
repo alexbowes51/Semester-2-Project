@@ -30,9 +30,9 @@ func close():
 	is_open = false
 	
 func _process(delta):
-	if WorldManager.Bs_shop == true:
+	if WorldManager.Bs_shop:
 		open()
-	elif WorldManager.Bs_shop == false:
+	elif !WorldManager.Bs_shop:
 		close()
 		
 			

@@ -669,9 +669,10 @@ z_index = 1
 position = Vector2(-2.98023e-08, 5.96046e-08)
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_y3ys1")
-animation = &"Player_Hurt"
+animation = &"Player_Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
 position = Vector2(0, 5.96046e-08)
 scale = Vector2(0.64, 0.56)
 shape = SubResource("CircleShape2D_mlxic")
@@ -780,6 +781,14 @@ offset_bottom = 261.111
 scale = Vector2(1.59725, 2.0506)
 localize_numeral_system = false
 
+[node name="Black_Smith_Crafting" parent="Camera2D/UI" instance=ExtResource("14_bmap2")]
+z_index = 2
+offset_left = 326.804
+offset_top = 144.444
+offset_right = 326.804
+offset_bottom = 144.444
+scale = Vector2(1.82474, 1.44444)
+
 [node name="Black_Smit_Dialogue" parent="Camera2D/UI" instance=ExtResource("13_eylsh")]
 offset_left = 189.691
 offset_top = 472.222
@@ -868,13 +877,6 @@ offset_bottom = 101.0
 theme_override_colors/font_color = Color(1, 0.921316, 0.367822, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Build Mode Avaible"
-
-[node name="Black_Smith_Crafting" parent="Camera2D/UI" instance=ExtResource("14_bmap2")]
-z_index = 2
-offset_left = 351.546
-offset_top = 256.944
-offset_right = 351.546
-offset_bottom = 256.944
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 3.0

@@ -15,6 +15,7 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("1_af6t5")
+B_D_file = "res://Dialogue/Black_Smith DiaLogue/Black_smith_dialogue.json"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 process_mode = 3
@@ -85,7 +86,6 @@ action_mode = 0
 button_group = SubResource("ButtonGroup_143m7")
 texture_normal = ExtResource("4_enfit")
 texture_pressed = ExtResource("2_beapg")
-texture_disabled = ExtResource("4_enfit")
 stretch_mode = 0
 
 [node name="Follow Text" type="Label" parent="NinePatchRect/TextureButton"]
@@ -120,10 +120,9 @@ action_mode = 0
 button_group = SubResource("ButtonGroup_143m7")
 texture_normal = ExtResource("4_enfit")
 texture_pressed = ExtResource("2_beapg")
-texture_disabled = ExtResource("4_enfit")
 stretch_mode = 0
 
-[node name="Follow Text" type="Label" parent="NinePatchRect/TextureButton2"]
+[node name="craft_updrade" type="Label" parent="NinePatchRect/TextureButton2"]
 layout_mode = 0
 offset_left = 16.2413
 offset_top = 14.2102
@@ -144,3 +143,6 @@ modulate = Color(0.499446, 0.488466, 0.035647, 1)
 position = Vector2(86.2009, 15.1051)
 scale = Vector2(0.615656, 0.491752)
 texture = ExtResource("2_beapg")
+
+[connection signal="pressed" from="NinePatchRect/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/TextureButton2" to="." method="_on_texture_button_2_pressed"]

@@ -14,22 +14,12 @@ func _ready():
 	$NinePatchRect.visible = false
 	$NinePatchRect/TextureButton.visible = false
 	$NinePatchRect/TextureButton2.visible = false
+	$NinePatchRect/TextureButton2.pressed.connect(_on_texture_button_2_pressed)
 
 
 
 func _process(delta):
-	if $NinePatchRect/TextureButton.button_pressed && !WorldManager.Black_smith_follow_player:
-		print("follow me punk")
-		WorldManager.Black_smith_follow_player = true 
-		$"NinePatchRect/TextureButton/Follow Text".visible = false
-		$"NinePatchRect/TextureButton/unFollow Text".visible = true
-	elif $NinePatchRect/TextureButton.button_pressed && WorldManager.Black_smith_follow_player:
-		WorldManager.Black_smith_follow_player = false
-		$"NinePatchRect/TextureButton/Follow Text".visible = true
-		$"NinePatchRect/TextureButton/unFollow Text".visible = false
-	
-	if $NinePatchRect/TextureButton2.button_pressed && WorldManager.Bs_shop == false:
-		WorldManager.Bs_shop = true
+	pass
 	
 
 
@@ -80,3 +70,14 @@ func next_script():
 
 func reset():
 	current_dialogue_id = -1 
+
+
+func _on_texture_button_2_pressed():
+	WorldManager.Bs_shop = !WorldManager.Bs_shop
+
+
+func _on_texture_button_pressed():
+	WorldManager.Black_smith_follow_player = !WorldManager.Black_smith_follow_player
+
+	$"NinePatchRect/TextureButton/Follow Text".visible = !WorldManager.Black_smith_follow_player
+	$"NinePatchRect/TextureButton/unFollow Text".visible = WorldManager.Black_smith_follow_player
