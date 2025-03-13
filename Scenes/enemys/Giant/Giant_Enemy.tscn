@@ -297,6 +297,7 @@ shape = SubResource("CircleShape2D_hhrlu")
 debug_color = Color(0.669883, 0.0154273, 2.40654e-07, 0.42)
 
 [node name="attacked_cooldown" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="attack_cooldown" type="Timer" parent="."]
 

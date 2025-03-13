@@ -11,6 +11,10 @@ var player_inv: Inventory
 var shop_inv: Inventory
 var is_shop_slot = false  
 
+@onready var WOOD_BUNDLE = preload("res://Scenes/Item/Wood/Wood_bundle.tres")
+@onready var RUBBER = preload("res://Scenes/Item/Rubber/Rubber.tres")
+@onready var BOTTLES = preload("res://Scenes/Item/Bottle/Bottles.tres")
+
 func _ready():
 	# Connect the button once in _ready()
 	texture_button.connect("pressed", _on_texture_button_pressed)
@@ -58,9 +62,10 @@ func _on_texture_button_pressed() -> void:
 
 	if is_shop_slot:  
 		print("Trying to buy:", item.name)
-		if shop_inv.Has_Items(item, 1):  # Check if the shop has at least one of the item
+		if shop_inv.Has_Items(item, 1):  # Check if the shop has at least one of the item+
 			player_inv.insert(item, 1)    # Add the item to the player's inventory
 			shop_inv.Remove_Items(item, 1)  # Remove the item from the shop inventory
+			
 			print("Bought:", item.name, "New Player Inventory:", player_inv.slots)
 		else:
 			print("Shop doesn't have enough of", item.name)

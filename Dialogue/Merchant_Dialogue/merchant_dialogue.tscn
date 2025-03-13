@@ -121,3 +121,5 @@ modulate = Color(0.499446, 0.488466, 0.035647, 1)
 position = Vector2(86.9433, 19.8908)
 scale = Vector2(0.615656, 0.491752)
 texture = ExtResource("1_kmt40")
+
+[connection signal="pressed" from="NinePatchRect/TextureButton" to="." method="_on_texture_button_pressed"]

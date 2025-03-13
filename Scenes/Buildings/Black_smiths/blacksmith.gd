@@ -95,4 +95,5 @@ func move_position_mouse():
 func remove_item():
 	inv.Remove_Items(WOOD_BUNDLE,2)
 	inv.Remove_Items(BOTTLES,2)
+	inv.Remove_Items(RUBBER,2)
 	return

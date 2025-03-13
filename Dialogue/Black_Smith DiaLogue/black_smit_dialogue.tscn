@@ -110,6 +110,7 @@ text = "unFollow me
 "
 
 [node name="TextureButton2" type="TextureButton" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 27.786
 offset_top = 29.8361
 offset_right = 177.786

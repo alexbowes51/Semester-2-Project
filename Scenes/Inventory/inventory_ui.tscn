@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://cvkx60yshxptc" path="res://Scenes/Inventory/inventory_slot_ui.tscn" id="2_qw55u"]
 
 [node name="Inventory_UI" type="Control"]
+z_index = 4
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
-offset_right = 199.0
+offset_right = 198.0
 offset_bottom = 169.0
 scale = Vector2(2.02863, 1.96165)
 mouse_filter = 2
@@ -26,6 +27,7 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+z_index = 4
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 1
 anchors_preset = 8
@@ -33,10 +35,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -49.6986
-offset_top = -43.1985
-offset_right = 23.3014
-offset_bottom = 22.8015
+offset_left = -49.5
+offset_top = -43.0
+offset_right = 7.5
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)

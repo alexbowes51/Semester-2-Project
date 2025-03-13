@@ -708,6 +708,7 @@ wait_time = 0.1
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.75, 0.75)
+zoom = Vector2(0.85, 0.85)
 limit_left = 100
 limit_top = 100
 limit_right = 32500
@@ -774,19 +775,24 @@ scale = Vector2(0.795853, 0.898798)
 
 [node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
 z_index = 5
-offset_left = 871.134
-offset_top = 261.111
-offset_right = 871.134
-offset_bottom = 261.111
+offset_left = 873.196
+offset_top = 287.5
+offset_right = 873.196
+offset_bottom = 287.5
 scale = Vector2(1.59725, 2.0506)
 localize_numeral_system = false
 
 [node name="Black_Smith_Crafting" parent="Camera2D/UI" instance=ExtResource("14_bmap2")]
 z_index = 2
-offset_left = 326.804
-offset_top = 144.444
-offset_right = 326.804
-offset_bottom = 144.444
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 327.0
+offset_top = 144.0
+offset_right = 580.0
+offset_bottom = 357.0
+grow_horizontal = 1
+grow_vertical = 1
 scale = Vector2(1.82474, 1.44444)
 
 [node name="Black_Smit_Dialogue" parent="Camera2D/UI" instance=ExtResource("13_eylsh")]
@@ -807,8 +813,6 @@ scale = Vector2(6, 5)
 [node name="PickUpNotifaction" type="Control" parent="Camera2D/UI"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Wood_Coll" type="Label" parent="Camera2D/UI/PickUpNotifaction"]
 z_index = 1
@@ -863,10 +867,10 @@ texture = ExtResource("12_cohmc")
 [node name="build_notifcation" type="Control" parent="Camera2D/UI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 79.3814
-offset_top = 1.42857
-offset_right = 119.381
-offset_bottom = 41.4286
+offset_left = 159.794
+offset_top = 36.1111
+offset_right = 159.794
+offset_bottom = 36.1111
 
 [node name="Build_av" type="Label" parent="Camera2D/UI/build_notifcation"]
 layout_mode = 0
