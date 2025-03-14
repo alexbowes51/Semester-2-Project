@@ -53,7 +53,6 @@ var attack = false
 
 func _ready():
 	var heart_container = $Camera2D/UI/HealthBar
-	var MaxHealth = 5
 	wood_coll.visible = false
 	bottles_coll_2.visible = false
 	rubber_coll_3.visible = false
@@ -65,7 +64,7 @@ func _ready():
 		heart_list.append(heart)
 	print(heart_list)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	print(str(WorldManager.player_current_attack))
@@ -248,7 +247,7 @@ func Player():
 	pass
 
 
-func _on_player_hit_box_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+func _on_player_hit_box_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if area.name == \"Foot_Attack_Area\":
 		Player_is_in_attacking_range = true
 		enemy_attack()

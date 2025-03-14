@@ -61,7 +61,7 @@ func deal_damage():
 		if damage && health > 0:
 			health = health - 20
 			$damage_cooldown.start()
-			print("enemy health" + str(health))
+			
 			$AnimatedSprite2D.play("Foot_E_Hurt")
 			if health <= 0:
 				health = 0
@@ -77,12 +77,12 @@ func deal_damage():
 				new_bottle.global_position = Vector2(global_position.x + 40,global_position.y) 
 				damage = false
 
-func _on_foot_hit_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+func _on_foot_hit_area_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 		if area && area.name == "Player_Attack_HitBox" && WorldManager.player_current_attack:
 			attacked = true
 			damage = true
 
-func _on_foot_hit_area_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+func _on_foot_hit_area_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if area && area.name == "Player_Attack_HitBox":
 			attacked = false
 			damage = false

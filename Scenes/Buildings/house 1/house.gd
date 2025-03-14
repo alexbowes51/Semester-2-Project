@@ -16,18 +16,18 @@ var can_build = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	inv.update
+	
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 		if WorldManager.Build_mode != true && !place:
 			self.queue_free()
 			
 		if WorldManager.building != "house" && !place:
 			self.queue_free()
 
-func _input(event):
+func _input(_event):
 	if WorldManager.Build_mode && !place:
 		move_position_mouse()
 	
@@ -55,24 +55,23 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 func build():
 	if built:
-		print("Already built, exiting build()")
+		
 		return
 		
-	built = true
 	place_position = position
 	place = true
 	
 	if !place || !WorldManager.Build_mode && placed_in_zone || !placed_in_zone:
-		print("Queue free: Not placed or Build mode off")
+		
 		self.queue_free()
 		return
 
 	if place && placed_in_zone:
-		print("Building placed successfully")
+		
 		remove_item()
 		return
 	else:
-		print("Queue free: Not in build zone")
+		
 		self.queue_free()
 	
 	await get_tree().create_timer(0.5).timeout 

@@ -23,7 +23,7 @@ func close():
 
 
 	
-func _process(delta):
+func _process(_delta):
 	
 		if is_open && WorldManager.player_in_build_zone == false:
 			close()
@@ -41,7 +41,6 @@ func _process(delta):
 		
 		if $NinePatchRect/GridContainer/house.button_pressed:
 			WorldManager.building = "house"
-			##print("building = " + str(WorldManager.building))
 			if wood_label && bottles_label:
 				wood_label.text = str(2)
 				bottles_label.text = str(2)
@@ -49,14 +48,12 @@ func _process(delta):
 			
 		if $NinePatchRect/GridContainer/farm.button_pressed:
 			WorldManager.building = "farm"
-			##print("building = " + str(WorldManager.building))
 			if wood_label && bottles_label:
 				wood_label.text = str(2)
 				bottles_label.text = str(2)
 
 		if $NinePatchRect/GridContainer/black_smith.button_pressed:
 			WorldManager.building = "black_smith"
-			##print("building = " + str(WorldManager.building))
 			if wood_label && bottles_label:
 				wood_label.text = str(2)
 				bottles_label.text = str(2)

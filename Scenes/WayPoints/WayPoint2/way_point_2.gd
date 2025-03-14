@@ -8,10 +8,8 @@ func _ready():
 	if control:
 		control.visible = false
 
-func _set_active():
-	pass
 
-func _process(delta):
+func _process(_delta):
 	if in_interact_zone == true && Input.is_action_just_pressed("teleport") && WorldManager.tp_Wp2_A == "A":
 		$AnimatedSprite2D.play("active")
 		WorldManager.tp_Wp2_A = "B"

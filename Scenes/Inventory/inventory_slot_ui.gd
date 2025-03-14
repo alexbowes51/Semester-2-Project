@@ -1,5 +1,7 @@
 extends Panel
 
+
+
 @onready var item_visual: Sprite2D = $CenterContainer/Panel/item_display
 @onready var amount_text : Label = $CenterContainer/Panel/Label
 @onready var label_2: Label = $CenterContainer/Panel/Label2
@@ -7,16 +9,15 @@ extends Panel
 
 var slot_data: Inventory_Slot
 var inventory: Inventory
-var player_inv: Inventory
 var shop_inv: Inventory
 var is_shop_slot = false  
+@onready var player_inv : Inventory = preload("res://Scenes/Inventory/player_Inventory.tres")
 
 @onready var WOOD_BUNDLE = preload("res://Scenes/Item/Wood/Wood_bundle.tres")
 @onready var RUBBER = preload("res://Scenes/Item/Rubber/Rubber.tres")
 @onready var BOTTLES = preload("res://Scenes/Item/Bottle/Bottles.tres")
 
 func _ready():
-	# Connect the button once in _ready()
 	texture_button.connect("pressed", _on_texture_button_pressed)
 
 func update(slot: Inventory_Slot, inv: Inventory, p_inv: Inventory, s_inv: Inventory, shop_mode: bool):
@@ -51,29 +52,58 @@ func update(slot: Inventory_Slot, inv: Inventory, p_inv: Inventory, s_inv: Inven
 
 func _on_texture_button_pressed() -> void:
 	if not slot_data or not slot_data.item:
-		print("No item in slot.")
 		return  
 
 	var item = slot_data.item
-	
+
 	if not shop_inv or not player_inv:
-		print("ERROR: Missing inventory references.")
 		return
 
-	if is_shop_slot:  
-		print("Trying to buy:", item.name)
-		if shop_inv.Has_Items(item, 1):  # Check if the shop has at least one of the item+
-			player_inv.insert(item, 1)    # Add the item to the player's inventory
-			shop_inv.Remove_Items(item, 1)  # Remove the item from the shop inventory
-			
-			print("Bought:", item.name, "New Player Inventory:", player_inv.slots)
-		else:
-			print("Shop doesn't have enough of", item.name)
-	else:  
-		print("Trying to sell:", item.name)
-		if player_inv.Has_Items(item, 1):  # Check if the player has at least one of the item
-			shop_inv.insert(item, 1)         # Add the item to the shop inventory
-			player_inv.Remove_Items(item, 1)   # Remove the item from the player's inventory
-			print("Sold:", item.name, "New Shop Inventory:", shop_inv.slots)
-		else:
-			print("Player doesn't have enough of", item.name)
+	print("Before transaction:")
+	print_inventory("Player Inventory", player_inv)
+	print_inventory("Shop Inventory", shop_inv)
+
+	if is_shop_slot:  # Player is trying to buy from the shop
+		if shop_inv.Has_Items(item, 1) and player_inv.Has_Items(BOTTLES, 8):  
+			print("Trading 8 Bottles for:", item.name)
+			Remove(item)
+			player_inv.insert(item, 1)           # Add new item to player inventory
+			shop_inv.Remove_Items(item, 1)       # Remove bought item from shop inventory
+	else:  # Player is selling to the shop
+		if player_inv.Has_Items(item, 1):  
+			print("Selling:", item.name)
+			shop_inv.insert(item, 1)         # Add to shop inventory
+			player_inv.Remove_Items(item, 1) # Remove from player inventory
+
+	print("After transaction:")
+	print_inventory("Player Inventory", player_inv)
+	print_inventory("Shop Inventory", shop_inv)
+
+	# Update UI
+	player_inv.update.emit()
+	shop_inv.update.emit()
+
+func print_inventory(name: String, inv: Inventory):
+	print(name, "slots:")
+	for slot in inv.slots:
+		if slot.item:
+			print(slot.item.name, "-", slot.amount)
+
+
+func Remove(item):
+	if item.name == "sword":
+		player_inv.Remove_Items(BOTTLES,8)
+		player_inv.Remove_Items(RUBBER,4)
+		return
+	if item.name == "health_p":
+		player_inv.Remove_Items(BOTTLES,5)
+		player_inv.Remove_Items(WOOD_BUNDLE,1)
+		return
+	if item.name == "damage_buff":
+		player_inv.Remove_Items(BOTTLES,5)
+		player_inv.Remove_Items(WOOD_BUNDLE,5)
+		player_inv.Remove_Items(RUBBER,5)
+		return
+		
+		
+	

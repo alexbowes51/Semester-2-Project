@@ -2,8 +2,7 @@ extends Control
 
 @export_file("*.json") var B_D_file
 
-signal end_dialogue
-signal start_dia_r
+
 
 var dialogue = []
 var current_dialogue_id = 0
@@ -18,7 +17,7 @@ func _ready():
 
 
 
-func _process(delta):
+func _process(_delta):
 	pass
 	
 

@@ -71,13 +71,12 @@ func _setup_cycle() -> void:
 	if day_night_cycle:
 		day_night_cycle.time_change.connect(change_time)
 	
-func change_time(hour: float, time_string: String) -> void:
+func change_time(_hour: float, time_string: String) -> void:
 	if time_label:
 		time_label.text = time_string
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-		var mouse_pos = get_global_mouse_position()
+func _process(_delta):
 		
 			
 		if Build_mode == true && Input.is_action_just_pressed("build"):
@@ -108,11 +107,11 @@ func build():
 
 
 
-func _on_build_zone_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+func _on_build_zone_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if area && area.name == "Player_HitBox":
 		WorldManager.player_in_build_zone = true
 
 
-func _on_build_zone_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+func _on_build_zone_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if area && area.name == "Player_HitBox":
 		WorldManager.player_in_build_zone = false

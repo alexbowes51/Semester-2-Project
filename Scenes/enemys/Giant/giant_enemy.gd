@@ -20,7 +20,7 @@ func _ready() -> void:
 	pass
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if alive == true:
 		damage()
 		chasing()
@@ -42,13 +42,13 @@ func _on_g_e_chase_body_exited(body: Node2D) -> void:
 			current_state = States.IDLE
 
 
-func _on_g_h_area_body_entered(body: Node2D) -> void:
+func _on_g_h_area_body_entered(_body: Node2D) -> void:
 	current_state = States.ATTACKING
 	attacking = true
 	attack()
 
 
-func _on_g_h_area_body_exited(body: Node2D) -> void:
+func _on_g_h_area_body_exited(_body: Node2D) -> void:
 	current_state = States.CHASING
 	attacking = false
 	
@@ -68,7 +68,6 @@ func damage():
 	if alive == true:
 		if alive == true && attacked == true:
 			health -= 20
-			print("Giant Health = " + str(health))
 			attacked = false
 			_on_attacked_cooldown_timeout()
 		

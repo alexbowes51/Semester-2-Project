@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 
 
 func _on_start_game_pressed() -> void:
-	print("Start Pressed")
 	audio_stream_player.play()
 	$AnimationPlayer.play("fade_out")
 	await get_tree().create_timer(3).timeout
@@ -23,7 +22,6 @@ func _on_start_game_pressed() -> void:
 
 
 func _on_options_pressed() -> void:
-	print("options Pressed")
 	audio_stream_player.play()
 	$AnimationPlayer.play("fade_out")
 	await get_tree().create_timer(3).timeout
@@ -31,7 +29,6 @@ func _on_options_pressed() -> void:
 
 
 func _on_leave_pressed() -> void:
-	print("quit Pressed")
 	audio_stream_player.play()
 	$AnimationPlayer.play("fade_out")
 	await get_tree().create_timer(3).timeout

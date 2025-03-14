@@ -24,8 +24,6 @@ enum {
 	RETURN_START
 }
 
-signal start_dia
-
 func _ready():
 	randomize()
 	start_pos = position

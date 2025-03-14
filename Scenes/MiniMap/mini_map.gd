@@ -12,12 +12,11 @@ func _ready():
 	for tilemap in owner.get_node("TileMaps").get_children():
 		var mini_tilemap = tilemap.duplicate()
 		setup_mini(mini_tilemap)
-		var used_rect : Rect2i = tilemap.get_used_rect()
 		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if player_node:
 		mini_map_camera.global_position = lerp(mini_map_camera.global_position, player_node.global_position,0.2)
 		player_marker.global_position = player_node.global_position

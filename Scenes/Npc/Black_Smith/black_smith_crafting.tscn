@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://lyvill1i58ul"]
+[gd_scene load_steps=7 format=3 uid="uid://lyvill1i58ul"]
 
 [ext_resource type="Script" path="res://Scenes/Npc/Black_Smith/black_smith_crafting.gd" id="1_7sor0"]
 [ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_wxnu4"]
 [ext_resource type="PackedScene" uid="uid://cvkx60yshxptc" path="res://Scenes/Inventory/inventory_slot_ui.tscn" id="2_g0n6j"]
+[ext_resource type="Texture2D" uid="uid://bv4lk3didxw5a" path="res://Art/Items/Wood.png" id="4_f54ds"]
+[ext_resource type="Texture2D" uid="uid://bvbrprqlxwjhy" path="res://Art/Items/Rubber.png" id="5_pb67k"]
+[ext_resource type="Texture2D" uid="uid://c8baevlp1m26k" path="res://Art/Items/Bottles.png" id="6_l7l6e"]
 
 [node name="Black_Smith_Crafting" type="Control"]
 layout_mode = 3
@@ -12,6 +15,7 @@ offset_right = 52.856
 offset_bottom = 44.224
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.28, 1.2)
 mouse_filter = 2
 script = ExtResource("1_7sor0")
 
@@ -36,13 +40,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -56.5
-offset_top = -42.0
-offset_right = 1.5
-offset_bottom = 17.0
+offset_left = -77.748
+offset_top = -40.7292
+offset_right = -19.748
+offset_bottom = 18.2708
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.42618, 2.31531)
+scale = Vector2(1.74135, 1.8586)
 pivot_offset = Vector2(10, 10)
 columns = 3
 
@@ -72,6 +76,92 @@ layout_mode = 2
 
 [node name="9" parent="NinePatchRect/GridContainer" instance=ExtResource("2_g0n6j")]
 layout_mode = 2
+
+[node name="Control" type="Control" parent="NinePatchRect/GridContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/Control"]
+modulate = Color(0.152766, 0.107813, 2.40654e-08, 1)
+z_index = -1
+position = Vector2(79.9664, -29.1902)
+scale = Vector2(0.81981, 1.23727)
+texture = ExtResource("1_wxnu4")
+
+[node name="wood" type="Control" parent="NinePatchRect/GridContainer/Control"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 71.5542
+offset_top = -37.2468
+offset_right = 87.5542
+offset_bottom = -37.2468
+scale = Vector2(0.859798, 0.90192)
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/Control/wood"]
+position = Vector2(0.407667, 3.10702)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_f54ds")
+
+[node name="Label" type="Label" parent="NinePatchRect/GridContainer/Control/wood"]
+layout_mode = 0
+offset_left = 14.6757
+offset_top = -4.66055
+offset_right = 31.6757
+offset_bottom = 18.3395
+scale = Vector2(0.551356, 0.635703)
+text = "0"
+
+[node name="wood2" type="Control" parent="NinePatchRect/GridContainer/Control"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 57.8846
+offset_top = -9.57419
+offset_right = 73.8846
+offset_bottom = -9.57419
+scale = Vector2(0.873818, 0.70576)
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/Control/wood2"]
+position = Vector2(15.9586, 0.892567)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_pb67k")
+
+[node name="Label" type="Label" parent="NinePatchRect/GridContainer/Control/wood2"]
+offset_left = 30.6497
+offset_top = -7.04755
+offset_right = 47.6497
+offset_bottom = 15.9524
+scale = Vector2(0.551356, 0.635703)
+text = "0"
+
+[node name="wood3" type="Control" parent="NinePatchRect/GridContainer/Control"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 66.6472
+offset_top = -22.1845
+offset_right = 82.6472
+offset_bottom = -22.1845
+scale = Vector2(0.896618, 0.82196)
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/Control/wood3"]
+position = Vector2(6.49496, 1.98526)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_l7l6e")
+
+[node name="Label" type="Label" parent="NinePatchRect/GridContainer/Control/wood3"]
+offset_left = 19.5459
+offset_top = -5.54007
+offset_right = 36.5459
+offset_bottom = 17.4599
+scale = Vector2(0.551356, 0.635703)
+text = "0"
+
+[node name="Label" type="Label" parent="NinePatchRect/GridContainer/Control"]
+layout_mode = 0
+offset_left = 64.1936
+offset_top = -59.3148
+offset_right = 211.194
+offset_bottom = -36.3148
+scale = Vector2(0.215452, 0.439542)
+text = "Materials Required"
 
 [node name="Label" type="Label" parent="NinePatchRect"]
 layout_mode = 2

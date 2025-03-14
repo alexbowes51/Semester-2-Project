@@ -11,13 +11,14 @@ func _ready():
 	bs_inv.update.connect(update_slots)
 	update_slots()
 	close()
-
+#(slot: Inventory_Slot, inv: Inventory, p_inv: Inventory, s_inv: Inventory, shop_mode: bool)
 func update_slots():
+	# Populate shop slots (player buying from BS inventory)
 	for i in range(min(player_inv.slots.size(), slots.size())):
-		slots[i].update(player_inv.slots[i], player_inv, bs_inv, player_inv, true)  # True for shop slots
+		slots[i].update(player_inv.slots[i], player_inv, player_inv, bs_inv, false)  # Player selling
 
 	for i in range(min(bs_inv.slots.size(), slots.size())):
-		slots[i].update(bs_inv.slots[i], bs_inv, bs_inv, player_inv, false)  # False for player slots
+		slots[i].update(bs_inv.slots[i], bs_inv, player_inv, bs_inv, true) 
 			
 
 func open():
@@ -29,7 +30,7 @@ func close():
 	visible = false
 	is_open = false
 	
-func _process(delta):
+func _process(_delta):
 	if WorldManager.Bs_shop:
 		open()
 	elif !WorldManager.Bs_shop:

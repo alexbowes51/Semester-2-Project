@@ -10,7 +10,7 @@ func _ready():
 	inv.update.connect(update_slots)
 	update_slots()
 	close()
-
+#(slot: Inventory_Slot, inv: Inventory, p_inv: Inventory, s_inv: Inventory, shop_mode: bool)
 func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].update(inv.slots[i],inv,inv,null,false)
@@ -25,7 +25,7 @@ func close():
 	visible = false
 	is_open = false
 	
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("i"):
 		if is_open:
 			close()
