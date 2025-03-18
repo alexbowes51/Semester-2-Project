@@ -47,13 +47,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			placed_in_zone = true
 		
 
-
-
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.name == "BuildArea":
 			placed_in_zone = false
 		
-
 
 func build():
 	if built:
@@ -66,7 +63,6 @@ func build():
 	var black_smith_npc = black_smith_NPC.instantiate()
 	get_parent().add_child(black_smith_npc)
 	black_smith_npc.position = Vector2(position.x + 50,position.y + 160)
-	
 	
 	if !place || !WorldManager.Build_mode && placed_in_zone || !placed_in_zone:
 		self.queue_free()
@@ -85,7 +81,6 @@ func move_position_mouse():
 		position = get_global_mouse_position()
 		var grid_size = 100
 		position = Vector2(round(position.x / grid_size) * grid_size,round(position.y / grid_size) * grid_size)
-
 
 func remove_item():
 	inv.Remove_Items(WOOD_BUNDLE,2)

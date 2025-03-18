@@ -65,7 +65,6 @@ func next_script():
 func reset():
 	current_dialogue_id = -1 
 
-
 func _on_texture_button_pressed() -> void:
 	WorldManager.Merchant_follow_player = !WorldManager.Merchant_follow_player
 

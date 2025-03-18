@@ -4,6 +4,11 @@ extends Control
 @onready var bs_inv : Inventory = preload("res://Scenes/Inventory/BS_Inventory.tres")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
+@onready var b_label: Label = $NinePatchRect/GridContainer/Control/bottle/Label
+@onready var r_label: Label = $NinePatchRect/GridContainer/Control/rubber/Label
+@onready var w_label: Label = $NinePatchRect/GridContainer/Control/wood/Label
+
+
 var is_open = false
 
 func _ready():
@@ -36,5 +41,8 @@ func _process(_delta):
 	elif !WorldManager.Bs_shop:
 		close()
 		
+	if WorldManager.Item_Selling == "sword":
+		r_label.text = str(4)
+		b_label.text = str(8)
 	
 			

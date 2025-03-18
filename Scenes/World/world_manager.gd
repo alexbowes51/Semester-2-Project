@@ -48,6 +48,7 @@ var player_talking_Merchant = false
 var Black_smith_follow_player = false
 var player_talking_Black_Smith = false
 var Bs_shop = false
+var Item_Selling = "none"
 
 func _ready():
 	if animation_player:

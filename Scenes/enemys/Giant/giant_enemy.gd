@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var player = null
 
-var health = 100
+var health = 160
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 enum States{
@@ -43,9 +43,10 @@ func _on_g_e_chase_body_exited(body: Node2D) -> void:
 
 
 func _on_g_h_area_body_entered(_body: Node2D) -> void:
-	current_state = States.ATTACKING
-	attacking = true
-	attack()
+	if _body.has_method("Player"):
+		current_state = States.ATTACKING
+		attacking = true
+		attack()
 
 
 func _on_g_h_area_body_exited(_body: Node2D) -> void:
@@ -75,7 +76,7 @@ func chasing():
 	if alive == true:
 		if player != null && current_state == States.CHASING:
 			$AnimatedSprite2D.play("walk")
-			position += ( player.global_position - global_position ).normalized()
+			position += ( player.global_position - global_position ).normalized() / 2
 			look_at(player.get_global_position())
 			global_rotation_degrees += -90
 	

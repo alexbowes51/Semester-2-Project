@@ -110,7 +110,7 @@ offset_bottom = 18.3395
 scale = Vector2(0.551356, 0.635703)
 text = "0"
 
-[node name="wood2" type="Control" parent="NinePatchRect/GridContainer/Control"]
+[node name="rubber" type="Control" parent="NinePatchRect/GridContainer/Control"]
 layout_mode = 2
 anchors_preset = 0
 offset_left = 57.8846
@@ -119,12 +119,13 @@ offset_right = 73.8846
 offset_bottom = -9.57419
 scale = Vector2(0.873818, 0.70576)
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/Control/wood2"]
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/Control/rubber"]
 position = Vector2(15.9586, 0.892567)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_pb67k")
 
-[node name="Label" type="Label" parent="NinePatchRect/GridContainer/Control/wood2"]
+[node name="Label" type="Label" parent="NinePatchRect/GridContainer/Control/rubber"]
+layout_mode = 0
 offset_left = 30.6497
 offset_top = -7.04755
 offset_right = 47.6497
@@ -132,7 +133,7 @@ offset_bottom = 15.9524
 scale = Vector2(0.551356, 0.635703)
 text = "0"
 
-[node name="wood3" type="Control" parent="NinePatchRect/GridContainer/Control"]
+[node name="bottle" type="Control" parent="NinePatchRect/GridContainer/Control"]
 layout_mode = 2
 anchors_preset = 0
 offset_left = 66.6472
@@ -141,12 +142,13 @@ offset_right = 82.6472
 offset_bottom = -22.1845
 scale = Vector2(0.896618, 0.82196)
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/Control/wood3"]
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/Control/bottle"]
 position = Vector2(6.49496, 1.98526)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_l7l6e")
 
-[node name="Label" type="Label" parent="NinePatchRect/GridContainer/Control/wood3"]
+[node name="Label" type="Label" parent="NinePatchRect/GridContainer/Control/bottle"]
+layout_mode = 0
 offset_left = 19.5459
 offset_top = -5.54007
 offset_right = 36.5459

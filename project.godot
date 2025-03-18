@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Wexford witty Viking(pre)"
+config/name="Echoes of Ériu(pre)"
 run/main_scene="res://Scenes/player/player.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Art/Default/icon.svg"

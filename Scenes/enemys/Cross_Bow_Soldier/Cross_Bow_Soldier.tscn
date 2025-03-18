@@ -39,13 +39,13 @@ region = Rect2(896, 0, 448, 448)
 atlas = ExtResource("3_xg74o")
 region = Rect2(1344, 0, 448, 448)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_awtrn"]
-atlas = ExtResource("3_xg74o")
-region = Rect2(1792, 0, 448, 448)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqkm8"]
 atlas = ExtResource("3_xg74o")
 region = Rect2(2240, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awtrn"]
+atlas = ExtResource("3_xg74o")
+region = Rect2(1792, 0, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e3u17"]
 atlas = ExtResource("3_xg74o")
@@ -115,31 +115,31 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_obhdi")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_kfrbb")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_bcu4c")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_cgbo2")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_awtrn")
-}, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_jqkm8")
 }, {
-"duration": 1.0,
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_awtrn")
+}, {
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_e3u17")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_e764a")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_uou4g")
 }],
 "loop": false,
@@ -155,31 +155,31 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_ky7ln")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_xxku3")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_i32pm")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_3snbg")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_8m7qg")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_3no3d")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_xn42s")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_lyoy2")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_gqbru")
 }],
 "loop": false,
@@ -210,10 +210,12 @@ script = ExtResource("1_iog6a")
 ammo = ExtResource("2_42b2p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 2
+z_index = 4
 position = Vector2(101.778, 216.667)
 sprite_frames = SubResource("SpriteFrames_mmjok")
-animation = &"death"
+animation = &"walk"
+frame = 8
+frame_progress = 1.0
 offset = Vector2(-100, -327.778)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -232,15 +234,17 @@ z_index = 1
 z_index = 1
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_24c5g")
-debug_color = Color(0.591294, 0.547286, 0, 0.42)
+debug_color = Color(0.975196, 0.905046, 0, 0.42)
 
 [node name="danger_close" type="Area2D" parent="Shooting_Flee"]
-z_index = 1
+modulate = Color(1, 0, 0.156863, 1)
+z_index = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shooting_Flee/danger_close"]
 z_index = 1
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_vopl7")
+debug_color = Color(0.690311, 0.497921, 0, 0.42)
 
 [node name="chase" type="Area2D" parent="Shooting_Flee"]
 z_index = 1
@@ -248,6 +252,7 @@ z_index = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shooting_Flee/chase"]
 z_index = 1
 shape = SubResource("CircleShape2D_p6jd8")
+debug_color = Color(0.415667, 0.516359, 0.835609, 0.42)
 
 [node name="NAV" type="Node2D" parent="."]
 position = Vector2(-3.77778, -111.111)
