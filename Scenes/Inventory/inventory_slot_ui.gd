@@ -1,7 +1,5 @@
 extends Panel
 
-
-
 @onready var item_visual: Sprite2D = $CenterContainer/Panel/item_display
 @onready var amount_text : Label = $CenterContainer/Panel/Label
 @onready var label_2: Label = $CenterContainer/Panel/Label2
@@ -17,8 +15,15 @@ var is_shop_slot = false
 @onready var RUBBER = preload("res://Scenes/Item/Rubber/Rubber.tres")
 @onready var BOTTLES = preload("res://Scenes/Item/Bottle/Bottles.tres")
 
+signal hovered_item(item_name : String)
+
 func _ready():
 	texture_button.connect("pressed", _on_texture_button_pressed)
+	
+func _process(_delta):
+	if texture_button.is_hovered() and slot_data and slot_data.item:
+		hovered_item.emit(slot_data.item.name)
+		
 
 func update(slot: Inventory_Slot, inv: Inventory, p_inv: Inventory, s_inv: Inventory, shop_mode: bool):
 	slot_data = slot
@@ -26,7 +31,6 @@ func update(slot: Inventory_Slot, inv: Inventory, p_inv: Inventory, s_inv: Inven
 	player_inv = p_inv
 	shop_inv = s_inv
 	is_shop_slot = shop_mode
-	
 
 	if !slot.item:
 		item_visual.visible = false
@@ -64,17 +68,21 @@ func _on_texture_button_pressed() -> void:
 	print_inventory("Player Inventory", player_inv)
 	print_inventory("Shop Inventory", shop_inv)
 
-	if is_shop_slot:  # Player is trying to buy from the shop
-		if shop_inv.Has_Items(item, 1) and player_inv.Has_Items(BOTTLES, 8):  
-			print("Trading 8 Bottles for:", item.name)
+	if is_shop_slot and shop_inv.Has_Items(item, 1):
+		if item && item.name == "sword" && player_inv.Has_Items(BOTTLES,8) && player_inv.Has_Items(RUBBER,4):
 			Remove(item)
 			player_inv.insert(item, 1)           # Add new item to player inventory
 			shop_inv.Remove_Items(item, 1)       # Remove bought item from shop inventory
-	else:  # Player is selling to the shop
-		if player_inv.Has_Items(item, 1):  
-			print("Selling:", item.name)
-			shop_inv.insert(item, 1)         # Add to shop inventory
-			player_inv.Remove_Items(item, 1) # Remove from player inventory
+		if item && item.name == "damage_buff" && player_inv.Has_Items(BOTTLES,5) && player_inv.Has_Items(RUBBER,5) && player_inv.Has_Items(WOOD_BUNDLE,5):
+			Remove(item)
+			player_inv.insert(item, 1)           # Add new item to player inventory
+			shop_inv.Remove_Items(item, 1)       # Remove bought item from shop inventory
+		if item && item.name == "health_p" && player_inv.Has_Items(BOTTLES,5) && player_inv.Has_Items(WOOD_BUNDLE,1):
+			Remove(item)
+			player_inv.insert(item, 1)           # Add new item to player inventory
+			shop_inv.Remove_Items(item, 1)       # Remove bought item from shop inventory
+
+
 
 	print("After transaction:")
 	print_inventory("Player Inventory", player_inv)
@@ -92,19 +100,20 @@ func print_inventory(name: String, inv: Inventory):
 
 
 func Remove(item):
-	if item.name == "sword":
-		player_inv.Remove_Items(BOTTLES,8)
-		player_inv.Remove_Items(RUBBER,4)
+	if not item or not item.name:  # Prevent errors if item is null
+		print("Error: Attempted to remove a null item!")
 		return
-	if item.name == "health_p":
-		player_inv.Remove_Items(BOTTLES,5)
-		player_inv.Remove_Items(WOOD_BUNDLE,1)
-		return
-	if item.name == "damage_buff":
-		player_inv.Remove_Items(BOTTLES,5)
-		player_inv.Remove_Items(WOOD_BUNDLE,5)
-		player_inv.Remove_Items(RUBBER,5)
-		return
-		
+
+	match item.name:
+		"sword":
+			player_inv.Remove_Items(BOTTLES, 8)
+			player_inv.Remove_Items(RUBBER, 4)
+		"health_p":
+			player_inv.Remove_Items(BOTTLES, 5)
+			player_inv.Remove_Items(WOOD_BUNDLE, 1)
+		"damage_buff":
+			player_inv.Remove_Items(BOTTLES, 5)
+			player_inv.Remove_Items(WOOD_BUNDLE, 5)
+			player_inv.Remove_Items(RUBBER, 5)
 		
 	

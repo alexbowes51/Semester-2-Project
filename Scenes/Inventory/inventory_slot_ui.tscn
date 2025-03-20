@@ -16,7 +16,9 @@ layout_mode = 0
 offset_right = 50.0
 offset_bottom = 50.0
 scale = Vector2(0.35, 0.35)
+toggle_mode = true
 texture_normal = ExtResource("1_j8fhu")
+texture_pressed = ExtResource("3_y5kw8")
 texture_hover = ExtResource("3_y5kw8")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
