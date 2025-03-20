@@ -5,15 +5,19 @@ extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $NAV/RayCast2D
 @onready var fire_timer: Timer = $NAV/Fire_Timer
 @export var ammo : PackedScene
-
+@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 @export var nav : NavigationAgent2D
 @export var speed = 50
 var target_node = null
+@onready var hit_by__sword: AudioStreamPlayer = $"hit_by _sword"
 
 var player = null 
 var attacking = false
 var attacked = false
 var alive = true 
+
+var receives_knockback = false
+var knock_scale = 2.0
 
 var health = 100
 
@@ -71,12 +75,16 @@ func idle():
 func damage():
 	if alive == true && attacked == true:
 		health -= 50
+		cpu_particles_2d.emitting = true
+		hit_by__sword.play()
 		
 
 func _is_alive():
 	if health <= 0:
 		$AnimatedSprite2D.play("death")
 		alive = false
+		await get_tree().create_timer(1).timeout
+		self.queue_free()
 
 func check_collision():
 	if ray_cast_2d.get_collider() == player and fire_timer.is_stopped():
@@ -123,10 +131,6 @@ func _on_danger_close_body_exited(body: Node2D) -> void:
 		player = body
 		current_state = States.SHOOTING
 
-func _on_thinking_thime_timeout() -> void:
-	#recalc_path()
-	pass
-
 
 func _on_chase_body_entered(body: Node2D) -> void:
 	if body.has_method("Player"):
@@ -141,7 +145,19 @@ func _on_chase_body_exited(body: Node2D) -> void:
 func _on_cross_e_hit_area_entered(area: Area2D) -> void:
 	if area && area.name == "Player_Attack_HitBox" && WorldManager.player_current_attack == true :
 		attacked = true
+		receives_knockback = true
+		KnockBack(area.global_position)
 
 func _on_cross_e_hit_area_exited(area: Area2D) -> void:
 	if area && area.name == "Player_Attack_HitBox" && WorldManager.player_current_attack == true :
 		attacked = false
+		
+		
+func KnockBack(damage_dir: Vector2):
+	if receives_knockback:
+		var knockback_dir = damage_dir.direction_to(self.global_position)
+		var knockback_strength = 35 * knock_scale
+		var knockback = knockback_dir * knockback_strength
+		
+		global_position += knockback
+	

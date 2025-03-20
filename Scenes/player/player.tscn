@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=71 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://dw4t3tbcow8qq" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="12_cohmc"]
 [ext_resource type="PackedScene" uid="uid://bv3fjtxyo1edw" path="res://Dialogue/Black_Smith DiaLogue/black_smit_dialogue.tscn" id="13_eylsh"]
 [ext_resource type="PackedScene" uid="uid://lyvill1i58ul" path="res://Scenes/Npc/Black_Smith/black_smith_crafting.tscn" id="14_bmap2"]
+[ext_resource type="AudioStream" uid="uid://dc6kfsanrhon5" path="res://Audio/mixkit-impact-of-a-strong-punch-2155.mp3" id="17_3rcj0"]
+[ext_resource type="AudioStream" uid="uid://dk5ovpd1eey2f" path="res://Audio/mixkit-sword-strikes-armor-2765.wav" id="18_7slj4"]
+[ext_resource type="PackedScene" uid="uid://cm28ftmarv0qi" path="res://VFX/collection_expolsion/damage.tscn" id="19_d4ufm"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
 script/source = "extends CharacterBody2D
@@ -37,6 +40,8 @@ var enemy_is_in_attacking_range = false
 
 var attack_damage_cool_down = true
 var attack = false
+var receives_knockback = false
+var knock_scale = 2.0
 
 
 @onready var inv : Inventory = preload(\"res://Scenes/Inventory/player_Inventory.tres\")
@@ -49,6 +54,10 @@ var attack = false
 @onready var rubber_coll_3: Label = $Camera2D/UI/PickUpNotifaction/Rubber_Coll3
 @onready var sprite_2d: Sprite2D = $Camera2D/UI/PickUpNotifaction/Sprite2D
 @onready var build_av: Label = $Camera2D/UI/build_notifcation/Build_av
+
+@onready var hit_by__sword: AudioStreamPlayer = $\"hit_by _sword\"
+@onready var arrow_hit: AudioStreamPlayer = $arrow_hit
+@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 
 
 func _ready():
@@ -103,70 +112,41 @@ func get_input():
 				attack = true
 				$AnimatedSprite2D.play(\"Player_Attack\")
 				$Attack_Cooldown.start()
-				
 	
 	if Input.is_action_pressed(\"left\"):
 		rotation = deg_to_rad(-270)
 		$AnimatedSprite2D.play(\"Player_Walk\")
-		if Input.is_action_pressed(\"attack\"):
-			WorldManager.player_current_attack = true
-			attack = true
-			$AnimatedSprite2D.play(\"Player_Attack\")
-			$Attack_Cooldown.start()
+
 	
 	if Input.is_action_pressed(\"right\"):
 		rotation = deg_to_rad(-90)
 		$AnimatedSprite2D.play(\"Player_Walk\")
-		if Input.is_action_pressed(\"attack\"):
-			WorldManager.player_current_attack = true
-			attack = true
-			$AnimatedSprite2D.play(\"Player_Attack\")
-			$Attack_Cooldown.start()
+	
 	
 	if Input.is_action_pressed(\"up\"):
 		rotation = deg_to_rad(-180)
 		$AnimatedSprite2D.play(\"Player_Walk\")
-		if Input.is_action_pressed(\"attack\"):
-			WorldManager.player_current_attack = true
-			attack = true
-			$AnimatedSprite2D.play(\"Player_Attack\")
-			$Attack_Cooldown.start()
+	
 	
 	if Input.is_action_pressed(\"down\"):
 		rotation = deg_to_rad(-360)
 		$AnimatedSprite2D.play(\"Player_Walk\")
-		if Input.is_action_pressed(\"attack\"):
-			WorldManager.player_current_attack = true
-			attack = true
-			$AnimatedSprite2D.play(\"Player_Attack\")
-			$Attack_Cooldown.start()
+	
 	
 	if Input.is_action_pressed(\"left\") && Input.is_action_pressed(\"up\"):
 		rotation = deg_to_rad(-225)
 		$AnimatedSprite2D.play(\"Player_Walk\")
-		if Input.is_action_pressed(\"attack\"):
-			WorldManager.player_current_attack = true
-			attack = true
-			$AnimatedSprite2D.play(\"Player_Attack\")
-			$Attack_Cooldown.start()
+		
 	
 	if Input.is_action_pressed(\"right\") && Input.is_action_pressed(\"up\"):
 		rotation = deg_to_rad(-135)
 		$AnimatedSprite2D.play(\"Player_Walk\")
-		if Input.is_action_pressed(\"attack\"):
-			WorldManager.player_current_attack = true
-			attack = true
-			$AnimatedSprite2D.play(\"Player_Attack\")
-			$Attack_Cooldown.start()
+	
 	
 	if Input.is_action_pressed(\"left\") && Input.is_action_pressed(\"down\"):
 		rotation = deg_to_rad(-315)
 		$AnimatedSprite2D.play(\"Player_Walk\")
-		if Input.is_action_pressed(\"attack\"):
-			WorldManager.player_current_attack = true
-			attack = true
-			$AnimatedSprite2D.play(\"Player_Attack\")
-			$Attack_Cooldown.start()
+	
 	
 	if Input.is_action_pressed(\"right\") && Input.is_action_pressed(\"down\"):
 		rotation = deg_to_rad(-405)
@@ -207,6 +187,8 @@ func collect(item):
 
 func take_damage():
 	if currentHealth > 0:
+		arrow_hit.play()
+		cpu_particles_2d.emitting = true
 		currentHealth -= 1
 		update_hearts()
 
@@ -250,13 +232,19 @@ func Player():
 func _on_player_hit_box_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if area.name == \"Foot_Attack_Area\":
 		Player_is_in_attacking_range = true
+		receives_knockback = true
+		KnockBack(area.global_position)
 		enemy_attack()
 	if area.name == \"arrow_hit_bow_enemy\":
 		Player_is_in_attacking_range = true
+		receives_knockback = true
+		KnockBack(area.global_position)
 		enemy_attack()
 	if area.name == \"g_h_area\":
 		Player_is_in_attacking_range = true
 		enemy_attack()
+		receives_knockback = true
+		KnockBack(area.global_position)
 	
 	
 
@@ -288,6 +276,15 @@ func teleporting():
 		if WorldManager.tp_Wp2_A == \"B\" && WorldManager.Wp2_tp == true:
 			position = WorldManager.Wp2_A
 			WorldManager.Wp2_tp = false
+
+
+func KnockBack(damage_dir: Vector2):
+	if receives_knockback && attack_damage_cool_down:
+		var knockback_dir = damage_dir.direction_to(self.global_position)
+		var knockback_strength = 35 * knock_scale
+		var knockback = knockback_dir * knockback_strength
+		
+		global_position += knockback
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8uuud"]
@@ -644,7 +641,7 @@ radius = 22.0
 height = 46.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayp1y"]
-size = Vector2(37, 38)
+size = Vector2(70, 31)
 
 [sub_resource type="Gradient" id="Gradient_5f0ot"]
 offsets = PackedFloat32Array(0.00591716, 1)
@@ -694,7 +691,7 @@ collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Attack_HitBox"]
 z_index = 1
-position = Vector2(-0.5, 34)
+position = Vector2(0, 30.5)
 shape = SubResource("RectangleShape2D_ayp1y")
 debug_color = Color(0.681852, 0.502586, 0.0146951, 0.42)
 
@@ -891,6 +888,16 @@ stream = ExtResource("9_mjni5")
 [node name="walking" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_yodoo")
 volume_db = 10.0
+
+[node name="hit_by _sword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_3rcj0")
+
+[node name="heavy_hit" type="AudioStreamPlayer" parent="."]
+
+[node name="arrow_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_7slj4")
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("19_d4ufm")]
 
 [connection signal="area_entered" from="Player_HitBox" to="." method="_on_player_hit_box_area_entered"]
 [connection signal="area_exited" from="Player_HitBox" to="." method="_on_player_hit_box_area_exited"]

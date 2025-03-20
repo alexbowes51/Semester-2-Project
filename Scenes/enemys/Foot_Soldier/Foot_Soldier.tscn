@@ -1,10 +1,12 @@
-[gd_scene load_steps=41 format=3 uid="uid://618x4cs781ri"]
+[gd_scene load_steps=43 format=3 uid="uid://618x4cs781ri"]
 
 [ext_resource type="Texture2D" uid="uid://y6o40vd6fehj" path="res://Art/Enemies/Foot Soldier/Attack/Foot Soldier Attack-Sheet.png" id="1_6hrp6"]
 [ext_resource type="Script" path="res://Scenes/enemys/Foot_Soldier/Foot_Soldier.gd" id="1_otqes"]
 [ext_resource type="Texture2D" uid="uid://dfpxwk1wr7clu" path="res://Art/Enemies/Foot Soldier/Death (No Gore)/Foot Soldier Death (No Gore)-Sheet.png" id="2_wd804"]
 [ext_resource type="Texture2D" uid="uid://dsy2ba6ht1hcu" path="res://Art/Enemies/Foot Soldier/Walk/Foot Soldier Walk-Sheet.png" id="3_6b0jd"]
 [ext_resource type="Texture2D" uid="uid://b6xl8ktdyekh3" path="res://Art/Enemies/Foot Soldier/Foot Soldeir.png" id="5_5utsf"]
+[ext_resource type="PackedScene" uid="uid://cm28ftmarv0qi" path="res://VFX/collection_expolsion/damage.tscn" id="6_j762v"]
+[ext_resource type="AudioStream" uid="uid://dc6kfsanrhon5" path="res://Audio/mixkit-impact-of-a-strong-punch-2155.mp3" id="7_tmkhu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dxymc"]
 atlas = ExtResource("1_6hrp6")
@@ -276,6 +278,7 @@ shape = SubResource("CircleShape2D_yohbb")
 debug_color = Color(0.931, 0, 0.654, 0.114)
 
 [node name="Dectector" type="Area2D" parent="."]
+z_index = 1
 position = Vector2(22.2222, -11.1111)
 
 [node name="Search_Area" type="CollisionShape2D" parent="Dectector"]
@@ -294,6 +297,7 @@ shape = SubResource("CircleShape2D_04qe4")
 debug_color = Color(0.751291, 0.118527, 0, 0.205)
 
 [node name="Foot_Hit_Area" type="Area2D" parent="."]
+z_index = 1
 position = Vector2(22.2222, -11.1111)
 
 [node name="Foot_Hit_Area" type="CollisionShape2D" parent="Foot_Hit_Area"]
@@ -308,12 +312,18 @@ process_callback = 0
 process_callback = 0
 wait_time = 0.1
 
+[node name="CPUParticles2D" parent="." instance=ExtResource("6_j762v")]
+scale = Vector2(5, 5)
+
+[node name="hit_by _sword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_tmkhu")
+
 [connection signal="body_entered" from="Dectector" to="." method="_on_dectector_body_entered"]
 [connection signal="body_exited" from="Dectector" to="." method="_on_dectector_body_exited"]
-[connection signal="body_entered" from="Foot_Attack_Area" to="." method="_on_foot_hit_box_body_entered"]
 [connection signal="body_entered" from="Foot_Attack_Area" to="." method="_on_foot_attack_area_body_entered"]
-[connection signal="body_exited" from="Foot_Attack_Area" to="." method="_on_foot_hit_box_body_exited"]
+[connection signal="body_entered" from="Foot_Attack_Area" to="." method="_on_foot_hit_box_body_entered"]
 [connection signal="body_exited" from="Foot_Attack_Area" to="." method="_on_foot_attack_area_body_exited"]
+[connection signal="body_exited" from="Foot_Attack_Area" to="." method="_on_foot_hit_box_body_exited"]
 [connection signal="area_shape_entered" from="Foot_Hit_Area" to="." method="_on_foot_hit_area_area_shape_entered"]
 [connection signal="area_shape_exited" from="Foot_Hit_Area" to="." method="_on_foot_hit_area_area_shape_exited"]
 [connection signal="body_entered" from="Foot_Hit_Area" to="." method="_on_foot_hit_area_body_entered"]

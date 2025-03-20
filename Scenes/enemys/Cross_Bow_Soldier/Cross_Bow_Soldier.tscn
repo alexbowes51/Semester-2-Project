@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cock7nvcnmq6e"]
+[gd_scene load_steps=37 format=3 uid="uid://cock7nvcnmq6e"]
 
 [ext_resource type="Script" path="res://Scenes/enemys/Cross_Bow_Soldier/cross_bow_soldier.gd" id="1_iog6a"]
 [ext_resource type="Texture2D" uid="uid://dqai7qlvxeu2c" path="res://Art/Enemies/Crossbowman/Attack/CrossBowMan Attack-Sheet.png" id="2_2hoqh"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://ggdwvjgtyubh" path="res://Art/Enemies/Crossbowman/Death (No Gore)/CrossBowMan Death No Gore-Sheet.png" id="3_xg74o"]
 [ext_resource type="Texture2D" uid="uid://by4q7vqa6pyxh" path="res://Art/Enemies/Crossbowman/CrossBowMan.png" id="4_gudm3"]
 [ext_resource type="Texture2D" uid="uid://dtt5imggmueji" path="res://Art/Enemies/Crossbowman/Walk/CrossBowman Walk-Sheet.png" id="5_epnt2"]
+[ext_resource type="PackedScene" uid="uid://cm28ftmarv0qi" path="res://VFX/collection_expolsion/damage.tscn" id="7_ulhmo"]
+[ext_resource type="AudioStream" uid="uid://dc6kfsanrhon5" path="res://Audio/mixkit-impact-of-a-strong-punch-2155.mp3" id="8_kpk7w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukxcs"]
 atlas = ExtResource("2_2hoqh")
@@ -272,6 +274,12 @@ position = Vector2(-3.77778, -111.111)
 z_index = 1
 shape = SubResource("CircleShape2D_ovjlw")
 debug_color = Color(0.941893, 9.2411e-06, 0.60857, 0.42)
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("7_ulhmo")]
+scale = Vector2(5, 5)
+
+[node name="hit_by _sword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kpk7w")
 
 [connection signal="area_exited" from="Shooting_Flee/Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Shooting_Flee/Area2D" to="." method="_on_area_2d_body_entered"]

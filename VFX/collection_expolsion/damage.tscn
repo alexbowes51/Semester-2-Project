@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://83dimkt458gc"]
+[gd_scene load_steps=3 format=3 uid="uid://cm28ftmarv0qi"]
 
 [sub_resource type="Curve" id="Curve_bk20t"]
 _data = [Vector2(0.0110497, 0.986051), 0.0, 0.0, 0, 0, Vector2(1, 0.00268245), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_8reiu"]
-colors = PackedColorArray(0.392157, 1, 0.627451, 1, 1.63645e-06, 0.808187, 1.54018e-06, 1)
+offsets = PackedFloat32Array(0.0027972, 0.152448, 0.60979, 0.976224, 0.984615, 0.991608, 0.998601, 1)
+colors = PackedColorArray(0.72363, 0.09268, 1.92523e-07, 1, 0.676816, 0.185976, 0.0645344, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0277568, 0.00696924, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
+z_index = 1
 emitting = false
 amount = 50
 one_shot = true

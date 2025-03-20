@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Item/Wood/Wood.gd" id="1_t56yu"]
 [ext_resource type="Resource" uid="uid://d1mxy2cutqha6" path="res://Scenes/Item/Wood/Wood_bundle.tres" id="2_pjwcv"]
 [ext_resource type="Texture2D" uid="uid://bv4lk3didxw5a" path="res://Art/Items/Wood.png" id="2_tbfw0"]
-[ext_resource type="PackedScene" uid="uid://83dimkt458gc" path="res://VFX/collection_expolsion/collision_explosion.tscn" id="4_hs813"]
+[ext_resource type="PackedScene" uid="uid://83dimkt458gc" path="res://VFX/collection_expolsion/pick_up.tscn" id="4_hs813"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_13mc0"]
 radius = 23.1948
