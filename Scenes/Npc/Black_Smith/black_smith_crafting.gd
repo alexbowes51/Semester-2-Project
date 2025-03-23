@@ -16,13 +16,13 @@ func _ready():
 	bs_inv.update.connect(update_slots)
 	update_slots()
 	close()
-
+#slot: Inventory_Slot, inv: Inventory, p_inv: Inventory, s_inv: Inventory,h_inv :Inventory, shop_mode: bool
 func update_slots():
 	for i in range(min(player_inv.slots.size(), slots.size())):
-		slots[i].update(player_inv.slots[i], player_inv, player_inv, bs_inv, false)  # Player selling
+		slots[i].update(player_inv.slots[i], player_inv, player_inv, bs_inv, bs_inv, false)  # Player selling
 
 	for i in range(min(bs_inv.slots.size(), slots.size())):
-		slots[i].update(bs_inv.slots[i], bs_inv, player_inv, bs_inv, true) 
+		slots[i].update(bs_inv.slots[i], bs_inv, player_inv, bs_inv, bs_inv, true) 
 		
 	for slot in slots:
 		if slot.has_signal("hovered_item"):  # Check if the slot has the signal

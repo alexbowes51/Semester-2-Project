@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=7 format=3 uid="uid://beqbs1wanmbod"]
+
+[ext_resource type="Script" path="res://Scenes/Inventory/inventory.gd" id="1_81imf"]
+[ext_resource type="Script" path="res://Scenes/Inventory/Inventory_Slot.gd" id="2_xhnc6"]
+[ext_resource type="Resource" uid="uid://c7vkuqdtwr7us" path="res://Scenes/Item/Health_potions/health_p.tres" id="3_3lkn0"]
+
+[sub_resource type="Resource" id="Resource_0qgx1"]
+script = ExtResource("2_xhnc6")
+item = ExtResource("3_3lkn0")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_x8a63"]
+script = ExtResource("2_xhnc6")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_jwc5l"]
+script = ExtResource("2_xhnc6")
+amount = 0
+
+[resource]
+script = ExtResource("1_81imf")
+slots = Array[ExtResource("2_xhnc6")]([SubResource("Resource_0qgx1"), SubResource("Resource_x8a63"), SubResource("Resource_jwc5l")])
