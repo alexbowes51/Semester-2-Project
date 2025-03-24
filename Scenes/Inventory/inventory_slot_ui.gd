@@ -57,12 +57,11 @@ func update(slot: Inventory_Slot, inv: Inventory, p_inv: Inventory, s_inv: Inven
 		else:
 			amount_text.visible = false
 
-func _on_texture_button_pressed() -> void:
+func _on_texture_button_pressed():
 	if not slot_data or not slot_data.item:
 		return  
 
 	var item = slot_data.item
-
 	if not shop_inv or not player_inv or not hot_inv:
 		return
 
@@ -71,7 +70,7 @@ func _on_texture_button_pressed() -> void:
 	print_inventory("Shop Inventory", shop_inv)
 	print_inventory("Hotbar", hot_inv)
 
-	#SHOP TRANSACTIONS
+
 	if is_shop_slot and shop_inv.Has_Items(item, 1):
 		if item.name == "sword" and player_inv.Has_Items(BOTTLES, 8) and player_inv.Has_Items(RUBBER, 4):
 			Remove_cost(item)
@@ -88,25 +87,40 @@ func _on_texture_button_pressed() -> void:
 			player_inv.insert(item, 1)
 			shop_inv.Remove_Items(item, 1)
 
-	#PLAYER INVENTORY -> HOTBAR
-	elif player_inv.Has_Items(item, 1):
-		if hot_inv.insert(item, 1):  # Check if hotbar has space
-			player_inv.Remove_Items(item, 1)
-
-	#HOTBAR -> PLAYER INVENTORY
-	elif hot_inv.Has_Items(item, 1):
-		if player_inv.insert(item, 1):  # Check if player inventory has space
-			hot_inv.Remove_Items(item, 1)
+	
+	elif hot_inv.Has_Items(item, 1):  
+		var transfer_amount = min(slot_data.amount, 1)  
+		
+		if hot_inv.Has_Items(item,1) && item.name == "health_p":
+			WorldManager.player_healed = true
+			hot_inv.Remove_Items(item,1)
+			
+		if hot_inv.Has_Items(item, transfer_amount): 
+			hot_inv.Remove_Items(item, transfer_amount)  
+			player_inv.insert(item, transfer_amount) 
+			
+	
+	elif player_inv.Has_Items(item, 1):  
+		var transfer_amount = min(slot_data.amount, 1)  
+		if player_inv.Has_Items(item, transfer_amount):  
+			player_inv.Remove_Items(item, transfer_amount) 
+			hot_inv.insert(item, transfer_amount) 
 
 	print("After transaction:")
 	print_inventory("Player Inventory", player_inv)
 	print_inventory("Shop Inventory", shop_inv)
 	print_inventory("Hotbar", hot_inv)
 
-	#Update UI
 	player_inv.update.emit()
 	hot_inv.update.emit()
 	shop_inv.update.emit()
+
+
+	print("After transaction:")
+	print_inventory("Player Inventory", player_inv)
+	print_inventory("Shop Inventory", shop_inv)
+	print_inventory("Hotbar", hot_inv)
+
 
 
 func print_inventory(name: String, inv: Inventory):

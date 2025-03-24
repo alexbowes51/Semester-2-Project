@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dy7c00kw0kkuo"
+path="res://.godot/imported/Armour lv 2 + lv1 weapons Player Walk Sword + -Sheet.png-8f3fc97b23fd09a47d6f5a6bbf43cc8e.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Art/Upgraded Stuff/Lv2/Armour/Upgraded armour lv 2/Lv1 Weapons/Sword/Walk/Armour lv 2 + lv1 weapons Player Walk Sword + -Sheet.png"
+dest_files=["res://.godot/imported/Armour lv 2 + lv1 weapons Player Walk Sword + -Sheet.png-8f3fc97b23fd09a47d6f5a6bbf43cc8e.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

@@ -44,6 +44,7 @@ var Wp2_B = Vector2(4750,15370)
 #npc varibales 
 var Merchant_follow_player = false
 var player_talking_Merchant = false
+var player_healed = false
 
 var Black_smith_follow_player = false
 var player_talking_Black_Smith = false

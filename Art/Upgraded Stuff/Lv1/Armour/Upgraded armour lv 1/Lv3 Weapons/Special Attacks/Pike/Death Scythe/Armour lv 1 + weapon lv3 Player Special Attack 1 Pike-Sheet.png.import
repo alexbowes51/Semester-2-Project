@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cg5554ep2f3bc"
+path="res://.godot/imported/Armour lv 1 + weapon lv3 Player Special Attack 1 Pike-Sheet.png-5ec7a67e7c739bb679c0a77dd03a9e43.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Art/Upgraded Stuff/Lv1/Armour/Upgraded armour lv 1/Lv3 Weapons/Special Attacks/Pike/Death Scythe/Armour lv 1 + weapon lv3 Player Special Attack 1 Pike-Sheet.png"
+dest_files=["res://.godot/imported/Armour lv 1 + weapon lv3 Player Special Attack 1 Pike-Sheet.png-5ec7a67e7c739bb679c0a77dd03a9e43.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
