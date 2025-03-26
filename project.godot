@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Echoes of Ériu(pre)"
-run/main_scene="res://Scenes/player/player.tscn"
+run/main_scene="res://Scenes/Main Menu/Intro/intro.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Art/Default/icon.svg"
+run/icon="res://Art/Default/icon.svg"
+run/canvas_textures/default_texture_filter=1
+run/size/viewport_height=648
+run/size/viewport_width=1152
 
 [autoload]
 
@@ -22,6 +26,8 @@ BgAudio="*res://Audio/bg_audio.tscn"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/mode=2
 window/stretch/mode="viewport"
 
@@ -98,5 +104,7 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"
 viewport/hdr_2d=true
 2d/snap/snap_2d_transforms_to_pixel=true

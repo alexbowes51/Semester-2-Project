@@ -31,5 +31,4 @@ func _on_options_pressed() -> void:
 func _on_leave_pressed() -> void:
 	audio_stream_player.play()
 	$AnimationPlayer.play("fade_out")
-	await get_tree().create_timer(3).timeout
 	get_tree().quit()

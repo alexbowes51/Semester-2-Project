@@ -27,6 +27,9 @@ var player_in_build_zone = false
 #player world varibales
 var player_current_attack = false
 var Build_mode = false
+var player_weapon = "none"
+var player_healed = false
+
 
 #teleport variables
 var tp_Wp1_A = "A"
@@ -41,10 +44,12 @@ var Wp1_B = Vector2(16950,3670)
 var Wp2_A = Vector2(2850,470)
 var Wp2_B = Vector2(4750,15370)
 
+var home_spawn = Vector2(1850,3933)
+
 #npc varibales 
 var Merchant_follow_player = false
 var player_talking_Merchant = false
-var player_healed = false
+
 
 var Black_smith_follow_player = false
 var player_talking_Black_Smith = false

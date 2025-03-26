@@ -270,6 +270,8 @@ radius = 85.7143
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = 1
 scale = Vector2(0.28, 0.28)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_b4gdq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -312,6 +314,7 @@ wait_time = 0.25
 wait_time = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
 shape = SubResource("CircleShape2D_klph8")
 
 [node name="CPUParticles2D" parent="." instance=ExtResource("6_u2iy4")]

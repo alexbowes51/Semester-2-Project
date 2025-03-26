@@ -253,7 +253,7 @@ animations = [{
 radius = 61.1111
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnpgr"]
-radius = 1012.11
+radius = 2840.28
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04qe4"]
 radius = 211.111
@@ -264,6 +264,8 @@ radius = 261.17
 [node name="Foot Soldier" type="CharacterBody2D"]
 z_index = 1
 scale = Vector2(0.18, 0.18)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_otqes")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -271,15 +273,17 @@ z_index = 2
 sprite_frames = SubResource("SpriteFrames_a3ilm")
 animation = &"Foot_E_Hurt"
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(22.2222, -11.1111)
+position = Vector2(-1.90735e-06, 9.53674e-07)
 shape = SubResource("CircleShape2D_yohbb")
 debug_color = Color(0.931, 0, 0.654, 0.114)
 
 [node name="Dectector" type="Area2D" parent="."]
 z_index = 1
-position = Vector2(22.2222, -11.1111)
+position = Vector2(-1.90735e-06, 9.53674e-07)
 
 [node name="Search_Area" type="CollisionShape2D" parent="Dectector"]
 z_index = 1
@@ -288,7 +292,7 @@ debug_color = Color(0.750807, 0.458662, 0, 0.124)
 
 [node name="Foot_Attack_Area" type="Area2D" parent="."]
 z_index = 1
-position = Vector2(22.2222, -11.1111)
+position = Vector2(-1.90735e-06, 9.53674e-07)
 
 [node name="Foot_Attack_Area" type="CollisionShape2D" parent="Foot_Attack_Area"]
 z_index = 1
@@ -301,22 +305,41 @@ z_index = 1
 position = Vector2(22.2222, -11.1111)
 
 [node name="Foot_Hit_Area" type="CollisionShape2D" parent="Foot_Hit_Area"]
-position = Vector2(-4.76837e-07, 0)
+position = Vector2(-22.2222, 11.1111)
 shape = SubResource("CircleShape2D_udkv7")
 debug_color = Color(0.718269, 0.480954, 0, 0.42)
 
 [node name="Attack_cooldown_False" type="Timer" parent="."]
 process_callback = 0
+wait_time = 0.5
 
 [node name="damage_cooldown" type="Timer" parent="."]
 process_callback = 0
-wait_time = 0.1
+wait_time = 0.5
 
 [node name="CPUParticles2D" parent="." instance=ExtResource("6_j762v")]
 scale = Vector2(5, 5)
 
 [node name="hit_by _sword" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_tmkhu")
+
+[node name="down" type="RayCast2D" parent="."]
+position = Vector2(0, -1.52588e-05)
+target_position = Vector2(0, 211.111)
+
+[node name="rigth" type="RayCast2D" parent="."]
+position = Vector2(0, -1.52588e-05)
+target_position = Vector2(211.111, -5.55554)
+
+[node name="left" type="RayCast2D" parent="."]
+position = Vector2(0, -1.52588e-05)
+target_position = Vector2(-211.111, -5.55554)
+
+[node name="up" type="RayCast2D" parent="."]
+position = Vector2(0, -1.52588e-05)
+target_position = Vector2(0, -211.111)
+
+[node name="nav_update" type="Timer" parent="."]
 
 [connection signal="body_entered" from="Dectector" to="." method="_on_dectector_body_entered"]
 [connection signal="body_exited" from="Dectector" to="." method="_on_dectector_body_exited"]

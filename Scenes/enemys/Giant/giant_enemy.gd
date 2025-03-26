@@ -85,8 +85,8 @@ func chasing():
 		if player != null && current_state == States.CHASING:
 			$AnimatedSprite2D.play("walk")
 			position += ( player.global_position - global_position ).normalized() / 2
-			look_at(player.get_global_position())
-			global_rotation_degrees += -90
+			var target_rotation = (player.global_position - global_position).angle() + -90 
+			rotation = lerp_angle(rotation, target_rotation, 0.019)  
 	
 func attack():
 	if alive == true:

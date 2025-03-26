@@ -1,0 +1,102 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmdcilu706lxk"]
+
+[ext_resource type="Script" path="res://respawn.gd" id="1_f2wlo"]
+[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="2_6lypl"]
+[ext_resource type="Texture2D" uid="uid://o0ffakvw437d" path="res://Art/Inventory/pixil-frame-0 (8).png" id="3_mlkyv"]
+
+[node name="Respawn" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1515.0
+offset_bottom = -873.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f2wlo")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 41.0
+offset_bottom = 42.0
+scale = Vector2(10, 5)
+texture = ExtResource("2_6lypl")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 157.0
+offset_right = 89.0
+offset_bottom = 207.0
+scale = Vector2(2.9227, 0.388808)
+texture_normal = ExtResource("3_mlkyv")
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+offset_left = 213.0
+offset_top = 157.0
+offset_right = 263.0
+offset_bottom = 207.0
+scale = Vector2(2.9227, 0.388808)
+texture_normal = ExtResource("3_mlkyv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 27.0
+offset_right = 2265.0
+offset_bottom = 640.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 23
+theme_override_constants/shadow_offset_y = 16
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 450
+text = "YOU DIED"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 100.0
+offset_top = 106.0
+offset_right = 4482.0
+offset_bottom = 719.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 23
+theme_override_constants/shadow_offset_y = 16
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 450
+text = "Would you like to....."
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 73.0
+offset_top = 154.0
+offset_right = 4455.0
+offset_bottom = 767.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 23
+theme_override_constants/shadow_offset_y = 16
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 300
+text = "Respawn"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 233.0
+offset_top = 158.0
+offset_right = 4648.0
+offset_bottom = 771.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 23
+theme_override_constants/shadow_offset_y = 16
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 200
+text = "Leave to Main menu"
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]

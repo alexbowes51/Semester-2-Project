@@ -39,8 +39,10 @@ offset_left = -1.0
 offset_top = -1.0
 offset_right = 18.0
 offset_bottom = 22.0
-scale = Vector2(0.45, 0.45)
+scale = Vector2(0.05, 0.05)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 11
+theme_override_font_sizes/font_size = 145
 text = "99"
 horizontal_alignment = 2
 
@@ -51,8 +53,10 @@ offset_left = -9.0
 offset_top = -9.0
 offset_right = 26.0
 offset_bottom = 14.0
-scale = Vector2(0.197674, 0.181317)
+scale = Vector2(0.05, 0.05)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 11
+theme_override_font_sizes/font_size = 100
 text = "type"
 horizontal_alignment = 2
 

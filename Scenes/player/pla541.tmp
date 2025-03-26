@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=113 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://cy7peq5hs3s10" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://dw4t3tbcow8qq" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dwvvykkm0efg0" path="res://Art/Player/No Weapons/Player Character No Weapons/Death No Gore/Player Charachter death no gore-Sheet.png" id="4_3c6km"]
 [ext_resource type="Texture2D" uid="uid://kppxu5udltos" path="res://Art/UI/Hearts/Heart.png" id="4_n7t0m"]
 [ext_resource type="Texture2D" uid="uid://ck81m246ahl52" path="res://Art/Player/Sword/Sword Player/Attack/Player Attack Sword -Sheet.png" id="5_v876a"]
-[ext_resource type="Texture2D" uid="uid://c48hlebaec50d" path="res://Art/Player/Crossbow/Crossbow Player/Attack/Player Crossbow Attack-Sheet.png" id="5_y7y56"]
 [ext_resource type="Texture2D" uid="uid://myot25jbrsyy" path="res://Art/Player/No Weapons/Player Character No Weapons/Walk/Player Walk-Sheet.png" id="6_agh1c"]
 [ext_resource type="Texture2D" uid="uid://clxfy4e16tbsm" path="res://Art/Player/Sword/Sword Player/Death No Gore/Player Charachter Sword death no gore-Sheet.png" id="6_jyjmh"]
 [ext_resource type="Texture2D" uid="uid://likjfv2emyg7" path="res://Art/Player/Sword/Sword Player/Player Charachter Sword .png" id="7_eckk0"]
@@ -26,7 +25,6 @@
 [ext_resource type="AudioStream" uid="uid://dk5ovpd1eey2f" path="res://Audio/mixkit-sword-strikes-armor-2765.wav" id="18_7slj4"]
 [ext_resource type="PackedScene" uid="uid://bopk1ta60cfqg" path="res://Scenes/Inventory/player_hotbar.tscn" id="19_ag7iv"]
 [ext_resource type="PackedScene" uid="uid://cm28ftmarv0qi" path="res://VFX/collection_expolsion/damage.tscn" id="19_d4ufm"]
-[ext_resource type="PackedScene" uid="uid://dmdcilu706lxk" path="res://Scenes/respawn/respawn.tscn" id="22_fuqjl"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
 script/source = "extends CharacterBody2D
@@ -46,7 +44,6 @@ var attack_damage_cool_down = true
 var attack = false
 var receives_knockback = false
 var knock_scale = 2.0
-var speed = 300
 
 
 @onready var inv : Inventory = preload(\"res://Scenes/Inventory/player_Inventory.tres\")
@@ -60,13 +57,15 @@ var speed = 300
 @onready var rubber_coll_3: Label = $Camera2D/UI/PickUpNotifaction/Rubber_Coll3
 @onready var sprite_2d: Sprite2D = $Camera2D/UI/PickUpNotifaction/Sprite2D
 @onready var build_av: Label = $Camera2D/UI/build_notifcation/Build_av
-@onready var respawn: Control = $Camera2D/UI/Respawn
 
 @onready var hit_by__sword: AudioStreamPlayer = $\"hit_by _sword\"
 @onready var arrow_hit: AudioStreamPlayer = $arrow_hit
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 
 @onready var Sword = preload(\"res://Scenes/Item/Sword/sword.tres\")
+@export var ACCELERATION = 500
+@export var DECELERATION = 600
+@export var SPEED = 150
 
 func _ready():
 	var heart_container = $Camera2D/UI/HealthBar
@@ -75,7 +74,6 @@ func _ready():
 	rubber_coll_3.visible = false
 	sprite_2d.visible = false
 	build_av.visible = false
-	respawn.visible = false
 
 	
 	for heart in heart_container.get_children():
@@ -95,12 +93,11 @@ func _physics_process(_delta: float) -> void:
 	else:
 		build_av.visible = false 
 		
-		
 	if WorldManager.player_talking_Merchant == false && WorldManager.player_talking_Black_Smith == false:
 		if currentHealth > 0:
 			update_hearts()
 			enemy_attack()
-			get_input()
+			get_input(_delta)
 			move_and_slide()
 			teleporting()
 			Heal_damage()
@@ -109,41 +106,46 @@ func _physics_process(_delta: float) -> void:
 		
 	
 
-func get_input():
+func get_input(delta):
 	var input_direction = Input.get_vector(\"left\", \"right\", \"up\", \"down\")
-	
 
+	# Walking sound
 	if input_direction != Vector2.ZERO:
 		if !walking.playing:
 			walking.play()
 	else:
 		walking.stop()
 
-
+	# Attack handling
 	if Input.is_action_pressed(\"attack\"):
 		WorldManager.player_current_attack = true
 		attack = true
 		if check_weapon():
-			$AnimatedSprite2D.play(\"Player_sword_attack\")  
+			$AnimatedSprite2D.play(\"Player_sword_attack\")  # Play sword attack animation
 		else:
 			$AnimatedSprite2D.play(\"Player_Attack\")
 		$Attack_Cooldown.start()
 
-
+	# Rotation based on movement
 	if input_direction != Vector2.ZERO:
-		rotation = velocity.angle() + deg_to_rad(-90)
+		rotation = input_direction.angle()
 
+	# Movement acceleration & deceleration
+	if input_direction != Vector2.ZERO:
+		velocity = velocity.lerp(input_direction * SPEED, ACCELERATION * delta)
+	else:
+		velocity = velocity.lerp(Vector2.ZERO, DECELERATION * delta)
 
+	# Play movement animations
 	if input_direction != Vector2.ZERO:
 		if check_weapon():
 			$AnimatedSprite2D.play(\"Player_sword_walk\")
 		else:
 			$AnimatedSprite2D.play(\"Player_Walk\")
 	else:
-		$AnimatedSprite2D.play(\"Player_Idle\")
+		$AnimatedSprite2D.play(\"idle\")
 
-	
-	velocity = input_direction * speed
+
 
 func collect(item):	
 	audio_stream_player.play()
@@ -208,7 +210,6 @@ func upgrade_player():
 func player_dead():
 	currentHealth = 0
 	player_alive = false
-	respawn.visible = true
 	if death:
 		if check_weapon():
 			$AnimatedSprite2D.play(\"Player_sword_death\")
@@ -474,38 +475,6 @@ region = Rect2(3584, 0, 448, 448)
 [sub_resource type="AtlasTexture" id="AtlasTexture_obgis"]
 atlas = ExtResource("6_agh1c")
 region = Rect2(4032, 0, 448, 448)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_grjh2"]
-atlas = ExtResource("5_y7y56")
-region = Rect2(0, 0, 448, 268)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ynaqf"]
-atlas = ExtResource("5_y7y56")
-region = Rect2(448, 0, 448, 268)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lijcn"]
-atlas = ExtResource("5_y7y56")
-region = Rect2(896, 0, 448, 268)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_67qbh"]
-atlas = ExtResource("5_y7y56")
-region = Rect2(1344, 0, 448, 268)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5flfy"]
-atlas = ExtResource("5_y7y56")
-region = Rect2(1792, 0, 448, 268)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f3xvt"]
-atlas = ExtResource("5_y7y56")
-region = Rect2(2240, 0, 448, 268)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f5c3r"]
-atlas = ExtResource("5_y7y56")
-region = Rect2(2688, 0, 448, 268)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dapep"]
-atlas = ExtResource("5_y7y56")
-region = Rect2(3136, 0, 448, 268)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_127we"]
 atlas = ExtResource("5_v876a")
@@ -794,50 +763,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_grjh2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ynaqf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lijcn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_67qbh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5flfy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f3xvt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f5c3r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dapep")
-}],
-"loop": true,
-"name": &"Player_cross_attack",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"Player_cross_death",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"Player_cross_idle",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"Player_cross_walk",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_127we")
 }, {
 "duration": 1.0,
@@ -952,7 +877,7 @@ radius = 22.0
 height = 46.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayp1y"]
-size = Vector2(53, 31)
+size = Vector2(70, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5glv"]
 atlas = ExtResource("4_n7t0m")
@@ -1025,6 +950,7 @@ fill_to = Vector2(0.9, 0.1)
 z_index = 1
 texture_filter = 1
 script = SubResource("GDScript_pbkry")
+SPEED = 400.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -1057,19 +983,20 @@ collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Attack_HitBox"]
 z_index = 1
-position = Vector2(0, 27)
+position = Vector2(0, 30.5)
 shape = SubResource("RectangleShape2D_ayp1y")
 debug_color = Color(0.681852, 0.502586, 0.0146951, 0.42)
 
 [node name="Damage_cooldown" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 5.0
 
 [node name="Attack_Cooldown" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.75, 0.75)
+zoom = Vector2(0.85, 0.85)
 limit_left = 100
 limit_top = 100
 limit_right = 32500
@@ -1086,11 +1013,11 @@ transform = Transform2D(0.97, 0, 0, 0.72, 0, 0)
 
 [node name="HealthBar" type="HBoxContainer" parent="Camera2D/UI"]
 z_index = 4
-offset_left = 87.6289
-offset_top = 56.9444
-offset_right = 603.629
-offset_bottom = 96.9444
-scale = Vector2(1.5, 1.5)
+offset_left = 46.0
+offset_top = 32.0
+offset_right = 562.0
+offset_bottom = 72.0
+scale = Vector2(0.519999, 0.480001)
 
 [node name="heart" type="TextureRect" parent="Camera2D/UI/HealthBar"]
 custom_minimum_size = Vector2(100, 0)
@@ -1137,19 +1064,19 @@ scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_mc0xm")
 
 [node name="Build_Ui" parent="Camera2D/UI" instance=ExtResource("7_olynr")]
-offset_left = 119.588
-offset_top = 1215.28
-offset_right = 119.588
-offset_bottom = 1215.28
-scale = Vector2(1.5, 1.5)
+offset_left = 109.278
+offset_top = 729.167
+offset_right = 109.278
+offset_bottom = 729.167
+scale = Vector2(0.795853, 0.898798)
 
 [node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
 z_index = 5
-offset_left = 1486.6
-offset_top = 533.333
-offset_right = 1486.6
-offset_bottom = 533.333
-scale = Vector2(2.5, 4)
+offset_left = 873.196
+offset_top = 287.5
+offset_right = 873.196
+offset_bottom = 287.5
+scale = Vector2(1.59725, 2.0506)
 localize_numeral_system = false
 
 [node name="Black_Smith_Crafting" parent="Camera2D/UI" instance=ExtResource("14_bmap2")]
@@ -1157,45 +1084,40 @@ z_index = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 629.897
-offset_top = 131.944
-offset_right = 882.897
-offset_bottom = 344.944
+offset_left = 327.0
+offset_top = 144.0
+offset_right = 580.0
+offset_bottom = 357.0
 grow_horizontal = 1
 grow_vertical = 1
-scale = Vector2(3, 3)
+scale = Vector2(1.82474, 1.44444)
 
 [node name="Black_Smit_Dialogue" parent="Camera2D/UI" instance=ExtResource("13_eylsh")]
-offset_left = 480.412
-offset_top = 790.278
-offset_right = 485.412
-offset_bottom = 790.278
-scale = Vector2(8, 8)
+offset_left = 189.691
+offset_top = 472.222
+offset_right = 194.691
+offset_bottom = 472.222
+scale = Vector2(6, 5)
 
 [node name="Merchant_Dialogue" parent="Camera2D/UI" instance=ExtResource("8_dy8ic")]
 z_index = 1
-offset_left = 472.165
-offset_top = 787.5
-offset_right = 512.165
-offset_bottom = 827.5
-scale = Vector2(8, 8)
+offset_left = 189.691
+offset_top = 475.0
+offset_right = 229.691
+offset_bottom = 515.0
+scale = Vector2(6, 5)
 
 [node name="PickUpNotifaction" type="Control" parent="Camera2D/UI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -2.06186
-offset_top = 311.111
-offset_right = -2.06186
-offset_bottom = 311.111
 
 [node name="Wood_Coll" type="Label" parent="Camera2D/UI/PickUpNotifaction"]
 z_index = 1
 layout_mode = 0
-offset_left = 114.433
-offset_top = 200.0
-offset_right = 154.433
-offset_bottom = 223.0
-scale = Vector2(2, 2)
+offset_left = 51.0
+offset_top = 280.0
+offset_right = 91.0
+offset_bottom = 303.0
 theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "0"
@@ -1207,11 +1129,10 @@ texture = ExtResource("9_gefow")
 [node name="Bottles_Coll2" type="Label" parent="Camera2D/UI/PickUpNotifaction"]
 z_index = 1
 layout_mode = 0
-offset_left = 114.433
-offset_top = 379.389
-offset_right = 154.433
-offset_bottom = 402.389
-scale = Vector2(2, 2)
+offset_left = 51.0
+offset_top = 328.0
+offset_right = 91.0
+offset_bottom = 351.0
 theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "0"
@@ -1223,11 +1144,10 @@ texture = ExtResource("10_khoqc")
 [node name="Rubber_Coll3" type="Label" parent="Camera2D/UI/PickUpNotifaction"]
 z_index = 1
 layout_mode = 0
-offset_left = 114.433
-offset_top = 288.389
-offset_right = 154.433
-offset_bottom = 311.389
-scale = Vector2(2, 2)
+offset_left = 51.0
+offset_top = 237.0
+offset_right = 91.0
+offset_bottom = 260.0
 theme_override_colors/font_color = Color(1, 0.666667, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "0"
@@ -1237,43 +1157,34 @@ position = Vector2(-27, 12)
 texture = ExtResource("11_hnjnx")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/PickUpNotifaction"]
-position = Vector2(104.124, 320.833)
-scale = Vector2(4, 8)
+position = Vector2(52, 294)
+scale = Vector2(2, 3)
 texture = ExtResource("12_cohmc")
 
 [node name="build_notifcation" type="Control" parent="Camera2D/UI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -879.381
-offset_top = 113.889
-offset_right = -879.381
-offset_bottom = 113.889
+offset_left = 159.794
+offset_top = 36.1111
+offset_right = 159.794
+offset_bottom = 36.1111
 
 [node name="Build_av" type="Label" parent="Camera2D/UI/build_notifcation"]
 layout_mode = 0
-offset_left = 1682.47
-offset_top = -77.7778
-offset_right = 10943.5
-offset_bottom = 1284.22
-scale = Vector2(0.05, 0.05)
+offset_left = 404.0
+offset_top = 78.0
+offset_right = 604.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(1, 0.921316, 0.367822, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 1000
 text = "Build Mode Avaible"
 
 [node name="Player_Hotbar" parent="Camera2D/UI" instance=ExtResource("19_ag7iv")]
-offset_left = 18.5567
-offset_top = 1320.83
-offset_right = -1754.45
-offset_bottom = 292.831
-scale = Vector2(3, 3)
-
-[node name="Respawn" parent="Camera2D/UI" instance=ExtResource("22_fuqjl")]
-z_index = 28
-offset_left = 215.464
-offset_top = 341.667
-offset_right = -1299.54
-offset_bottom = -531.333
-scale = Vector2(4, 4)
+offset_left = 5.15465
+offset_top = 652.778
+offset_right = 5.15466
+offset_bottom = 652.778
+scale = Vector2(1.20619, 1.55555)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 3.0

@@ -217,11 +217,10 @@ libraries = {
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -21.0
-offset_top = -115.0
-offset_right = 19.0
-offset_bottom = -75.0
-scale = Vector2(30.0109, 22.4)
+offset_left = 4.0
+offset_right = 44.0
+offset_bottom = 40.0
+scale = Vector2(47.9709, 27.1145)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 

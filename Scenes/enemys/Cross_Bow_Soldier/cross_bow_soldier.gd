@@ -11,6 +11,12 @@ extends CharacterBody2D
 var target_node = null
 @onready var hit_by__sword: AudioStreamPlayer = $"hit_by _sword"
 
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
+@onready var down: RayCast2D = $down
+@onready var rigth: RayCast2D = $rigth
+@onready var left: RayCast2D = $left
+@onready var up: RayCast2D = $up
+
 var player = null 
 var attacking = false
 var attacked = false
@@ -56,6 +62,10 @@ func fleeing():
 	if alive == true:
 		if player != null && current_state == States.FLEEING:
 			position -= (player.position - position) / speed / 5
+			look_at(player.get_global_position())
+			global_rotation_degrees -= -90
+			
+			
 			$AnimatedSprite2D.play("walk")
 
 

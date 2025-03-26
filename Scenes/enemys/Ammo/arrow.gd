@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var direction : Vector2 = Vector2.ZERO
-var speed : float = 100
+var speed : float = 250
 func _ready():
 	velocity = direction * speed
 	 
@@ -12,8 +12,7 @@ func _physics_process(_delta):
 func set_direction(new_dir:Vector2):
 	direction = new_dir
 	velocity = direction * speed 
-	look_at(new_dir)
-	global_rotation_degrees += -90
+	rotation = velocity.angle() + deg_to_rad(-90)
 	
 	
 

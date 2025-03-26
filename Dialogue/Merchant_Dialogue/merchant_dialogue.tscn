@@ -24,7 +24,8 @@ physics_interpolation_mode = 1
 auto_translate_mode = 1
 texture_filter = 1
 layout_mode = 0
-offset_right = 108.0
+offset_left = 1.0
+offset_right = 109.0
 offset_bottom = 40.0
 scale = Vector2(1.11567, 1.30714)
 mouse_filter = 0
@@ -35,40 +36,49 @@ patch_margin_right = 3
 patch_margin_bottom = 3
 metadata/_edit_group_ = true
 
-[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
-z_index = 1
-texture_filter = 1
-layout_mode = 0
-offset_left = 2.68897
-offset_top = 1.53006
-offset_right = 122.689
-offset_bottom = 26.5301
-scale = Vector2(0.4, 0.4)
-theme_override_colors/table_odd_row_bg = Color(0.9243, 1.2514e-06, 0.482138, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("3_045jx")
-text = "Name:"
-autowrap_mode = 0
-tab_size = 1
-text_direction = 1
-
 [node name="Text" type="RichTextLabel" parent="NinePatchRect"]
 process_mode = 3
 physics_interpolation_mode = 1
 texture_filter = 1
 clip_contents = false
 layout_mode = 0
-offset_left = 3.0
-offset_top = 11.0
-offset_right = 186.0
-offset_bottom = 57.0
-scale = Vector2(0.409783, 0.357219)
+offset_left = 1.79264
+offset_top = 11.4754
+offset_right = 1339.79
+offset_bottom = 149.475
+scale = Vector2(0.05, 0.05)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/normal_font = ExtResource("3_045jx")
-theme_override_fonts/mono_font = ExtResource("3_045jx")
+theme_override_font_sizes/normal_font_size = 100
 text = "chatting...."
+fit_content = true
+scroll_following = true
+autowrap_mode = 2
+tab_size = 1
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+process_mode = 3
+physics_interpolation_mode = 1
+texture_filter = 1
+clip_contents = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 702.0
+offset_bottom = 207.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/normal_font = ExtResource("3_045jx")
+theme_override_font_sizes/normal_font_size = 150
+text = "name:"
 fit_content = true
 scroll_following = true
 autowrap_mode = 2
@@ -91,22 +101,31 @@ stretch_mode = 0
 
 [node name="Follow Text" type="Label" parent="NinePatchRect/TextureButton"]
 layout_mode = 0
-offset_left = 16.2413
-offset_top = 14.2102
-offset_right = 95.2413
-offset_bottom = 37.2102
+offset_left = 11.3689
+offset_top = 15.7051
+offset_right = 1752.37
+offset_bottom = 425.705
+scale = Vector2(0.05, 0.05)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 18
+theme_override_constants/shadow_offset_y = 25
+theme_override_fonts/font = ExtResource("3_045jx")
+theme_override_font_sizes/font_size = 335
 text = "Follow me 
 "
 
 [node name="unFollow Text" type="Label" parent="NinePatchRect/TextureButton"]
-visible = false
 layout_mode = 0
 offset_left = 6.49654
 offset_top = 14.2102
 offset_right = 106.497
 offset_bottom = 37.2102
+scale = Vector2(0.05, 0.05)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 18
+theme_override_constants/shadow_offset_y = 25
+theme_override_fonts/font = ExtResource("3_045jx")
+theme_override_font_sizes/font_size = 335
 text = "unFollow me 
 "
 

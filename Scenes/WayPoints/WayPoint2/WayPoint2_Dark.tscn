@@ -1,16 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4giqpf6ir3tc"]
+[gd_scene load_steps=10 format=3 uid="uid://c4giqpf6ir3tc"]
 
-[ext_resource type="Texture2D" uid="uid://d2d44oicoml0v" path="res://Art/Tile_map/WayPoint2(DA).png" id="1_0846b"]
 [ext_resource type="Script" path="res://Scenes/WayPoints/WayPoint2/way_point_2.gd" id="1_rpwjv"]
-[ext_resource type="Texture2D" uid="uid://du42gh4vfydvq" path="res://Art/Tile_map/WayPoint2(DD).png" id="2_bul0b"]
+[ext_resource type="Texture2D" uid="uid://6n2ajy86u1a1" path="res://Art/Tile_map/WayPoint2(A).png" id="2_roe6m"]
+[ext_resource type="Texture2D" uid="uid://yb2djh6r0j5" path="res://Art/Tile_map/WayPoint2(D).png" id="3_5ehcj"]
 [ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="4_tvw8c"]
 [ext_resource type="Texture2D" uid="uid://der7v037nls2s" path="res://Art/UI/E.png" id="6_2rk3p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7iei"]
+atlas = ExtResource("2_roe6m")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne02h"]
+atlas = ExtResource("3_5ehcj")
+region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2st81"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_0846b")
+"texture": SubResource("AtlasTexture_u7iei")
 }],
 "loop": true,
 "name": &"active",
@@ -18,7 +26,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bul0b")
+"texture": SubResource("AtlasTexture_ne02h")
 }],
 "loop": true,
 "name": &"de_active",
@@ -37,7 +45,6 @@ sprite_frames = SubResource("SpriteFrames_2st81")
 animation = &"de_active"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-2, -4)
 polygon = PackedVector2Array(-37, -29, -27, -32, -13, -33, 24, -33, 37, -32, 45, -29, 43, -26, 35, -15, 31, -10, 20, -4, 21, 4, 23, 12, 25, 19, 34, 29, 32, 31, 27, 33, 21, 34, 9, 35, -11, 35, -19, 34, -24, 32, -29, 30, -26, 25, -23, 21, -20, 16, -19, 12, -18, 7, -17, 1, -16, -3, -19, -6, -24, -9, -27, -13, -30, -18)
 
 [node name="interact" type="Area2D" parent="."]

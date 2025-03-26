@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cock7nvcnmq6e"]
+[gd_scene load_steps=41 format=3 uid="uid://cock7nvcnmq6e"]
 
 [ext_resource type="Script" path="res://Scenes/enemys/Cross_Bow_Soldier/cross_bow_soldier.gd" id="1_iog6a"]
 [ext_resource type="Texture2D" uid="uid://dqai7qlvxeu2c" path="res://Art/Enemies/Crossbowman/Attack/CrossBowMan Attack-Sheet.png" id="2_2hoqh"]
@@ -9,21 +9,37 @@
 [ext_resource type="PackedScene" uid="uid://cm28ftmarv0qi" path="res://VFX/collection_expolsion/damage.tscn" id="7_ulhmo"]
 [ext_resource type="AudioStream" uid="uid://dc6kfsanrhon5" path="res://Audio/mixkit-impact-of-a-strong-punch-2155.mp3" id="8_kpk7w"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ukxcs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_if7mi"]
 atlas = ExtResource("2_2hoqh")
-region = Rect2(0, 0, 448, 700)
+region = Rect2(0, 0, 448, 233)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3eu5l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j147q"]
 atlas = ExtResource("2_2hoqh")
-region = Rect2(448, 0, 448, 700)
+region = Rect2(448, 0, 448, 233)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r1w14"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlv25"]
 atlas = ExtResource("2_2hoqh")
-region = Rect2(896, 0, 448, 700)
+region = Rect2(896, 0, 448, 233)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ol8ei"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0l47"]
 atlas = ExtResource("2_2hoqh")
-region = Rect2(1344, 0, 448, 700)
+region = Rect2(1344, 0, 448, 233)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwyk3"]
+atlas = ExtResource("2_2hoqh")
+region = Rect2(1792, 0, 448, 233)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27jhj"]
+atlas = ExtResource("2_2hoqh")
+region = Rect2(2240, 0, 448, 233)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsgmj"]
+atlas = ExtResource("2_2hoqh")
+region = Rect2(2688, 0, 448, 233)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2lwb"]
+atlas = ExtResource("2_2hoqh")
+region = Rect2(3136, 0, 448, 233)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obhdi"]
 atlas = ExtResource("3_xg74o")
@@ -100,17 +116,29 @@ region = Rect2(3584, 0, 448, 448)
 [sub_resource type="SpriteFrames" id="SpriteFrames_mmjok"]
 animations = [{
 "frames": [{
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_ukxcs")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if7mi")
 }, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_3eu5l")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j147q")
 }, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_r1w14")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlv25")
 }, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_ol8ei")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0l47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwyk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27jhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsgmj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2lwb")
 }],
 "loop": false,
 "name": &"attacking",
@@ -190,7 +218,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3j8c"]
-radius = 100.0
+radius = 48.2222
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_24c5g"]
 radius = 882.882
@@ -207,27 +235,28 @@ radius = 122.726
 [node name="Cross_Bow_Soldier" type="CharacterBody2D"]
 z_index = 1
 scale = Vector2(0.18, 0.18)
+collision_layer = 3
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_iog6a")
 ammo = ExtResource("2_42b2p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 4
-position = Vector2(101.778, 216.667)
+position = Vector2(72.2222, -144.444)
 sprite_frames = SubResource("SpriteFrames_mmjok")
-animation = &"walk"
-frame = 8
+animation = &"attacking"
+frame = 3
 frame_progress = 1.0
-offset = Vector2(-100, -327.778)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(-3.77778, -111.111)
+position = Vector2(83.3333, -144.444)
 shape = SubResource("CircleShape2D_a3j8c")
 debug_color = Color(0.969041, 0, 0.463952, 0.42)
 
 [node name="Shooting_Flee" type="Node2D" parent="."]
-position = Vector2(-3.77778, -111.111)
+position = Vector2(83.3333, -144.444)
 
 [node name="Area2D" type="Area2D" parent="Shooting_Flee"]
 z_index = 1
@@ -257,7 +286,7 @@ shape = SubResource("CircleShape2D_p6jd8")
 debug_color = Color(0.415667, 0.516359, 0.835609, 0.42)
 
 [node name="NAV" type="Node2D" parent="."]
-position = Vector2(-3.77778, -111.111)
+position = Vector2(83.3333, -144.444)
 
 [node name="RayCast2D" type="RayCast2D" parent="NAV"]
 z_index = 1
@@ -268,7 +297,7 @@ wait_time = 1.2
 
 [node name="cross_e_hit" type="Area2D" parent="."]
 z_index = 1
-position = Vector2(-3.77778, -111.111)
+position = Vector2(83.3333, -144.444)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cross_e_hit"]
 z_index = 1
@@ -276,10 +305,13 @@ shape = SubResource("CircleShape2D_ovjlw")
 debug_color = Color(0.941893, 9.2411e-06, 0.60857, 0.42)
 
 [node name="CPUParticles2D" parent="." instance=ExtResource("7_ulhmo")]
+position = Vector2(83.3333, -144.444)
 scale = Vector2(5, 5)
 
 [node name="hit_by _sword" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_kpk7w")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="area_exited" from="Shooting_Flee/Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Shooting_Flee/Area2D" to="." method="_on_area_2d_body_entered"]
