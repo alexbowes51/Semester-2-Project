@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bv3fjtxyo1edw"]
 
-[ext_resource type="Script" path="res://Dialogue/Black_Smith DiaLogue/black_smit_dialogue.gd" id="1_af6t5"]
-[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="2_beapg"]
-[ext_resource type="FontFile" uid="uid://bb6ixiqy2802s" path="res://Celtica-BookOblique.ttf" id="3_vj64c"]
-[ext_resource type="Texture2D" uid="uid://o0ffakvw437d" path="res://Art/Inventory/pixil-frame-0 (8).png" id="4_enfit"]
-[ext_resource type="Texture2D" uid="uid://cams5l5yqhb4c" path="res://Art/Portraits for convo and animation/Portraits for convo and animation/Blacksmith/Blacksmith Portrait.png" id="5_itghs"]
+[ext_resource type="Script" uid="uid://pqq1dt46hwiq" path="res://Dialogue/Black_Smith DiaLogue/black_smit_dialogue.gd" id="1_af6t5"]
+[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="2_beapg"]
+[ext_resource type="FontFile" uid="uid://6twna5ce2qh2" path="res://Celtica-BookOblique.ttf" id="3_vj64c"]
+[ext_resource type="Texture2D" uid="uid://ckv7fsadhdp45" path="res://Art/Inventory/pixil-frame-0 (8).png" id="4_enfit"]
+[ext_resource type="Texture2D" uid="uid://m1cvq8i2om05" path="res://Art/Portraits for convo and animation/Portraits for convo and animation/Blacksmith/Blacksmith Portrait.png" id="5_itghs"]
 
 [sub_resource type="Theme" id="Theme_d7xjy"]
 

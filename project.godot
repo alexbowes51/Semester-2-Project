@@ -24,6 +24,10 @@ run/size/viewport_width=1152
 WorldManager="*res://Scenes/World/world_manager.gd"
 BgAudio="*res://Audio/bg_audio.tscn"
 
+[debug]
+
+settings/stdout/verbose_stdout=true
+
 [display]
 
 window/size/viewport_width=1920
@@ -104,7 +108,5 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
-viewport/hdr_2d=true
-2d/snap/snap_2d_transforms_to_pixel=true
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

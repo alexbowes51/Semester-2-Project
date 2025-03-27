@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnc1usditvmpr"]
 
 [ext_resource type="Script" path="res://Scenes/Buildings/Black_smiths/blacksmith.gd" id="1_gm20i"]
-[ext_resource type="Texture2D" uid="uid://bgdjnarmxljyq" path="res://Art/Tile_map/BlackSmith_WS.png" id="2_qnjeu"]
+[ext_resource type="Texture2D" uid="uid://k65ktaokfjwt" path="res://Art/Tile_map/BlackSmith_WS.png" id="2_qnjeu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6gt2i"]
 size = Vector2(87, 42)

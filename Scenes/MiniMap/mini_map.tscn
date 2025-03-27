@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://k6fwy3h1d6yf"]
 
 [ext_resource type="Script" path="res://Scenes/MiniMap/mini_map.gd" id="1_qlhr2"]
-[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="2_8r5j1"]
+[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="2_8r5j1"]
 
 [node name="MiniMap" type="CanvasLayer"]
 layer = 0

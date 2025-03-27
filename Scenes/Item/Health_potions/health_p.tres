@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Inventory_Item" load_steps=3 format=3 uid="uid://c7vkuqdtwr7us"]
 
-[ext_resource type="Script" path="res://Scenes/Item/Inventory_Item.gd" id="1_kbgnf"]
-[ext_resource type="Texture2D" uid="uid://dwl0oyoi2jjvy" path="res://Art/Items/Items/Merchant Sales/Health Potion/Potion health.png" id="2_xmpwl"]
+[ext_resource type="Script" uid="uid://btc3ersm10ldv" path="res://Scenes/Item/Inventory_Item.gd" id="1_kbgnf"]
+[ext_resource type="Texture2D" uid="uid://3fc0d6rh4fj7" path="res://Art/Items/Items/Merchant Sales/Health Potion/Potion health.png" id="2_xmpwl"]
 
 [resource]
 script = ExtResource("1_kbgnf")

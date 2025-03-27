@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://lyvill1i58ul"]
 
-[ext_resource type="Script" path="res://Scenes/Npc/Black_Smith/black_smith_crafting.gd" id="1_7sor0"]
-[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_wxnu4"]
+[ext_resource type="Script" uid="uid://4rhg4m3v3snm" path="res://Scenes/Npc/Black_Smith/black_smith_crafting.gd" id="1_7sor0"]
+[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_wxnu4"]
 [ext_resource type="PackedScene" uid="uid://cvkx60yshxptc" path="res://Scenes/Inventory/inventory_slot_ui.tscn" id="2_g0n6j"]
-[ext_resource type="Texture2D" uid="uid://bv4lk3didxw5a" path="res://Art/Items/Wood.png" id="4_f54ds"]
-[ext_resource type="Texture2D" uid="uid://bvbrprqlxwjhy" path="res://Art/Items/Rubber.png" id="5_pb67k"]
-[ext_resource type="Texture2D" uid="uid://c8baevlp1m26k" path="res://Art/Items/Bottles.png" id="6_l7l6e"]
+[ext_resource type="Texture2D" uid="uid://bhuh8nl8bx3q6" path="res://Art/Items/Wood.png" id="4_f54ds"]
+[ext_resource type="Texture2D" uid="uid://dk62hubethro3" path="res://Art/Items/Rubber.png" id="5_pb67k"]
+[ext_resource type="Texture2D" uid="uid://cunkiglykdqkr" path="res://Art/Items/Bottles.png" id="6_l7l6e"]
 
 [node name="Black_Smith_Crafting" type="Control"]
 layout_mode = 3

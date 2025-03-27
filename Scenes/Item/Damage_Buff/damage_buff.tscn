@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://nhxy0undgenp"]
 
-[ext_resource type="Texture2D" uid="uid://ddehcv5msk8n6" path="res://Art/Items/Items/Merchant Sales/Attack Skull (Increases Damage)/Attack Skull.png" id="1_ikfts"]
+[ext_resource type="Texture2D" uid="uid://bqc1hayjh88vf" path="res://Art/Items/Items/Merchant Sales/Attack Skull (Increases Damage)/Attack Skull.png" id="1_ikfts"]
 
 [node name="StaticBody2D" type="StaticBody2D"]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://bt8u5ca3evu4h"]
 
 [ext_resource type="Script" path="res://Scenes/WayPoints/Waypoint1/WayPoint1.gd" id="1_cvnug"]
-[ext_resource type="Texture2D" uid="uid://cqup48v8mqxiw" path="res://Art/Tile_map/Waypoint1(A).png" id="2_rl7uk"]
-[ext_resource type="Texture2D" uid="uid://d2xd03fvduvji" path="res://Art/Tile_map/WayPoint1(D).png" id="3_j3kd4"]
-[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="4_bfuvn"]
-[ext_resource type="Texture2D" uid="uid://der7v037nls2s" path="res://Art/UI/E.png" id="5_pk6t6"]
+[ext_resource type="Texture2D" uid="uid://6invh6c2y48a" path="res://Art/Tile_map/Waypoint1(A).png" id="2_rl7uk"]
+[ext_resource type="Texture2D" uid="uid://djm8kx6s017dn" path="res://Art/Tile_map/WayPoint1(D).png" id="3_j3kd4"]
+[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="4_bfuvn"]
+[ext_resource type="Texture2D" uid="uid://06j0xqll13h1" path="res://Art/UI/E.png" id="5_pk6t6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_07p62"]
 animations = [{

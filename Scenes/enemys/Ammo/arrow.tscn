@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ew71k15wafgy"]
 
 [ext_resource type="Script" path="res://Scenes/enemys/Ammo/arrow.gd" id="1_sou5a"]
-[ext_resource type="Texture2D" uid="uid://dr7jagq1m1gfa" path="res://Art/Items/Items/Arrow/Arrow.png" id="2_mvqrn"]
+[ext_resource type="Texture2D" uid="uid://s3w267dybx6m" path="res://Art/Items/Items/Arrow/Arrow.png" id="2_mvqrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i27ak"]
 size = Vector2(13, 39)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3fek1gdhc7aw"]
 
-[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_kmt40"]
-[ext_resource type="Script" path="res://Dialogue/Merchant_Dialogue/merchant_dialogue.gd" id="1_svyaw"]
-[ext_resource type="FontFile" uid="uid://bb6ixiqy2802s" path="res://Celtica-BookOblique.ttf" id="3_045jx"]
-[ext_resource type="Texture2D" uid="uid://o0ffakvw437d" path="res://Art/Inventory/pixil-frame-0 (8).png" id="3_mvy4q"]
-[ext_resource type="Texture2D" uid="uid://co360g35roj8o" path="res://Art/Portraits for convo and animation/Portraits for convo and animation/Merchant/Merchant Portrait.png" id="4_xysps"]
+[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_kmt40"]
+[ext_resource type="Script" uid="uid://bsthcfibiwp57" path="res://Dialogue/Merchant_Dialogue/merchant_dialogue.gd" id="1_svyaw"]
+[ext_resource type="FontFile" uid="uid://6twna5ce2qh2" path="res://Celtica-BookOblique.ttf" id="3_045jx"]
+[ext_resource type="Texture2D" uid="uid://ckv7fsadhdp45" path="res://Art/Inventory/pixil-frame-0 (8).png" id="3_mvy4q"]
+[ext_resource type="Texture2D" uid="uid://bkveo25uewh27" path="res://Art/Portraits for convo and animation/Portraits for convo and animation/Merchant/Merchant Portrait.png" id="4_xysps"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_i8j3n"]
 allow_unpress = true

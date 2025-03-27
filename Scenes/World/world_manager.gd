@@ -1,7 +1,5 @@
 extends Node2D
 
-
-
 var player 
 var minimap 
 
@@ -13,9 +11,8 @@ var black_smith = preload("res://Scenes/Buildings/Black_smiths/blacksmith.tscn")
 
 var black_smith_built = false
 
-@onready var day_night_cycle: Day_Night_Manager = $"DAY+NIGHT CYCLE"
-@onready var time_label: Label = $MiniMap/Time_Label
-@onready var animation_player: AnimationPlayer = $Transitions/AnimationPlayer
+@onready var day_night_cycle = $"DAY+NIGHT CYCLE"
+@onready var time_label = $MiniMap/Time_Label
 
 
 @export var enable_cycle: bool = true
@@ -57,10 +54,7 @@ var Bs_shop = false
 var Item_Selling = "none"
 
 func _ready():
-	if animation_player:
-		animation_player.play("fade_in")
-		await get_tree().create_timer(6).timeout
-		
+	
 	minimap = $MiniMap
 	player = $Player
 	

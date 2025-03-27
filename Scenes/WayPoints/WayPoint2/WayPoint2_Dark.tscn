@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://c4giqpf6ir3tc"]
 
 [ext_resource type="Script" path="res://Scenes/WayPoints/WayPoint2/way_point_2.gd" id="1_rpwjv"]
-[ext_resource type="Texture2D" uid="uid://6n2ajy86u1a1" path="res://Art/Tile_map/WayPoint2(A).png" id="2_roe6m"]
-[ext_resource type="Texture2D" uid="uid://yb2djh6r0j5" path="res://Art/Tile_map/WayPoint2(D).png" id="3_5ehcj"]
-[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="4_tvw8c"]
-[ext_resource type="Texture2D" uid="uid://der7v037nls2s" path="res://Art/UI/E.png" id="6_2rk3p"]
+[ext_resource type="Texture2D" uid="uid://df66udohcv6il" path="res://Art/Tile_map/WayPoint2(A).png" id="2_roe6m"]
+[ext_resource type="Texture2D" uid="uid://bg4f0mym5k33t" path="res://Art/Tile_map/WayPoint2(D).png" id="3_5ehcj"]
+[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="4_tvw8c"]
+[ext_resource type="Texture2D" uid="uid://06j0xqll13h1" path="res://Art/UI/E.png" id="6_2rk3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u7iei"]
 atlas = ExtResource("2_roe6m")

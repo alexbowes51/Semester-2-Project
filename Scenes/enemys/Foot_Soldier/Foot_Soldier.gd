@@ -27,14 +27,14 @@ func _physics_process(delta):
 
 	if health > 0:
 		if chasing_player && player != null and not attacking:
-			if is_path_clear(player.position):  # Check if path to player is clear
+			if is_path_clear():  # Check if path to player is clear
 				move_towards_player(delta)
 			else:
 				avoid_obstacle()  # Avoid obstacles
 		elif not chasing_player:
 			$AnimatedSprite2D.play("Foot_E_idle")
 
-func is_path_clear(target_position: Vector2) -> bool:
+func is_path_clear() -> bool:
 	# Check if any of the raycasts detect an obstacle
 	if down.is_colliding() or rigth.is_colliding() or left.is_colliding() or up.is_colliding():
 		return false

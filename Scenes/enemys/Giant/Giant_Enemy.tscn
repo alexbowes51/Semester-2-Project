@@ -1,12 +1,12 @@
 [gd_scene load_steps=45 format=3 uid="uid://cpwnwshj0ilgc"]
 
-[ext_resource type="Texture2D" uid="uid://b25bm44k1l08s" path="res://Art/Enemies/Enemy Giant/Attack/Enemy Giant Attack-Sheet.png" id="1_63kwe"]
+[ext_resource type="Texture2D" uid="uid://dxwc1okf4km5n" path="res://Art/Enemies/Enemy Giant/Attack/Enemy Giant Attack-Sheet.png" id="1_63kwe"]
 [ext_resource type="Script" path="res://Scenes/enemys/Giant/giant_enemy.gd" id="1_b4gdq"]
-[ext_resource type="Texture2D" uid="uid://b3s86uth5ukbk" path="res://Art/Enemies/Enemy Giant/Enemy Giant Standing.png" id="2_ea40j"]
-[ext_resource type="Texture2D" uid="uid://cdnk7sv3t3so2" path="res://Art/Enemies/Enemy Giant/Death No Gore/Enemy Giant Death No Gore-Sheet.png" id="2_jxjc0"]
-[ext_resource type="Texture2D" uid="uid://gxddk0p4libi" path="res://Art/Enemies/Enemy Giant/Walk/Enemy Giant Walk-Sheet.png" id="3_c0pq8"]
+[ext_resource type="Texture2D" uid="uid://dj00g2fwp5jv1" path="res://Art/Enemies/Enemy Giant/Enemy Giant Standing.png" id="2_ea40j"]
+[ext_resource type="Texture2D" uid="uid://dnjp6lpqbvjq0" path="res://Art/Enemies/Enemy Giant/Death No Gore/Enemy Giant Death No Gore-Sheet.png" id="2_jxjc0"]
+[ext_resource type="Texture2D" uid="uid://cw2kcfocdvehm" path="res://Art/Enemies/Enemy Giant/Walk/Enemy Giant Walk-Sheet.png" id="3_c0pq8"]
 [ext_resource type="PackedScene" uid="uid://cm28ftmarv0qi" path="res://VFX/collection_expolsion/damage.tscn" id="6_u2iy4"]
-[ext_resource type="AudioStream" uid="uid://dc6kfsanrhon5" path="res://Audio/mixkit-impact-of-a-strong-punch-2155.mp3" id="7_u0rpg"]
+[ext_resource type="AudioStream" uid="uid://dq0ua7wk8wy6r" path="res://Audio/mixkit-impact-of-a-strong-punch-2155.mp3" id="7_u0rpg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlx6h"]
 atlas = ExtResource("2_ea40j")

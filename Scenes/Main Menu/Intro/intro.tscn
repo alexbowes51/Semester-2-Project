@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bqt0gpckeybrl"]
 
 [ext_resource type="Script" path="res://Scenes/Main Menu/Intro/intro.gd" id="1_rew04"]
-[ext_resource type="Texture2D" uid="uid://bbsnrf1juvy8p" path="res://Art/PixelForge Studios (1).jpg" id="2_u74o4"]
+[ext_resource type="Texture2D" uid="uid://pxnw173mdnms" path="res://Art/PixelForge Studios (1).jpg" id="2_u74o4"]
 
 [sub_resource type="Animation" id="Animation_tfkk7"]
 resource_name = "Fade_in"

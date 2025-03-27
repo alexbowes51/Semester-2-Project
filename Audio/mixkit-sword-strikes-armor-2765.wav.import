@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dk5ovpd1eey2f"
+uid="uid://b15iotr1bikbi"
 path="res://.godot/imported/mixkit-sword-strikes-armor-2765.wav-8cf396888f047f352335e79f7b0744bb.sample"
 
 [deps]
@@ -21,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmdcilu706lxk"]
 
 [ext_resource type="Script" path="res://respawn.gd" id="1_f2wlo"]
-[ext_resource type="Texture2D" uid="uid://bfchbl8thvulv" path="res://Art/Inventory/pixil-frame-0 (9).png" id="2_6lypl"]
-[ext_resource type="Texture2D" uid="uid://o0ffakvw437d" path="res://Art/Inventory/pixil-frame-0 (8).png" id="3_mlkyv"]
+[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="2_6lypl"]
+[ext_resource type="Texture2D" uid="uid://ckv7fsadhdp45" path="res://Art/Inventory/pixil-frame-0 (8).png" id="3_mlkyv"]
 
 [node name="Respawn" type="Control"]
 layout_mode = 3
@@ -34,6 +34,7 @@ scale = Vector2(2.9227, 0.388808)
 texture_normal = ExtResource("3_mlkyv")
 
 [node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 213.0
 offset_top = 157.0
 offset_right = 263.0
@@ -57,6 +58,7 @@ theme_override_font_sizes/font_size = 450
 text = "YOU DIED"
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 100.0
 offset_top = 106.0
 offset_right = 4482.0
@@ -71,6 +73,7 @@ theme_override_font_sizes/font_size = 450
 text = "Would you like to....."
 
 [node name="Label3" type="Label" parent="."]
+layout_mode = 0
 offset_left = 73.0
 offset_top = 154.0
 offset_right = 4455.0
@@ -85,6 +88,7 @@ theme_override_font_sizes/font_size = 300
 text = "Respawn"
 
 [node name="Label4" type="Label" parent="."]
+layout_mode = 0
 offset_left = 233.0
 offset_top = 158.0
 offset_right = 4648.0

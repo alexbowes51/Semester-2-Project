@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhusqlw6ven7r"]
 
-[ext_resource type="Texture2D" uid="uid://dwl0oyoi2jjvy" path="res://Art/Items/Items/Merchant Sales/Health Potion/Potion health.png" id="1_3scu6"]
+[ext_resource type="Texture2D" uid="uid://3fc0d6rh4fj7" path="res://Art/Items/Items/Merchant Sales/Health Potion/Potion health.png" id="1_3scu6"]
 
 [node name="StaticBody2D" type="StaticBody2D"]
 texture_filter = 1

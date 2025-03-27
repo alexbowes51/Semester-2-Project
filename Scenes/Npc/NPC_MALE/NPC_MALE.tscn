@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bt5u7u68g34ms"]
 
-[ext_resource type="Texture2D" uid="uid://ucsry8jpqmxp" path="res://Art/NPC/Male Npc/Npc Charachter.png" id="1_6kstw"]
-[ext_resource type="Texture2D" uid="uid://dwmoqeqi5ve7q" path="res://Art/NPC/Male Npc/Walk/Npc Charachter walk-Sheet.png" id="2_60ban"]
+[ext_resource type="Texture2D" uid="uid://caotldl5k5qco" path="res://Art/NPC/Male Npc/Npc Charachter.png" id="1_6kstw"]
+[ext_resource type="Texture2D" uid="uid://bonn7ptw65u4a" path="res://Art/NPC/Male Npc/Walk/Npc Charachter walk-Sheet.png" id="2_60ban"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_grnv3"]
 atlas = ExtResource("1_6kstw")

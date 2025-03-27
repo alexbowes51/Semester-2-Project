@@ -32,7 +32,7 @@ func close():
 func _process(_delta):
 	pass
 
-func on_item_hovered(item_name : String):
+func on_item_hovered(_item_name : String):
 	pass
 	
 	

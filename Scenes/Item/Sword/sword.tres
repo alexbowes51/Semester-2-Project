@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Inventory_Item" load_steps=3 format=3 uid="uid://c1d2r5oegupfu"]
 
-[ext_resource type="Script" path="res://Scenes/Item/Inventory_Item.gd" id="1_vhraj"]
-[ext_resource type="Texture2D" uid="uid://b3051d4e4wrnx" path="res://Art/Items/Items/Weapons/Sword Weapon/Sword.png" id="2_f1i05"]
+[ext_resource type="Script" uid="uid://btc3ersm10ldv" path="res://Scenes/Item/Inventory_Item.gd" id="1_vhraj"]
+[ext_resource type="Texture2D" uid="uid://dc31qd6l3ask6" path="res://Art/Items/Items/Weapons/Sword Weapon/Sword.png" id="2_f1i05"]
 
 [resource]
 script = ExtResource("1_vhraj")

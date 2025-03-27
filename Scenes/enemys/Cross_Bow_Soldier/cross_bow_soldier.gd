@@ -11,11 +11,7 @@ extends CharacterBody2D
 var target_node = null
 @onready var hit_by__sword: AudioStreamPlayer = $"hit_by _sword"
 
-@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
-@onready var down: RayCast2D = $down
-@onready var rigth: RayCast2D = $rigth
-@onready var left: RayCast2D = $left
-@onready var up: RayCast2D = $up
+
 
 var player = null 
 var attacking = false

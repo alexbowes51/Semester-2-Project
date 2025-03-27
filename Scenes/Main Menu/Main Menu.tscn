@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://c1rexdmus4r2e"]
 
-[ext_resource type="Texture2D" uid="uid://c633u2xbdta2w" path="res://Screenshot 2025-02-19 155832.png" id="1_2li5b"]
-[ext_resource type="FontFile" uid="uid://bb6ixiqy2802s" path="res://Celtica-BookOblique.ttf" id="1_ibtg2"]
+[ext_resource type="Texture2D" uid="uid://d0im21lskdhsw" path="res://Screenshot 2025-02-19 155832.png" id="1_2li5b"]
+[ext_resource type="FontFile" uid="uid://6twna5ce2qh2" path="res://Celtica-BookOblique.ttf" id="1_ibtg2"]
 [ext_resource type="Script" path="res://Scenes/Main Menu/main_menu.gd" id="1_l0kpg"]
-[ext_resource type="AudioStream" uid="uid://bra0hcnd5fcov" path="res://Audio/minecraft-drop-block-sound-effect.L.wav" id="5_co0ae"]
+[ext_resource type="AudioStream" uid="uid://bxy1j1rfsgomt" path="res://Audio/minecraft-drop-block-sound-effect.L.wav" id="5_co0ae"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ienpl"]
 bg_color = Color(0.706148, 0.586501, 0.253634, 1)

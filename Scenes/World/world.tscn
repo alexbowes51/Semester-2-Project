@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cpwnwshj0ilgc" path="res://Scenes/enemys/Giant/Giant_Enemy.tscn" id="12_1lmu4"]
 [ext_resource type="PackedScene" uid="uid://caj6plpuqsmrv" path="res://Scenes/WayPoints/WayPoint2/WayPoint2.tscn" id="12_fchno"]
 [ext_resource type="PackedScene" uid="uid://c4giqpf6ir3tc" path="res://Scenes/WayPoints/WayPoint2/WayPoint2_Dark.tscn" id="13_q1lxv"]
-[ext_resource type="Texture2D" uid="uid://cfg4lethlenqx" path="res://map.png" id="18_x87oi"]
+[ext_resource type="Texture2D" uid="uid://dvxr6aevsp5ba" path="res://map.png" id="18_x87oi"]
 [ext_resource type="Script" path="res://Scenes/World/village_1_area.gd" id="19_7vy6w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1q2a"]

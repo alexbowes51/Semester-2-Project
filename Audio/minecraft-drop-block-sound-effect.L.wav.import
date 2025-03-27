@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bra0hcnd5fcov"
+uid="uid://bxy1j1rfsgomt"
 path="res://.godot/imported/minecraft-drop-block-sound-effect.L.wav-18e935e80e7f4f39d9e30d18f689e697.sample"
 
 [deps]
@@ -21,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2
