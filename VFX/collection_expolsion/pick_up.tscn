@@ -5,11 +5,10 @@ _data = [Vector2(0.0110497, 0.986051), 0.0, 0.0, 0, 0, Vector2(1, 0.00268245), 0
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_8reiu"]
-offsets = PackedFloat32Array(0.0027972, 0.152448, 0.60979, 0.976224, 0.984615, 0.991608, 0.998601, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0.917647, 0, 1, 0.321569, 1, 0.298039, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0277568, 0.00696924, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.0027972, 0.137856, 0.155361, 0.60979, 0.976224, 0.984615, 0.991608, 0.998601, 1)
+colors = PackedColorArray(0.620041, 0.620041, 0, 1, 0.96295, 0.655109, 0.0915297, 1, 1, 0.658898, 0.101419, 1, 1, 0.658824, 0.101961, 1, 1, 0.658824, 0.101961, 1, 0, 0, 0, 1, 0.0277568, 0.00696924, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
-z_index = 1
 emitting = false
 amount = 50
 one_shot = true
@@ -20,8 +19,8 @@ spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 40.0
 initial_velocity_max = 40.0
-scale_amount_min = 2.0
-scale_amount_max = 4.0
+scale_amount_min = 4.0
+scale_amount_max = 8.0
 scale_amount_curve = SubResource("Curve_bk20t")
 color_ramp = SubResource("Gradient_8reiu")
 hue_variation_min = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dh0vvoscc6m0b"]
+[gd_scene load_steps=7 format=3 uid="uid://dh0vvoscc6m0b"]
 
 [ext_resource type="Script" path="res://Scenes/Item/Bottle/bottle_collectable.gd" id="1_bbumj"]
 [ext_resource type="Resource" uid="uid://dht03vjqgv12j" path="res://Scenes/Item/Bottle/Bottles.tres" id="2_sm7wn"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5pa5b"]
 radius = 54.037
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4ugm"]
+radius = 3.16228
 
 [node name="Bottle_collectable" type="StaticBody2D"]
 z_index = 1
@@ -23,5 +26,10 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_5pa5b")
 
 [node name="CollisionExplosion" parent="." instance=ExtResource("4_j4rxe")]
+z_index = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource("CircleShape2D_c4ugm")
 
 [connection signal="body_entered" from="Interactable_area" to="." method="_on_interactable_area_body_entered"]

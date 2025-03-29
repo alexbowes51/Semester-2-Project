@@ -42,6 +42,10 @@ var Wp2_A = Vector2(2850,470)
 var Wp2_B = Vector2(4750,15370)
 
 var home_spawn = Vector2(1850,3933)
+var villages_Cleared : int = 0
+var waypoints_Cleared : int = 0
+var waypoint1clear : bool = false
+var waypoint2clear : bool = false
 
 #npc varibales 
 var Merchant_follow_player = false
@@ -116,3 +120,7 @@ func _on_build_zone_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape
 func _on_build_zone_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if area && area.name == "Player_HitBox":
 		WorldManager.player_in_build_zone = false
+
+
+func _on_waypoint_1_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

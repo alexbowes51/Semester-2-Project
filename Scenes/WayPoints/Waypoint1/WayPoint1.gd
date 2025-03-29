@@ -9,12 +9,12 @@ func _ready():
 		control.visible = false
 
 func _process(_delta):
-	if in_interact_zone == true && Input.is_action_just_pressed("teleport") && WorldManager.tp_Wp1_A == "A":
+	if in_interact_zone == true && Input.is_action_just_pressed("teleport") && WorldManager.tp_Wp1_A == "A" && WorldManager.waypoint2clear == true:
 		$AnimatedSprite2D.play("Active")
 		WorldManager.tp_Wp1_A = "B"
 		WorldManager.Wp1_tp = true
 		
-	elif in_interact_zone == true && Input.is_action_just_pressed("teleport") && WorldManager.tp_Wp1_A == "B":
+	elif in_interact_zone == true && Input.is_action_just_pressed("teleport") && WorldManager.tp_Wp1_A == "B" && WorldManager.waypoint2clear == true:
 			$AnimatedSprite2D.play("Active")
 			WorldManager.tp_Wp1_A = "A"
 			WorldManager.Wp1_tp = true

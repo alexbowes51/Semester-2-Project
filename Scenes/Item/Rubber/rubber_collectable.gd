@@ -17,3 +17,5 @@ func _on_interactable_area_body_entered(body):
 func playercollect():
 	player.collect(item)
 	
+func rubber():
+	pass
