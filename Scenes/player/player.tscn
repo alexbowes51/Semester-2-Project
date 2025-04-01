@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=124 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://d36gxump84vfh" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://c5n5xddjdj1u2" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bopk1ta60cfqg" path="res://Scenes/Inventory/player_hotbar.tscn" id="19_ag7iv"]
 [ext_resource type="PackedScene" uid="uid://cm28ftmarv0qi" path="res://VFX/collection_expolsion/damage.tscn" id="19_d4ufm"]
 [ext_resource type="PackedScene" uid="uid://dmdcilu706lxk" path="res://Scenes/respawn/respawn.tscn" id="22_fuqjl"]
+[ext_resource type="PackedScene" uid="uid://dlfccjxj7500u" path="res://Scenes/quest_tracker/quest_tracker.tscn" id="28_1bthv"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
 script/source = "extends CharacterBody2D
@@ -1274,6 +1275,12 @@ offset_top = 341.667
 offset_right = -1299.54
 offset_bottom = -531.333
 scale = Vector2(4, 4)
+
+[node name="Quest_Tracker" parent="Camera2D/UI" instance=ExtResource("28_1bthv")]
+offset_left = 1.03093
+offset_top = 143.056
+offset_right = 1.03091
+offset_bottom = 143.056
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 3.0

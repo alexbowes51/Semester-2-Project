@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlfccjxj7500u"]
+
+[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_bhaj5"]
+[ext_resource type="Script" path="res://Scenes/quest_tracker/quest_tracker.gd" id="1_jaw0d"]
+
+[node name="Quest_Tracker" type="Control"]
+layout_mode = 3
+anchor_right = 0.204
+anchor_bottom = 0.269
+offset_right = 0.319977
+offset_bottom = -0.52002
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jaw0d")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 397.0
+offset_bottom = 293.0
+texture = ExtResource("1_bhaj5")
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 32.0
+offset_right = 470.0
+offset_bottom = 714.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 27
+theme_override_constants/shadow_offset_y = 27
+theme_override_font_sizes/font_size = 500
+text = "Waypoints Cleared : 0 / 2"
+
+[node name="Label2" type="Label" parent="NinePatchRect"]
+offset_left = 58.0
+offset_top = 103.0
+offset_right = 5587.0
+offset_bottom = 785.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 27
+theme_override_constants/shadow_offset_y = 27
+theme_override_font_sizes/font_size = 500
+text = "Villages Cleared : 0 / 2 "
+
+[node name="Label3" type="Label" parent="NinePatchRect"]
+offset_left = 56.0
+offset_top = 178.0
+offset_right = 5585.0
+offset_bottom = 860.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 27
+theme_override_constants/shadow_offset_y = 27
+theme_override_font_sizes/font_size = 500
+text = "Bosses Defeated : 0 / 1"
