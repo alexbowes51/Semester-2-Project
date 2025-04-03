@@ -58,7 +58,7 @@ var Bs_shop = false
 var Item_Selling = "none"
 
 func _ready():
-	
+	BgAudio.play()
 	minimap = $MiniMap
 	player = $Player
 	

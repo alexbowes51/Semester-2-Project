@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://wx75h45b586c"]
 
-[ext_resource type="AudioStream" uid="uid://b47o2738sibla" path="res://Audio/Instrument (1).wav" id="1_5gbdr"]
+[ext_resource type="AudioStream" uid="uid://4jtcayss57fa" path="res://Audio/Echos of Eriu.mp3" id="1_2aawb"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
-stream = ExtResource("1_5gbdr")
+stream = ExtResource("1_2aawb")
 volume_db = -10.0
 pitch_scale = 0.5
 autoplay = true

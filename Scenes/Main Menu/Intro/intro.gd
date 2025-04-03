@@ -4,7 +4,8 @@ extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready() -> void:	
+	BgAudio.stop()
 	$AnimationPlayer.play("Fade_in")
 	$AnimatedSprite2D.play("Intro")
 	await get_tree().create_timer(6).timeout

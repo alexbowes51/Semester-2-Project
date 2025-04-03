@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://nik3xnpabv5l"]
+
+[ext_resource type="Script" path="res://Scenes/enemys/Boss/boss_rock.gd" id="1_of3r3"]
+[ext_resource type="Texture2D" uid="uid://dl4dg75c60bvd" path="res://Art/Enemies/Enemy Giant/Rock_Boss.png" id="1_qegfm"]
+[ext_resource type="PackedScene" uid="uid://cihbcepfkmg01" path="res://VFX/collection_expolsion/heavy_hit_grass.tscn" id="3_ntjg3"]
+[ext_resource type="PackedScene" uid="uid://bvg37cxvbav2q" path="res://VFX/collection_expolsion/heavy_hit_dirt.tscn" id="4_6llti"]
+[ext_resource type="AudioStream" uid="uid://cpyrqfts7u3qs" path="res://Audio/mixkit-short-rising-thud-3133.wav" id="5_3gmd8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvge6"]
+atlas = ExtResource("1_qegfm")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytdux"]
+atlas = ExtResource("1_qegfm")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s54to"]
+atlas = ExtResource("1_qegfm")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb62n"]
+atlas = ExtResource("1_qegfm")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr17s"]
+atlas = ExtResource("1_qegfm")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cserq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvge6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytdux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s54to")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb62n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr17s")
+}],
+"loop": false,
+"name": &"stopped",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3et6r"]
+radius = 28.0713
+
+[node name="Boss_Rock" type="Area2D"]
+z_index = 1
+script = ExtResource("1_of3r3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+texture_filter = 1
+position = Vector2(-1, -5)
+sprite_frames = SubResource("SpriteFrames_cserq")
+animation = &"stopped"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_3et6r")
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("3_ntjg3")]
+scale = Vector2(1.24, 1.48)
+
+[node name="CPUParticles2D2" parent="." instance=ExtResource("4_6llti")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3gmd8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

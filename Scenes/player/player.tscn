@@ -252,7 +252,18 @@ func _on_player_hit_box_area_shape_entered(_area_rid: RID, area: Area2D, _area_s
 		enemy_attack()
 		receives_knockback = true
 		KnockBack(area.global_position)
-	
+	if area.name == \"Boss_Rock\":
+		Player_is_in_attacking_range = true
+		enemy_attack()
+		receives_knockback = true
+		KnockBack(area.global_position)
+	if area.name == \"Boss_1_ha\":
+		Player_is_in_attacking_range = true
+		enemy_attack()
+		receives_knockback = true
+		KnockBack(area.global_position)
+
+		
 	
 
 func _on_player_hit_box_area_exited(area: Area2D) -> void:
@@ -262,8 +273,12 @@ func _on_player_hit_box_area_exited(area: Area2D) -> void:
 		Player_is_in_attacking_range = false
 	if area.name == \"g_h_area\":
 		Player_is_in_attacking_range = false
-		
+	if area.name == \"Boss_Rock\":
+		Player_is_in_attacking_range = false
+	if area.name == \"Boss_1_ha\":
+		Player_is_in_attacking_range = false
 
+		
 func teleporting():
 		if WorldManager.tp_Wp1_A == \"A\" && WorldManager.Wp1_tp == true:
 			position = WorldManager.Wp1_B

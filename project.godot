@@ -23,6 +23,7 @@ run/size/viewport_width=1152
 
 WorldManager="*res://Scenes/World/world_manager.gd"
 BgAudio="*res://Audio/bg_audio.tscn"
+MainMusic="*res://Audio/main_music.tscn"
 
 [debug]
 
