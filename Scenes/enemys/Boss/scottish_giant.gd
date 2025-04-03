@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var cpu_particles_2d_2: CPUParticles2D = $CPUParticles2D2
 @onready var damage_audio: AudioStreamPlayer = $damage
 
+
 var vunrible = true
 
 var direction : Vector2
@@ -28,8 +29,9 @@ func _ready():
 	
 func _process(_delta):
 	direction = player.position - position 
-	look_at(player.position)
-	rotation += rad_to_deg(90)
+	if health > 0:
+		look_at(player.position)
+		rotation += rad_to_deg(90)
 	
 
 func _physics_process(delta):
@@ -37,7 +39,7 @@ func _physics_process(delta):
 	move_and_collide(velocity * delta * 2)
 
 func damage():
-	health -= 10 
+	health -= 100
 	cpu_particles_2d_2.emitting = true
 	damage_audio.play()
 	

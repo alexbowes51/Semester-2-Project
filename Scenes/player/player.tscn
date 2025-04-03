@@ -1085,7 +1085,6 @@ wait_time = 0.2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.75, 0.75)
 limit_left = 100
 limit_top = 100
 limit_right = 32500
@@ -1277,10 +1276,10 @@ theme_override_font_sizes/font_size = 1000
 text = "Build Mode Avaible"
 
 [node name="Player_Hotbar" parent="Camera2D/UI" instance=ExtResource("19_ag7iv")]
-offset_left = 18.5567
-offset_top = 1320.83
-offset_right = -1754.45
-offset_bottom = 292.831
+offset_left = 2.06186
+offset_top = 894.445
+offset_right = -1770.94
+offset_bottom = -133.554
 scale = Vector2(3, 3)
 
 [node name="Respawn" parent="Camera2D/UI" instance=ExtResource("22_fuqjl")]

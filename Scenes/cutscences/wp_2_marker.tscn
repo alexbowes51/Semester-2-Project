@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdkc7gfdit6ir"]
+
+[ext_resource type="Script" path="res://Scenes/Marker/off_screen_marker.gd" id="1_3qfxf"]
+[ext_resource type="Texture2D" uid="uid://cmjw2qr12r5u4" path="res://Art/UI/wp_marker.png" id="1_yvd5k"]
+[ext_resource type="Texture2D" uid="uid://df66udohcv6il" path="res://Art/Tile_map/WayPoint2(A).png" id="2_av8nb"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_3qfxf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_yvd5k")
+centered = false
+offset = Vector2(-100, -47.25)
+
+[node name="icon" type="Sprite2D" parent="Sprite2D"]
+texture_filter = 1
+position = Vector2(-58, 0)
+scale = Vector2(0.265, 0.225)
+texture = ExtResource("2_av8nb")
+flip_h = true

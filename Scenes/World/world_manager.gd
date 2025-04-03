@@ -14,6 +14,9 @@ var black_smith_built = false
 @onready var day_night_cycle = $"DAY+NIGHT CYCLE"
 @onready var time_label = $MiniMap/Time_Label
 
+var sigma = preload("res://Scenes/enemys/Boss/scottish_giant.tscn")
+var spawn_sigma = false
+
 
 @export var enable_cycle: bool = true
 
@@ -82,13 +85,29 @@ func change_time(_hour: float, time_string: String) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-		
+	if not spawn_sigma and waypoints_Cleared == 2 and villages_Cleared == 2:
+		spawn_boss()
 			
 		if Build_mode == true && Input.is_action_just_pressed("build"):
 			build()
 
 			
 
+func spawn_boss():
+	if spawn_sigma:
+		return  # Prevent multiple spawns
+	
+	print("Spawning boss...")  # Debugging
+	var scottish_sigma = sigma.instantiate()
+	var bosses_node = get_node("/root/world/Bosses")
+	
+	if bosses_node:
+		bosses_node.add_child(scottish_sigma)
+		scottish_sigma.position = Vector2(18967, 616)
+		print("Boss spawned at:", scottish_sigma.position)
+		spawn_sigma = true  # Mark the boss as spawned
+	else:
+		print("Error: 'Bosses' node not found!")
 
 func build():
 	if building == "house":

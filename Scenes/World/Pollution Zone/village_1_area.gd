@@ -2,6 +2,8 @@ extends Area2D
 
 var entities_in_zone : Dictionary = {}  # Dictionary to track entities
 var is_cleared : bool = false  # Track if this area has already been cleared
+@onready var off_screen_marker: Node2D = $OffScreenMarker
+
 
 func _ready() -> void:
 	pass
