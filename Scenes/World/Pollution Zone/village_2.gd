@@ -2,6 +2,7 @@ extends Area2D
 
 var entities_in_zone : Dictionary = {}  # Dictionary to track entities
 var is_cleared : bool = false  # Track if this area has already been cleared
+@onready var off_screen_marker: Node2D = $OffScreenMarker
 
 func _ready() -> void:
 	pass
@@ -38,6 +39,7 @@ func cleanup_entities() -> void:
 		WorldManager.villages_Cleared += 1
 		print("Villages Cleared: ", WorldManager.villages_Cleared)
 		is_cleared = true  
-	 
+		off_screen_marker.visible = false
+	 	
 func get_entities_in_zone() -> Array:
 	return entities_in_zone.keys()  

@@ -40,6 +40,7 @@ func cleanup_entities() -> void:
 		WorldManager.villages_Cleared += 1
 		print("Villages Cleared: ", WorldManager.villages_Cleared)
 		is_cleared = true  # Mark this zone as cleared
+		off_screen_marker.visible = false
 	 
 func get_entities_in_zone() -> Array:
 	return entities_in_zone.keys()  

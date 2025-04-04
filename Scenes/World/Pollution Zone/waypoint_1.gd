@@ -2,6 +2,8 @@ extends Area2D
 
 var entities_in_zone : Dictionary = {}  # Dictionary to track entities
 var is_cleared : bool = false  # Track if this area has already been cleared
+@onready var node_2d: Node2D = $Node2D
+
 
 func _ready() -> void:
 	pass
@@ -39,6 +41,7 @@ func cleanup_entities() -> void:
 		print("Villages Cleared: ", WorldManager.waypoints_Cleared)
 		WorldManager.waypoint1clear = true
 		is_cleared = true  # Mark this zone as cleared
+		node_2d.visible = false
 	 
 func get_entities_in_zone() -> Array:
 	return entities_in_zone.keys()  

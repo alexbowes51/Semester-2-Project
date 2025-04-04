@@ -38,7 +38,7 @@ position = Vector2(100, 100)
 script = ExtResource("1_tvuku")
 
 [node name="Player" parent="." instance=ExtResource("3_2ajww")]
-position = Vector2(17615, 2712)
+position = Vector2(1952, 3837)
 collision_layer = 9
 collision_mask = 9
 
@@ -92,45 +92,301 @@ position = Vector2(16927, 2854)
 [node name="Wood_Collectiable3" parent="Collectiables" instance=ExtResource("10_n0oak")]
 position = Vector2(16738, 2886)
 
+[node name="Bottle_collectable4" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(16977, 2988)
+
+[node name="Rubber_Collectable4" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(16882, 2909)
+
+[node name="Wood_Collectiable4" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(16693, 2941)
+
+[node name="Bottle_collectable5" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(17611, 3061)
+
+[node name="Rubber_Collectable5" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(17516, 2982)
+
+[node name="Wood_Collectiable5" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(17327, 3014)
+
+[node name="Bottle_collectable6" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(17743, 3617)
+
+[node name="Rubber_Collectable6" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(17648, 3538)
+
+[node name="Wood_Collectiable6" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(17459, 3570)
+
+[node name="Bottle_collectable7" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(16389, 3638)
+
+[node name="Rubber_Collectable7" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(16294, 3559)
+
+[node name="Wood_Collectiable7" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(16105, 3591)
+
+[node name="Bottle_collectable8" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(17062, 3952)
+
+[node name="Rubber_Collectable8" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(16967, 3873)
+
+[node name="Wood_Collectiable8" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(16778, 3905)
+
+[node name="Bottle_collectable9" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(4826, 14872)
+
+[node name="Rubber_Collectable9" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(4731, 14793)
+
+[node name="Wood_Collectiable9" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(4542, 14825)
+
+[node name="Bottle_collectable10" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(4781, 14927)
+
+[node name="Rubber_Collectable10" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(4686, 14848)
+
+[node name="Wood_Collectiable10" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(4497, 14880)
+
+[node name="Bottle_collectable11" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(5415, 15000)
+
+[node name="Rubber_Collectable11" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(5320, 14921)
+
+[node name="Wood_Collectiable11" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(5131, 14953)
+
+[node name="Bottle_collectable12" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(5547, 15556)
+
+[node name="Rubber_Collectable12" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(5452, 15477)
+
+[node name="Wood_Collectiable12" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(5263, 15509)
+
+[node name="Bottle_collectable13" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(4193, 15577)
+
+[node name="Rubber_Collectable13" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(4098, 15498)
+
+[node name="Wood_Collectiable13" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(3909, 15530)
+
+[node name="Bottle_collectable14" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(4866, 15891)
+
+[node name="Rubber_Collectable14" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(4771, 15812)
+
+[node name="Wood_Collectiable14" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(4582, 15844)
+
+[node name="Bottle_collectable15" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(3247, 6110)
+
+[node name="Rubber_Collectable15" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(3152, 6031)
+
+[node name="Wood_Collectiable15" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(2963, 6063)
+
+[node name="Bottle_collectable16" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(3755, 6950)
+
+[node name="Rubber_Collectable16" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(3660, 6871)
+
+[node name="Wood_Collectiable16" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(3471, 6903)
+
+[node name="Bottle_collectable17" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(4831, 8026)
+
+[node name="Rubber_Collectable17" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(4736, 7947)
+
+[node name="Wood_Collectiable17" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(4547, 7979)
+
+[node name="Bottle_collectable18" parent="Collectiables" instance=ExtResource("8_11bxk")]
+position = Vector2(6798, 8238)
+
+[node name="Rubber_Collectable18" parent="Collectiables" instance=ExtResource("9_4vxpm")]
+position = Vector2(6703, 8159)
+
+[node name="Wood_Collectiable18" parent="Collectiables" instance=ExtResource("10_n0oak")]
+position = Vector2(6514, 8191)
+
 [node name="Enemys" type="Node2D" parent="."]
 z_index = 1
 scale = Vector2(1, 1.00159)
 
 [node name="Foot Soldier" parent="Enemys" instance=ExtResource("7_qslnd")]
-position = Vector2(1791, 107.414)
+position = Vector2(4427, 4476.88)
+rotation = -2.36872
 
 [node name="CharacterBody2D" parent="Enemys" instance=ExtResource("11_r25up")]
-position = Vector2(3374, -4.58569)
+position = Vector2(4681, 4504.84)
+rotation = 1.79141
 
 [node name="CharacterBody2D2" parent="Enemys" instance=ExtResource("12_1lmu4")]
-position = Vector2(1832, -260.586)
+position = Vector2(4271, 4519.81)
 
 [node name="Foot Soldier2" parent="Enemys" instance=ExtResource("7_qslnd")]
-position = Vector2(2821.07, 11029.6)
+position = Vector2(4400, 4593.7)
+rotation = -2.36872
 
 [node name="CharacterBody2D3" parent="Enemys" instance=ExtResource("11_r25up")]
-position = Vector2(2520.07, 11259.3)
-
-[node name="CharacterBody2D4" parent="Enemys" instance=ExtResource("12_1lmu4")]
-position = Vector2(3133.07, 11238.3)
+position = Vector2(4741, 4458.91)
+rotation = 1.79141
 
 [node name="Foot Soldier3" parent="Enemys" instance=ExtResource("7_qslnd")]
-position = Vector2(10551, 7670.99)
+position = Vector2(5251, 7477.11)
+rotation = -2.36872
 
-[node name="CharacterBody2D5" parent="Enemys" instance=ExtResource("11_r25up")]
-position = Vector2(10250, 7900.69)
+[node name="CharacterBody2D4" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(5505, 7505.07)
+rotation = 1.79141
 
-[node name="CharacterBody2D6" parent="Enemys" instance=ExtResource("12_1lmu4")]
-position = Vector2(10863, 7879.69)
+[node name="CharacterBody2D5" parent="Enemys" instance=ExtResource("12_1lmu4")]
+position = Vector2(5095, 7520.04)
 
 [node name="Foot Soldier4" parent="Enemys" instance=ExtResource("7_qslnd")]
-position = Vector2(5057, 6087.51)
+position = Vector2(5224, 7593.92)
+rotation = -2.36872
+
+[node name="CharacterBody2D6" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(5565, 7459.14)
+rotation = 1.79141
+
+[node name="Foot Soldier5" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(10184, 9667.63)
+rotation = -2.36872
 
 [node name="CharacterBody2D7" parent="Enemys" instance=ExtResource("11_r25up")]
-position = Vector2(4756, 6317.21)
+position = Vector2(10438, 9695.58)
+rotation = 1.79141
 
 [node name="CharacterBody2D8" parent="Enemys" instance=ExtResource("12_1lmu4")]
-position = Vector2(5369, 6296.21)
+position = Vector2(10028, 9710.56)
+
+[node name="Foot Soldier6" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(10157, 9784.44)
+rotation = -2.36872
+
+[node name="CharacterBody2D9" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(10498, 9649.66)
+rotation = 1.79141
+
+[node name="Foot Soldier7" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(3675, 9825.38)
+rotation = -2.45129
+
+[node name="CharacterBody2D10" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(3929, 9853.33)
+rotation = 1.70883
+
+[node name="CharacterBody2D11" parent="Enemys" instance=ExtResource("12_1lmu4")]
+position = Vector2(3519, 9868.31)
+rotation = -0.0825706
+
+[node name="Foot Soldier8" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(3648, 9942.19)
+rotation = -2.45129
+
+[node name="CharacterBody2D12" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(3989, 9807.41)
+rotation = 1.70883
+
+[node name="Foot Soldier9" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(2471, 12394.3)
+rotation = -2.45129
+
+[node name="CharacterBody2D13" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(2725, 12422.2)
+rotation = 1.70883
+
+[node name="CharacterBody2D14" parent="Enemys" instance=ExtResource("12_1lmu4")]
+position = Vector2(2315, 12437.2)
+rotation = -0.0825706
+
+[node name="Foot Soldier10" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(2444, 12511.1)
+rotation = -2.45129
+
+[node name="CharacterBody2D15" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(2785, 12376.3)
+rotation = 1.70883
+
+[node name="Foot Soldier11" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(2442, 13994.7)
+rotation = -2.45129
+
+[node name="CharacterBody2D16" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(2696, 14022.7)
+rotation = 1.70883
+
+[node name="CharacterBody2D17" parent="Enemys" instance=ExtResource("12_1lmu4")]
+position = Vector2(2286, 14037.7)
+rotation = -0.0825706
+
+[node name="Foot Soldier12" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(2415, 14111.6)
+rotation = -2.45129
+
+[node name="CharacterBody2D18" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(2756, 13976.8)
+rotation = 1.70883
+
+[node name="Foot Soldier13" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(15193, 11430.8)
+rotation = -2.45129
+
+[node name="CharacterBody2D19" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(15447, 11458.8)
+rotation = 1.70883
+
+[node name="CharacterBody2D20" parent="Enemys" instance=ExtResource("12_1lmu4")]
+position = Vector2(15037, 11473.8)
+rotation = -0.0825706
+
+[node name="Foot Soldier14" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(15166, 11547.6)
+rotation = -2.45129
+
+[node name="CharacterBody2D21" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(15507, 11412.9)
+rotation = 1.70883
+
+[node name="Foot Soldier15" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(15203, 11187.2)
+rotation = -2.45129
+
+[node name="CharacterBody2D22" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(15457, 11215.2)
+rotation = 1.70883
+
+[node name="CharacterBody2D23" parent="Enemys" instance=ExtResource("12_1lmu4")]
+position = Vector2(15047, 11230.1)
+rotation = -0.0825706
+
+[node name="Foot Soldier16" parent="Enemys" instance=ExtResource("7_qslnd")]
+position = Vector2(15176, 11304)
+rotation = -2.45129
+
+[node name="CharacterBody2D24" parent="Enemys" instance=ExtResource("11_r25up")]
+position = Vector2(15517, 11169.2)
+rotation = 1.70883
 
 [node name="NPC" type="Node2D" parent="."]
 z_index = 1
@@ -245,7 +501,6 @@ z_index = 1
 shape = SubResource("CircleShape2D_droos")
 
 [node name="Node2D" parent="Polluted_areas/Waypoint_2" instance=ExtResource("25_jxjgr")]
-visible = false
 position = Vector2(-12171.9, 11735)
 
 [connection signal="area_shape_entered" from="BuildZone" to="." method="_on_build_zone_area_shape_entered"]

@@ -29,14 +29,14 @@ func cutsceneclose():
 		animation_player.play("Fade_out")
 		open_scene = false
 		path_follow = false
-		camera_2d.enabled = false
+		get_tree().change_scene_to_file("res://Scenes/World/world.tscn")
 	
 	
 func _process(delta: float) -> void:
 		cutscenceopening()
 		if path_follow_2d:
-			path_follow_2d.progress_ratio += 0.00025
+			path_follow_2d.progress_ratio += 0.00015
 		
 			
-			if path_follow_2d.progress_ratio >= 0.97:
+			if path_follow_2d.progress_ratio >= 0.9990:
 				cutsceneclose()
