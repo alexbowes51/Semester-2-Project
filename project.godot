@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Echoes of Ériu(pre)"
-run/main_scene="res://Scenes/Main Menu/Intro/intro.tscn"
+run/main_scene="res://Scenes/Intro/intro.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Art/Default/icon.svg"
 run/icon="res://Art/Default/icon.svg"
@@ -22,8 +22,10 @@ run/size/viewport_width=1152
 [autoload]
 
 WorldManager="*res://Scenes/World/world_manager.gd"
-BgAudio="*res://Audio/bg_audio.tscn"
-MainMusic="*res://Audio/main_music.tscn"
+BgAudio="*res://Audio/vfx_sounds/bg_audio.tscn"
+MainMusic="*res://Audio/vfx_sounds/main_music.tscn"
+CombatMusic="*res://Audio/Music/combat_music.tscn"
+VillageMusic="*res://Audio/Music/village_music.tscn"
 
 [debug]
 

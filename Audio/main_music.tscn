@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bb1kx3b20x4ei"]
-
-[ext_resource type="AudioStream" uid="uid://c1ok3ik6v7yh2" path="res://Audio/pixel_forge_song1.mp3" id="1_ynw16"]
-
-[node name="Main music" type="AudioStreamPlayer"]
-stream = ExtResource("1_ynw16")
-autoplay = true

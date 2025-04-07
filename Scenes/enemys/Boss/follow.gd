@@ -17,7 +17,7 @@ func exit():
 
 func transition():
 	var distance = owner.direction.length()
-	
+	CombatMusic.play()
 	if distance < 200:
 		get_parent().change_state("MeleeAttack")
 	elif distance > 500:

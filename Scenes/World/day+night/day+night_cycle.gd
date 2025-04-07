@@ -19,6 +19,8 @@ signal time_change(hour: float, time_string: String)
 var elapsed_time : float = 0.0
 var current_time : float = 0.0
 
+var intro_stop_index = 0
+
 func ready():
 	current_time = starting_hour
 	change_world_Color()

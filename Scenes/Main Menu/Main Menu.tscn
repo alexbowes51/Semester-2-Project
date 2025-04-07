@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1rexdmus4r2e"]
+[gd_scene load_steps=14 format=3 uid="uid://c1rexdmus4r2e"]
 
-[ext_resource type="Texture2D" uid="uid://d0im21lskdhsw" path="res://Screenshot 2025-02-19 155832.png" id="1_2li5b"]
 [ext_resource type="FontFile" uid="uid://6twna5ce2qh2" path="res://Celtica-BookOblique.ttf" id="1_ibtg2"]
 [ext_resource type="Script" path="res://Scenes/Main Menu/main_menu.gd" id="1_l0kpg"]
-[ext_resource type="AudioStream" uid="uid://bxy1j1rfsgomt" path="res://Audio/minecraft-drop-block-sound-effect.L.wav" id="5_co0ae"]
+[ext_resource type="Texture2D" uid="uid://du5y8encli37" path="res://bgpng.png" id="4_wrnr4"]
+[ext_resource type="AudioStream" uid="uid://bxy1j1rfsgomt" path="res://Audio/vfx_sounds/minecraft-drop-block-sound-effect.L.wav" id="5_co0ae"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ienpl"]
 bg_color = Color(0.706148, 0.586501, 0.253634, 1)
@@ -16,10 +16,6 @@ corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_llymo"]
-texture = ExtResource("1_2li5b")
-modulate_color = Color(0.473976, 0.473976, 0.473976, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_whsep"]
 
@@ -133,10 +129,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -203.0
-offset_top = 76.0
-offset_right = 286.0
-offset_bottom = 162.0
+offset_left = 289.0
+offset_top = 478.0
+offset_right = 789.0
+offset_bottom = 578.0
 grow_horizontal = 2
 scale = Vector2(1, 1.11502)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -148,16 +144,6 @@ theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_ienpl")
 text = "Echoes Of Eriu"
 
-[node name="Panel" type="Panel" parent="."]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_llymo")
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -165,14 +151,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -166.0
-offset_top = -107.0
-offset_right = 24.0
-offset_bottom = 87.0
+offset_left = 228.0
+offset_top = 136.0
+offset_right = 828.0
+offset_bottom = 386.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.16676, 1.83953)
-theme_override_constants/separation = 25
+theme_override_constants/separation = 53
 
 [node name="Start Game" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -226,6 +211,12 @@ color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_co0ae")
+
+[node name="Bgpng" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(964, 535.5)
+scale = Vector2(1.55808, 1.55572)
+texture = ExtResource("4_wrnr4")
 
 [connection signal="pressed" from="VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]

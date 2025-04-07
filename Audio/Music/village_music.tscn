@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkeegequsvjar"]
+
+[ext_resource type="AudioStream" uid="uid://cr8jfditywbuy" path="res://Audio/Music/pixel_forge_song1 (1).mp3" id="1_0wn1w"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_0wn1w")
+stream_paused = true
+parameters/looping = true

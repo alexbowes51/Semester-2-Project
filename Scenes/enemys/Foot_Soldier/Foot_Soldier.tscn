@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cl2suttj6hbdy" path="res://Art/Enemies/Foot Soldier/Walk/Foot Soldier Walk-Sheet.png" id="3_6b0jd"]
 [ext_resource type="Texture2D" uid="uid://be5iw1w5b2kn6" path="res://Art/Enemies/Foot Soldier/Foot Soldeir.png" id="5_5utsf"]
 [ext_resource type="PackedScene" uid="uid://cm28ftmarv0qi" path="res://VFX/collection_expolsion/damage.tscn" id="6_j762v"]
-[ext_resource type="AudioStream" uid="uid://dq0ua7wk8wy6r" path="res://Audio/mixkit-impact-of-a-strong-punch-2155.mp3" id="7_tmkhu"]
+[ext_resource type="AudioStream" uid="uid://dq0ua7wk8wy6r" path="res://Audio/vfx_sounds/mixkit-impact-of-a-strong-punch-2155.mp3" id="7_tmkhu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dxymc"]
 atlas = ExtResource("1_6hrp6")
@@ -270,8 +270,6 @@ script = ExtResource("1_otqes")
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_a3ilm")
 animation = &"Foot_E_Hurt"
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 z_index = 1

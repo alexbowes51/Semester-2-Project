@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dl4dg75c60bvd" path="res://Art/Enemies/Enemy Giant/Rock_Boss.png" id="1_qegfm"]
 [ext_resource type="PackedScene" uid="uid://cihbcepfkmg01" path="res://VFX/collection_expolsion/heavy_hit_grass.tscn" id="3_ntjg3"]
 [ext_resource type="PackedScene" uid="uid://bvg37cxvbav2q" path="res://VFX/collection_expolsion/heavy_hit_dirt.tscn" id="4_6llti"]
-[ext_resource type="AudioStream" uid="uid://cpyrqfts7u3qs" path="res://Audio/mixkit-short-rising-thud-3133.wav" id="5_3gmd8"]
+[ext_resource type="AudioStream" uid="uid://cpyrqfts7u3qs" path="res://Audio/vfx_sounds/mixkit-short-rising-thud-3133.wav" id="5_3gmd8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fvge6"]
 atlas = ExtResource("1_qegfm")

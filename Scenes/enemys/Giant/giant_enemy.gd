@@ -83,6 +83,7 @@ func damage():
 func chasing():
 	if alive == true:
 		if player != null && current_state == States.CHASING:
+			WorldManager.player_in_combat = true
 			$AnimatedSprite2D.play("walk")
 			position += ( player.global_position - global_position ).normalized() / 2
 			var target_rotation = (player.global_position - global_position).angle() + -90 
@@ -102,6 +103,7 @@ func is_alive():
 		$AnimatedSprite2D.play("death")
 		await get_tree().create_timer(1).timeout
 		self.queue_free()
+		WorldManager.player_in_combat = false
 
 
 func _on_attack_cooldown_timeout() -> void:

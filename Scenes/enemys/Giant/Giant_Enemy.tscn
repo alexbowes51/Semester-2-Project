@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cn253rnx87yb0" path="res://Art/Enemies/Spear Soldier/Spear Soldeir.png" id="4_e2ikg"]
 [ext_resource type="Texture2D" uid="uid://mnslhir25yee" path="res://Art/Enemies/Spear Soldier/Walk/Spear Soldeir walk-Sheet.png" id="5_ppidj"]
 [ext_resource type="PackedScene" uid="uid://cm28ftmarv0qi" path="res://VFX/collection_expolsion/damage.tscn" id="6_u2iy4"]
-[ext_resource type="AudioStream" uid="uid://dq0ua7wk8wy6r" path="res://Audio/mixkit-impact-of-a-strong-punch-2155.mp3" id="7_u0rpg"]
+[ext_resource type="AudioStream" uid="uid://dq0ua7wk8wy6r" path="res://Audio/vfx_sounds/mixkit-impact-of-a-strong-punch-2155.mp3" id="7_u0rpg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jjxx"]
 atlas = ExtResource("2_b6dd5")
@@ -290,7 +290,7 @@ radius = 85.7143
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = 1
-scale = Vector2(0.28, 0.28)
+scale = Vector2(0.45, 0.45)
 script = ExtResource("1_b4gdq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

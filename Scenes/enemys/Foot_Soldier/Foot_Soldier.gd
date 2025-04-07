@@ -12,6 +12,7 @@ var damage = true
 var receives_knockback = false
 var knock_scale = 2.0
 
+
 var bottle = preload("res://Scenes/Item/Bottle/bottle_collectable.tscn")
 var rubber = preload("res://Scenes/Item/Rubber/rubber_collectable.tscn")
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
@@ -20,7 +21,7 @@ var rubber = preload("res://Scenes/Item/Rubber/rubber_collectable.tscn")
 @onready var rigth: RayCast2D = $rigth
 @onready var left: RayCast2D = $left
 @onready var up: RayCast2D = $up
-@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
+
 
 func _physics_process(delta):
 	deal_damage()
@@ -46,6 +47,7 @@ func move_towards_player(delta: float):
 	look_at(player.get_global_position())
 	global_rotation_degrees += -90
 	$AnimatedSprite2D.play("Foot_E_Walk")
+	WorldManager.player_in_combat = true
 
 func avoid_obstacle():
 	# If there's an obstacle in the way, change direction
@@ -102,7 +104,8 @@ func deal_damage():
 				$AnimatedSprite2D.play("Foot_E_Death")
 				await get_tree().create_timer(1).timeout
 				self.queue_free()
-
+				WorldManager.player_in_combat = false
+				
 				var new_rubber = rubber.instantiate()
 				get_parent().add_child(new_rubber)  # Add to the world instead of enemy
 				new_rubber.global_position = Vector2(global_position.x - 40, global_position.y)

@@ -39,7 +39,7 @@ func _physics_process(delta):
 	move_and_collide(velocity * delta * 2)
 
 func damage():
-	health -= 100
+	health -= 20
 	cpu_particles_2d_2.emitting = true
 	damage_audio.play()
 	

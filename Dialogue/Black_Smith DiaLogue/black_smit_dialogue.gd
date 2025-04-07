@@ -15,12 +15,9 @@ func _ready():
 	$NinePatchRect/TextureButton2.visible = false
 	$NinePatchRect/TextureButton2.pressed.connect(_on_texture_button_2_pressed)
 
-
-
 func _process(_delta):
 	pass
 	
-
 
 func start():
 	if dia_active:
@@ -31,12 +28,10 @@ func start():
 	current_dialogue_id = -1 
 	next_script()
 
-
 func load_dialogue():
 	var file = FileAccess.open("res://Dialogue/Black_Smith DiaLogue/Black_smith_dialogue.json", FileAccess.READ)
 	var content = JSON.parse_string(file.get_as_text())
 	return content
-	
 
 func _input(event):
 	if !dia_active:
@@ -44,7 +39,6 @@ func _input(event):
 		
 	if event.is_action_pressed("ui_accept"):
 		next_script()
-
 
 func next_script():
 	current_dialogue_id += 1
@@ -56,7 +50,7 @@ func next_script():
 	if current_dialogue_id >= len(dialogue):
 		dia_active = false
 		$NinePatchRect.visible = false
-		$"NinePatchRect/TextureButton".visible = false
+		$NinePatchRect/TextureButton.visible = false
 		$NinePatchRect/TextureButton2.visible = false
 		current_dialogue_id = -1 
 		WorldManager.player_talking_Black_Smith = false

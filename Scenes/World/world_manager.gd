@@ -16,8 +16,6 @@ var black_smith_built = false
 
 var sigma = preload("res://Scenes/enemys/Boss/scottish_giant.tscn")
 var spawn_sigma = false
-
-
 @export var enable_cycle: bool = true
 
 #tilemap variables
@@ -30,6 +28,8 @@ var Build_mode = false
 var player_weapon = "none"
 var player_healed = false
 
+var player_in_village = false
+var player_in_combat = false
 
 #teleport variables
 var tp_Wp1_A = "A"
@@ -60,8 +60,13 @@ var player_talking_Black_Smith = false
 var Bs_shop = false
 var Item_Selling = "none"
 
+var player_needs_healing = false
+
+var Intro_stop_index = 0
+
 func _ready():
-	BgAudio.play()
+	BgAudio.stop()
+	MainMusic.stop()
 	minimap = $MiniMap
 	player = $Player
 	
@@ -88,10 +93,9 @@ func _process(_delta):
 	if not spawn_sigma and waypoints_Cleared == 2 and villages_Cleared == 2:
 		spawn_boss()
 			
-		if Build_mode == true && Input.is_action_just_pressed("build"):
-			build()
-
-			
+	if Build_mode == true && Input.is_action_just_pressed("build"):
+		build()
+	
 
 func spawn_boss():
 	if spawn_sigma:
@@ -134,11 +138,15 @@ func build():
 func _on_build_zone_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if area && area.name == "Player_HitBox":
 		WorldManager.player_in_build_zone = true
+		BgAudio.play()
+		VillageMusic.stop()
 
 
 func _on_build_zone_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if area && area.name == "Player_HitBox":
 		WorldManager.player_in_build_zone = false
+		VillageMusic.play()
+		BgAudio.stop()
 
 
 func _on_waypoint_1_area_entered(area: Area2D) -> void:

@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://qjn60h7573st"]
+
+[ext_resource type="Script" path="res://Scenes/Intro/Intro text/intro_text.gd" id="1_dhydq"]
+[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_iqwsa"]
+[ext_resource type="Texture2D" uid="uid://bgnq6pdidnkj3" path="res://Art/UI/Keyboard Extras.png" id="3_cghx0"]
+
+[node name="Introdialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 793.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dhydq")
+Intro_D_file = "res://Scenes/Intro/Intro text/Intro_text.json"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 4
+layout_mode = 0
+offset_left = 248.0
+offset_top = -5.0
+offset_right = 1618.0
+offset_bottom = 238.0
+texture = ExtResource("1_iqwsa")
+
+[node name="Intro" type="RichTextLabel" parent="."]
+z_index = 4
+layout_mode = 0
+offset_left = 317.0
+offset_top = 14.0
+offset_right = 24917.0
+offset_bottom = 3874.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 60
+theme_override_constants/shadow_offset_x = 60
+theme_override_font_sizes/normal_font_size = 750
+text = "Intro"
+fit_content = true
+
+[node name="Label" type="Label" parent="."]
+z_index = 4
+layout_mode = 0
+offset_left = 1304.0
+offset_top = 184.0
+offset_right = 5852.0
+offset_bottom = 1104.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 400
+text = "Press Enter to Continue"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 4
+texture_filter = 1
+position = Vector2(1574, 201)
+scale = Vector2(2.67188, 2.19141)
+texture = ExtResource("3_cghx0")
+hframes = 4
+vframes = 8
+frame = 7

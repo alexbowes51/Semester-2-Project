@@ -91,7 +91,7 @@ func _on_texture_button_pressed():
 	elif hot_inv.Has_Items(item, 1):  
 		var transfer_amount = min(slot_data.amount, 1)  
 		
-		if hot_inv.Has_Items(item,1) && item.name == "health_p":
+		if hot_inv.Has_Items(item,1) && item.name == "health_p" && WorldManager.player_needs_healing:
 			WorldManager.player_healed = true
 			hot_inv.Remove_Items(item,1)
 			

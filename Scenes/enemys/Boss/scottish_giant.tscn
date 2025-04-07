@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://Scenes/enemys/Boss/death.gd" id="17_jfo0l"]
 [ext_resource type="PackedScene" uid="uid://cer4infdssnfg" path="res://VFX/collection_expolsion/buff.tscn" id="17_qctr4"]
 [ext_resource type="PackedScene" uid="uid://ox1hjt0u1oje" path="res://VFX/collection_expolsion/boss_damage.tscn" id="20_tuhxs"]
-[ext_resource type="AudioStream" uid="uid://qbnkkc40ikxn" path="res://Audio/mixkit-sword-slash-swoosh-1476.mp3" id="21_ihdrh"]
+[ext_resource type="AudioStream" uid="uid://qbnkkc40ikxn" path="res://Audio/vfx_sounds/mixkit-sword-slash-swoosh-1476.mp3" id="21_ihdrh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yaj8y"]
 atlas = ExtResource("1_llq3w")
@@ -457,14 +457,12 @@ animation = &"attack"
 scale = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(-1, -36)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_vpwl6")
 
 [node name="PlayerDection" type="Area2D" parent="."]
-visible = false
 z_index = 2
 collision_layer = 0
 

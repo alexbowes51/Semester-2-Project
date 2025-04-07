@@ -6,6 +6,7 @@ extends State
 # Called when the node enters the scene tree for the first time.
 func enter():
 	super.enter()
+	CombatMusic.stop()
 	collision_shape_2d_a.disabled = true
 	collision_shape_2d_b.disabled = true 
 	animated_sprite_2d.play("death")

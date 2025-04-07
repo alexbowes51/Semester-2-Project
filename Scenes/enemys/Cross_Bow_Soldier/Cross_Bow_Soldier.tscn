@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cpt1mif243ecf" path="res://Art/Enemies/Crossbowman/CrossBowMan.png" id="4_gudm3"]
 [ext_resource type="Texture2D" uid="uid://bcc8aijq65c86" path="res://Art/Enemies/Crossbowman/Walk/CrossBowman Walk-Sheet.png" id="5_epnt2"]
 [ext_resource type="PackedScene" uid="uid://cm28ftmarv0qi" path="res://VFX/collection_expolsion/damage.tscn" id="7_ulhmo"]
-[ext_resource type="AudioStream" uid="uid://dq0ua7wk8wy6r" path="res://Audio/mixkit-impact-of-a-strong-punch-2155.mp3" id="8_kpk7w"]
+[ext_resource type="AudioStream" uid="uid://dq0ua7wk8wy6r" path="res://Audio/vfx_sounds/mixkit-impact-of-a-strong-punch-2155.mp3" id="8_kpk7w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_if7mi"]
 atlas = ExtResource("2_2hoqh")

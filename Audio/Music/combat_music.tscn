@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bajaobfkiq54k"]
+
+[ext_resource type="AudioStream" uid="uid://nys8jbfj6ch" path="res://Audio/Music/Destruction.mp3" id="1_e5a06"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_e5a06")
+parameters/looping = true

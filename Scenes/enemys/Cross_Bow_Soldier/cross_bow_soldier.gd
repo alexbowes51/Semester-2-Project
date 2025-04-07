@@ -72,6 +72,7 @@ func following():
 			$AnimatedSprite2D.play("walk")
 			look_at(player.get_global_position())
 			global_rotation_degrees += -90
+			WorldManager.player_in_combat = true
 
 func idle():
 	if alive == true:
@@ -89,6 +90,7 @@ func _is_alive():
 	if health <= 0:
 		$AnimatedSprite2D.play("death")
 		alive = false
+		WorldManager.player_in_combat = false
 		await get_tree().create_timer(1).timeout
 		self.queue_free()
 

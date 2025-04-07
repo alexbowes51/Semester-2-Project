@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bv3fjtxyo1edw"]
 
-[ext_resource type="Script" uid="uid://pqq1dt46hwiq" path="res://Dialogue/Black_Smith DiaLogue/black_smit_dialogue.gd" id="1_af6t5"]
+[ext_resource type="Script" path="res://Dialogue/Black_Smith DiaLogue/black_smit_dialogue.gd" id="1_af6t5"]
 [ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="2_beapg"]
 [ext_resource type="FontFile" uid="uid://6twna5ce2qh2" path="res://Celtica-BookOblique.ttf" id="3_vj64c"]
 [ext_resource type="Texture2D" uid="uid://ckv7fsadhdp45" path="res://Art/Inventory/pixil-frame-0 (8).png" id="4_enfit"]
@@ -103,21 +103,23 @@ texture_pressed = ExtResource("2_beapg")
 stretch_mode = 0
 
 [node name="Follow Text" type="Label" parent="NinePatchRect/TextureButton"]
+z_index = 2
 layout_mode = 0
-offset_left = 9.27149
+offset_left = 13.9072
 offset_top = 15.7051
-offset_right = 1750.27
+offset_right = 1754.91
 offset_bottom = 425.705
 scale = Vector2(0.05, 0.05)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 28
 theme_override_constants/shadow_offset_y = -5
-theme_override_fonts/font = ExtResource("3_vj64c")
 theme_override_font_sizes/font_size = 335
 text = "Follow me 
 "
 
 [node name="unFollow Text" type="Label" parent="NinePatchRect/TextureButton"]
+visible = false
+z_index = 2
 layout_mode = 0
 offset_left = 6.49654
 offset_top = 14.2102
@@ -127,7 +129,6 @@ scale = Vector2(0.05, 0.05)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 28
 theme_override_constants/shadow_offset_y = -5
-theme_override_fonts/font = ExtResource("3_vj64c")
 theme_override_font_sizes/font_size = 335
 text = "unFollow me 
 "
@@ -146,18 +147,18 @@ texture_normal = ExtResource("4_enfit")
 texture_pressed = ExtResource("2_beapg")
 stretch_mode = 0
 
-[node name="craft_updrade" type="Label" parent="NinePatchRect/TextureButton2"]
+[node name="craft_updrade" type="Label" parent="NinePatchRect"]
+z_index = 2
 layout_mode = 0
-offset_left = 11.7318
-offset_top = 15.7051
-offset_right = 2537.73
-offset_bottom = 425.705
+offset_left = 32.2676
+offset_top = 30.6012
+offset_right = 633.268
+offset_bottom = 144.601
 scale = Vector2(0.05, 0.05)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 28
-theme_override_constants/shadow_offset_y = -5
-theme_override_fonts/font = ExtResource("3_vj64c")
-theme_override_font_sizes/font_size = 335
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 75
 text = "Craft/Upgrade
 "
 

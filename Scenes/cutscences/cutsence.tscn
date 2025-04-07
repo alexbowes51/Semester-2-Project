@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b22qlrv1jko6b"]
+[gd_scene load_steps=17 format=4 uid="uid://b22qlrv1jko6b"]
 
 [ext_resource type="Script" path="res://Scenes/cutscences/cutsence.gd" id="1_e5ifd"]
 [ext_resource type="TileSet" uid="uid://dljbx2e4l7110" path="res://Scenes/World/World_TileMap.tres" id="1_wiqr6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cc061iwc1bbt2" path="res://Art/Tile_map/farm.png" id="8_wd5fy"]
 [ext_resource type="Texture2D" uid="uid://be5iw1w5b2kn6" path="res://Art/Enemies/Foot Soldier/Foot Soldeir.png" id="9_yt1kh"]
 [ext_resource type="Texture2D" uid="uid://dj00g2fwp5jv1" path="res://Art/Enemies/Enemy Giant/Enemy Giant Standing.png" id="10_ry5ci"]
+[ext_resource type="PackedScene" uid="uid://qjn60h7573st" path="res://Scenes/Intro/Intro text/Intro Text.tscn" id="11_o30mx"]
 
 [sub_resource type="Curve2D" id="Curve2D_qv45i"]
 _data = {
@@ -2090,6 +2091,14 @@ limit_left = 100
 limit_top = 100
 limit_right = 32500
 limit_bottom = 19600
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Path2D/PathFollow2D/Camera2D"]
+
+[node name="Control" parent="Path2D/PathFollow2D/Camera2D/CanvasLayer" instance=ExtResource("11_o30mx")]
+offset_left = 72.0
+offset_top = 815.0
+offset_right = -130.0
+offset_bottom = -16.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

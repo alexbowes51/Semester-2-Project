@@ -1,0 +1,195 @@
+[gd_scene load_steps=17 format=3 uid="uid://bqt0gpckeybrl"]
+
+[ext_resource type="Script" path="res://Scenes/Intro/intro.gd" id="1_rew04"]
+[ext_resource type="Texture2D" uid="uid://b0dfqoucpyceu" path="res://Art/Logo Concept/PixelForge Logo Concept 1-Sheet.png" id="2_ttbjf"]
+
+[sub_resource type="Animation" id="Animation_tfkk7"]
+resource_name = "Fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sa7t0"]
+resource_name = "Fade_out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lpcg8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mq1xm"]
+_data = {
+"Fade_in": SubResource("Animation_tfkk7"),
+"Fade_out": SubResource("Animation_sa7t0"),
+"RESET": SubResource("Animation_lpcg8")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_majq0"]
+atlas = ExtResource("2_ttbjf")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6hkc"]
+atlas = ExtResource("2_ttbjf")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hkgw"]
+atlas = ExtResource("2_ttbjf")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nfgp"]
+atlas = ExtResource("2_ttbjf")
+region = Rect2(1344, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3ooy"]
+atlas = ExtResource("2_ttbjf")
+region = Rect2(1792, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d62v"]
+atlas = ExtResource("2_ttbjf")
+region = Rect2(2240, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbpay"]
+atlas = ExtResource("2_ttbjf")
+region = Rect2(2688, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euut8"]
+atlas = ExtResource("2_ttbjf")
+region = Rect2(3136, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8h83"]
+atlas = ExtResource("2_ttbjf")
+region = Rect2(3584, 0, 448, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_42oyn"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_majq0")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_f6hkc")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_0hkgw")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_0nfgp")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_e3ooy")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_8d62v")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_lbpay")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_euut8")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_g8h83")
+}],
+"loop": true,
+"name": &"Intro",
+"speed": 5.0
+}]
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_rew04")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_right = 1922.0
+offset_bottom = 1083.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 1921.0
+offset_bottom = 1079.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mq1xm")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(934, 510)
+sprite_frames = SubResource("SpriteFrames_42oyn")
+animation = &"Intro"
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+offset_left = 847.0
+offset_top = 881.0
+offset_right = 5762.0
+offset_bottom = 1972.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 800
+text = "ALEX BOWES"
+
+[node name="Label2" type="Label" parent="."]
+z_index = 1
+offset_left = 161.0
+offset_top = 881.0
+offset_right = 6980.0
+offset_bottom = 1972.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 800
+text = "ALAN HARSZCZYK"
+
+[node name="Label3" type="Label" parent="."]
+z_index = 1
+offset_left = 1464.0
+offset_top = 881.0
+offset_right = 6379.0
+offset_bottom = 1972.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 800
+text = "NATHAN HEATON"
+
+[node name="Label4" type="Label" parent="."]
+z_index = 1
+offset_left = 260.0
+offset_top = 61.0
+offset_right = 1269.0
+offset_bottom = 198.0
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 100
+text = "PIXEL FORGE STUDIO"

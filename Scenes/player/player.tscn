@@ -14,16 +14,16 @@
 [ext_resource type="PackedScene" uid="uid://b3fek1gdhc7aw" path="res://Dialogue/Merchant_Dialogue/merchant_dialogue.tscn" id="8_dy8ic"]
 [ext_resource type="Texture2D" uid="uid://bmx4kqjkmv35g" path="res://Art/Player/Sword/Sword Player/Walk/Player Walk Sword-Sheet.png" id="8_vlpk3"]
 [ext_resource type="Texture2D" uid="uid://bhuh8nl8bx3q6" path="res://Art/Items/Wood.png" id="9_gefow"]
-[ext_resource type="AudioStream" uid="uid://bxy1j1rfsgomt" path="res://Audio/minecraft-drop-block-sound-effect.L.wav" id="9_mjni5"]
+[ext_resource type="AudioStream" uid="uid://bxy1j1rfsgomt" path="res://Audio/vfx_sounds/minecraft-drop-block-sound-effect.L.wav" id="9_mjni5"]
 [ext_resource type="Texture2D" uid="uid://bdii2j163ikfo" path="res://Art/UI/Hearts/Heart Beat-Sheet.png" id="10_5b1b5"]
 [ext_resource type="Texture2D" uid="uid://cunkiglykdqkr" path="res://Art/Items/Bottles.png" id="10_khoqc"]
-[ext_resource type="AudioStream" uid="uid://2kofpilh5wu3" path="res://Audio/minecraft-grass-walking-sound-effect.mp3" id="10_yodoo"]
+[ext_resource type="AudioStream" uid="uid://2kofpilh5wu3" path="res://Audio/vfx_sounds/minecraft-grass-walking-sound-effect.mp3" id="10_yodoo"]
 [ext_resource type="Texture2D" uid="uid://dk62hubethro3" path="res://Art/Items/Rubber.png" id="11_hnjnx"]
 [ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="12_cohmc"]
 [ext_resource type="PackedScene" uid="uid://bv3fjtxyo1edw" path="res://Dialogue/Black_Smith DiaLogue/black_smit_dialogue.tscn" id="13_eylsh"]
 [ext_resource type="PackedScene" uid="uid://lyvill1i58ul" path="res://Scenes/Npc/Black_Smith/black_smith_crafting.tscn" id="14_bmap2"]
-[ext_resource type="AudioStream" uid="uid://dq0ua7wk8wy6r" path="res://Audio/mixkit-impact-of-a-strong-punch-2155.mp3" id="17_3rcj0"]
-[ext_resource type="AudioStream" uid="uid://b15iotr1bikbi" path="res://Audio/mixkit-sword-strikes-armor-2765.wav" id="18_7slj4"]
+[ext_resource type="AudioStream" uid="uid://dq0ua7wk8wy6r" path="res://Audio/vfx_sounds/mixkit-impact-of-a-strong-punch-2155.mp3" id="17_3rcj0"]
+[ext_resource type="AudioStream" uid="uid://b15iotr1bikbi" path="res://Audio/vfx_sounds/mixkit-sword-strikes-armor-2765.wav" id="18_7slj4"]
 [ext_resource type="PackedScene" uid="uid://bopk1ta60cfqg" path="res://Scenes/Inventory/player_hotbar.tscn" id="19_ag7iv"]
 [ext_resource type="PackedScene" uid="uid://cm28ftmarv0qi" path="res://VFX/collection_expolsion/damage.tscn" id="19_d4ufm"]
 [ext_resource type="PackedScene" uid="uid://dmdcilu706lxk" path="res://Scenes/respawn/respawn.tscn" id="22_fuqjl"]
@@ -38,7 +38,6 @@ var currentHealth: int = 5
 var MaxHealth: int = 5
 var player_alive = true
 var death = false
-
 ##attacking varibales
 var Player_is_in_attacking_range = false
 var enemy_is_in_attacking_range = false
@@ -49,7 +48,7 @@ var receives_knockback = false
 var knock_scale = 2.0
 var speed = 300
 
-
+@onready var player_animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var inv : Inventory = preload(\"res://Scenes/Inventory/player_Inventory.tres\")
 @onready var hb_inv : Inventory = preload(\"res://Scenes/Inventory/Hot_bar.tres\")
 @onready var merchant_dialogue: Control = $Camera2D/UI/Merchant_Dialogue
@@ -62,7 +61,6 @@ var speed = 300
 @onready var sprite_2d: Sprite2D = $Camera2D/UI/PickUpNotifaction/Sprite2D
 @onready var build_av: Label = $Camera2D/UI/build_notifcation/Build_av
 @onready var respawn: Control = $Camera2D/UI/Respawn
-
 @onready var hit_by__sword: AudioStreamPlayer = $\"hit_by _sword\"
 @onready var arrow_hit: AudioStreamPlayer = $arrow_hit
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
@@ -95,8 +93,13 @@ func _physics_process(_delta: float) -> void:
 		build_av.visible = true 
 	else:
 		build_av.visible = false 
-		
-		
+	
+	if currentHealth < MaxHealth:
+		WorldManager.player_needs_healing = true
+	else:
+		WorldManager.player_needs_healing = false
+
+
 	if WorldManager.player_talking_Merchant == false && WorldManager.player_talking_Black_Smith == false:
 		if currentHealth > 0:
 			update_hearts()
@@ -108,11 +111,11 @@ func _physics_process(_delta: float) -> void:
 		else:
 			player_dead()
 		
-	
+
+var is_attacking = false
 
 func get_input():
 	var input_direction = Input.get_vector(\"left\", \"right\", \"up\", \"down\")
-	
 
 	if input_direction != Vector2.ZERO:
 		if !walking.playing:
@@ -120,31 +123,34 @@ func get_input():
 	else:
 		walking.stop()
 
-
-	if Input.is_action_pressed(\"attack\"):
-		WorldManager.player_current_attack = true
-		attack = true
-		if check_weapon():
-			$AnimatedSprite2D.play(\"Player_sword_attack\")  
-		else:
-			$AnimatedSprite2D.play(\"Player_Attack\")
-		$Attack_Cooldown.start()
-
-
 	if input_direction != Vector2.ZERO:
 		rotation = velocity.angle() + deg_to_rad(-90)
 
-
-	if input_direction != Vector2.ZERO:
-		if check_weapon():
-			$AnimatedSprite2D.play(\"Player_sword_walk\")
+	if !is_attacking:
+		if input_direction != Vector2.ZERO:
+			if check_weapon():
+				player_animation.play(\"Player_sword_walk\")
+			else:
+				player_animation.play(\"Player_Walk\")
 		else:
-			$AnimatedSprite2D.play(\"Player_Walk\")
-	else:
-		$AnimatedSprite2D.play(\"Player_Idle\")
+			if check_weapon():
+				player_animation.play(\"Player_sword_idle\")
+			else:
+				player_animation.play(\"Player_Idle\")
 
-	
+	if Input.is_action_just_pressed(\"attack\"):
+		if check_weapon():
+			player_animation.play(\"Player_sword_attack\")
+		else:
+			player_animation.play(\"Player_Attack\")
+
+		is_attacking = true
+		WorldManager.player_current_attack = true
+		attack = true
+		$Attack_Cooldown.start()
+
 	velocity = input_direction * speed
+
 
 func collect(item):	
 	audio_stream_player.play()
@@ -212,15 +218,15 @@ func player_dead():
 	respawn.visible = true
 	if death:
 		if check_weapon():
-			$AnimatedSprite2D.play(\"Player_sword_death\")
+			player_animation.play(\"Player_sword_death\")
 		else:
-			$AnimatedSprite2D.play(\"Player_Death\")
+			player_animation.play(\"Player_Death\")
 
 func enemy_attack():
 	if Player_is_in_attacking_range and attack_damage_cool_down == true:
 		take_damage()
 		if player_alive:
-			$AnimatedSprite2D.play(\"Player_Hurt\")
+			player_animation.play(\"Player_Hurt\")
 		attack_damage_cool_down = false
 		$Damage_cooldown.start()
 		
@@ -871,7 +877,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f512b")
 }],
-"loop": true,
+"loop": false,
 "name": &"Player_sword_attack",
 "speed": 5.0
 }, {
@@ -1047,7 +1053,7 @@ z_index = 1
 position = Vector2(-2.98023e-08, 5.96046e-08)
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_y3ys1")
-animation = &"Player_Idle"
+animation = &"Player_Attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
@@ -1114,7 +1120,6 @@ layout_mode = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/UI/HealthBar/heart"]
 scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_mc0xm")
-animation = &"new_animation"
 
 [node name="heart2" type="TextureRect" parent="Camera2D/UI/HealthBar"]
 custom_minimum_size = Vector2(100, 0)
@@ -1152,10 +1157,10 @@ scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_mc0xm")
 
 [node name="Build_Ui" parent="Camera2D/UI" instance=ExtResource("7_olynr")]
-offset_left = 119.588
-offset_top = 1215.28
-offset_right = 119.588
-offset_bottom = 1215.28
+offset_left = 120.0
+offset_top = 1215.0
+offset_right = -530.04
+offset_bottom = 1171.2
 scale = Vector2(1.5, 1.5)
 
 [node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
