@@ -1,8 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://buoxgii380s3e"]
+[gd_scene load_steps=15 format=3 uid="uid://buoxgii380s3e"]
 
 [ext_resource type="Shader" path="res://Scenes/Pause_Menu/pause_menu.gdshader" id="1_6hx4e"]
-[ext_resource type="Texture2D" uid="uid://ckv7fsadhdp45" path="res://Art/Inventory/pixil-frame-0 (8).png" id="1_by5tt"]
 [ext_resource type="Script" path="res://Scenes/Pause_Menu/pause_menu.gd" id="1_ifo2s"]
+[ext_resource type="Texture2D" uid="uid://ban3p8nf7pwnu" path="res://Art/Inventory/pixil-frame-0 (19).png" id="3_h4vuu"]
+[ext_resource type="Texture2D" uid="uid://qmspg283paed" path="res://Art/Inventory/pixil-frame-0 (20).png" id="4_15ctu"]
+[ext_resource type="Texture2D" uid="uid://blh3kft2uy50c" path="res://Art/Inventory/pixil-frame-0 (17).png" id="5_xmoaa"]
+[ext_resource type="Texture2D" uid="uid://dx47e8r21pfcm" path="res://Art/Inventory/pixil-frame-0 (15).png" id="6_0fktk"]
+[ext_resource type="Texture2D" uid="uid://dx0uj5o4jp5lg" path="res://Art/Inventory/pixil-frame-0 (18).png" id="6_srbmr"]
+[ext_resource type="Texture2D" uid="uid://6er6yi0mqe6p" path="res://Art/Inventory/pixil-frame-0 (16).png" id="7_i4l1g"]
+[ext_resource type="Texture2D" uid="uid://b1k12cvedhw06" path="res://Art/Inventory/pixil-frame-0 (21).png" id="9_jh2kx"]
+[ext_resource type="Texture2D" uid="uid://brx4np6l2fk0w" path="res://Art/Inventory/pixil-frame-0 (22).png" id="10_kf4on"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vx67"]
 shader = ExtResource("1_6hx4e")
@@ -158,108 +165,71 @@ mouse_filter = 2
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 550.0
-offset_top = 85.0
-offset_right = 1350.0
-offset_bottom = 985.0
+offset_left = 553.0
+offset_top = 66.0
+offset_right = 1353.0
+offset_bottom = 966.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 0
-offset_left = 205.0
-offset_top = 210.0
-offset_right = 605.0
-offset_bottom = 710.0
-theme_override_constants/separation = 100
-
-[node name="TextureButton" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 2
-texture_normal = ExtResource("1_by5tt")
+offset_left = 709.0
+offset_top = 115.0
+offset_right = 1209.0
+offset_bottom = 365.0
+texture_normal = ExtResource("3_h4vuu")
+texture_hover = ExtResource("4_15ctu")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/TextureButton"]
-layout_mode = 0
-offset_left = 154.0
-offset_top = 5.0
-offset_right = 2089.0
-offset_bottom = 687.0
-scale = Vector2(0.05, 0.05)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 75
-theme_override_constants/shadow_offset_y = 50
-theme_override_font_sizes/font_size = 500
-text = "Resume"
-
-[node name="TextureButton2" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="TextureButton2" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 2
-texture_normal = ExtResource("1_by5tt")
+offset_left = 709.0
+offset_top = 266.0
+offset_right = 1209.0
+offset_bottom = 516.0
+texture_normal = ExtResource("5_xmoaa")
+texture_hover = ExtResource("6_srbmr")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/TextureButton2"]
-layout_mode = 0
-offset_left = 77.0
-offset_top = 4.0
-offset_right = 5332.0
-offset_bottom = 686.0
-scale = Vector2(0.05, 0.05)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 75
-theme_override_constants/shadow_offset_y = 50
-theme_override_font_sizes/font_size = 500
-text = "Options / Controls"
-
-[node name="TextureButton3" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="TextureButton3" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 2
-texture_normal = ExtResource("1_by5tt")
+offset_left = 709.0
+offset_top = 578.0
+offset_right = 1209.0
+offset_bottom = 828.0
+texture_normal = ExtResource("6_0fktk")
+texture_hover = ExtResource("7_i4l1g")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/TextureButton3"]
-layout_mode = 0
-offset_left = 174.0
-offset_top = 4.0
-offset_right = 1819.0
-offset_bottom = 686.0
-scale = Vector2(0.05, 0.05)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 75
-theme_override_constants/shadow_offset_y = 50
-theme_override_font_sizes/font_size = 500
-text = "Exit"
-
-[node name="TextureButton4" type="TextureButton" parent="Panel/VBoxContainer"]
+[node name="TextureButton4" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 2
-texture_normal = ExtResource("1_by5tt")
+offset_left = 709.0
+offset_top = 430.0
+offset_right = 1209.0
+offset_bottom = 664.0
+texture_normal = ExtResource("9_jh2kx")
+texture_hover = ExtResource("10_kf4on")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/TextureButton4"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 110.0
-offset_top = 3.0
-offset_right = 3814.0
-offset_bottom = 685.0
-scale = Vector2(0.05, 0.05)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 75
-theme_override_constants/shadow_offset_y = 50
-theme_override_font_sizes/font_size = 500
-text = "Restart Scene"
-
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 279.0
-offset_top = 109.0
-offset_right = 319.0
-offset_bottom = 132.0
+offset_left = 783.0
+offset_top = 66.0
+offset_right = 1135.0
+offset_bottom = 203.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 100
+text = "Paused"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_piey8")
 }
 
-[connection signal="pressed" from="Panel/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/TextureButton2" to="." method="_on_texture_button_2_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/TextureButton3" to="." method="_on_texture_button_3_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/TextureButton4" to="." method="_on_texture_button_4_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="TextureButton3" to="." method="_on_texture_button_3_pressed"]
+[connection signal="pressed" from="TextureButton4" to="." method="_on_texture_button_4_pressed"]

@@ -1,0 +1,303 @@
+[gd_scene load_steps=7 format=3 uid="uid://2dk0i07v5kqb"]
+
+[ext_resource type="Script" path="res://Scenes/settings/setting.gd" id="1_21w2r"]
+[ext_resource type="Texture2D" uid="uid://6oivht7vl0oc" path="res://Art/Inventory/pixil-frame-0 (10).png" id="1_ir2uo"]
+[ext_resource type="Texture2D" uid="uid://nohnidqou0hp" path="res://Art/UI/Keyboard Letters and Symbols.png" id="3_rofjc"]
+[ext_resource type="Texture2D" uid="uid://dx47e8r21pfcm" path="res://Art/Inventory/pixil-frame-0 (15).png" id="3_x4u2x"]
+[ext_resource type="Texture2D" uid="uid://bgnq6pdidnkj3" path="res://Art/UI/Keyboard Extras.png" id="4_5gbuj"]
+[ext_resource type="Texture2D" uid="uid://6er6yi0mqe6p" path="res://Art/Inventory/pixil-frame-0 (16).png" id="4_vvvak"]
+
+[node name="Control" type="Control"]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_21w2r")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1925.0
+offset_bottom = 1082.0
+texture = ExtResource("1_ir2uo")
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 1203.0
+offset_top = 738.0
+offset_right = 1792.0
+offset_bottom = 1028.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Volume" type="HSlider" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/Volume"]
+offset_left = 172.0
+offset_top = -37.0
+offset_right = 5087.0
+offset_bottom = 576.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_font_sizes/font_size = 450
+text = "Volume slider = 0"
+
+[node name="on_mute" type="CheckBox" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mute Aduio"
+
+[node name="Resolution" type="OptionButton" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/Resolution"]
+offset_left = 168.0
+offset_top = -36.0
+offset_right = 5083.0
+offset_bottom = 577.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_font_sizes/font_size = 450
+text = "Resolutions"
+
+[node name="leave" type="TextureButton" parent="NinePatchRect"]
+texture_filter = 1
+offset_left = 1640.0
+offset_top = 26.0
+offset_right = 1862.0
+offset_bottom = 181.0
+texture_normal = ExtResource("3_x4u2x")
+texture_hover = ExtResource("4_vvvak")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 1.0
+offset_right = 18230.0
+offset_bottom = 2725.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 60
+theme_override_constants/shadow_offset_y = 60
+theme_override_font_sizes/font_size = 2000
+text = "Settings / Controls"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(253.5, 200.513)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("3_rofjc")
+hframes = 9
+vframes = 13
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(261.5, 272.513)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("3_rofjc")
+hframes = 8
+vframes = 13
+frame = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(125.75, 273)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("3_rofjc")
+hframes = 8
+vframes = 13
+frame = 2
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(401.5, 274.513)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("3_rofjc")
+hframes = 8
+vframes = 13
+frame = 3
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(262, 395)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("3_rofjc")
+hframes = 8
+vframes = 14
+frame = 17
+
+[node name="Label" type="Label" parent="Sprite2D5"]
+offset_left = 10.0
+offset_top = -5.0
+offset_right = 678.0
+offset_bottom = 179.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_font_sizes/font_size = 100
+text = "= Build mode"
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(258, 511)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("3_rofjc")
+hframes = 8
+vframes = 14
+frame = 24
+
+[node name="Label" type="Label" parent="Sprite2D6"]
+offset_left = 10.0
+offset_top = -5.0
+offset_right = 678.0
+offset_bottom = 179.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_font_sizes/font_size = 100
+text = "= Player Inventory"
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(715, 201.071)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("3_rofjc")
+hframes = 8
+vframes = 14
+frame = 38
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(714.5, 270.585)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("3_rofjc")
+hframes = 8
+vframes = 14
+frame = 34
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(578.75, 271.071)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("3_rofjc")
+hframes = 8
+vframes = 14
+frame = 16
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(857, 273.071)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("3_rofjc")
+hframes = 8
+vframes = 14
+frame = 19
+
+[node name="Label" type="Label" parent="Sprite2D10"]
+offset_left = 10.0
+offset_top = -5.0
+offset_right = 678.0
+offset_bottom = 179.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_font_sizes/font_size = 100
+text = "= Move Player"
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(252, 623)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("3_rofjc")
+hframes = 8
+vframes = 14
+frame = 20
+
+[node name="Label" type="Label" parent="Sprite2D11"]
+offset_left = 10.0
+offset_top = -5.0
+offset_right = 678.0
+offset_bottom = 179.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_font_sizes/font_size = 100
+text = "= Interact with Objects"
+
+[node name="Sprite2D12" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(248, 723)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("4_5gbuj")
+hframes = 4
+vframes = 8
+frame = 1
+
+[node name="Label" type="Label" parent="Sprite2D12"]
+offset_left = 10.0
+offset_top = -5.0
+offset_right = 678.0
+offset_bottom = 179.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_font_sizes/font_size = 100
+text = "= Pause Menu"
+
+[node name="Sprite2D13" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(258, 827)
+scale = Vector2(9.46875, 4.88393)
+texture = ExtResource("4_5gbuj")
+hframes = 4
+vframes = 8
+frame = 7
+
+[node name="Label" type="Label" parent="Sprite2D13"]
+offset_left = 17.0033
+offset_top = -4.70933
+offset_right = 685.003
+offset_bottom = 179.291
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_font_sizes/font_size = 100
+text = "= Continue Dialogue"
+
+[connection signal="value_changed" from="NinePatchRect/MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="NinePatchRect/MarginContainer/VBoxContainer/on_mute" to="." method="_on_on_mute_toggled"]
+[connection signal="item_selected" from="NinePatchRect/MarginContainer/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="pressed" from="NinePatchRect/leave" to="." method="_on_leave_pressed"]

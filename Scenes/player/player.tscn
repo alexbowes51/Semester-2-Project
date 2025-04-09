@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=123 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://d36gxump84vfh" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://c5n5xddjdj1u2" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://cm28ftmarv0qi" path="res://VFX/collection_expolsion/damage.tscn" id="19_d4ufm"]
 [ext_resource type="PackedScene" uid="uid://dmdcilu706lxk" path="res://Scenes/respawn/respawn.tscn" id="22_fuqjl"]
 [ext_resource type="PackedScene" uid="uid://buoxgii380s3e" path="res://Scenes/Pause_Menu/pause_menu.tscn" id="24_gpgmm"]
+[ext_resource type="PackedScene" uid="uid://2dk0i07v5kqb" path="res://Scenes/settings/setting.tscn" id="25_k3yy6"]
 [ext_resource type="PackedScene" uid="uid://dlfccjxj7500u" path="res://Scenes/quest_tracker/quest_tracker.tscn" id="28_1bthv"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
@@ -1129,13 +1130,20 @@ layer = 15
 scale = Vector2(0.97, 0.72)
 transform = Transform2D(0.97, 0, 0, 0.72, 0, 0)
 
+[node name="Pause Menu" parent="Camera2D/UI" instance=ExtResource("24_gpgmm")]
+z_index = 5
+offset_left = 102.062
+offset_top = 241.667
+offset_right = -1817.94
+offset_bottom = -838.333
+
 [node name="HealthBar" type="HBoxContainer" parent="Camera2D/UI"]
-z_index = 4
 offset_left = 87.6289
 offset_top = 56.9444
 offset_right = 603.629
 offset_bottom = 96.9444
 scale = Vector2(1.5, 1.5)
+metadata/_edit_use_anchors_ = true
 
 [node name="heart" type="TextureRect" parent="Camera2D/UI/HealthBar"]
 custom_minimum_size = Vector2(100, 0)
@@ -1181,6 +1189,7 @@ scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_mc0xm")
 
 [node name="Build_Ui" parent="Camera2D/UI" instance=ExtResource("7_olynr")]
+z_index = 0
 offset_left = 120.0
 offset_top = 1215.0
 offset_right = -530.04
@@ -1188,7 +1197,7 @@ offset_bottom = 1171.2
 scale = Vector2(1.5, 1.5)
 
 [node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
-z_index = 5
+z_index = 0
 offset_left = 1486.6
 offset_top = 533.333
 offset_right = 1486.6
@@ -1197,7 +1206,6 @@ scale = Vector2(2.5, 4)
 localize_numeral_system = false
 
 [node name="Black_Smith_Crafting" parent="Camera2D/UI" instance=ExtResource("14_bmap2")]
-z_index = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -1217,7 +1225,6 @@ offset_bottom = 790.278
 scale = Vector2(8, 8)
 
 [node name="Merchant_Dialogue" parent="Camera2D/UI" instance=ExtResource("8_dy8ic")]
-z_index = 1
 offset_left = 472.165
 offset_top = 787.5
 offset_right = 512.165
@@ -1225,7 +1232,6 @@ offset_bottom = 827.5
 scale = Vector2(8, 8)
 
 [node name="PickUpNotifaction" type="Control" parent="Camera2D/UI"]
-z_index = 3
 layout_mode = 3
 anchors_preset = 0
 offset_left = -2.06186
@@ -1306,7 +1312,6 @@ theme_override_font_sizes/font_size = 1000
 text = "Build Mode Avaible"
 
 [node name="Player_Hotbar" parent="Camera2D/UI" instance=ExtResource("19_ag7iv")]
-z_index = 5
 offset_left = -3.09278
 offset_top = 1059.72
 offset_right = -1776.09
@@ -1314,7 +1319,7 @@ offset_bottom = 31.7231
 scale = Vector2(3, 3)
 
 [node name="Respawn" parent="Camera2D/UI" instance=ExtResource("22_fuqjl")]
-z_index = 28
+z_index = 27
 offset_left = 215.464
 offset_top = 341.667
 offset_right = -1299.54
@@ -1327,11 +1332,14 @@ offset_top = 143.056
 offset_right = 1.03091
 offset_bottom = 143.056
 
-[node name="Pause Menu" parent="Camera2D/UI" instance=ExtResource("24_gpgmm")]
-offset_left = -3.09277
-offset_top = -2.77779
-offset_right = -1923.09
-offset_bottom = -1082.78
+[node name="Control" parent="Camera2D/UI" instance=ExtResource("25_k3yy6")]
+z_index = 28
+texture_filter = 1
+offset_left = 3.09278
+offset_top = 5.55556
+offset_right = -1916.91
+offset_bottom = -1074.44
+scale = Vector2(1.02655, 1.38087)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 2.0

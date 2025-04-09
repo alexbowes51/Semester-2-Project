@@ -63,6 +63,8 @@ var player_needs_healing = false
 
 var Intro_stop_index = 0
 
+var Settings = false
+
 func _ready():
 	BgAudio.stop()
 	MainMusic.stop()
