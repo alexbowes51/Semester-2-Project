@@ -14,9 +14,6 @@ func set_direction(new_dir:Vector2):
 	velocity = direction * speed 
 	rotation = velocity.angle() + deg_to_rad(-90)
 	
-	
-
-
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("Player"):
@@ -28,8 +25,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 
 func _on_arrow_hit_bow_enemy_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	if area && area.name == "Player_HitBox":
-		self.queue_free()
+	if area.has_method("Player"):
+		queue_free()
 
 func enemy_arrow():
 	pass

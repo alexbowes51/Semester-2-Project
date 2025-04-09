@@ -26,6 +26,7 @@ var health = 100:
 func _ready():
 	set_physics_process(false)
 	progress_bar.value = health
+	add_to_group("enemy")
 	
 func _process(_delta):
 	direction = player.position - position 

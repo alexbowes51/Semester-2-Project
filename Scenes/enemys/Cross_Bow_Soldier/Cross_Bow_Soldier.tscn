@@ -232,29 +232,31 @@ radius = 3116.69
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovjlw"]
 radius = 122.726
 
-[node name="Cross_Bow_Soldier" type="CharacterBody2D"]
+[node name="Cross_Bow_Soldier" type="CharacterBody2D" node_paths=PackedStringArray("nav")]
 z_index = 1
 scale = Vector2(0.18, 0.18)
 motion_mode = 1
 script = ExtResource("1_iog6a")
 ammo = ExtResource("2_42b2p")
+nav = NodePath("NavigationAgent2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 4
-position = Vector2(72.2222, -144.444)
+position = Vector2(9.09495e-13, 27.7778)
 sprite_frames = SubResource("SpriteFrames_mmjok")
 animation = &"attacking"
-frame = 3
+frame = 7
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(83.3333, -144.444)
+position = Vector2(9.09495e-13, -1.81899e-12)
+rotation = 0.174533
 shape = SubResource("CircleShape2D_a3j8c")
 debug_color = Color(0.969041, 0, 0.463952, 0.42)
 
 [node name="Shooting_Flee" type="Node2D" parent="."]
-position = Vector2(83.3333, -144.444)
+position = Vector2(9.09495e-13, -1.81899e-12)
 
 [node name="Area2D" type="Area2D" parent="Shooting_Flee"]
 z_index = 1
@@ -284,7 +286,7 @@ shape = SubResource("CircleShape2D_p6jd8")
 debug_color = Color(0.415667, 0.516359, 0.835609, 0.42)
 
 [node name="NAV" type="Node2D" parent="."]
-position = Vector2(83.3333, -144.444)
+position = Vector2(-7.62939e-06, 1.52588e-05)
 
 [node name="RayCast2D" type="RayCast2D" parent="NAV"]
 z_index = 1
@@ -295,7 +297,7 @@ wait_time = 1.2
 
 [node name="cross_e_hit" type="Area2D" parent="."]
 z_index = 1
-position = Vector2(83.3333, -144.444)
+position = Vector2(-7.62939e-06, 1.52588e-05)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cross_e_hit"]
 z_index = 1
@@ -303,11 +305,36 @@ shape = SubResource("CircleShape2D_ovjlw")
 debug_color = Color(0.941893, 9.2411e-06, 0.60857, 0.42)
 
 [node name="CPUParticles2D" parent="." instance=ExtResource("7_ulhmo")]
-position = Vector2(83.3333, -144.444)
 scale = Vector2(5, 5)
 
 [node name="hit_by _sword" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_kpk7w")
+
+[node name="arrow_spawn" type="Marker2D" parent="."]
+position = Vector2(-116.667, 344.444)
+gizmo_extents = 20.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="down" type="RayCast2D" parent="."]
+z_index = 1
+position = Vector2(0, 133.333)
+target_position = Vector2(0, 266.667)
+
+[node name="rigth" type="RayCast2D" parent="."]
+z_index = 1
+position = Vector2(138.889, -5.68434e-14)
+target_position = Vector2(261.111, -4.76837e-07)
+
+[node name="left" type="RayCast2D" parent="."]
+z_index = 1
+position = Vector2(-138.889, -2.1684e-19)
+target_position = Vector2(-261.111, 1.52588e-05)
+
+[node name="up" type="RayCast2D" parent="."]
+z_index = 1
+position = Vector2(0, -138.889)
+target_position = Vector2(0, -261.111)
 
 [connection signal="area_exited" from="Shooting_Flee/Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Shooting_Flee/Area2D" to="." method="_on_area_2d_body_entered"]

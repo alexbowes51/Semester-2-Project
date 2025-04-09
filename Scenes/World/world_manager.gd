@@ -54,7 +54,6 @@ var waypoint2clear : bool = false
 var Merchant_follow_player = false
 var player_talking_Merchant = false
 
-
 var Black_smith_follow_player = false
 var player_talking_Black_Smith = false
 var Bs_shop = false
@@ -79,7 +78,6 @@ func _ready():
 		Day_Night_Manager.visible = false
 		Day_Night_Manager.process_mode = Node.PROCESS_MODE_DISABLED
 
-
 func _setup_cycle() -> void:
 	if day_night_cycle:
 		day_night_cycle.time_change.connect(change_time)
@@ -95,7 +93,6 @@ func _process(_delta):
 			
 	if Build_mode == true && Input.is_action_just_pressed("build"):
 		build()
-	
 
 func spawn_boss():
 	if spawn_sigma:
@@ -119,7 +116,6 @@ func build():
 		add_child(built_house)
 		building = "none"
 				
-		
 	if building == "farm":
 		var built_farm = farm_scene.instantiate()
 		add_child(built_farm)
@@ -130,10 +126,6 @@ func build():
 		add_child(built_black)
 		building = "none"
 	
-
-
-
-
 
 func _on_build_zone_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if area && area.name == "Player_HitBox":

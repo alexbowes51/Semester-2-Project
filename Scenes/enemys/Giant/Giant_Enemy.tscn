@@ -286,7 +286,7 @@ size = Vector2(8.33333, 11.0714)
 radius = 110.772
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_klph8"]
-radius = 85.7143
+radius = 77.8095
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = 1
@@ -308,12 +308,12 @@ shape = SubResource("CircleShape2D_lnfw3")
 
 [node name="g_h_area" type="Area2D" parent="."]
 z_index = 1
-position = Vector2(-9, 198)
+position = Vector2(-63.8355, 58.0685)
 scale = Vector2(15, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="g_h_area"]
 z_index = 1
-position = Vector2(-3.56667, -14.2643)
+position = Vector2(-4.76837e-07, -4.76837e-07)
 shape = SubResource("RectangleShape2D_hwb82")
 debug_color = Color(0.986811, 0, 0.320416, 0.42)
 
@@ -341,6 +341,26 @@ scale = Vector2(8, 8)
 
 [node name="hit_by _sword" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_u0rpg")
+
+[node name="down" type="RayCast2D" parent="."]
+z_index = 1
+position = Vector2(0, 113.333)
+target_position = Vector2(0, 266.667)
+
+[node name="rigth" type="RayCast2D" parent="."]
+z_index = 1
+position = Vector2(115.556, 0)
+target_position = Vector2(261.111, -4.76837e-07)
+
+[node name="left" type="RayCast2D" parent="."]
+z_index = 1
+position = Vector2(-111.111, 0)
+target_position = Vector2(-261.111, 1.52588e-05)
+
+[node name="up" type="RayCast2D" parent="."]
+z_index = 1
+position = Vector2(0, -115.556)
+target_position = Vector2(0, -261.111)
 
 [connection signal="body_entered" from="g_e_chase" to="." method="_on_g_e_chase_body_entered"]
 [connection signal="body_exited" from="g_e_chase" to="." method="_on_g_e_chase_body_exited"]

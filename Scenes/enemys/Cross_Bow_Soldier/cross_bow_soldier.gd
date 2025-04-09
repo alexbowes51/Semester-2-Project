@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
-
+@onready var down: RayCast2D = $down
+@onready var rigth: RayCast2D = $rigth
+@onready var left: RayCast2D = $left
+@onready var up: RayCast2D = $up
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var ray_cast_2d: RayCast2D = $NAV/RayCast2D
 @onready var fire_timer: Timer = $NAV/Fire_Timer
@@ -10,7 +13,10 @@ extends CharacterBody2D
 @export var speed = 50
 var target_node = null
 @onready var hit_by__sword: AudioStreamPlayer = $"hit_by _sword"
+@onready var arrow_spawn: Marker2D = $arrow_spawn
 
+var bottle = preload("res://Scenes/Item/Bottle/bottle_collectable.tscn")
+var rubber = preload("res://Scenes/Item/Rubber/rubber_collectable.tscn")
 
 
 var player = null 
@@ -23,6 +29,7 @@ var knock_scale = 2.0
 
 var health = 100
 
+
 enum States{
 	IDLE,
 	SHOOTING,
@@ -33,8 +40,15 @@ enum States{
 
 var current_state = States.IDLE
 
+func ready() -> void:
+	add_to_group("enemy")
+
 func _physics_process(_delta: float) -> void:
-	if alive == true:
+	left.global_rotation = 0
+	rigth.global_rotation = 0
+	down.global_rotation = 0
+	up.global_rotation = 0
+	if alive && is_path_clear():  # Check if path to player is clear
 		aim()
 		fleeing()
 		following()
@@ -42,9 +56,11 @@ func _physics_process(_delta: float) -> void:
 		_is_alive()
 		check_collision()
 		idle()
+	else:
+		avoid_obstacle()  # Avoid obstacles
+		
 	
-
-
+		
 func aim():
 	if alive == true:
 		if player != null && current_state != States.FLEEING:
@@ -91,6 +107,14 @@ func _is_alive():
 		$AnimatedSprite2D.play("death")
 		alive = false
 		WorldManager.player_in_combat = false
+		
+		var new_rubber = rubber.instantiate()
+		get_parent().add_child(new_rubber)  # Add to the world instead of enemy
+		new_rubber.global_position = Vector2(global_position.x - 40, global_position.y)
+
+		var new_bottle = bottle.instantiate()
+		get_parent().add_child(new_bottle)  # Add to the world instead of enemy
+		new_bottle.global_position = Vector2(global_position.x + 40, global_position.y)
 		await get_tree().create_timer(1).timeout
 		self.queue_free()
 
@@ -122,7 +146,7 @@ func shoot():
 		if player != null && current_state == States.SHOOTING:
 			var bullet = ammo.instantiate()
 			get_parent().get_parent().add_child(bullet)
-			bullet.position = position
+			bullet.global_position = arrow_spawn.global_position
 			var shooting_dir = (player.global_position - global_position).normalized()
 			bullet.set_direction(shooting_dir)
 			$AnimatedSprite2D.play("attacking")
@@ -169,3 +193,21 @@ func KnockBack(damage_dir: Vector2):
 		
 		global_position += knockback
 	
+func is_path_clear() -> bool:
+	var rays = [down, rigth, left, up]
+	for ray in rays:
+		if ray.is_colliding():
+			var collider = ray.get_collider()
+			if collider and not collider.is_in_group("enemy"):
+				return false
+	return true
+
+func avoid_obstacle():
+	if down.is_colliding():
+		position += Vector2(0, -speed) / 10
+	elif up.is_colliding():
+		position += Vector2(0, speed) / 10
+	elif rigth.is_colliding():
+		position += Vector2(-speed, 0) / 10
+	elif left.is_colliding():
+		position += Vector2(speed, 0) / 10

@@ -320,29 +320,33 @@ scale = Vector2(5, 5)
 stream = ExtResource("7_tmkhu")
 
 [node name="down" type="RayCast2D" parent="."]
-position = Vector2(0, -1.52588e-05)
-target_position = Vector2(0, 211.111)
+z_index = 1
+position = Vector2(0, 72.2222)
+target_position = Vector2(0, 266.667)
 
 [node name="rigth" type="RayCast2D" parent="."]
-position = Vector2(0, -1.52588e-05)
-target_position = Vector2(211.111, -5.55554)
+z_index = 1
+position = Vector2(127.778, 4.76837e-07)
+target_position = Vector2(261.111, -4.76837e-07)
 
 [node name="left" type="RayCast2D" parent="."]
-position = Vector2(0, -1.52588e-05)
-target_position = Vector2(-211.111, -5.55554)
+z_index = 1
+position = Vector2(-88.8889, 1.81899e-12)
+target_position = Vector2(-261.111, 1.52588e-05)
 
 [node name="up" type="RayCast2D" parent="."]
-position = Vector2(0, -1.52588e-05)
-target_position = Vector2(0, -211.111)
+z_index = 1
+position = Vector2(0, -88.8889)
+target_position = Vector2(0, -261.111)
 
 [node name="nav_update" type="Timer" parent="."]
 
 [connection signal="body_entered" from="Dectector" to="." method="_on_dectector_body_entered"]
 [connection signal="body_exited" from="Dectector" to="." method="_on_dectector_body_exited"]
-[connection signal="body_entered" from="Foot_Attack_Area" to="." method="_on_foot_hit_box_body_entered"]
 [connection signal="body_entered" from="Foot_Attack_Area" to="." method="_on_foot_attack_area_body_entered"]
-[connection signal="body_exited" from="Foot_Attack_Area" to="." method="_on_foot_hit_box_body_exited"]
+[connection signal="body_entered" from="Foot_Attack_Area" to="." method="_on_foot_hit_box_body_entered"]
 [connection signal="body_exited" from="Foot_Attack_Area" to="." method="_on_foot_attack_area_body_exited"]
+[connection signal="body_exited" from="Foot_Attack_Area" to="." method="_on_foot_hit_box_body_exited"]
 [connection signal="area_shape_entered" from="Foot_Hit_Area" to="." method="_on_foot_hit_area_area_shape_entered"]
 [connection signal="area_shape_exited" from="Foot_Hit_Area" to="." method="_on_foot_hit_area_area_shape_exited"]
 [connection signal="body_entered" from="Foot_Hit_Area" to="." method="_on_foot_hit_area_body_entered"]

@@ -1,11 +1,19 @@
 extends CharacterBody2D
 
 var player = null
-
+var speed = 10
 var health = 150
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 @onready var hit_by__sword: AudioStreamPlayer = $"hit_by _sword"
+@onready var down: RayCast2D = $down
+@onready var rigth: RayCast2D = $rigth
+@onready var left: RayCast2D = $left
+@onready var up: RayCast2D = $up
+
+
+var bottle = preload("res://Scenes/Item/Bottle/bottle_collectable.tscn")
+var rubber = preload("res://Scenes/Item/Rubber/rubber_collectable.tscn")
 
 var receives_knockback = false
 var knock_scale = 1.0
@@ -21,16 +29,22 @@ var attacked = false
 var attacking = false
 var alive = true
 
-func _ready() -> void:
-	pass
+func ready() -> void:
+	add_to_group("enemy")
 
 
 func _physics_process(_delta: float) -> void:
-	if alive == true:
+	left.global_rotation = 0
+	rigth.global_rotation = 0
+	down.global_rotation = 0
+	up.global_rotation = 0
+	if alive == true && is_path_clear():
 		damage()
 		chasing()
 		attack()
 		is_alive()
+	else:
+		avoid_obstacle()  # Avoid obstacles
 		
 	
 
@@ -101,6 +115,12 @@ func is_alive():
 	if health <= 0 :
 		alive = false
 		$AnimatedSprite2D.play("death")
+		var new_rubber = rubber.instantiate()
+		get_parent().add_child(new_rubber)  # Add to the world instead of enemy
+		new_rubber.global_position = Vector2(global_position.x - 40, global_position.y)
+		var new_bottle = bottle.instantiate()
+		get_parent().add_child(new_bottle)  # Add to the world instead of enemy
+		new_bottle.global_position = Vector2(global_position.x + 40, global_position.y)
 		await get_tree().create_timer(1).timeout
 		self.queue_free()
 		WorldManager.player_in_combat = false
@@ -125,3 +145,21 @@ func KnockBack(damage_dir: Vector2):
 		
 		global_position += knockback
 	
+func is_path_clear() -> bool:
+	var rays = [down, rigth, left, up]
+	for ray in rays:
+		if ray.is_colliding():
+			var collider = ray.get_collider()
+			if collider and not collider.is_in_group("enemy"):
+				return false
+	return true
+
+func avoid_obstacle():
+	if down.is_colliding():
+		position += Vector2(0, -speed) / 10
+	elif up.is_colliding():
+		position += Vector2(0, speed) / 10
+	elif rigth.is_colliding():
+		position += Vector2(-speed, 0) / 10
+	elif left.is_colliding():
+		position += Vector2(speed, 0) / 10

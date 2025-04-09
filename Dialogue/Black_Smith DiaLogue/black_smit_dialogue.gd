@@ -13,6 +13,7 @@ func _ready():
 	$NinePatchRect.visible = false
 	$NinePatchRect/TextureButton.visible = false
 	$NinePatchRect/TextureButton2.visible = false
+	$NinePatchRect/craft_updrade.visible = false
 	$NinePatchRect/TextureButton2.pressed.connect(_on_texture_button_2_pressed)
 
 func _process(_delta):
@@ -46,6 +47,7 @@ func next_script():
 	if current_dialogue_id == 2:
 		$NinePatchRect/TextureButton.visible = true
 		$NinePatchRect/TextureButton2.visible = true
+		$NinePatchRect/craft_updrade.visible = true
 		
 	if current_dialogue_id >= len(dialogue):
 		dia_active = false

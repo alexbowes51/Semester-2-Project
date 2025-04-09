@@ -22,8 +22,14 @@ var rubber = preload("res://Scenes/Item/Rubber/rubber_collectable.tscn")
 @onready var left: RayCast2D = $left
 @onready var up: RayCast2D = $up
 
+func ready() -> void:
+	add_to_group("enemy")
 
 func _physics_process(delta):
+	left.global_rotation = 0
+	rigth.global_rotation = 0
+	down.global_rotation = 0
+	up.global_rotation = 0
 	deal_damage()
 
 	if health > 0:
@@ -36,10 +42,14 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("Foot_E_idle")
 
 func is_path_clear() -> bool:
-	# Check if any of the raycasts detect an obstacle
-	if down.is_colliding() or rigth.is_colliding() or left.is_colliding() or up.is_colliding():
-		return false
+	var rays = [down, rigth, left, up]
+	for ray in rays:
+		if ray.is_colliding():
+			var collider = ray.get_collider()
+			if collider and not collider.is_in_group("enemy"):
+				return false
 	return true
+
 
 func move_towards_player(delta: float):
 	# Move towards player if path is clear
@@ -50,16 +60,14 @@ func move_towards_player(delta: float):
 	WorldManager.player_in_combat = true
 
 func avoid_obstacle():
-	# If there's an obstacle in the way, change direction
-	# For example, move up if down is blocked
 	if down.is_colliding():
-		position += Vector2(0, -speed /2)
+		position += Vector2(0, -speed) * 2
 	elif up.is_colliding():
-		position += Vector2(0, speed /2)
+		position += Vector2(0, speed) * 2
 	elif rigth.is_colliding():
-		position += Vector2(-speed /2, 0)
+		position += Vector2(-speed, 0) * 2
 	elif left.is_colliding():
-		position += Vector2(speed /2, 0)
+		position += Vector2(speed, 0) * 2
 
 func _on_dectector_body_entered(body):
 	if body.has_method("Player") and health > 0:
@@ -102,10 +110,6 @@ func deal_damage():
 				health = 0
 				player = null
 				$AnimatedSprite2D.play("Foot_E_Death")
-				await get_tree().create_timer(1).timeout
-				self.queue_free()
-				WorldManager.player_in_combat = false
-				
 				var new_rubber = rubber.instantiate()
 				get_parent().add_child(new_rubber)  # Add to the world instead of enemy
 				new_rubber.global_position = Vector2(global_position.x - 40, global_position.y)
@@ -114,6 +118,10 @@ func deal_damage():
 				get_parent().add_child(new_bottle)  # Add to the world instead of enemy
 				new_bottle.global_position = Vector2(global_position.x + 40, global_position.y)
 				damage = false
+				await get_tree().create_timer(1).timeout
+				self.queue_free()
+				WorldManager.player_in_combat = false
+				
 
 func _on_foot_hit_area_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	if area and area.name == "Player_Attack_HitBox" and WorldManager.player_current_attack:
