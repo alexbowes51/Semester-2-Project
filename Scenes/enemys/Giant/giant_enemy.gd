@@ -89,7 +89,7 @@ func _on_g_e_hb_area_exited(area: Area2D) -> void:
 func damage():
 	if alive == true:
 		if alive == true && attacked == true:
-			health -= 20
+			health -= WorldManager.Player_Damage
 			attacked = false
 			_on_attacked_cooldown_timeout()
 			hit_by__sword.play()

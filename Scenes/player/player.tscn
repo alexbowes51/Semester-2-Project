@@ -338,7 +338,9 @@ func KnockBack(damage_dir: Vector2):
 func check_weapon() -> bool:
 	if hb_inv != null:
 		if hb_inv.Has_Items(Sword,1):
-				return true 
+			WorldManager.Player_Damage = 40
+			return true 
+	WorldManager.Player_Damage = 20
 	return false  
 
 func start_dash():
@@ -1333,6 +1335,7 @@ offset_right = 1.03091
 offset_bottom = 143.056
 
 [node name="Control" parent="Camera2D/UI" instance=ExtResource("25_k3yy6")]
+visible = false
 z_index = 28
 texture_filter = 1
 offset_left = 3.09278

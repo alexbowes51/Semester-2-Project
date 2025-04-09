@@ -28,7 +28,7 @@ func _on_texture_button_pressed() -> void:
 
 func _on_texture_button_2_pressed() -> void:
 	WorldManager.Settings = true
-	get_tree().paused = false
+
 
 
 func _on_texture_button_3_pressed() -> void:

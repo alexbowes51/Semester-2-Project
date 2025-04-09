@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://6er6yi0mqe6p" path="res://Art/Inventory/pixil-frame-0 (16).png" id="4_vvvak"]
 
 [node name="Control" type="Control"]
+process_mode = 3
 z_index = 4096
 layout_mode = 3
 anchors_preset = 15
@@ -41,6 +42,7 @@ theme_override_constants/separation = 50
 layout_mode = 2
 
 [node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/Volume"]
+layout_mode = 0
 offset_left = 172.0
 offset_top = -37.0
 offset_right = 5087.0
@@ -67,6 +69,7 @@ popup/item_2/text = "1280x720"
 popup/item_2/id = 2
 
 [node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/Resolution"]
+layout_mode = 0
 offset_left = 168.0
 offset_top = -36.0
 offset_right = 5083.0
@@ -81,6 +84,7 @@ text = "Resolutions"
 
 [node name="leave" type="TextureButton" parent="NinePatchRect"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 1640.0
 offset_top = 26.0
 offset_right = 1862.0

@@ -44,7 +44,7 @@ func update(slot: Inventory_Slot, inv: Inventory, p_inv: Inventory, s_inv: Inven
 		label_2.visible = true
 		label_2.text = slot.item.name
 
-		if slot.item.name in ["sword", "damage_buff"]:
+		if slot.item.name == "sword":
 			item_visual.scale = Vector2(0.05, 0.05)
 		elif slot.item.name == "health_p":
 			item_visual.scale = Vector2(0.15, 0.15)

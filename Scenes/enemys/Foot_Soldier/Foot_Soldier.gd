@@ -101,7 +101,7 @@ func _on_attack_cooldown_timeout() -> void:
 func deal_damage():
 	if attacked and WorldManager.player_current_attack:
 		if damage and health > 0:
-			health -= 20
+			health -= WorldManager.Player_Damage
 			hit_by__sword.play()
 			$damage_cooldown.start()
 

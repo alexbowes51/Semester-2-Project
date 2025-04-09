@@ -64,6 +64,7 @@ var player_needs_healing = false
 var Intro_stop_index = 0
 
 var Settings = false
+var Player_Damage = 20
 
 func _ready():
 	BgAudio.stop()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1rexdmus4r2e"]
+[gd_scene load_steps=15 format=3 uid="uid://c1rexdmus4r2e"]
 
 [ext_resource type="FontFile" uid="uid://6twna5ce2qh2" path="res://Celtica-BookOblique.ttf" id="1_ibtg2"]
 [ext_resource type="Script" path="res://Scenes/Main Menu/main_menu.gd" id="1_l0kpg"]
 [ext_resource type="Texture2D" uid="uid://du5y8encli37" path="res://bgpng.png" id="4_wrnr4"]
 [ext_resource type="AudioStream" uid="uid://bxy1j1rfsgomt" path="res://Audio/vfx_sounds/minecraft-drop-block-sound-effect.L.wav" id="5_co0ae"]
+[ext_resource type="PackedScene" uid="uid://2dk0i07v5kqb" path="res://Scenes/settings/setting.tscn" id="5_h0djg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ienpl"]
 bg_color = Color(0.706148, 0.586501, 0.253634, 1)
@@ -201,6 +202,7 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 4.0
 offset_right = 44.0
@@ -217,6 +219,9 @@ z_index = -1
 position = Vector2(964, 535.5)
 scale = Vector2(1.55808, 1.55572)
 texture = ExtResource("4_wrnr4")
+
+[node name="Control" parent="." instance=ExtResource("5_h0djg")]
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]

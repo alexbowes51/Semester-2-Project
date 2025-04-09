@@ -97,7 +97,7 @@ func idle():
 
 func damage():
 	if alive == true && attacked == true:
-		health -= 50
+		health -= WorldManager.Player_Damage
 		cpu_particles_2d.emitting = true
 		hit_by__sword.play()
 		
