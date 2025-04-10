@@ -121,6 +121,7 @@ scale = Vector2(0.363699, 0.323729)
 texture = ExtResource("11_cfyst")
 
 [node name="Label2" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 540.0
 offset_top = 513.0
 offset_right = 8505.0
@@ -169,6 +170,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("15_egtq3")
 
 [node name="Label3" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 986.0
 offset_top = 514.0
 offset_right = 6999.0
@@ -197,6 +199,7 @@ scale = Vector2(0.065, 0.065)
 texture = ExtResource("10_5hysr")
 
 [node name="Label4" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 1379.0
 offset_top = 517.0
 offset_right = 7086.0
@@ -206,6 +209,7 @@ theme_override_font_sizes/font_size = 600
 text = "Fight Benandonner "
 
 [node name="Label5" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 792.0
 offset_top = 105.0
 offset_right = 8434.0
@@ -215,6 +219,7 @@ theme_override_font_sizes/font_size = 1000
 text = "Game Objective"
 
 [node name="Label6" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 182.0
 offset_top = 558.0
 offset_right = 31598.0
@@ -313,6 +318,7 @@ theme_override_font_sizes/font_size = 100
 text = "= Move Player"
 
 [node name="Label7" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 579.091
 offset_top = 818.122
 offset_right = 7440.09
@@ -327,6 +333,7 @@ text = "Left Click = Attack"
 
 [node name="Label" type="Label" parent="."]
 z_index = 4
+layout_mode = 0
 offset_left = 1312.0
 offset_top = 887.0
 offset_right = 8134.0

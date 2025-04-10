@@ -28,16 +28,16 @@ auto_translate_mode = 1
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-offset_right = 108.0
+offset_right = 101.0
 offset_bottom = 40.0
 scale = Vector2(1.11567, 1.30714)
 mouse_filter = 0
-texture = ExtResource("2_ivybf")
+texture = ExtResource("4_fnvyd")
 draw_center = false
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
+patch_margin_left = 100
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
 metadata/_edit_group_ = true
 
 [node name="Name" type="RichTextLabel" parent="NinePatchRect"]
@@ -92,6 +92,7 @@ autowrap_mode = 2
 tab_size = 1
 
 [node name="TextureButton" type="TextureButton" parent="NinePatchRect"]
+z_index = 2
 layout_mode = 0
 offset_left = 3.58529
 offset_top = 29.8361
@@ -169,13 +170,13 @@ text = "Craft/Upgrade
 
 [node name="Sprite2D" type="Sprite2D" parent="NinePatchRect"]
 z_index = 1
-position = Vector2(86.2009, 13.575)
+position = Vector2(79.7727, 15.3006)
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("5_itghs")
 
 [node name="Sprite2D2" type="Sprite2D" parent="NinePatchRect"]
 modulate = Color(0.499446, 0.488466, 0.035647, 1)
-position = Vector2(86.2009, 15.1051)
+position = Vector2(78.8764, 17.5957)
 scale = Vector2(0.615656, 0.491752)
 texture = ExtResource("2_beapg")
 

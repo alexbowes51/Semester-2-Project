@@ -310,6 +310,7 @@ text = "= Continue Dialogue"
 stream = ExtResource("7_en5jv")
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 1271.0
 offset_top = 345.0
 offset_right = 2171.0

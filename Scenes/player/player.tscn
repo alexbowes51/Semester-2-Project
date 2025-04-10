@@ -1145,7 +1145,6 @@ scale = Vector2(0.97, 0.72)
 transform = Transform2D(0.97, 0, 0, 0.72, 0, 0)
 
 [node name="Pause Menu" parent="Camera2D/UI" instance=ExtResource("24_gpgmm")]
-visible = false
 z_index = 5
 offset_left = 102.062
 offset_top = 241.667
@@ -1153,7 +1152,6 @@ offset_right = -1817.94
 offset_bottom = -838.333
 
 [node name="HealthBar" type="HBoxContainer" parent="Camera2D/UI"]
-visible = false
 offset_left = 87.6289
 offset_top = 56.9444
 offset_right = 603.629
@@ -1205,7 +1203,6 @@ scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_mc0xm")
 
 [node name="Build_Ui" parent="Camera2D/UI" instance=ExtResource("7_olynr")]
-visible = false
 z_index = 0
 offset_left = 120.0
 offset_top = 1215.0
@@ -1214,7 +1211,6 @@ offset_bottom = 1171.2
 scale = Vector2(1.5, 1.5)
 
 [node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
-visible = false
 z_index = 0
 offset_left = 1486.6
 offset_top = 533.333
@@ -1224,7 +1220,6 @@ scale = Vector2(2.5, 4)
 localize_numeral_system = false
 
 [node name="Black_Smith_Crafting" parent="Camera2D/UI" instance=ExtResource("14_bmap2")]
-visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -1237,7 +1232,7 @@ grow_vertical = 1
 scale = Vector2(3, 3)
 
 [node name="Black_Smit_Dialogue" parent="Camera2D/UI" instance=ExtResource("13_eylsh")]
-visible = false
+z_index = 2
 offset_left = 480.412
 offset_top = 790.278
 offset_right = 485.412
@@ -1245,7 +1240,6 @@ offset_bottom = 790.278
 scale = Vector2(8, 8)
 
 [node name="Merchant_Dialogue" parent="Camera2D/UI" instance=ExtResource("8_dy8ic")]
-visible = false
 offset_left = 472.165
 offset_top = 787.5
 offset_right = 512.165
@@ -1321,7 +1315,6 @@ offset_bottom = 31.7231
 scale = Vector2(3, 3)
 
 [node name="Respawn" parent="Camera2D/UI" instance=ExtResource("22_fuqjl")]
-visible = false
 z_index = 27
 offset_left = 215.464
 offset_top = 341.667
@@ -1336,7 +1329,6 @@ offset_right = 1.03091
 offset_bottom = 143.056
 
 [node name="Control" parent="Camera2D/UI" instance=ExtResource("25_k3yy6")]
-visible = false
 z_index = 28
 texture_filter = 1
 offset_left = 3.09278
@@ -1377,7 +1369,6 @@ frame = 17
 
 [node name="Into_Game_Objective" parent="Camera2D/UI" instance=ExtResource("27_crx5h")]
 process_mode = 3
-visible = false
 z_index = 30
 offset_bottom = -2.0
 scale = Vector2(1.02905, 1.40067)

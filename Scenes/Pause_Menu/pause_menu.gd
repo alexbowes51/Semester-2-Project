@@ -40,4 +40,5 @@ func _on_texture_button_3_pressed() -> void:
 
 func _on_texture_button_4_pressed() -> void:
 	audio_stream_player.play()
-	get_tree().reload_current_scene()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/World/world.tscn")
