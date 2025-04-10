@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3fek1gdhc7aw"]
+[gd_scene load_steps=10 format=3 uid="uid://b3fek1gdhc7aw"]
 
 [ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_kmt40"]
 [ext_resource type="Script" path="res://Dialogue/Merchant_Dialogue/merchant_dialogue.gd" id="1_svyaw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dcwv5i0elvtl0" path="res://Art/Inventory/pixil-frame-0 (25).png" id="4_lw2st"]
 [ext_resource type="Texture2D" uid="uid://bkveo25uewh27" path="res://Art/Portraits for convo and animation/Portraits for convo and animation/Merchant/Merchant Portrait.png" id="4_xysps"]
 [ext_resource type="Texture2D" uid="uid://nks44vpxcty" path="res://Art/Inventory/pixil-frame-0 (24).png" id="5_ka1ba"]
+[ext_resource type="AudioStream" uid="uid://bxy1j1rfsgomt" path="res://Audio/vfx_sounds/minecraft-drop-block-sound-effect.L.wav" id="8_ehphf"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_i8j3n"]
 allow_unpress = true
@@ -141,5 +142,8 @@ modulate = Color(0.499446, 0.488466, 0.035647, 1)
 position = Vector2(86.9433, 19.8908)
 scale = Vector2(0.615656, 0.491752)
 texture = ExtResource("1_kmt40")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ehphf")
 
 [connection signal="pressed" from="NinePatchRect/TextureButton" to="." method="_on_texture_button_pressed"]

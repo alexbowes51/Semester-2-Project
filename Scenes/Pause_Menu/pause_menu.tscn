@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://buoxgii380s3e"]
+[gd_scene load_steps=16 format=3 uid="uid://buoxgii380s3e"]
 
 [ext_resource type="Shader" path="res://Scenes/Pause_Menu/pause_menu.gdshader" id="1_6hx4e"]
 [ext_resource type="Script" path="res://Scenes/Pause_Menu/pause_menu.gd" id="1_ifo2s"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://6er6yi0mqe6p" path="res://Art/Inventory/pixil-frame-0 (16).png" id="7_i4l1g"]
 [ext_resource type="Texture2D" uid="uid://b1k12cvedhw06" path="res://Art/Inventory/pixil-frame-0 (21).png" id="9_jh2kx"]
 [ext_resource type="Texture2D" uid="uid://brx4np6l2fk0w" path="res://Art/Inventory/pixil-frame-0 (22).png" id="10_kf4on"]
+[ext_resource type="AudioStream" uid="uid://bxy1j1rfsgomt" path="res://Audio/vfx_sounds/minecraft-drop-block-sound-effect.L.wav" id="11_o5xbv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vx67"]
 shader = ExtResource("1_6hx4e")
@@ -151,6 +152,7 @@ offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ifo2s")
+metadata/_edit_vertical_guides_ = [-1180.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_5vx67")
@@ -228,6 +230,9 @@ text = "Paused"
 libraries = {
 "": SubResource("AnimationLibrary_piey8")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_o5xbv")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]

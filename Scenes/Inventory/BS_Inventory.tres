@@ -1,15 +1,14 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=15 format=3 uid="uid://bbt06aiorn0xj"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=14 format=3 uid="uid://bbt06aiorn0xj"]
 
 [ext_resource type="Script" path="res://Scenes/Inventory/inventory.gd" id="1_jch3d"]
 [ext_resource type="Script" path="res://Scenes/Inventory/Inventory_Slot.gd" id="2_ifq1r"]
 [ext_resource type="Resource" uid="uid://c7vkuqdtwr7us" path="res://Scenes/Item/Health_potions/health_p.tres" id="3_qwmxe"]
 [ext_resource type="Resource" uid="uid://c1d2r5oegupfu" path="res://Scenes/Item/Sword/sword.tres" id="4_lt05x"]
-[ext_resource type="Resource" uid="uid://dx781d6g2b8t7" path="res://Scenes/Item/Damage_Buff/damage_buff.tres" id="5_dp3gt"]
 
 [sub_resource type="Resource" id="Resource_pj0mw"]
 script = ExtResource("2_ifq1r")
 item = ExtResource("3_qwmxe")
-amount = 64
+amount = 25
 
 [sub_resource type="Resource" id="Resource_qs62i"]
 script = ExtResource("2_ifq1r")
@@ -18,8 +17,8 @@ amount = 1
 
 [sub_resource type="Resource" id="Resource_aso1t"]
 script = ExtResource("2_ifq1r")
-item = ExtResource("5_dp3gt")
-amount = 5
+item = ExtResource("3_qwmxe")
+amount = 25
 
 [sub_resource type="Resource" id="Resource_3rlbj"]
 script = ExtResource("2_ifq1r")

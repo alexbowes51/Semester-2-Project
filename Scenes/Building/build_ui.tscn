@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqed0ghaw8nlo"]
+[gd_scene load_steps=13 format=3 uid="uid://dqed0ghaw8nlo"]
 
 [ext_resource type="Script" path="res://Scenes/Building/build_ui.gd" id="1_lod6p"]
 [ext_resource type="Texture2D" uid="uid://bhuh8nl8bx3q6" path="res://Art/Items/Wood.png" id="3_pu17x"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dcwv5i0elvtl0" path="res://Art/Inventory/pixil-frame-0 (25).png" id="7_rqpdi"]
 [ext_resource type="Texture2D" uid="uid://nks44vpxcty" path="res://Art/Inventory/pixil-frame-0 (24).png" id="8_nnrki"]
 [ext_resource type="Texture2D" uid="uid://k65ktaokfjwt" path="res://Art/Tile_map/BlackSmith_WS.png" id="9_t3bgu"]
+[ext_resource type="AudioStream" uid="uid://bxy1j1rfsgomt" path="res://Audio/vfx_sounds/minecraft-drop-block-sound-effect.L.wav" id="11_pcx5o"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_p8g6o"]
 allow_unpress = true
@@ -175,3 +176,6 @@ offset_top = 26.0
 offset_right = 871.885
 offset_bottom = 49.0
 text = "Materials required"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_pcx5o")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bwhotbwv1uej5"]
+[gd_scene load_steps=20 format=3 uid="uid://bwhotbwv1uej5"]
 
 [ext_resource type="Texture2D" uid="uid://dcwv5i0elvtl0" path="res://Art/Inventory/pixil-frame-0 (25).png" id="1_bohv2"]
 [ext_resource type="Script" path="res://Scenes/Intro_Objective/into_game_objective.gd" id="1_r3ol5"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://05kq5l0u326g" path="res://Art/Tile_map/house.png" id="14_ffu3g"]
 [ext_resource type="Texture2D" uid="uid://cm8ex70j1odnv" path="res://Art/UI/enemies_marker.png" id="15_egtq3"]
 [ext_resource type="Texture2D" uid="uid://bgnq6pdidnkj3" path="res://Art/UI/Keyboard Extras.png" id="17_jj7b2"]
+[ext_resource type="AudioStream" uid="uid://bxy1j1rfsgomt" path="res://Audio/vfx_sounds/minecraft-drop-block-sound-effect.L.wav" id="19_37dyu"]
 
 [node name="Into_Game_Objective" type="Control"]
 layout_mode = 3
@@ -241,3 +242,6 @@ texture = ExtResource("17_jj7b2")
 hframes = 4
 vframes = 8
 frame = 7
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_37dyu")

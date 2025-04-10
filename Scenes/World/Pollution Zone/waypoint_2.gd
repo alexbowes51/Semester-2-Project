@@ -37,6 +37,8 @@ func cleanup_entities() -> void:
 	
 	if entities_in_zone.is_empty() and not is_cleared:
 		WorldManager.waypoints_Cleared += 1
+		if WorldManager.waypoints_Cleared > 2:
+			WorldManager.waypoints_Cleared = 2
 		WorldManager.waypoint2clear = true 
 		print("Villages Cleared: ", WorldManager.waypoints_Cleared)
 		is_cleared = true  # Mark this zone as cleared
@@ -44,3 +46,6 @@ func cleanup_entities() -> void:
 		
 func get_entities_in_zone() -> Array:
 	return entities_in_zone.keys()  
+
+func Waypoint_2():
+	pass

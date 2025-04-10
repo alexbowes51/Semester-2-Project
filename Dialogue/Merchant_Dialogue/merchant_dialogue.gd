@@ -2,6 +2,8 @@ extends Control
 
 @export_file("*.json") var M_D_file
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 
 var dialogue = []
 var current_dialogue_id = 0
@@ -42,6 +44,7 @@ func _input(event):
 		return
 		
 	if event.is_action_pressed("ui_accept"):
+		audio_stream_player.play()
 		next_script()
 
 

@@ -193,3 +193,33 @@ offset_bottom = 198.0
 scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 100
 text = "PIXEL FORGE STUDIO"
+
+[node name="Label5" type="Label" parent="."]
+z_index = 1
+offset_left = 221.0
+offset_top = 937.0
+offset_right = 7040.0
+offset_bottom = 2028.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 800
+text = "Lead Artist"
+
+[node name="Label6" type="Label" parent="."]
+z_index = 1
+offset_left = 1517.0
+offset_top = 923.0
+offset_right = 8336.0
+offset_bottom = 2014.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 800
+text = "Lead Musican"
+
+[node name="Label7" type="Label" parent="."]
+z_index = 1
+offset_left = 757.0
+offset_top = 927.0
+offset_right = 9874.0
+offset_bottom = 2018.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 800
+text = "Game designer & Lead Coder"

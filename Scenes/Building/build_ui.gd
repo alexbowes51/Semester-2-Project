@@ -4,6 +4,7 @@ var is_open = false
 @onready var wood_label: Label = $NinePatchRect/Wood/Wood_Label
 @onready var bottles_label: Label = $NinePatchRect/Bottles/Bottles_Label
 @onready var rubber_label: Label = $NinePatchRect/Rubber/Rubber_Label
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _ready():
@@ -40,6 +41,7 @@ func _process(_delta):
 
 		
 		if $NinePatchRect/GridContainer/house.button_pressed:
+			audio_stream_player.play()
 			WorldManager.building = "house"
 			if wood_label && bottles_label:
 				wood_label.text = str(2)
@@ -47,12 +49,14 @@ func _process(_delta):
 			
 			
 		if $NinePatchRect/GridContainer/farm.button_pressed:
+			audio_stream_player.play()
 			WorldManager.building = "farm"
 			if wood_label && bottles_label:
 				wood_label.text = str(2)
 				bottles_label.text = str(2)
 
 		if $NinePatchRect/GridContainer/black_smith.button_pressed:
+			audio_stream_player.play()
 			WorldManager.building = "black_smith"
 			if wood_label && bottles_label:
 				wood_label.text = str(2)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://2dk0i07v5kqb"]
+[gd_scene load_steps=8 format=3 uid="uid://2dk0i07v5kqb"]
 
 [ext_resource type="Script" path="res://Scenes/settings/setting.gd" id="1_21w2r"]
 [ext_resource type="Texture2D" uid="uid://6oivht7vl0oc" path="res://Art/Inventory/pixil-frame-0 (10).png" id="1_ir2uo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dx47e8r21pfcm" path="res://Art/Inventory/pixil-frame-0 (15).png" id="3_x4u2x"]
 [ext_resource type="Texture2D" uid="uid://bgnq6pdidnkj3" path="res://Art/UI/Keyboard Extras.png" id="4_5gbuj"]
 [ext_resource type="Texture2D" uid="uid://6er6yi0mqe6p" path="res://Art/Inventory/pixil-frame-0 (16).png" id="4_vvvak"]
+[ext_resource type="AudioStream" uid="uid://bxy1j1rfsgomt" path="res://Audio/vfx_sounds/minecraft-drop-block-sound-effect.L.wav" id="7_en5jv"]
 
 [node name="Control" type="Control"]
 process_mode = 3
@@ -40,6 +41,10 @@ theme_override_constants/separation = 50
 
 [node name="Volume" type="HSlider" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+min_value = -100.0
+max_value = 0.0
+step = -1.0
+rounded = true
 
 [node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/Volume"]
 layout_mode = 0
@@ -300,6 +305,9 @@ theme_override_constants/shadow_offset_x = 10
 theme_override_constants/shadow_offset_y = 10
 theme_override_font_sizes/font_size = 100
 text = "= Continue Dialogue"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_en5jv")
 
 [connection signal="value_changed" from="NinePatchRect/MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="NinePatchRect/MarginContainer/VBoxContainer/on_mute" to="." method="_on_on_mute_toggled"]

@@ -14,7 +14,12 @@ func _on_interactable_area_body_entered(body):
 		sprite_2d.visible = false
 		
 		self.queue_free()
-
+		
+		if body.has_method("Waypoint_1") && WorldManager.waypoint1clear:
+			self.queue_free()
+			
+		if body.has_method("Waypoint_2") && WorldManager.waypoint2clear:
+			self.queue_free()
 func playercollect():
 	player.collect(item)
 	
