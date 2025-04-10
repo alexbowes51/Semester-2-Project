@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bopk1ta60cfqg"]
 
-[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_a02nb"]
 [ext_resource type="Script" path="res://Scenes/Inventory/player_hotbar.gd" id="1_t8tsf"]
+[ext_resource type="Texture2D" uid="uid://nks44vpxcty" path="res://Art/Inventory/pixil-frame-0 (24).png" id="2_kccfj"]
 [ext_resource type="PackedScene" uid="uid://cvkx60yshxptc" path="res://Scenes/Inventory/inventory_slot_ui.tscn" id="2_x3lca"]
 
 [node name="Player_Hotbar" type="Control"]
@@ -18,11 +18,12 @@ script = ExtResource("1_t8tsf")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 z_index = 2
+texture_filter = 1
 layout_mode = 0
 offset_right = 115.0
 offset_bottom = 40.0
 scale = Vector2(1.28, 1.28)
-texture = ExtResource("1_a02nb")
+texture = ExtResource("2_kccfj")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1

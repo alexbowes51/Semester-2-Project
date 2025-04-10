@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cv24ug4cywu32"]
 
-[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_21ghs"]
 [ext_resource type="Script" path="res://Scenes/Inventory/Inventory_UI.gd" id="1_78xnh"]
+[ext_resource type="Texture2D" uid="uid://cndvrncp4hhja" path="res://Art/Inventory/pixil-frame-0 (26).png" id="2_helyo"]
 [ext_resource type="PackedScene" uid="uid://cvkx60yshxptc" path="res://Scenes/Inventory/inventory_slot_ui.tscn" id="2_qw55u"]
 
 [node name="Inventory_UI" type="Control"]
@@ -18,9 +18,9 @@ script = ExtResource("1_78xnh")
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 z_index = 4
 layout_mode = 0
-offset_right = 197.0
-offset_bottom = 170.0
-texture = ExtResource("1_21ghs")
+offset_right = 167.0
+offset_bottom = 208.0
+texture = ExtResource("2_helyo")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
@@ -28,21 +28,23 @@ patch_margin_bottom = 1
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
 z_index = 4
-custom_minimum_size = Vector2(10, 10)
+custom_minimum_size = Vector2(15, 15)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -49.5
-offset_top = -43.0
-offset_right = 7.5
-offset_bottom = 15.0
+offset_left = -49.9798
+offset_top = -46.9052
+offset_right = 10.0202
+offset_bottom = 13.0948
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 pivot_offset = Vector2(10, 10)
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 6
 columns = 3
 
 [node name="1" parent="NinePatchRect/GridContainer" instance=ExtResource("2_qw55u")]
@@ -75,11 +77,12 @@ layout_mode = 2
 [node name="Label" type="Label" parent="NinePatchRect"]
 z_index = 22
 layout_mode = 0
-offset_left = 36.0
-offset_top = 6.0
-offset_right = 2562.0
-offset_bottom = 495.0
+offset_left = 24.1542
+offset_top = 10.7053
+offset_right = 2550.15
+offset_bottom = 499.705
 scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(1, 1, 0.247059, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 22

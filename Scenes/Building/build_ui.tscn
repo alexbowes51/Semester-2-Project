@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqed0ghaw8nlo"]
+[gd_scene load_steps=12 format=3 uid="uid://dqed0ghaw8nlo"]
 
 [ext_resource type="Script" path="res://Scenes/Building/build_ui.gd" id="1_lod6p"]
-[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_rh6lt"]
-[ext_resource type="Texture2D" uid="uid://ckv7fsadhdp45" path="res://Art/Inventory/pixil-frame-0 (8).png" id="2_5j8i7"]
 [ext_resource type="Texture2D" uid="uid://bhuh8nl8bx3q6" path="res://Art/Items/Wood.png" id="3_pu17x"]
 [ext_resource type="Texture2D" uid="uid://uxaolvoccavu" path="res://Art/Tile_map/house 2.png" id="3_st342"]
 [ext_resource type="Texture2D" uid="uid://cunkiglykdqkr" path="res://Art/Items/Bottles.png" id="4_qvvi1"]
 [ext_resource type="Texture2D" uid="uid://cc061iwc1bbt2" path="res://Art/Tile_map/farm.png" id="5_4xk3d"]
 [ext_resource type="Texture2D" uid="uid://dk62hubethro3" path="res://Art/Items/Rubber.png" id="5_nskj3"]
+[ext_resource type="Texture2D" uid="uid://bi2u7nikyf5ak" path="res://Art/Inventory/pixil-frame-0 (23).png" id="6_wihka"]
+[ext_resource type="Texture2D" uid="uid://dcwv5i0elvtl0" path="res://Art/Inventory/pixil-frame-0 (25).png" id="7_rqpdi"]
+[ext_resource type="Texture2D" uid="uid://nks44vpxcty" path="res://Art/Inventory/pixil-frame-0 (24).png" id="8_nnrki"]
 [ext_resource type="Texture2D" uid="uid://k65ktaokfjwt" path="res://Art/Tile_map/BlackSmith_WS.png" id="9_t3bgu"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_p8g6o"]
@@ -28,20 +29,19 @@ script = ExtResource("1_lod6p")
 texture_filter = 1
 layout_mode = 0
 offset_right = 1152.0
-offset_bottom = 187.0
+offset_bottom = 185.0
 scale = Vector2(1.04, 1)
 mouse_filter = 0
-texture = ExtResource("1_rh6lt")
+texture = ExtResource("8_nnrki")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="Background" type="Sprite2D" parent="NinePatchRect"]
-modulate = Color(0.309582, 0.190831, 0, 1)
-position = Vector2(809.615, 97)
-scale = Vector2(10, 3)
-texture = ExtResource("1_rh6lt")
+position = Vector2(775.962, 94)
+scale = Vector2(4.65385, 1.6)
+texture = ExtResource("7_rqpdi")
 
 [node name="Wood" type="Sprite2D" parent="NinePatchRect"]
 z_index = 1
@@ -86,87 +86,92 @@ text = "0"
 z_index = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
-offset_left = 34.6154
-offset_top = 21.0
-offset_right = 646.615
-offset_bottom = 72.0
-scale = Vector2(0.724098, 2.88866)
+offset_left = 50.9615
+offset_top = 36.0
+offset_right = 580.962
+offset_bottom = 136.0
+scale = Vector2(0.85, 1.2)
 mouse_filter = 0
-columns = 4
+theme_override_constants/h_separation = 40
+columns = 3
 
 [node name="house" type="TextureButton" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-toggle_mode = true
 button_group = SubResource("ButtonGroup_p8g6o")
-texture_normal = ExtResource("2_5j8i7")
-texture_pressed = ExtResource("1_rh6lt")
-texture_hover = ExtResource("1_rh6lt")
-texture_disabled = ExtResource("2_5j8i7")
+texture_normal = ExtResource("6_wihka")
+texture_pressed = ExtResource("7_rqpdi")
+texture_hover = ExtResource("8_nnrki")
 stretch_mode = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/house"]
 texture_filter = 1
-position = Vector2(73.1945, 24.2327)
-scale = Vector2(1.1696, 0.262829)
+position = Vector2(74.0993, 44.2956)
+scale = Vector2(1.1877, 0.664087)
 texture = ExtResource("3_st342")
+
+[node name="Label" type="Label" parent="NinePatchRect/GridContainer/house/Sprite2D"]
+offset_left = -35.3323
+offset_top = 44.7826
+offset_right = 1494.67
+offset_bottom = 726.783
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 500
+text = "House"
 
 [node name="farm" type="TextureButton" parent="NinePatchRect/GridContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-toggle_mode = true
 button_group = SubResource("ButtonGroup_p8g6o")
-texture_normal = ExtResource("2_5j8i7")
-texture_pressed = ExtResource("1_rh6lt")
-texture_hover = ExtResource("1_rh6lt")
-texture_disabled = ExtResource("2_5j8i7")
+texture_normal = ExtResource("6_wihka")
+texture_pressed = ExtResource("7_rqpdi")
+texture_hover = ExtResource("8_nnrki")
 stretch_mode = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/farm"]
-position = Vector2(73.1945, 24.2327)
-scale = Vector2(1.1696, 0.262829)
+position = Vector2(73.1945, 44.2956)
+scale = Vector2(1.1696, 0.664087)
 texture = ExtResource("5_4xk3d")
+
+[node name="Label" type="Label" parent="NinePatchRect/GridContainer/farm/Sprite2D"]
+offset_left = -35.3323
+offset_top = 44.7826
+offset_right = 1494.67
+offset_bottom = 726.783
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 500
+text = "House"
 
 [node name="black_smith" type="TextureButton" parent="NinePatchRect/GridContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-toggle_mode = true
 button_group = SubResource("ButtonGroup_p8g6o")
-texture_normal = ExtResource("2_5j8i7")
-texture_pressed = ExtResource("1_rh6lt")
-texture_hover = ExtResource("1_rh6lt")
-texture_disabled = ExtResource("2_5j8i7")
+texture_normal = ExtResource("6_wihka")
+texture_pressed = ExtResource("7_rqpdi")
+texture_hover = ExtResource("8_nnrki")
 stretch_mode = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/black_smith"]
 texture_filter = 1
-position = Vector2(73.1945, 24.2327)
-scale = Vector2(1.1696, 0.262829)
+position = Vector2(73.1945, 43.4623)
+scale = Vector2(1.1696, 0.647421)
 texture = ExtResource("9_t3bgu")
 
-[node name="farm3" type="TextureButton" parent="NinePatchRect/GridContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_p8g6o")
-texture_normal = ExtResource("2_5j8i7")
-texture_pressed = ExtResource("1_rh6lt")
-texture_hover = ExtResource("1_rh6lt")
-texture_disabled = ExtResource("2_5j8i7")
-stretch_mode = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/farm3"]
-position = Vector2(73.1945, 24.2327)
-scale = Vector2(1.1696, 0.262829)
-texture = ExtResource("5_4xk3d")
+[node name="Label" type="Label" parent="NinePatchRect/GridContainer/black_smith/Sprite2D"]
+offset_left = -35.3323
+offset_top = 44.7826
+offset_right = 1494.67
+offset_bottom = 726.783
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 500
+text = "House"
 
 [node name="Label" type="Label" parent="NinePatchRect"]
 layout_mode = 0
-offset_left = 734.615
-offset_top = 28.0
-offset_right = 878.615
-offset_bottom = 51.0
+offset_left = 727.885
+offset_top = 26.0
+offset_right = 871.885
+offset_bottom = 49.0
 text = "Materials required"

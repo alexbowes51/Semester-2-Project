@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://lyvill1i58ul"]
+[gd_scene load_steps=8 format=3 uid="uid://lyvill1i58ul"]
 
-[ext_resource type="Script" uid="uid://4rhg4m3v3snm" path="res://Scenes/Npc/Black_Smith/black_smith_crafting.gd" id="1_7sor0"]
-[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_wxnu4"]
+[ext_resource type="Script" path="res://Scenes/Npc/Black_Smith/black_smith_crafting.gd" id="1_7sor0"]
+[ext_resource type="Texture2D" uid="uid://6oivht7vl0oc" path="res://Art/Inventory/pixil-frame-0 (10).png" id="2_7wce5"]
 [ext_resource type="PackedScene" uid="uid://cvkx60yshxptc" path="res://Scenes/Inventory/inventory_slot_ui.tscn" id="2_g0n6j"]
 [ext_resource type="Texture2D" uid="uid://bhuh8nl8bx3q6" path="res://Art/Items/Wood.png" id="4_f54ds"]
+[ext_resource type="Texture2D" uid="uid://nks44vpxcty" path="res://Art/Inventory/pixil-frame-0 (24).png" id="4_ix3h4"]
 [ext_resource type="Texture2D" uid="uid://dk62hubethro3" path="res://Art/Items/Rubber.png" id="5_pb67k"]
 [ext_resource type="Texture2D" uid="uid://cunkiglykdqkr" path="res://Art/Items/Bottles.png" id="6_l7l6e"]
 
@@ -21,11 +22,12 @@ script = ExtResource("1_7sor0")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 z_index = 4
+texture_filter = 1
 layout_mode = 0
 offset_right = 197.0
 offset_bottom = 170.0
 scale = Vector2(1.28, 1.28)
-texture = ExtResource("1_wxnu4")
+texture = ExtResource("2_7wce5")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
@@ -81,11 +83,10 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/Control"]
-modulate = Color(0.152766, 0.107813, 2.40654e-08, 1)
 z_index = -1
-position = Vector2(79.9664, -29.1902)
-scale = Vector2(0.81981, 1.23727)
-texture = ExtResource("1_wxnu4")
+position = Vector2(81.0179, -29.2435)
+scale = Vector2(0.444956, 0.617569)
+texture = ExtResource("4_ix3h4")
 
 [node name="wood" type="Control" parent="NinePatchRect/GridContainer/Control"]
 layout_mode = 2
@@ -113,10 +114,10 @@ text = "0"
 [node name="rubber" type="Control" parent="NinePatchRect/GridContainer/Control"]
 layout_mode = 2
 anchors_preset = 0
-offset_left = 57.8846
-offset_top = -9.57419
-offset_right = 73.8846
-offset_bottom = -9.57419
+offset_left = 57.534
+offset_top = -8.17303
+offset_right = 73.534
+offset_bottom = -8.17303
 scale = Vector2(0.873818, 0.70576)
 
 [node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/GridContainer/Control/rubber"]
@@ -158,10 +159,10 @@ text = "0"
 
 [node name="Label" type="Label" parent="NinePatchRect/GridContainer/Control"]
 layout_mode = 0
-offset_left = 64.1936
-offset_top = -59.3148
-offset_right = 211.194
-offset_bottom = -36.3148
+offset_left = 62.7916
+offset_top = -53.7102
+offset_right = 209.792
+offset_bottom = -30.7102
 scale = Vector2(0.215452, 0.439542)
 text = "Materials Required"
 
@@ -172,7 +173,7 @@ offset_top = 4.6875
 offset_right = 162.344
 offset_bottom = 27.6875
 scale = Vector2(0.05, 0.05)
-theme_override_colors/font_color = Color(0.764871, 0, 0.211693, 1)
+theme_override_colors/font_color = Color(0.571634, 0.804285, 3.85046e-07, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 21

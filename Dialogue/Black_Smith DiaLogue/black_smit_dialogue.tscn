@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bv3fjtxyo1edw"]
+[gd_scene load_steps=10 format=3 uid="uid://bv3fjtxyo1edw"]
 
 [ext_resource type="Script" path="res://Dialogue/Black_Smith DiaLogue/black_smit_dialogue.gd" id="1_af6t5"]
 [ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="2_beapg"]
+[ext_resource type="Texture2D" uid="uid://nks44vpxcty" path="res://Art/Inventory/pixil-frame-0 (24).png" id="2_ivybf"]
 [ext_resource type="FontFile" uid="uid://6twna5ce2qh2" path="res://Celtica-BookOblique.ttf" id="3_vj64c"]
-[ext_resource type="Texture2D" uid="uid://ckv7fsadhdp45" path="res://Art/Inventory/pixil-frame-0 (8).png" id="4_enfit"]
+[ext_resource type="Texture2D" uid="uid://bi2u7nikyf5ak" path="res://Art/Inventory/pixil-frame-0 (23).png" id="4_fnvyd"]
+[ext_resource type="Texture2D" uid="uid://dcwv5i0elvtl0" path="res://Art/Inventory/pixil-frame-0 (25).png" id="5_f6gr5"]
 [ext_resource type="Texture2D" uid="uid://m1cvq8i2om05" path="res://Art/Portraits for convo and animation/Portraits for convo and animation/Blacksmith/Blacksmith Portrait.png" id="5_itghs"]
 
 [sub_resource type="Theme" id="Theme_d7xjy"]
@@ -30,7 +32,8 @@ offset_right = 108.0
 offset_bottom = 40.0
 scale = Vector2(1.11567, 1.30714)
 mouse_filter = 0
-texture = ExtResource("2_beapg")
+texture = ExtResource("2_ivybf")
+draw_center = false
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
@@ -90,30 +93,31 @@ tab_size = 1
 
 [node name="TextureButton" type="TextureButton" parent="NinePatchRect"]
 layout_mode = 0
-offset_left = 2.68897
+offset_left = 3.58529
 offset_top = 29.8361
-offset_right = 112.689
-offset_bottom = 79.8361
-scale = Vector2(0.19335, 0.146138)
+offset_right = 113.585
+offset_bottom = 129.836
+scale = Vector2(0.221, 0.075)
 toggle_mode = true
 action_mode = 0
 button_group = SubResource("ButtonGroup_143m7")
-texture_normal = ExtResource("4_enfit")
-texture_pressed = ExtResource("2_beapg")
+texture_normal = ExtResource("4_fnvyd")
+texture_pressed = ExtResource("5_f6gr5")
+texture_hover = ExtResource("2_ivybf")
 stretch_mode = 0
 
 [node name="Follow Text" type="Label" parent="NinePatchRect/TextureButton"]
 z_index = 2
 layout_mode = 0
-offset_left = 13.9072
-offset_top = 15.7051
-offset_right = 1754.91
-offset_bottom = 425.705
+offset_left = 8.11151
+offset_top = 36.0014
+offset_right = 1976.11
+offset_bottom = 936.001
 scale = Vector2(0.05, 0.05)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 28
 theme_override_constants/shadow_offset_y = -5
-theme_override_font_sizes/font_size = 335
+theme_override_font_sizes/font_size = 400
 text = "Follow me 
 "
 
@@ -121,10 +125,10 @@ text = "Follow me
 visible = false
 z_index = 2
 layout_mode = 0
-offset_left = 6.49654
-offset_top = 14.2102
-offset_right = 106.497
-offset_bottom = 37.2102
+offset_left = 4.05576
+offset_top = 36.0014
+offset_right = 2078.06
+offset_bottom = 494.001
 scale = Vector2(0.05, 0.05)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 28
@@ -135,16 +139,17 @@ text = "unFollow me
 
 [node name="TextureButton2" type="TextureButton" parent="NinePatchRect"]
 layout_mode = 0
-offset_left = 27.786
-offset_top = 29.8361
-offset_right = 177.786
-offset_bottom = 79.8361
-scale = Vector2(0.229203, 0.146138)
+offset_left = 28.0
+offset_top = 30.0
+offset_right = 178.0
+offset_bottom = 130.0
+scale = Vector2(0.235, 0.075)
 toggle_mode = true
 action_mode = 0
 button_group = SubResource("ButtonGroup_143m7")
-texture_normal = ExtResource("4_enfit")
-texture_pressed = ExtResource("2_beapg")
+texture_normal = ExtResource("4_fnvyd")
+texture_pressed = ExtResource("5_f6gr5")
+texture_hover = ExtResource("2_ivybf")
 stretch_mode = 0
 
 [node name="craft_updrade" type="Label" parent="NinePatchRect"]

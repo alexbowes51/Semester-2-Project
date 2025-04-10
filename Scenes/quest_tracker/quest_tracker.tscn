@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlfccjxj7500u"]
 
-[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_bhaj5"]
 [ext_resource type="Script" path="res://Scenes/quest_tracker/quest_tracker.gd" id="1_jaw0d"]
+[ext_resource type="Texture2D" uid="uid://bi2u7nikyf5ak" path="res://Art/Inventory/pixil-frame-0 (23).png" id="2_13kgu"]
 
 [node name="Quest_Tracker" type="Control"]
 layout_mode = 3
@@ -14,10 +14,11 @@ grow_vertical = 2
 script = ExtResource("1_jaw0d")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_right = 397.0
 offset_bottom = 293.0
-texture = ExtResource("1_bhaj5")
+texture = ExtResource("2_13kgu")
 
 [node name="Label" type="Label" parent="NinePatchRect"]
 layout_mode = 0

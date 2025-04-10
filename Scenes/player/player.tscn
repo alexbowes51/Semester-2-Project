@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=124 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://d36gxump84vfh" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://c5n5xddjdj1u2" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://dmdcilu706lxk" path="res://Scenes/respawn/respawn.tscn" id="22_fuqjl"]
 [ext_resource type="PackedScene" uid="uid://buoxgii380s3e" path="res://Scenes/Pause_Menu/pause_menu.tscn" id="24_gpgmm"]
 [ext_resource type="PackedScene" uid="uid://2dk0i07v5kqb" path="res://Scenes/settings/setting.tscn" id="25_k3yy6"]
+[ext_resource type="Texture2D" uid="uid://nohnidqou0hp" path="res://Art/UI/Keyboard Letters and Symbols.png" id="26_m30sq"]
 [ext_resource type="PackedScene" uid="uid://dlfccjxj7500u" path="res://Scenes/quest_tracker/quest_tracker.tscn" id="28_1bthv"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
@@ -173,8 +174,6 @@ func get_input():
 		WorldManager.player_current_attack = true
 		attack = true
 		$Attack_Cooldown.start()
-
-
 
 func collect(item):	
 	audio_stream_player.play()
@@ -338,9 +337,9 @@ func KnockBack(damage_dir: Vector2):
 func check_weapon() -> bool:
 	if hb_inv != null:
 		if hb_inv.Has_Items(Sword,1):
-			WorldManager.Player_Damage = 40
+			WorldManager.Player_Damage * 2
 			return true 
-	WorldManager.Player_Damage = 20
+	WorldManager.Player_Damage
 	return false  
 
 func start_dash():
@@ -1000,7 +999,7 @@ radius = 22.0
 height = 46.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ayp1y"]
-size = Vector2(53, 35)
+size = Vector2(53, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5glv"]
 atlas = ExtResource("4_n7t0m")
@@ -1106,7 +1105,7 @@ collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Attack_HitBox"]
 z_index = 1
-position = Vector2(0, 31.5)
+position = Vector2(0, 38)
 shape = SubResource("RectangleShape2D_ayp1y")
 debug_color = Color(0.681852, 0.502586, 0.0146951, 0.42)
 
@@ -1294,25 +1293,6 @@ position = Vector2(104.124, 320.833)
 scale = Vector2(4, 8)
 texture = ExtResource("12_cohmc")
 
-[node name="build_notifcation" type="Control" parent="Camera2D/UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -879.381
-offset_top = 113.889
-offset_right = -879.381
-offset_bottom = 113.889
-
-[node name="Build_av" type="Label" parent="Camera2D/UI/build_notifcation"]
-layout_mode = 0
-offset_left = 1682.47
-offset_top = -77.7778
-offset_right = 10943.5
-offset_bottom = 1284.22
-scale = Vector2(0.05, 0.05)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 1000
-text = "Build Mode Avaible"
-
 [node name="Player_Hotbar" parent="Camera2D/UI" instance=ExtResource("19_ag7iv")]
 offset_left = -3.09278
 offset_top = 1059.72
@@ -1343,6 +1323,34 @@ offset_top = 5.55556
 offset_right = -1916.91
 offset_bottom = -1074.44
 scale = Vector2(1.02655, 1.38087)
+
+[node name="build_notifcation" type="Control" parent="Camera2D/UI"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.03094
+offset_right = 1.03094
+scale = Vector2(0.05, 0.05)
+
+[node name="Build_av" type="Label" parent="Camera2D/UI/build_notifcation"]
+layout_mode = 0
+offset_left = 18000.0
+offset_top = 388.889
+offset_right = 110612.0
+offset_bottom = 53704.9
+scale = Vector2(0.373468, 0.296166)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 4000
+text = "= Build Mode available"
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/build_notifcation/Build_av"]
+texture_filter = 1
+position = Vector2(-2760.42, 3001.32)
+scale = Vector2(267.761, 337.355)
+texture = ExtResource("26_m30sq")
+hframes = 8
+vframes = 14
+frame = 17
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 2.0

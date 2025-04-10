@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmdcilu706lxk"]
+[gd_scene load_steps=5 format=3 uid="uid://dmdcilu706lxk"]
 
 [ext_resource type="Script" path="res://Scenes/respawn/respawn.gd" id="1_f2wlo"]
-[ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="2_6lypl"]
-[ext_resource type="Texture2D" uid="uid://ckv7fsadhdp45" path="res://Art/Inventory/pixil-frame-0 (8).png" id="3_mlkyv"]
+[ext_resource type="Texture2D" uid="uid://dcwv5i0elvtl0" path="res://Art/Inventory/pixil-frame-0 (25).png" id="2_e1eco"]
+[ext_resource type="Texture2D" uid="uid://bi2u7nikyf5ak" path="res://Art/Inventory/pixil-frame-0 (23).png" id="3_dg1nn"]
+[ext_resource type="Texture2D" uid="uid://nks44vpxcty" path="res://Art/Inventory/pixil-frame-0 (24).png" id="4_y8w0s"]
 
 [node name="Respawn" type="Control"]
 layout_mode = 3
@@ -16,13 +17,14 @@ grow_vertical = 2
 script = ExtResource("1_f2wlo")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_left = 1.0
 offset_top = 2.0
 offset_right = 41.0
 offset_bottom = 42.0
 scale = Vector2(10, 5)
-texture = ExtResource("2_6lypl")
+texture = ExtResource("2_e1eco")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
@@ -30,8 +32,10 @@ offset_left = 39.0
 offset_top = 157.0
 offset_right = 89.0
 offset_bottom = 207.0
-scale = Vector2(2.9227, 0.388808)
-texture_normal = ExtResource("3_mlkyv")
+scale = Vector2(1.5, 0.2)
+texture_normal = ExtResource("3_dg1nn")
+texture_pressed = ExtResource("2_e1eco")
+texture_hover = ExtResource("4_y8w0s")
 
 [node name="TextureButton2" type="TextureButton" parent="."]
 layout_mode = 0
@@ -39,8 +43,10 @@ offset_left = 213.0
 offset_top = 157.0
 offset_right = 263.0
 offset_bottom = 207.0
-scale = Vector2(2.9227, 0.388808)
-texture_normal = ExtResource("3_mlkyv")
+scale = Vector2(1.5, 0.2)
+texture_normal = ExtResource("3_dg1nn")
+texture_pressed = ExtResource("2_e1eco")
+texture_hover = ExtResource("4_y8w0s")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0

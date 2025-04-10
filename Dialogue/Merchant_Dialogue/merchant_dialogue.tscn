@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3fek1gdhc7aw"]
+[gd_scene load_steps=9 format=3 uid="uid://b3fek1gdhc7aw"]
 
 [ext_resource type="Texture2D" uid="uid://dqovjerh5pais" path="res://Art/Inventory/pixil-frame-0 (9).png" id="1_kmt40"]
-[ext_resource type="Script" uid="uid://bsthcfibiwp57" path="res://Dialogue/Merchant_Dialogue/merchant_dialogue.gd" id="1_svyaw"]
+[ext_resource type="Script" path="res://Dialogue/Merchant_Dialogue/merchant_dialogue.gd" id="1_svyaw"]
+[ext_resource type="Texture2D" uid="uid://bi2u7nikyf5ak" path="res://Art/Inventory/pixil-frame-0 (23).png" id="2_kwdev"]
 [ext_resource type="FontFile" uid="uid://6twna5ce2qh2" path="res://Celtica-BookOblique.ttf" id="3_045jx"]
-[ext_resource type="Texture2D" uid="uid://ckv7fsadhdp45" path="res://Art/Inventory/pixil-frame-0 (8).png" id="3_mvy4q"]
+[ext_resource type="Texture2D" uid="uid://dcwv5i0elvtl0" path="res://Art/Inventory/pixil-frame-0 (25).png" id="4_lw2st"]
 [ext_resource type="Texture2D" uid="uid://bkveo25uewh27" path="res://Art/Portraits for convo and animation/Portraits for convo and animation/Merchant/Merchant Portrait.png" id="4_xysps"]
+[ext_resource type="Texture2D" uid="uid://nks44vpxcty" path="res://Art/Inventory/pixil-frame-0 (24).png" id="5_ka1ba"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_i8j3n"]
 allow_unpress = true
@@ -24,12 +26,13 @@ physics_interpolation_mode = 1
 auto_translate_mode = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 1.0
-offset_right = 109.0
-offset_bottom = 40.0
+offset_left = 7.0
+offset_top = -3.0
+offset_right = 115.0
+offset_bottom = 37.0
 scale = Vector2(1.11567, 1.30714)
 mouse_filter = 0
-texture = ExtResource("1_kmt40")
+texture = ExtResource("2_kwdev")
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
@@ -42,10 +45,10 @@ physics_interpolation_mode = 1
 texture_filter = 1
 clip_contents = false
 layout_mode = 0
-offset_left = 1.79264
-offset_top = 11.4754
-offset_right = 1339.79
-offset_bottom = 149.475
+offset_left = 7.0
+offset_top = 11.0
+offset_right = 1298.0
+offset_bottom = 149.0
 scale = Vector2(0.05, 0.05)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -66,10 +69,10 @@ physics_interpolation_mode = 1
 texture_filter = 1
 clip_contents = false
 layout_mode = 0
-offset_left = 3.0
-offset_top = 2.0
-offset_right = 702.0
-offset_bottom = 207.0
+offset_left = 8.0669
+offset_top = 1.53006
+offset_right = 707.067
+offset_bottom = 206.53
 scale = Vector2(0.05, 0.05)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -86,46 +89,45 @@ tab_size = 1
 
 [node name="TextureButton" type="TextureButton" parent="NinePatchRect"]
 layout_mode = 0
-offset_left = 3.58529
-offset_top = 29.8361
-offset_right = 113.585
-offset_bottom = 79.8361
-scale = Vector2(0.551879, 0.146138)
+offset_left = 4.48161
+offset_top = 33.6613
+offset_right = 104.482
+offset_bottom = 133.661
+scale = Vector2(0.5, 0.085)
 toggle_mode = true
 action_mode = 0
 button_group = SubResource("ButtonGroup_i8j3n")
-texture_normal = ExtResource("3_mvy4q")
-texture_pressed = ExtResource("1_kmt40")
-texture_disabled = ExtResource("3_mvy4q")
+texture_normal = ExtResource("2_kwdev")
+texture_pressed = ExtResource("4_lw2st")
+texture_hover = ExtResource("5_ka1ba")
 stretch_mode = 0
 
-[node name="Follow Text" type="Label" parent="NinePatchRect/TextureButton"]
+[node name="Follow Text" type="Label" parent="NinePatchRect"]
 layout_mode = 0
-offset_left = 11.3689
-offset_top = 15.7051
-offset_right = 1752.37
-offset_bottom = 425.705
+offset_left = 15.2375
+offset_top = 33.6613
+offset_right = 2229.24
+offset_bottom = 1511.66
 scale = Vector2(0.05, 0.05)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 18
 theme_override_constants/shadow_offset_y = 25
-theme_override_fonts/font = ExtResource("3_045jx")
-theme_override_font_sizes/font_size = 335
+theme_override_font_sizes/font_size = 100
 text = "Follow me 
 "
 
-[node name="unFollow Text" type="Label" parent="NinePatchRect/TextureButton"]
+[node name="unFollow Text" type="Label" parent="NinePatchRect"]
+visible = false
 layout_mode = 0
-offset_left = 6.49654
-offset_top = 14.2102
-offset_right = 106.497
-offset_bottom = 37.2102
+offset_left = 12.5485
+offset_top = 33.6613
+offset_right = 3277.55
+offset_bottom = 2073.66
 scale = Vector2(0.05, 0.05)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 18
 theme_override_constants/shadow_offset_y = 25
-theme_override_fonts/font = ExtResource("3_045jx")
-theme_override_font_sizes/font_size = 335
+theme_override_font_sizes/font_size = 100
 text = "unFollow me 
 "
 

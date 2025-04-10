@@ -26,7 +26,6 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_5pa5b")
 
 [node name="CollisionExplosion" parent="." instance=ExtResource("4_j4rxe")]
-z_index = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1

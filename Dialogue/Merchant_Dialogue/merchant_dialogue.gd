@@ -11,9 +11,11 @@ var dia_active = false
 func _ready():
 	$NinePatchRect.visible = false
 	$NinePatchRect/TextureButton.visible = false
-	$"NinePatchRect/TextureButton/unFollow Text".visible  = false
-
-
+	$"NinePatchRect/unFollow Text".visible  = false
+	$NinePatchRect/Text.visible = false
+	$NinePatchRect/Name.visible = false
+	$"NinePatchRect/Follow Text".visible = false
+	
 func _process(_delta):
 	pass
 	
@@ -49,6 +51,9 @@ func next_script():
 	if current_dialogue_id == 2:
 		$NinePatchRect/TextureButton.visible = true
 		$"NinePatchRect/TextureButton".visible = true
+		$NinePatchRect/Text.visible = true
+		$NinePatchRect/Name.visible = true
+		$"NinePatchRect/Follow Text".visible = true
 	
 	if current_dialogue_id >= len(dialogue):
 		dia_active = false
@@ -68,5 +73,5 @@ func reset():
 func _on_texture_button_pressed() -> void:
 	WorldManager.Merchant_follow_player = !WorldManager.Merchant_follow_player
 
-	$"NinePatchRect/TextureButton/Follow Text".visible = !WorldManager.Merchant_follow_player
-	$"NinePatchRect/TextureButton/unFollow Text".visible = WorldManager.Merchant_follow_player
+	$"NinePatchRect/Follow Text".visible = !WorldManager.Merchant_follow_player
+	$"NinePatchRect/unFollow Text".visible = WorldManager.Merchant_follow_player
