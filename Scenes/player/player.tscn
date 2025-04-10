@@ -52,6 +52,7 @@ var attack = false
 var receives_knockback = false
 var knock_scale = 2.0
 var speed = 300
+var Instruction = false
 
 var dash_speed = 1000
 var dash_duration = 0.2
@@ -77,6 +78,7 @@ var dash_direction = Vector2.ZERO
 @onready var hit_by__sword: AudioStreamPlayer = $\"hit_by _sword\"
 @onready var arrow_hit: AudioStreamPlayer = $arrow_hit
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
+@onready var control_1: Control = $Camera2D/UI/Control_1
 
 @onready var Sword = preload(\"res://Scenes/Item/Sword/sword.tres\")
 
@@ -88,6 +90,7 @@ func _ready():
 	sprite_2d.visible = false
 	build_av.visible = false
 	respawn.visible = false
+	control_1.visible = false
 
 	
 	for heart in heart_container.get_children():
@@ -110,6 +113,11 @@ func _physics_process(_delta: float) -> void:
 		WorldManager.player_needs_healing = true
 	else:
 		WorldManager.player_needs_healing = false
+		
+	if Instruction:
+		control_1.visible = true
+	elif !Instruction:
+		control_1.visible = false
 
 	if not WorldManager.player_talking_Merchant and not WorldManager.player_talking_Black_Smith:
 		if currentHealth > 0:
@@ -175,6 +183,10 @@ func get_input():
 		WorldManager.player_current_attack = true
 		attack = true
 		$Attack_Cooldown.start()
+	
+	if Input.is_action_just_pressed(\"Instructions\"):
+		Instruction = !Instruction
+		
 
 func collect(item):	
 	audio_stream_player.play()
@@ -1133,6 +1145,7 @@ scale = Vector2(0.97, 0.72)
 transform = Transform2D(0.97, 0, 0, 0.72, 0, 0)
 
 [node name="Pause Menu" parent="Camera2D/UI" instance=ExtResource("24_gpgmm")]
+visible = false
 z_index = 5
 offset_left = 102.062
 offset_top = 241.667
@@ -1140,6 +1153,7 @@ offset_right = -1817.94
 offset_bottom = -838.333
 
 [node name="HealthBar" type="HBoxContainer" parent="Camera2D/UI"]
+visible = false
 offset_left = 87.6289
 offset_top = 56.9444
 offset_right = 603.629
@@ -1191,6 +1205,7 @@ scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_mc0xm")
 
 [node name="Build_Ui" parent="Camera2D/UI" instance=ExtResource("7_olynr")]
+visible = false
 z_index = 0
 offset_left = 120.0
 offset_top = 1215.0
@@ -1199,6 +1214,7 @@ offset_bottom = 1171.2
 scale = Vector2(1.5, 1.5)
 
 [node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
+visible = false
 z_index = 0
 offset_left = 1486.6
 offset_top = 533.333
@@ -1208,6 +1224,7 @@ scale = Vector2(2.5, 4)
 localize_numeral_system = false
 
 [node name="Black_Smith_Crafting" parent="Camera2D/UI" instance=ExtResource("14_bmap2")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -1220,6 +1237,7 @@ grow_vertical = 1
 scale = Vector2(3, 3)
 
 [node name="Black_Smit_Dialogue" parent="Camera2D/UI" instance=ExtResource("13_eylsh")]
+visible = false
 offset_left = 480.412
 offset_top = 790.278
 offset_right = 485.412
@@ -1227,6 +1245,7 @@ offset_bottom = 790.278
 scale = Vector2(8, 8)
 
 [node name="Merchant_Dialogue" parent="Camera2D/UI" instance=ExtResource("8_dy8ic")]
+visible = false
 offset_left = 472.165
 offset_top = 787.5
 offset_right = 512.165
@@ -1302,6 +1321,7 @@ offset_bottom = 31.7231
 scale = Vector2(3, 3)
 
 [node name="Respawn" parent="Camera2D/UI" instance=ExtResource("22_fuqjl")]
+visible = false
 z_index = 27
 offset_left = 215.464
 offset_top = 341.667
@@ -1329,17 +1349,19 @@ scale = Vector2(1.02655, 1.38087)
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1.03094
-offset_right = 1.03094
-scale = Vector2(0.05, 0.05)
+offset_left = -509.278
+offset_top = 958.333
+offset_right = -509.278
+offset_bottom = 958.333
+scale = Vector2(0.0313293, 0.0557567)
 
 [node name="Build_av" type="Label" parent="Camera2D/UI/build_notifcation"]
 layout_mode = 0
 offset_left = 18000.0
-offset_top = 388.889
-offset_right = 110612.0
-offset_bottom = 53704.9
-scale = Vector2(0.373468, 0.296166)
+offset_top = 389.0
+offset_right = 61479.0
+offset_bottom = 5889.0
+scale = Vector2(0.33, 0.262)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 4000
 text = "= Build Mode available"
@@ -1355,9 +1377,69 @@ frame = 17
 
 [node name="Into_Game_Objective" parent="Camera2D/UI" instance=ExtResource("27_crx5h")]
 process_mode = 3
+visible = false
 z_index = 30
 offset_bottom = -2.0
 scale = Vector2(1.02905, 1.40067)
+
+[node name="Control_1" type="Control" parent="Camera2D/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 12.3711
+offset_top = 915.278
+offset_right = 52.3711
+offset_bottom = 955.278
+
+[node name="quest" type="Label" parent="Camera2D/UI/Control_1"]
+layout_mode = 0
+offset_left = 51.5464
+offset_top = 22.2222
+offset_right = 43530.5
+offset_bottom = 5522.22
+scale = Vector2(0.013, 0.01)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 4000
+text = "= Quest Tracker"
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/Control_1/quest"]
+texture_filter = 1
+position = Vector2(-2760.42, 3001.32)
+scale = Vector2(267.761, 337.355)
+texture = ExtResource("26_m30sq")
+hframes = 8
+vframes = 14
+frame = 32
+
+[node name="bag" type="Label" parent="Camera2D/UI/Control_1"]
+layout_mode = 0
+offset_left = 51.5464
+offset_top = -34.7222
+offset_right = 43530.5
+offset_bottom = 5465.28
+scale = Vector2(0.013, 0.01)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 4000
+text = "i = bag"
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/UI/Control_1/bag"]
+texture_filter = 1
+position = Vector2(-2760.42, 3001.32)
+scale = Vector2(267.761, 337.355)
+texture = ExtResource("26_m30sq")
+hframes = 8
+vframes = 14
+frame = 24
+
+[node name="Build_av3" type="Label" parent="Camera2D/UI/Control_1"]
+layout_mode = 0
+offset_left = -1.03093
+offset_top = -88.889
+offset_right = 43478.0
+offset_bottom = 5411.11
+scale = Vector2(0.013, 0.01)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 4000
+text = "Click = Attack"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = SubResource("GradientTexture2D_02i48")

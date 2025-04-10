@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bwhotbwv1uej5"]
+[gd_scene load_steps=21 format=3 uid="uid://bwhotbwv1uej5"]
 
 [ext_resource type="Texture2D" uid="uid://dcwv5i0elvtl0" path="res://Art/Inventory/pixil-frame-0 (25).png" id="1_bohv2"]
 [ext_resource type="Script" path="res://Scenes/Intro_Objective/into_game_objective.gd" id="1_r3ol5"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://05kq5l0u326g" path="res://Art/Tile_map/house.png" id="14_ffu3g"]
 [ext_resource type="Texture2D" uid="uid://cm8ex70j1odnv" path="res://Art/UI/enemies_marker.png" id="15_egtq3"]
 [ext_resource type="Texture2D" uid="uid://bgnq6pdidnkj3" path="res://Art/UI/Keyboard Extras.png" id="17_jj7b2"]
+[ext_resource type="Texture2D" uid="uid://nohnidqou0hp" path="res://Art/UI/Keyboard Letters and Symbols.png" id="18_c2g88"]
 [ext_resource type="AudioStream" uid="uid://bxy1j1rfsgomt" path="res://Audio/vfx_sounds/minecraft-drop-block-sound-effect.L.wav" id="19_37dyu"]
 
 [node name="Into_Game_Objective" type="Control"]
@@ -34,6 +35,7 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 1917.0
 offset_bottom = 1081.0
+scale = Vector2(0.994663, 0.985183)
 texture = ExtResource("1_bohv2")
 
 [node name="node 1" type="Sprite2D" parent="NinePatchRect"]
@@ -213,15 +215,115 @@ theme_override_font_sizes/font_size = 1000
 text = "Game Objective"
 
 [node name="Label6" type="Label" parent="NinePatchRect"]
-offset_left = 180.0
-offset_top = 704.0
-offset_right = 31596.0
-offset_bottom = 3164.0
+offset_left = 182.0
+offset_top = 558.0
+offset_right = 31598.0
+offset_bottom = 5481.0
 scale = Vector2(0.05, 0.05)
 theme_override_font_sizes/font_size = 600
 text = "Your Overall Objective here is to Collect, Reuse/Recycle Rubbish into building/tools to help you liberate,
 The nearby outpost and WayPoints of Enemies/Pollution, Finally Benandonner will test your might in fighting
-the Scottish Giant."
+the Scottish Giant.
+
+Forgot how to walk dont worry. Press ESC to pause the game and go to settings + Controlls Or Press  TAB for 
+quick instructions but here is a quick brief:"
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect"]
+texture_filter = 1
+position = Vector2(269.266, 872.423)
+scale = Vector2(4, 4)
+texture = ExtResource("18_c2g88")
+hframes = 9
+vframes = 13
+
+[node name="Sprite2D2" type="Sprite2D" parent="NinePatchRect"]
+texture_filter = 1
+position = Vector2(270.931, 924.062)
+scale = Vector2(4, 4)
+texture = ExtResource("18_c2g88")
+hframes = 8
+vframes = 13
+frame = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="NinePatchRect"]
+texture_filter = 1
+position = Vector2(209.95, 924.19)
+scale = Vector2(4, 4)
+texture = ExtResource("18_c2g88")
+hframes = 8
+vframes = 13
+frame = 2
+
+[node name="Sprite2D4" type="Sprite2D" parent="NinePatchRect"]
+texture_filter = 1
+position = Vector2(335.62, 925.205)
+scale = Vector2(4, 4)
+texture = ExtResource("18_c2g88")
+hframes = 8
+vframes = 13
+frame = 3
+
+[node name="Sprite2D7" type="Sprite2D" parent="NinePatchRect"]
+texture_filter = 1
+position = Vector2(463.474, 871.919)
+scale = Vector2(4, 4)
+texture = ExtResource("18_c2g88")
+hframes = 8
+vframes = 14
+frame = 38
+
+[node name="Sprite2D8" type="Sprite2D" parent="NinePatchRect"]
+texture_filter = 1
+position = Vector2(462.708, 924.676)
+scale = Vector2(4, 4)
+texture = ExtResource("18_c2g88")
+hframes = 8
+vframes = 14
+frame = 34
+
+[node name="Sprite2D9" type="Sprite2D" parent="NinePatchRect"]
+texture_filter = 1
+position = Vector2(398.125, 922.671)
+scale = Vector2(4, 4)
+texture = ExtResource("18_c2g88")
+hframes = 8
+vframes = 14
+frame = 16
+
+[node name="Sprite2D10" type="Sprite2D" parent="NinePatchRect"]
+texture_filter = 1
+position = Vector2(527.817, 925.717)
+scale = Vector2(4, 4)
+texture = ExtResource("18_c2g88")
+hframes = 8
+vframes = 14
+frame = 19
+
+[node name="Label" type="Label" parent="NinePatchRect/Sprite2D10"]
+offset_left = 10.0
+offset_top = -5.0
+offset_right = 678.0
+offset_bottom = 179.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_font_sizes/font_size = 100
+text = "= Move Player"
+
+[node name="Label7" type="Label" parent="NinePatchRect"]
+offset_left = 579.091
+offset_top = 818.122
+offset_right = 7440.09
+offset_bottom = 1909.12
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 80
+theme_override_constants/shadow_offset_y = 40
+theme_override_font_sizes/font_size = 500
+text = "Left Click = Attack"
 
 [node name="Label" type="Label" parent="."]
 z_index = 4

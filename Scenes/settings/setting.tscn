@@ -309,6 +309,19 @@ text = "= Continue Dialogue"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_en5jv")
 
+[node name="Label2" type="Label" parent="."]
+offset_left = 1271.0
+offset_top = 345.0
+offset_right = 2171.0
+offset_bottom = 485.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 80
+theme_override_constants/shadow_offset_y = 40
+theme_override_font_sizes/font_size = 800
+text = "Left Click = Attack"
+
 [connection signal="value_changed" from="NinePatchRect/MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="NinePatchRect/MarginContainer/VBoxContainer/on_mute" to="." method="_on_on_mute_toggled"]
 [connection signal="item_selected" from="NinePatchRect/MarginContainer/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
