@@ -1,0 +1,243 @@
+[gd_scene load_steps=19 format=3 uid="uid://bwhotbwv1uej5"]
+
+[ext_resource type="Texture2D" uid="uid://dcwv5i0elvtl0" path="res://Art/Inventory/pixil-frame-0 (25).png" id="1_bohv2"]
+[ext_resource type="Script" path="res://Scenes/Intro_Objective/into_game_objective.gd" id="1_r3ol5"]
+[ext_resource type="Texture2D" uid="uid://bi2u7nikyf5ak" path="res://Art/Inventory/pixil-frame-0 (23).png" id="2_6y7u5"]
+[ext_resource type="Texture2D" uid="uid://cunkiglykdqkr" path="res://Art/Items/Bottles.png" id="3_2sbhe"]
+[ext_resource type="Texture2D" uid="uid://dk62hubethro3" path="res://Art/Items/Rubber.png" id="4_1ojy6"]
+[ext_resource type="Texture2D" uid="uid://bhuh8nl8bx3q6" path="res://Art/Items/Wood.png" id="5_m00pb"]
+[ext_resource type="Texture2D" uid="uid://k65ktaokfjwt" path="res://Art/Tile_map/BlackSmith_WS.png" id="6_rodi0"]
+[ext_resource type="Texture2D" uid="uid://dc31qd6l3ask6" path="res://Art/Items/Items/Weapons/Sword Weapon/Sword.png" id="7_nun8v"]
+[ext_resource type="Texture2D" uid="uid://df3dihkgqs5nu" path="res://Art/NPC/Blacksmith/BlackSmith .png" id="8_vyvkn"]
+[ext_resource type="Texture2D" uid="uid://dj00g2fwp5jv1" path="res://Art/Enemies/Enemy Giant/Enemy Giant Standing.png" id="9_aptij"]
+[ext_resource type="Texture2D" uid="uid://3fc0d6rh4fj7" path="res://Art/Items/Items/Merchant Sales/Health Potion/Potion health.png" id="9_jbl7c"]
+[ext_resource type="Texture2D" uid="uid://bnmoshwvt5ocv" path="res://Art/Player/No Weapons/Player Character No Weapons/Player Charachter.png" id="10_5hysr"]
+[ext_resource type="Texture2D" uid="uid://uxaolvoccavu" path="res://Art/Tile_map/house 2.png" id="11_cfyst"]
+[ext_resource type="Texture2D" uid="uid://df66udohcv6il" path="res://Art/Tile_map/WayPoint2(A).png" id="12_ujxex"]
+[ext_resource type="Texture2D" uid="uid://cmjw2qr12r5u4" path="res://Art/UI/wp_marker.png" id="13_c1h0b"]
+[ext_resource type="Texture2D" uid="uid://05kq5l0u326g" path="res://Art/Tile_map/house.png" id="14_ffu3g"]
+[ext_resource type="Texture2D" uid="uid://cm8ex70j1odnv" path="res://Art/UI/enemies_marker.png" id="15_egtq3"]
+[ext_resource type="Texture2D" uid="uid://bgnq6pdidnkj3" path="res://Art/UI/Keyboard Extras.png" id="17_jj7b2"]
+
+[node name="Into_Game_Objective" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r3ol5")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1917.0
+offset_bottom = 1081.0
+texture = ExtResource("1_bohv2")
+
+[node name="node 1" type="Sprite2D" parent="NinePatchRect"]
+texture_filter = 1
+position = Vector2(362, 350.5)
+scale = Vector2(2.92, 2.95)
+texture = ExtResource("2_6y7u5")
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/node 1"]
+position = Vector2(-25.6849, -31.1864)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_2sbhe")
+
+[node name="Sprite2D2" type="Sprite2D" parent="NinePatchRect/node 1"]
+position = Vector2(2.05478, -29.4915)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_1ojy6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="NinePatchRect/node 1"]
+position = Vector2(31.8493, -29.4915)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_m00pb")
+
+[node name="Sprite2D5" type="Sprite2D" parent="NinePatchRect/node 1"]
+texture_filter = 1
+position = Vector2(-3.0822, 16.2712)
+rotation = -1.56634
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("10_5hysr")
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 508.0
+offset_right = 4717.0
+offset_bottom = 1326.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 600
+text = "Collect Rubbish"
+
+[node name="node 2" type="Sprite2D" parent="NinePatchRect"]
+texture_filter = 1
+position = Vector2(740, 353)
+scale = Vector2(2.92, 2.95)
+texture = ExtResource("2_6y7u5")
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/node 2"]
+texture_filter = 1
+position = Vector2(-19.8288, 22.2881)
+scale = Vector2(0.363699, 0.323729)
+texture = ExtResource("6_rodi0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="NinePatchRect/node 2"]
+texture_filter = 1
+position = Vector2(27.089, 22.6271)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("7_nun8v")
+
+[node name="Sprite2D3" type="Sprite2D" parent="NinePatchRect/node 2"]
+texture_filter = 1
+position = Vector2(-13.6644, 36.8644)
+rotation = -3.09654
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("8_vyvkn")
+
+[node name="Sprite2D4" type="Sprite2D" parent="NinePatchRect/node 2"]
+texture_filter = 1
+position = Vector2(15.7877, 15.5085)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("9_jbl7c")
+
+[node name="Sprite2D5" type="Sprite2D" parent="NinePatchRect/node 2"]
+texture_filter = 1
+position = Vector2(25.6849, -24.7458)
+rotation = -3.09654
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("10_5hysr")
+
+[node name="Sprite2D6" type="Sprite2D" parent="NinePatchRect/node 2"]
+texture_filter = 1
+position = Vector2(-19.863, -23.3898)
+scale = Vector2(0.363699, 0.323729)
+texture = ExtResource("11_cfyst")
+
+[node name="Label2" type="Label" parent="NinePatchRect"]
+offset_left = 540.0
+offset_top = 513.0
+offset_right = 8505.0
+offset_bottom = 1331.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 600
+text = "Build & Craft Using Rubbish"
+
+[node name="node 3" type="Sprite2D" parent="NinePatchRect"]
+texture_filter = 1
+position = Vector2(1137, 352)
+scale = Vector2(2.92, 2.95)
+texture = ExtResource("2_6y7u5")
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/node 3"]
+texture_filter = 1
+position = Vector2(-20.8904, -14.9153)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_ujxex")
+
+[node name="Sprite2D5" type="Sprite2D" parent="NinePatchRect/node 3"]
+texture_filter = 1
+position = Vector2(-1.02739, 24.4068)
+rotation = -1.54663
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("10_5hysr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="NinePatchRect/node 3"]
+texture_filter = 1
+position = Vector2(-22.2603, -34.9153)
+rotation = 1.56057
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("13_c1h0b")
+
+[node name="Sprite2D3" type="Sprite2D" parent="NinePatchRect/node 3"]
+texture_filter = 1
+position = Vector2(17.4657, -13.2203)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("14_ffu3g")
+
+[node name="Sprite2D4" type="Sprite2D" parent="NinePatchRect/node 3"]
+texture_filter = 1
+position = Vector2(16.2328, -35.661)
+rotation = 1.56057
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_egtq3")
+
+[node name="Label3" type="Label" parent="NinePatchRect"]
+offset_left = 986.0
+offset_top = 514.0
+offset_right = 6999.0
+offset_bottom = 1332.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 600
+text = "Liberate Local Areas "
+
+[node name="node 4" type="Sprite2D" parent="NinePatchRect"]
+texture_filter = 1
+position = Vector2(1515, 351)
+scale = Vector2(2.92, 2.95)
+texture = ExtResource("2_6y7u5")
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/node 4"]
+texture_filter = 1
+position = Vector2(3.42466, -14.9153)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_aptij")
+
+[node name="Sprite2D5" type="Sprite2D" parent="NinePatchRect/node 4"]
+texture_filter = 1
+position = Vector2(-1.02739, 24.4068)
+rotation = -1.54663
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("10_5hysr")
+
+[node name="Label4" type="Label" parent="NinePatchRect"]
+offset_left = 1379.0
+offset_top = 517.0
+offset_right = 7086.0
+offset_bottom = 1335.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 600
+text = "Fight Benandonner "
+
+[node name="Label5" type="Label" parent="NinePatchRect"]
+offset_left = 792.0
+offset_top = 105.0
+offset_right = 8434.0
+offset_bottom = 1467.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 1000
+text = "Game Objective"
+
+[node name="Label6" type="Label" parent="NinePatchRect"]
+offset_left = 180.0
+offset_top = 704.0
+offset_right = 31596.0
+offset_bottom = 3164.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 600
+text = "Your Overall Objective here is to Collect, Reuse/Recycle Rubbish into building/tools to help you liberate,
+The nearby outpost and WayPoints of Enemies/Pollution, Finally Benandonner will test your might in fighting
+the Scottish Giant."
+
+[node name="Label" type="Label" parent="."]
+z_index = 4
+offset_left = 1312.0
+offset_top = 887.0
+offset_right = 8134.0
+offset_bottom = 1807.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 600
+text = "Press Enter to Continue"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 4
+texture_filter = 1
+position = Vector2(1699, 911.531)
+scale = Vector2(2.67188, 2.19141)
+texture = ExtResource("17_jj7b2")
+hframes = 4
+vframes = 8
+frame = 7

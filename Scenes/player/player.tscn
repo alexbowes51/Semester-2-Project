@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=125 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://d36gxump84vfh" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://c5n5xddjdj1u2" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://buoxgii380s3e" path="res://Scenes/Pause_Menu/pause_menu.tscn" id="24_gpgmm"]
 [ext_resource type="PackedScene" uid="uid://2dk0i07v5kqb" path="res://Scenes/settings/setting.tscn" id="25_k3yy6"]
 [ext_resource type="Texture2D" uid="uid://nohnidqou0hp" path="res://Art/UI/Keyboard Letters and Symbols.png" id="26_m30sq"]
+[ext_resource type="PackedScene" uid="uid://bwhotbwv1uej5" path="res://Scenes/Intro_Objective/into_game_objective.tscn" id="27_crx5h"]
 [ext_resource type="PackedScene" uid="uid://dlfccjxj7500u" path="res://Scenes/quest_tracker/quest_tracker.tscn" id="28_1bthv"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
@@ -1352,10 +1353,15 @@ hframes = 8
 vframes = 14
 frame = 17
 
+[node name="Into_Game_Objective" parent="Camera2D/UI" instance=ExtResource("27_crx5h")]
+process_mode = 3
+z_index = 30
+offset_bottom = -2.0
+scale = Vector2(1.02905, 1.40067)
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 2.0
-blend_mode = 2
 texture = SubResource("GradientTexture2D_02i48")
+texture_scale = 2.0
 
 [node name="Pick_Up" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_mjni5")
