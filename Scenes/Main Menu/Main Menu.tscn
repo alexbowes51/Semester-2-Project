@@ -202,7 +202,6 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 4.0
 offset_right = 44.0
@@ -221,6 +220,7 @@ scale = Vector2(1.55808, 1.55572)
 texture = ExtResource("4_wrnr4")
 
 [node name="Control" parent="." instance=ExtResource("5_h0djg")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]

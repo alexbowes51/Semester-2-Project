@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Inventory" load_steps=14 format=3 uid="uid://bbt06aiorn0xj"]
 
-[ext_resource type="Script" path="res://Scenes/Inventory/inventory.gd" id="1_jch3d"]
+[ext_resource type="Script" path="res://Scenes/Building/inventory.gd" id="1_shhou"]
 [ext_resource type="Script" path="res://Scenes/Inventory/Inventory_Slot.gd" id="2_ifq1r"]
 [ext_resource type="Resource" uid="uid://c7vkuqdtwr7us" path="res://Scenes/Item/Health_potions/health_p.tres" id="3_qwmxe"]
 [ext_resource type="Resource" uid="uid://c1d2r5oegupfu" path="res://Scenes/Item/Sword/sword.tres" id="4_lt05x"]
@@ -45,5 +45,5 @@ script = ExtResource("2_ifq1r")
 amount = 0
 
 [resource]
-script = ExtResource("1_jch3d")
+script = ExtResource("1_shhou")
 slots = Array[ExtResource("2_ifq1r")]([SubResource("Resource_pj0mw"), SubResource("Resource_qs62i"), SubResource("Resource_aso1t"), SubResource("Resource_3rlbj"), SubResource("Resource_aav0v"), SubResource("Resource_ojb7i"), SubResource("Resource_qbptf"), SubResource("Resource_x62w5"), SubResource("Resource_3t8fw")])

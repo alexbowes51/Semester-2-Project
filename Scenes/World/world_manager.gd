@@ -70,17 +70,7 @@ var Player_Damage = 20
 func _ready():
 	BgAudio.stop()
 	MainMusic.stop()
-	minimap = $MiniMap
-	player = $Player
-	
-	if player:
-		minimap.player_node = player
-	
-	if enable_cycle:
-		_setup_cycle()
-	else:
-		Day_Night_Manager.visible = false
-		Day_Night_Manager.process_mode = Node.PROCESS_MODE_DISABLED
+
 
 func _setup_cycle() -> void:
 	if day_night_cycle:

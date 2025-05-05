@@ -5,14 +5,11 @@ extends Node2D
 @onready var path_follow_2d: PathFollow2D = $Path2D/PathFollow2D
 @onready var introdialogue: Control = $Path2D/PathFollow2D/Camera2D/CanvasLayer/Control
 
-
-
 var stop_points = [0.055,0.0901,0.1365,0.24,0.2864,0.4122,0.7168]
 var current_point = 0
 var is_stop = false
 var pause_timer = 0.0
 var pause_duration = 5.0
-
 
 var path_follow = false
 var open_scene = false

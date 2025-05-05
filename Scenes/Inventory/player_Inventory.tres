@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Inventory" load_steps=12 format=3 uid="uid://57ap7oxacyuy"]
 
+[ext_resource type="Script" path="res://Scenes/Building/inventory.gd" id="1_5e05x"]
 [ext_resource type="Script" path="res://Scenes/Inventory/Inventory_Slot.gd" id="2_5mdaw"]
-[ext_resource type="Script" path="res://Scenes/Inventory/inventory.gd" id="3_fphtw"]
 
 [sub_resource type="Resource" id="Resource_xto0b"]
 script = ExtResource("2_5mdaw")
@@ -40,5 +40,5 @@ script = ExtResource("2_5mdaw")
 amount = 0
 
 [resource]
-script = ExtResource("3_fphtw")
+script = ExtResource("1_5e05x")
 slots = Array[ExtResource("2_5mdaw")]([SubResource("Resource_xto0b"), SubResource("Resource_kn727"), SubResource("Resource_430sl"), SubResource("Resource_fx32p"), SubResource("Resource_6tdcu"), SubResource("Resource_383v7"), SubResource("Resource_0rv54"), SubResource("Resource_xj23c"), SubResource("Resource_774fb")])

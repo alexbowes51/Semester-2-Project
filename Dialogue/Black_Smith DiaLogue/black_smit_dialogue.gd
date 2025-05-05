@@ -14,7 +14,6 @@ func _ready():
 	$NinePatchRect/TextureButton.visible = false
 	$NinePatchRect/TextureButton2.visible = false
 	$NinePatchRect/craft_updrade.visible = false
-	$NinePatchRect/TextureButton2.pressed.connect(_on_texture_button_2_pressed)
 
 func _process(_delta):
 	pass

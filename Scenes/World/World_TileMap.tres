@@ -4,7 +4,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fyh05"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwkin"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjn4o"]
 resource_name = "tilemap"
 texture = ExtResource("1_104lb")
 margins = Vector2i(3, 3)
@@ -136,4 +136,4 @@ resource_name = "Tilemap"
 tile_size = Vector2i(100, 100)
 physics_layer_0/collision_layer = 1
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_fyh05")
-sources/0 = SubResource("TileSetAtlasSource_nwkin")
+sources/0 = SubResource("TileSetAtlasSource_kjn4o")

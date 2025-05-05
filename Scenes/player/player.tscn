@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=126 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://d36gxump84vfh" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://c5n5xddjdj1u2" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://nohnidqou0hp" path="res://Art/UI/Keyboard Letters and Symbols.png" id="26_m30sq"]
 [ext_resource type="PackedScene" uid="uid://bwhotbwv1uej5" path="res://Scenes/Intro_Objective/into_game_objective.tscn" id="27_crx5h"]
 [ext_resource type="PackedScene" uid="uid://dlfccjxj7500u" path="res://Scenes/quest_tracker/quest_tracker.tscn" id="28_1bthv"]
+[ext_resource type="PackedScene" uid="uid://cpbh2ctna2flc" path="res://Scenes/joystick/joy_stick.tscn" id="28_2ljpj"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
 script/source = "extends CharacterBody2D
@@ -79,6 +80,9 @@ var dash_direction = Vector2.ZERO
 @onready var arrow_hit: AudioStreamPlayer = $arrow_hit
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
 @onready var control_1: Control = $Camera2D/UI/Control_1
+@onready var joy_stick: Node2D = $Camera2D/UI/JoyStick
+
+
 
 @onready var Sword = preload(\"res://Scenes/Item/Sword/sword.tres\")
 
@@ -133,7 +137,15 @@ func _physics_process(_delta: float) -> void:
 				velocity = dash_direction * dash_speed
 			else:
 				var input_direction = Input.get_vector(\"left\", \"right\", \"up\", \"down\")
-				velocity = input_direction * speed
+				var joy_dir = joy_stick.posVector
+				if joy_dir:
+					velocity = joy_dir * speed
+					look_at(joy_dir)
+					move_and_slide()  # Always call this
+				if input_direction:
+					velocity = input_direction * speed
+				else:
+					velocity = Vector2(0,0)
 
 			move_and_slide()  # Always call this
 			teleporting()
@@ -350,9 +362,8 @@ func KnockBack(damage_dir: Vector2):
 func check_weapon() -> bool:
 	if hb_inv != null:
 		if hb_inv.Has_Items(Sword,1):
-			WorldManager.Player_Damage * 2
+			WorldManager.Player_Damage *= 2
 			return true 
-	WorldManager.Player_Damage
 	return false  
 
 func start_dash():
@@ -364,7 +375,7 @@ func start_dash():
 	
 	animated_sprite_2d.play(\"Player_Dash\")
 	if animated_sprite_2d.animation_finished:
-		animated_sprite_2d.play(\"Idle\")
+		animated_sprite_2d.play(\"idle\")
 	dash_timer = dash_duration
 	dash_direction = input_direction.normalized()
 	can_dash = false
@@ -1084,6 +1095,7 @@ fill_to = Vector2(0.9, 0.1)
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 texture_filter = 1
+position = Vector2(898, 581)
 script = SubResource("GDScript_pbkry")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -1431,6 +1443,10 @@ scale = Vector2(0.013, 0.01)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 4000
 text = "Click = Attack"
+
+[node name="JoyStick" parent="Camera2D/UI" instance=ExtResource("28_2ljpj")]
+z_index = 20
+position = Vector2(206.186, 1280.56)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = SubResource("GradientTexture2D_02i48")

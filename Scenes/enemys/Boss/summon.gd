@@ -23,7 +23,6 @@ func Summon():
 		solider_1.global_position = Vector2(owner.global_position.x + 100,owner.global_position.y + 100)
 		get_tree().current_scene.add_child(solider_1)
 		print("summon")
-	
 
 func transition():
 	if can_transition:

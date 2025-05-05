@@ -24,10 +24,6 @@ func update_slots():
 	for i in range(min(bs_inv.slots.size(), slots.size())):
 		slots[i].update(bs_inv.slots[i], bs_inv, player_inv, bs_inv, bs_inv, true) 
 		
-	for slot in slots:
-		if slot.has_signal("hovered_item"):  # Check if the slot has the signal
-			slot.hovered_item.connect(on_item_hovered)
-			
 
 func open():
 	visible = true

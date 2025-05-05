@@ -74,6 +74,7 @@ func reset():
 	current_dialogue_id = -1 
 
 func _on_texture_button_pressed() -> void:
+	audio_stream_player.play()
 	WorldManager.Merchant_follow_player = !WorldManager.Merchant_follow_player
 
 	$"NinePatchRect/Follow Text".visible = !WorldManager.Merchant_follow_player

@@ -21,7 +21,7 @@ var is_shop_slot = false
 signal hovered_item(item_name : String)
 
 func _ready():
-	texture_button.connect("pressed", _on_texture_button_pressed)
+	pass
 
 func _process(_delta):
 	if texture_button.is_hovered() and slot_data and slot_data.item:
@@ -125,8 +125,8 @@ func _on_texture_button_pressed():
 
 
 
-func print_inventory(name: String, inv: Inventory):
-	print(name, "slots:")
+func print_inventory( Name: String, inv: Inventory):
+	print(Name, "slots:")
 	for slot in inv.slots:
 		if slot.item:
 			print(slot.item.name, "-", slot.amount)

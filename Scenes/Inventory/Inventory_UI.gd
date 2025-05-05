@@ -17,9 +17,6 @@ func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].update(inv.slots[i],inv,inv,bs_inv,hb_inv,false)
 		
-	for slot in slots:
-		if slot.has_signal("hovered_item"):  # Check if the slot has the signal
-			slot.hovered_item.connect(on_item_hovered)
 			
 
 func open():
@@ -39,6 +36,6 @@ func _process(_delta):
 			open()
 			
 
-func on_item_hovered(item_name : String):
+func on_item_hovered(_item_name : String):
 	pass
 	
