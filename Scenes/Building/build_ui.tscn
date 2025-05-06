@@ -142,7 +142,7 @@ offset_right = 1494.67
 offset_bottom = 726.783
 scale = Vector2(0.05, 0.05)
 theme_override_font_sizes/font_size = 500
-text = "House"
+text = "Farm"
 
 [node name="black_smith" type="TextureButton" parent="NinePatchRect/GridContainer"]
 texture_filter = 1
@@ -161,13 +161,13 @@ scale = Vector2(1.1696, 0.647421)
 texture = ExtResource("9_t3bgu")
 
 [node name="Label" type="Label" parent="NinePatchRect/GridContainer/black_smith/Sprite2D"]
-offset_left = -35.3323
-offset_top = 44.7826
-offset_right = 1494.67
-offset_bottom = 726.783
+offset_left = -64.4378
+offset_top = 44.8513
+offset_right = 2795.56
+offset_bottom = 726.852
 scale = Vector2(0.05, 0.05)
 theme_override_font_sizes/font_size = 500
-text = "House"
+text = "Black-Smith"
 
 [node name="Label" type="Label" parent="NinePatchRect"]
 layout_mode = 0

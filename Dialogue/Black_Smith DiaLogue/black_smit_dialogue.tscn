@@ -28,8 +28,9 @@ auto_translate_mode = 1
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
+offset_top = -1.0
 offset_right = 101.0
-offset_bottom = 40.0
+offset_bottom = 39.0
 scale = Vector2(1.11567, 1.30714)
 mouse_filter = 0
 texture = ExtResource("4_fnvyd")
@@ -42,7 +43,6 @@ metadata/_edit_group_ = true
 
 [node name="Name" type="RichTextLabel" parent="NinePatchRect"]
 modulate = Color(0.94902, 0.94902, 0.94902, 1)
-z_index = 1
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
