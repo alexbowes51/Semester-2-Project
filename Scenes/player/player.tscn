@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://dwmhxdnbbb5cd"]
+[gd_scene load_steps=130 format=3 uid="uid://dwmhxdnbbb5cd"]
 
 [ext_resource type="Texture2D" uid="uid://d36gxump84vfh" path="res://Art/Player/No Weapons/Player Character No Weapons/Attack/Player Attack-Sheet.png" id="3_0i4q8"]
 [ext_resource type="Texture2D" uid="uid://c5n5xddjdj1u2" path="res://Art/Player/No Weapons/Player Character No Weapons/Dash/Player Charachter Dash-Sheet.png" id="3_jrwhl"]
@@ -34,6 +34,9 @@
 [ext_resource type="PackedScene" uid="uid://bwhotbwv1uej5" path="res://Scenes/Intro_Objective/into_game_objective.tscn" id="27_crx5h"]
 [ext_resource type="PackedScene" uid="uid://dlfccjxj7500u" path="res://Scenes/quest_tracker/quest_tracker.tscn" id="28_1bthv"]
 [ext_resource type="PackedScene" uid="uid://cpbh2ctna2flc" path="res://Scenes/joystick/joy_stick.tscn" id="28_2ljpj"]
+[ext_resource type="Texture2D" uid="uid://b778nedb5dqep" path="res://Art/UI/pixil-frame-0 (32).png" id="30_ul0g5"]
+[ext_resource type="Texture2D" uid="uid://blbhih52fxbqt" path="res://Art/UI/pixil-frame-0 (29).png" id="31_jwygv"]
+[ext_resource type="Texture2D" uid="uid://d0rhjbhekja64" path="res://Art/UI/pixil-frame-0 (31).png" id="32_tf7xg"]
 
 [sub_resource type="GDScript" id="GDScript_pbkry"]
 script/source = "extends CharacterBody2D
@@ -1189,9 +1192,10 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/UI/HFlowContainer/HealthBar/heart3"]
-position = Vector2(14.6804, 18.0556)
+position = Vector2(0.24744, -3.52859e-05)
 scale = Vector2(0.85, 0.85)
 sprite_frames = SubResource("SpriteFrames_mc0xm")
+frame_progress = 0.70344
 
 [node name="heart4" type="TextureRect" parent="Camera2D/UI/HFlowContainer/HealthBar"]
 custom_minimum_size = Vector2(100, 0)
@@ -1227,10 +1231,10 @@ scale = Vector2(1.5, 1.5)
 
 [node name="Inventory_UI" parent="Camera2D/UI" instance=ExtResource("3_jvthm")]
 z_index = 0
-offset_left = 1486.6
-offset_top = 533.333
-offset_right = 1486.6
-offset_bottom = 533.333
+offset_left = 1497.94
+offset_top = 266.667
+offset_right = 1497.94
+offset_bottom = 266.667
 scale = Vector2(2.5, 4)
 localize_numeral_system = false
 
@@ -1238,26 +1242,26 @@ localize_numeral_system = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 629.897
-offset_top = 131.944
-offset_right = 882.897
-offset_bottom = 344.944
+offset_left = 632.99
+offset_top = 20.8333
+offset_right = 882.99
+offset_bottom = 236.833
 grow_horizontal = 1
 grow_vertical = 1
-scale = Vector2(3, 3)
+scale = Vector2(2.7, 2.7)
 
 [node name="Black_Smit_Dialogue" parent="Camera2D/UI" instance=ExtResource("13_eylsh")]
-offset_left = 480.412
-offset_top = 790.278
-offset_right = 485.412
-offset_bottom = 790.278
+offset_left = 502.062
+offset_top = 579.167
+offset_right = 507.062
+offset_bottom = 579.167
 scale = Vector2(8, 8)
 
 [node name="Merchant_Dialogue" parent="Camera2D/UI" instance=ExtResource("8_dy8ic")]
-offset_left = 472.165
-offset_top = 787.5
-offset_right = 512.165
-offset_bottom = 827.5
+offset_left = 486.598
+offset_top = 570.833
+offset_right = 526.598
+offset_bottom = 610.833
 scale = Vector2(8, 8)
 
 [node name="PickUpNotifaction" type="Control" parent="Camera2D/UI"]
@@ -1322,10 +1326,10 @@ scale = Vector2(4, 8)
 texture = ExtResource("12_cohmc")
 
 [node name="Player_Hotbar" parent="Camera2D/UI" instance=ExtResource("19_ag7iv")]
-offset_left = -3.09278
-offset_top = 1059.72
-offset_right = -1776.09
-offset_bottom = 31.7231
+offset_left = 5.15464
+offset_top = 845.833
+offset_right = -1767.84
+offset_bottom = -182.164
 scale = Vector2(3, 3)
 
 [node name="Respawn" parent="Camera2D/UI" instance=ExtResource("22_fuqjl")]
@@ -1445,6 +1449,27 @@ text = "Click = Attack"
 
 [node name="JoyStick" parent="Camera2D/UI" instance=ExtResource("28_2ljpj")]
 position = Vector2(206.186, 1280.56)
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Camera2D/UI"]
+texture_filter = 1
+position = Vector2(1309.28, 1136.11)
+scale = Vector2(2.45361, 2.875)
+texture_normal = ExtResource("30_ul0g5")
+action = "attack"
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="Camera2D/UI"]
+texture_filter = 1
+position = Vector2(1612.37, 1123.61)
+scale = Vector2(2.45361, 2.875)
+texture_normal = ExtResource("31_jwygv")
+action = "dash"
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="Camera2D/UI"]
+texture_filter = 1
+position = Vector2(417.526, 1125)
+scale = Vector2(2.63918, 3.08333)
+texture_normal = ExtResource("32_tf7xg")
+action = "i"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = SubResource("GradientTexture2D_02i48")
